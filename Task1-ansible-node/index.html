@@ -1,0 +1,975 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Task 1 - Prepare Ansible node - Cisco Live 2021 HOLDCN-1010</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cisco Live 2021 HOLDCN-1010" class="md-header__button md-logo" aria-label="Cisco Live 2021 HOLDCN-1010" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco Live 2021 HOLDCN-1010
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 1 - Prepare Ansible node
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cisco Live 2021 HOLDCN-1010" class="md-nav__button md-logo" aria-label="Cisco Live 2021 HOLDCN-1010" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cisco Live 2021 HOLDCN-1010
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 1 - Prepare Ansible node
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Task 1 - Prepare Ansible node
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-nav__link">
+    Step 1: Connect to lab using anyconnect VPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-enter-vpn-credentials" class="md-nav__link">
+    Step 2: Enter VPN credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-rdp-to-workstation" class="md-nav__link">
+    Step 3: RDP to workstation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-mtputty" class="md-nav__link">
+    Step 4: MTputty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-ssh-into-ansible-node" class="md-nav__link">
+    Step 5: SSH into Ansible node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-verify-python" class="md-nav__link">
+    Step 6: Verify Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-install-pip" class="md-nav__link">
+    Step 7: Install PIP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-verify-ansible" class="md-nav__link">
+    Step 8: Verify Ansible
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-create-ansible-inventory" class="md-nav__link">
+    Step 9: Create Ansible Inventory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-ansible-role-structure" class="md-nav__link">
+    Step 10: Ansible role structure
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task2-first-ansible/" class="md-nav__link">
+        Task 2 - First Simple Ansible Playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task3-vxlan-jinja2/" class="md-nav__link">
+        Task 3 - Use of Jinja2 templates with Ansible Playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task4-vxlan-nxos/" class="md-nav__link">
+        Task 4 - Config switches using Ansible NXOS modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task5-day2-operation/" class="md-nav__link">
+        Task 5 - Day 2 Operations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendixB-Upgrade/" class="md-nav__link">
+        Appendix A - Upgrade
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-nav__link">
+    Step 1: Connect to lab using anyconnect VPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-enter-vpn-credentials" class="md-nav__link">
+    Step 2: Enter VPN credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-rdp-to-workstation" class="md-nav__link">
+    Step 3: RDP to workstation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-mtputty" class="md-nav__link">
+    Step 4: MTputty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-ssh-into-ansible-node" class="md-nav__link">
+    Step 5: SSH into Ansible node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-verify-python" class="md-nav__link">
+    Step 6: Verify Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-install-pip" class="md-nav__link">
+    Step 7: Install PIP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-verify-ansible" class="md-nav__link">
+    Step 8: Verify Ansible
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-create-ansible-inventory" class="md-nav__link">
+    Step 9: Create Ansible Inventory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-ansible-role-structure" class="md-nav__link">
+    Step 10: Ansible role structure
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Task 1 - Prepare Ansible node</h1>
+
+<p>Your first task will be to build an Ansible node on a server running redhat CentOS operating system.  At the end of this task, you will have a fully operational Ansible node.</p>
+<h4 id="step-1-connect-to-lab-using-anyconnect-vpn">Step 1: Connect to lab using anyconnect VPN</h4>
+<p>You will connect to <strong>dcloud-lon-anyconnect.cisco.com</strong> using Cisco VPN AnyConnect client, as shown in below picture, with the username and password provided by the lab admin.</p>
+<table>
+<thead>
+<tr>
+<th>Pod ID</th>
+<th>Attendee Name</th>
+<th>Anyconnect url</th>
+<th>Anyconnect Username</th>
+<th>Anyconnect Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POD  1</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  2</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  3</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  4</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  5</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  6</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  7</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  8</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  9</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  10</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  11</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  12</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  13</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  14</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  15</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  16</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> lab admin will furnish the credentials information to the participant.  If you don't have this information please ask the lab speakers.</p>
+<p><img alt="" src="../pic/1-1-1-lon.png" /></p>
+<h4 id="step-2-enter-vpn-credentials">Step 2: Enter VPN credentials</h4>
+<p>After prompted for credentials, use the credentials provided by the lab admin.    <br />
+•   Below is an example of user logging into a reference POD:</p>
+<p><img alt="" src="../pic/1-2-vpn-credentials.png" /></p>
+<ul>
+<li>Hit accept when the prompt appears to accept the VPN connection login</li>
+</ul>
+<p><img alt="" src="../pic/1-2-vpn-accept.png" /></p>
+<h4 id="step-3-rdp-to-workstation">Step 3: RDP to workstation</h4>
+<p>In this step, you will connect to the workstation with RDP client on your machines.  Use below details for this RDP session:</p>
+<ul>
+<li>Workstation: <strong>198.18.133.36</strong></li>
+<li>Username: <strong>dcloud\demouser</strong></li>
+<li>Password: <strong>C1sco12345</strong></li>
+</ul>
+<p>Below screenshot is only an example for this RDP connection:</p>
+<p><img alt="" src="../pic/1-3-RDP.png" /></p>
+<h4 id="step-4-mtputty">Step 4: MTputty</h4>
+<p>Once you have the RDP session to the remote workstation, then you will use MTputty client to connect to all devices in this lab.  </p>
+<p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by clicking on the icon on the desktop:</p>
+<p><img alt="" src="../pic/1-4-mtputty.png" /></p>
+<h4 id="step-5-ssh-into-ansible-node">Step 5: SSH into Ansible node</h4>
+<p>SSH into Ansible node (198.18.134.150) by double clicking the Ansible icon on the left pan with username <strong>root</strong> and password <strong>C1sco12345</strong></p>
+<p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
+<h4 id="step-6-verify-python">Step 6: Verify Python</h4>
+<p>Once successfully SSH into the ansible node, the very first thing we are going to do after logging into Ansible server is verify the python version by running <code>python --version</code> command - as shown below:</p>
+<pre><code>[root@rhel7-tools ~]# python --version
+</code></pre>
+<p>It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansbile.  The output of above command confirms this version.</p>
+<p>Ansible can be run from any machine with Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.</p>
+<p><img alt="" src="../pic/1-6-python.png" /></p>
+<h4 id="step-7-install-pip">Step 7: Install PIP</h4>
+<p>After verifying we have the minimum version of python installed, we are now going to Install PIP python package using <code>easy_install pip</code> command as shown below:</p>
+<pre><code>[root@rhel7-tools ~]# easy_install pip
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-6-2-python-new.png" /></p>
+<p>Next, update pip to latest version by executing command <code>pip install --upgrade pip</code> as shown below:</p>
+<pre><code>[root@rhel7-tools ~]# pip install --upgrade pip
+</code></pre>
+<p><strong>Note:</strong> you can ignore the warning related to python version.  Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-6-3-python-new.png" /></p>
+<p>After installing PIP package, we are going to add the relevant packages that are needed for this Ansible based VXLAN lab. Below are the packages required for this lab.  </p>
+<ul>
+<li>Paramiko</li>
+<li>PyYAML</li>
+<li>Jinj2</li>
+<li>Httplib2</li>
+</ul>
+<p>Run the command <code>pip install paramiko PyYAML jinja2 httplib2</code>, as shown below, to install these packages:</p>
+<pre><code>[root@rhel7-tools ~]# pip install paramiko PyYAML jinja2 httplib2
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-6-4-python-new.png" /></p>
+<p>As a final step, we are going to install Ansible on this RHEL. Once the install is initiated by using <code>pip install ansible==2.10.6</code> command (as shown below).  It may take few minutes for it to download and install.</p>
+<pre><code>[root@rhel7-tools ~]# pip install ansible==2.10.6
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-6-5-ansible-new.png" /></p>
+<p>Starting from Ansible 2.9, plugins and modules for network platform are moved in to <strong>collection</strong>. To install NX-OS collection with Ansible Galaxy by using <code>ansible-galaxy collection install cisco.nxos</code></p>
+<pre><code>[root@rhel7-tools ~]# ansible-galaxy collection install cisco.nxos
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-7-4-collection.PNG" /></p>
+<h4 id="step-8-verify-ansible">Step 8: Verify Ansible</h4>
+<p>After installation is complete, check Ansible version by executing command <code>ansible --version</code>, as shown below:</p>
+<pre><code>[root@rhel7-tools ~]# ansible --version
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-8-1-version-new.png" /></p>
+<p><strong>Note:</strong>: Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page.
+<a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
+<h4 id="step-9-create-ansible-inventory">Step 9: Create Ansible Inventory</h4>
+<p>Now, we are going to create inventory, host variables and Configuration file. This is important as Ansible works  against multiple systems in the system by selecting portions of systems listed in Ansible inventory. Similarly, configuration settings in Ansible are adjustable via configuration file.</p>
+<p>Create folder named EVPN-Ansible as working environment and verify that it’s empty:</p>
+<pre><code>[root@rhel7-tools ~]# mkdir EVPN-Ansible &amp;&amp; cd EVPN-Ansible
+[root@rhel7-tools EVPN-Ansible]# ls
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9-1-dir.png" /></p>
+<p>Next:</p>
+<ul>
+<li>Create Ansible inventory file to include Spine and Leaf switches.</li>
+<li>By default Ansible has inventory file saved in location /etc/ansible/hosts.</li>
+<li>In this lab we will create hosts file in the working environment. This file is created from ansible host prompt using <code>cat</code> command.   <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code> (also shown in subsequent screenshot):<pre><code>cat &lt;&lt; EOF &gt;&gt; hosts
+#define global variables, groups and host variables
+[all:vars]
+ansible_connection = ansible.netcommon.network_cli
+ansible_network_os = cisco.nxos.nxos
+ansible_user=admin
+ansible_password=C1sco12345
+ansible_command_timeout=180
+gather_fact=no
+[jinja2_spine]
+198.18.4.202
+[jinja2_leaf]
+198.18.4.104
+[spine]
+198.18.4.201
+[leaf]
+198.18.4.101
+198.18.4.103
+[server]
+198.18.134.50 eth1=172.21.140.10 gw=172.21.140.1
+198.18.134.52 eth1=172.21.140.11 gw=172.21.140.1
+198.18.134.53 eth1=172.21.141.11 gw=172.21.141.1
+EOF
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the output of above command:</p>
+<p><img alt="" src="../pic/1-9a-1-hosts.png" /></p>
+<ul>
+<li>Now you may verify the content of this file using below command:<pre><code>[root@rhel7-tools EVPN-Ansible]# more hosts
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the execution of above command:
+<img alt="" src="../pic/1-9a-2-hosts.png" /></p>
+<ul>
+<li>
+<p>Create Ansible config (ansible.cfg) using the same steps as above.  <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</p>
+<pre><code>cat &lt;&lt; EOF &gt;&gt; ansible.cfg
+[defaults]
+inventory = hosts
+host_key_checking = false
+record_host_key = true
+stdout_callback = debug
+deprecation_warnings = False
+EOF
+</code></pre>
+</li>
+<li>
+<p>Now you may verify the content of this file using below command:</p>
+<pre><code>[root@rhel7-tools EVPN-Ansible]# more ansible.cfg
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the output of above commands:</p>
+<p><img alt="" src="../pic/1-9a-3-ansible.png" /></p>
+<ul>
+<li>
+<p>Do <code>ls</code> to verify the file that you just created under project folder EVPN-Ansible.   </p>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9-3-ls.png" /></p>
+</li>
+<li>
+<p>Create host variable folder named <code>host_vars</code> in folder <code>EVPN-Ansible</code> by using below command.  In this lab, we will use host_vars file to define the variables for various hosts (in next bullets):</p>
+<pre><code>[root@rhel7-tools EVPN-Ansible]# mkdir host_vars &amp;&amp; cd host_vars
+</code></pre>
+</li>
+<li>
+<p>Create host variable file for each host in inventory by using the cat command.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</p>
+</li>
+</ul>
+<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.101.yml
+---
+  hostname: leaf_1
+  loopback0: 192.168.0.8
+  loopback1: 192.168.0.18
+  router_id: 192.168.0.8
+EOF
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9a-4-101.png" /></p>
+<ul>
+<li>Now you may verify the content of this file using <code>more 198.18.4.101.yml</code> as shown below:<pre><code>[root@rhel7-tools  host_vars]# more 198.18.4.101.yml
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9a-4-101-more.png" /></p>
+<ul>
+<li>Create a new host variable file for next host in inventory.   The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+</ul>
+<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.103.yml
+---
+  hostname: leaf_3
+  loopback0: 192.168.0.10
+  loopback1: 192.168.0.110
+  router_id: 192.168.0.10
+EOF
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9a-4-103.png" /></p>
+<ul>
+<li>Now you may verify the content of this file using <code>more 198.18.4.103.yml</code> as shown below:<pre><code>[root@rhel7-tools  host_vars]# more 198.18.4.103.yml
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9a-4-103-more.png" /></p>
+<ul>
+<li>Create a new host variable file for next host in inventory. The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+</ul>
+<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.104.yml
+---
+  hostname: leaf_4
+  loopback0: 192.168.0.11
+  loopback1: 192.168.0.111
+  router_id: 192.168.0.11
+EOF
+</code></pre>
+<ul>
+<li>Now you may verify the content of this file using <code>more 198.18.4.104.yml</code> as shown below:<pre><code>[root@rhel7-tools host_vars]# more 198.18.4.104.yml
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-9a-4-104.png" /></p>
+<ul>
+<li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from cat till EOF (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+</ul>
+<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.201.yml
+---
+  hostname: spine-1
+  loopback0: 192.168.0.6
+  loopback1: 192.168.0.100
+  router_id: 192.168.0.6
+EOF
+</code></pre>
+<ul>
+<li>Now you may verify the content of this file using <code>more 198.18.4.201.yml</code> as shown below:<pre><code>[root@rhel7-tools host_vars]# more 198.18.4.201.yml
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-9a-4-201.png" /></p>
+<ul>
+<li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from cat till EOF (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+</ul>
+<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.202.yml
+---
+  hostname: spine-2
+  loopback0: 192.168.0.7
+  loopback1: 192.168.0.100
+  router_id: 192.168.0.7
+EOF
+</code></pre>
+<ul>
+<li>Now you may verify the content of this file using <code>more 198.18.4.202.yml</code> as shown below:<pre><code>[root@rhel7-tools host_vars]# more 198.18.4.202.yml
+</code></pre>
+</li>
+</ul>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-9a-4-202.png" /></p>
+<h4 id="step-10-ansible-role-structure">Step 10: Ansible role structure</h4>
+<p>Role is very useful technique to manage a set of playbooks in Ansible.
+In this lab, we will use two different playbooks to manage configuration for Spine and Leaf switches.</p>
+<p>We will use role structure and manage the two plays into single playbook.
+A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.</p>
+<p>In this lab:</p>
+<ul>
+<li>we will use vars, templates and tasks folders</li>
+<li>main.yml file in <code>/vars</code>  folder contains dictionary of variables for this role</li>
+<li>main.yml file in <code>/tasks</code> folder contains the Ansible playbook for this role</li>
+</ul>
+<p>To proceed further with roles in subsequent Tasks:</p>
+<p>•   Create roles directory in folder EVPN-Ansible by issuing below commands:</p>
+<pre><code>[root@rhel7-tools host_vars]# cd /root/EVPN-Ansible
+[root@rhel7-tools EVPN-Ansible]# mkdir roles
+</code></pre>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-10-1.png" /></p>
+<p>This will be used in the subsequent tasks in this lab.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../task2-first-ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 2 - First Simple Ansible Playbook" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Task 2 - First Simple Ansible Playbook
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+    
+  </body>
+</html>
