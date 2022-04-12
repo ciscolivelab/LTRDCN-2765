@@ -1,0 +1,23 @@
+#define global variables, groups and host variables
+[all:vars]
+ansible_connection = ansible.netcommon.network_cli
+ansible_network_os = cisco.nxos.nxos
+ansible_user=admin
+ansible_password=C1sco12345
+ansible_command_timeout=180
+gather_fact=no
+[jinja2_spine]
+198.18.4.202
+[jinja2_leaf]
+198.18.4.104
+[spine]
+198.18.4.201
+[leaf]
+198.18.4.101
+198.18.4.103
+[server]
+198.18.134.50 eth1=172.21.140.10 gw=172.21.140.1
+198.18.134.52 eth1=172.21.140.11 gw=172.21.140.1
+198.18.134.53 eth1=172.21.141.11 gw=172.21.141.1
+[f5]
+198.18.4.10

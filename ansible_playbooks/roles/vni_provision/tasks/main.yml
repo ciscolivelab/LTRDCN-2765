@@ -1,0 +1,43 @@
+---
+# tasks file for vni_provision
+       - name: Configure VLAN to VNI
+         cisco.nxos.nxos_vlan:
+           vlan_id: "{{ item.vlan_id }}"
+           mapped_vni: "{{ item.vni }}"
+           name: "{{ item.vlan_name }}"
+         with_items:
+         - "{{ L2VNI }}"
+       - name: Configure L2VNI
+         cisco.nxos.nxos_interface:
+           interface: vlan"{{ item.vlan_id }}"
+         with_items: "{{ L2VNI }}"
+       - name: Assign interface to Tenant VRF
+         cisco.nxos.nxos_vrf_interface:
+           vrf: Tenant-1
+           interface: "vlan{{ item.vlan_id }}"
+         with_items:
+         - "{{ L2VNI }}"
+       - name: Configure SVI IP
+         cisco.nxos.nxos_l3_interfaces:
+           config:
+             - name: "vlan{{ item.vlan_id }}"
+               ipv4:
+                 - address: "{{ item.ip_add }}/{{ item.mask }}"
+         with_items: "{{ L2VNI }}"
+       - name: Configure L2VNI SVI
+         cisco.nxos.nxos_interface:
+           interface: vlan"{{ item.vlan_id }}"
+           fabric_forwarding_anycast_gateway: true
+         with_items: "{{ L2VNI }}"
+       - name: Configure L2VNI to VTEP
+         cisco.nxos.nxos_vxlan_vtep_vni:
+            interface: nve1
+            vni: "{{ item.vni }}"
+            multicast_group: "{{ item.mcast }}"
+         with_items: "{{ L2VNI }}"
+       - name: Configure L2VNI RD/RT
+         cisco.nxos.nxos_evpn_vni:
+          vni: "{{ item.vni }}"
+          route_distinguisher: auto
+          route_target_both: auto
+         with_items: "{{ L2VNI }}"
