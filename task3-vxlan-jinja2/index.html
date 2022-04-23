@@ -536,7 +536,7 @@
 <ul>
 <li>On the Ansible node, install jinja2 using <code>pip install jinja2</code> command.  If it is already installed, we will get the message “requirement is satisfied”:</li>
 </ul>
-<pre><code>        root@ubuntu:~/EVPN-Ansible# pip install jinja2
+<pre><code>        root@ubuntu:~# pip install jinja2
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-1-1-new.png" /></p>
@@ -584,7 +584,7 @@
 </li>
 </ul>
 <pre><code>root@ubuntu:~# cd /root/EVPN-Ansible
-root@ubuntu:~# more hosts
+root@ubuntu:~/EVPN-Ansible# more hosts
 </code></pre>
 <p>Below screenshot confirms the ouptut and appropriate IP addresses of above command:</p>
 <p><img alt="" src="../pic/3-2-3.png" /></p>
@@ -609,7 +609,7 @@ root@ubuntu:~/EVPN-Ansible/roles# ansible-galaxy init jinja2_spine&amp;&amp;ansi
 <li>
 <p><strong>change directory</strong> path to EVPN-Ansible/roles/jinja2_spine and check the content of local directory (<code>ls</code>) as per below commands:</p>
 <pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/roles/jinja2_spine/
-[root@rhel7-tools jinja2_spine]# ls
+root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine# ls
 </code></pre>
 </li>
 <li>
@@ -688,17 +688,17 @@ root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
 <ol>
 <li>
 <p>On Ansible server (198.18.134.150) using your SSH session, change Directory to folder EVPN-Ansible using below command:</p>
-<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible]
+<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/
 </code></pre>
 </li>
 <li>
 <p>further, change Directory (cd) to folder roles/jinja2_spine/templates using below command:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# cd roles/jinja2_spine/templates]
+<pre><code>root@ubuntu:~/EVPN-Ansible# cd roles/jinja2_spine/templates/
 </code></pre>
 </li>
 <li>
 <p>Type <code>touch spine.j2</code> as shown below:</p>
-<pre><code>[root@rhel7-tools templates]# touch spine.j2]
+<pre><code>root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# touch spine.j2
 </code></pre>
 </li>
 <li>
@@ -731,8 +731,8 @@ root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
 <p>You can verify that updated file content is on Ansible server (198.18.134.150) using your SSH session by issuing below commands:</p>
 </li>
 </ul>
-<pre><code>[root@rhel7-tools templates]# cd /root/EVPN-Ansible/roles/jinja2_spine/templates
-[root@rhel7-tools templates]# more spine.j2
+<pre><code>root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# cd /root/EVPN-Ansible/roles/jinja2_spine/templates
+root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# more spine.j2
 </code></pre>
 <p>Partial output of above command is shown in below screenshot confirming :
   <img alt="" src="../pic/3-5-6.png" /></p>
