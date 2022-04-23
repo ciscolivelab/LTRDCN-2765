@@ -536,7 +536,7 @@
 <ul>
 <li>On the Ansible node, install jinja2 using <code>pip install jinja2</code> command.  If it is already installed, we will get the message “requirement is satisfied”:</li>
 </ul>
-<pre><code>        [root@rhel7-tools EVPN-Ansible]# pip install jinja2
+<pre><code>        root@ubuntu:~/EVPN-Ansible# pip install jinja2
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-1-1-new.png" /></p>
@@ -583,8 +583,8 @@
 <p>On Ansible server node (198.18.134.150), <strong>verify</strong> that the (below highlighted) 2 groups exists of <em>jinja2_spine</em> and <em>jinja2_leaf</em> in the inventory file named "<strong>hosts</strong>" (under EVPN-Ansible directory) exists by issuing below commands:</p>
 </li>
 </ul>
-<pre><code>[root@rhel7-tools ~]# cd /root/EVPN-Ansible
-[root@rhel7-tools ~]# more hosts
+<pre><code>root@ubuntu:~# cd /root/EVPN-Ansible
+root@ubuntu:~# more hosts
 </code></pre>
 <p>Below screenshot confirms the ouptut and appropriate IP addresses of above command:</p>
 <p><img alt="" src="../pic/3-2-3.png" /></p>
@@ -594,9 +594,9 @@
 <ul>
 <li>
 <p>On the MTputty, go back to Ansible Server node (198.18.134.150), switch to ‘<strong>roles</strong>’ directory; <strong>create</strong> ‘jinja2_spine’ and ‘jinja2_leaf’ roles using ansible-galaxy using below commands:</p>
-<pre><code>[root@rhel7-tools ~]# cd ~/EVPN-Ansible/
-[root@rhel7-tools EVPN-Ansible]# cd roles/
-[root@rhel7-tools roles]# ansible-galaxy init jinja2_spine&amp;&amp;ansible-galaxy init jinja2_leaf
+<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/
+root@ubuntu:~/EVPN-Ansible# cd roles/
+root@ubuntu:~/EVPN-Ansible/roles# ansible-galaxy init jinja2_spine&amp;&amp;ansible-galaxy init jinja2_leaf
 </code></pre>
 </li>
 <li>
@@ -608,7 +608,7 @@
 <ul>
 <li>
 <p><strong>change directory</strong> path to EVPN-Ansible/roles/jinja2_spine and check the content of local directory (<code>ls</code>) as per below commands:</p>
-<pre><code>[root@rhel7-tools]# cd ~/EVPN-Ansible/roles/jinja2_spine/
+<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/roles/jinja2_spine/
 [root@rhel7-tools jinja2_spine]# ls
 </code></pre>
 </li>
@@ -621,9 +621,9 @@
 <ul>
 <li>
 <p><strong>Create</strong> empty jinja2 template files for spine and leaf under templates folder for each role by running below commands:</p>
-<pre><code>[root@rhel7-tools roles]# cd ~/EVPN-Ansible/roles
-[root@rhel7-tools roles]# touch jinja2_spine/templates/spine.j2
-[root@rhel7-tools roles]# touch jinja2_leaf/templates/leaf.j2
+<pre><code>root@ubuntu:~/EVPN-Ansible/roles# cd ~/EVPN-Ansible/roles
+root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_spine/templates/spine.j2
+root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
 </code></pre>
 </li>
 <li>
@@ -688,12 +688,12 @@
 <ol>
 <li>
 <p>On Ansible server (198.18.134.150) using your SSH session, change Directory to folder EVPN-Ansible using below command:</p>
-<pre><code>[root@rhel7-tools ~]# cd ~/EVPN-Ansible]
+<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible]
 </code></pre>
 </li>
 <li>
 <p>further, change Directory (cd) to folder roles/jinja2_spine/templates using below command:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# cd roles/jinja2_spine/templates]
+<pre><code>root@ubuntu:~/EVPN-Ansible# cd roles/jinja2_spine/templates]
 </code></pre>
 </li>
 <li>
@@ -773,8 +773,8 @@
 <ul>
 <li>
 <p>Run the ansible playbook by going to folder EVPN-Ansible and executing the below commands:</p>
-<pre><code>[root@rhel7-tools roles]# cd ~/EVPN-Ansible/
-[root@rhel7-tools EVPN-Ansible]# ansible-playbook jinja2_fabric.yml
+<pre><code>root@ubuntu:~/EVPN-Ansible/roles# cd ~/EVPN-Ansible/
+root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
 </code></pre>
 <p><strong>Note: It will take few minutes to push configuration</strong></p>
 <p>Below screenshot shows the execution of above playbook:</p>
@@ -933,7 +933,7 @@
 <ul>
 <li>
 <p>On the Ansible node (in MTputty SSH session), run the command (<code>ansible-playbook jinja2_fabric.yml</code>) to execute the playbook as shown below:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook jinja2_fabric.yml
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-12-1.png" /></p>
