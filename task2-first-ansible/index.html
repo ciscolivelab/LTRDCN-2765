@@ -569,7 +569,7 @@
 <li>Now, go to mputty, login or launch a new ssh into Ansible node (198.18.134.150)</li>
 <li>
 <p>Use command <code>ansible-playbook vlan_provision.yml --tags "add vlans"</code> under folder "EVPN-Ansible" as shown below:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook vlan_provision.yml --tags "add vlans"
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook vlan_provision.yml --tags "add vlans"
 </code></pre>
 <p><img alt="" src="../pic/2-5-2.png" /></p>
 <p><strong>Note: If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</strong></p>
@@ -645,7 +645,7 @@
 <p>Execute command <code>ansible-playbook vlan_provision.yml</code> in the “EVPN-Ansible” directory as shown below:</p>
 </li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook vlan_provision.yml
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook vlan_provision.yml
 </code></pre>
 <p>Below screeenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/2-7-1-new.png" /></p>
