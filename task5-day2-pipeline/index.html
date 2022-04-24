@@ -309,8 +309,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-verify-underlay-and-overlay" class="md-nav__link">
-    Step 2: Verify underlay and overlay
+  <a href="#step-2-version-control-playbooks" class="md-nav__link">
+    Step 2: Version control playbooks
   </a>
   
 </li>
@@ -386,8 +386,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-verify-underlay-and-overlay" class="md-nav__link">
-    Step 2: Verify underlay and overlay
+  <a href="#step-2-version-control-playbooks" class="md-nav__link">
+    Step 2: Version control playbooks
   </a>
   
 </li>
@@ -941,22 +941,10 @@ PLAY RECAP *********************************************************************
 root@ubuntu:~/EVPN-Ansible#
 </code></pre>
 <hr />
-<h3 id="step-2-verify-underlay-and-overlay">Step 2: Verify underlay and overlay</h3>
-<p>In this step, you will verify underlay and overlay operation using ansible playbook. The playbook will be applied to all leaf switches to verify the below commands:</p>
-<p><strong><em>Underlay</em></strong></p>
-<pre><code>-   show ip ospf neighbor
--   show ip bgp sum
--   show ip pim neighbor
-</code></pre>
-<p><strong><em>Overlay</em></strong></p>
-<pre><code>-   show nve vni
--   show nve peer
--   show ip route vrf Tenant-1
--   show bgp l2vpn evpn
--   show l2route evpn mac-ip all
-</code></pre>
+<h3 id="step-2-version-control-playbooks">Step 2: Version control playbooks</h3>
+<p>In this step, you will use Gitlab to set version control for the playbooks.</p>
 <ul>
-<li>Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</li>
+<li>Open chrome browser and enter <strong><a href="https://gitlab.com/">gitlab.com</a></strong> Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</li>
 </ul>
 <pre><code class="language-YAML">---
   - hosts: leaf, jinja2_leaf
