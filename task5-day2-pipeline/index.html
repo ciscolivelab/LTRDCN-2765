@@ -961,17 +961,15 @@ root@ubuntu:~/EVPN-Ansible#
 <h3 id="step-3-install-git-and-gitlab-runner">Step 3: Install git and gitlab runner</h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
-<li>
-<p>On the Ansible node (in MTputty SSH session), run the command (apt-get install git) to install git as shown below:</p>
-<p>root@ubuntu:~/EVPN-Ansible# apt-get install git</p>
-</li>
+<li>On the Ansible node (in MTputty SSH session), run the command <code>apt-get install git</code> to install git as shown below:</li>
 </ul>
-<p>Below screenshot shows the execution of the command</p>
-<pre><code>![](pic/5-3-1.png)
+<pre><code>    root@ubuntu:~/EVPN-Ansible# apt-get install git
 </code></pre>
+<p>Below screenshot shows the execution of the command</p>
+<p><img alt="" src="../pic/5-3-1.png" /></p>
 <ul>
 <li>
-<p>On the Ansible node (in MTputty SSH session), run the commands (curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash)</p>
+<p>On the Ansible node (in MTputty SSH session), run the commands <code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash</code></p>
 </li>
 <li>
 <p><strong>Before</strong> you run this playbook, <strong>SSH</strong> into <strong>leaf-4</strong> to make some configuration changes by issuing below commands:</p>
