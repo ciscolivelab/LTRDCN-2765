@@ -944,8 +944,21 @@ root@ubuntu:~/EVPN-Ansible#
 <h3 id="step-2-version-control-playbooks">Step 2: Version control playbooks</h3>
 <p>In this step, you will use Gitlab to set version control for the playbooks.</p>
 <ul>
-<li>Open chrome browser and enter <strong><a href="https://gitlab.com/">gitlab.com</a></strong> Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</li>
+<li>
+<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. sign in with <strong>Username: lab.ciscolive@gmail.com</strong> <strong>Password: C1sci12345</strong> as shown below.</p>
+<p><img alt="" src="pic/5-2-3.png" /></p>
+</li>
+<li>
+<p>After sign in to <strong>lab.ciscolive</strong> gitlab account, click <strong>New project</strong> on the top right to build a new project.</p>
+<p><img alt="" src="../pic/5-2-4.png" /></p>
+</li>
+<li>
+<p>Select <strong>Create blank project</strong> and create new project with your assigned <strong>POD ID</strong>. The screenshot below uses <strong>POD 1</strong> as example, find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
+<p><img alt="" src="../pic/5-2-5.png" /></p>
+</li>
 </ul>
+<p>with your assigned <strong>POD ID</strong>.</p>
+<p>Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</p>
 <pre><code class="language-YAML">---
   - hosts: leaf, jinja2_leaf
     connection: local
