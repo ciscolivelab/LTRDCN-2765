@@ -533,6 +533,9 @@
         tags: underlay
       - debug: var=underlay_output.stdout_lines
         tags: underlay
+      - set_fact:
+          savefile: &quot;{{underlay_output.stdout_lines | to_nice_yaml}}&quot;
+      - local_action: copy content=&quot;{{savefile}}&quot; dest=./underlay.txt
       - name: Verify Overlay
         register: overlay_output
         cisco.nxos.nxos_command:
@@ -545,6 +548,9 @@
         tags: overlay
       - debug: var=overlay_output.stdout_lines
         tags: overlay
+      - set_fact:
+          savefile: &quot;{{overlay_output.stdout_lines | to_nice_yaml}}&quot;
+      - local_action: copy content=&quot;{{savefile}}&quot; dest=./overlay.txt
 </code></pre>
 <ul>
 <li>
