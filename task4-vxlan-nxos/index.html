@@ -505,8 +505,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../task5-day2-operation/" class="md-nav__link">
-        Task 5 - Day 2 Operations
+      <a href="../task5-day2-pipeline/" class="md-nav__link">
+        Task 5 - Day 2 Opertions with CI Pipeline
       </a>
     </li>
   
@@ -838,8 +838,8 @@
 <ul>
 <li>
 <p>On the MTputty, go back to Ansible Server node (198.18.134.150), switch to ‘<strong>roles</strong>’ directory; <strong>create</strong> ‘spine’ and ‘leaf’ roles using ansible-galaxy as per below commands:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# cd ~/EVPN-Ansible/roles/
-[root@rhel7-tools roles]# ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
+<pre><code>root@ubuntu:~/EVPN-Ansible# cd ~/EVPN-Ansible/roles/
+root@ubuntu:~/EVPN-Ansible/roles# ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/4-2-1.png" /></p>
@@ -1005,8 +1005,8 @@
 <ul>
 <li>
 <p>On the Ansible node (in MTputty SSH session), run the command (<code>ansible-playbook nxos_fabric.yml --tags "bgp"</code>) to execute the playbook as shown below:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# cd ~/EVPN-Ansible
-[root@rhel7-tools EVPN-Ansible]# ansible-playbook nxos_fabric.yml --tags "bgp"
+<pre><code>root@ubuntu:~/EVPN-Ansible# cd ~/EVPN-Ansible
+root@ubuntu:~/EVPN-Ansible# ansible-playbook nxos_fabric.yml --tags "bgp"
 </code></pre>
 <p>Below screenshots shows the execution of above playbook:
 <img alt="" src="../pic/4-3-1.png" />
@@ -1175,7 +1175,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li>Execute the playbook by running <code>ansible-playbook nxos_fabric.yml --tags "multicast"</code> command on Ansible server as shown below :</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook nxos_fabric.yml --tags &quot;multicast&quot;
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook nxos_fabric.yml --tags &quot;multicast&quot;
 </code></pre>
 <p>Below screenshots shows the output of above command:
 <img alt="" src="../pic/4-4-1.png" />
@@ -1381,7 +1381,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li>On Ansible server (via SSH connection on MTputty), run the below command:</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook nxos_fabric.yml --tags &quot;vxlan&quot;
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook nxos_fabric.yml --tags &quot;vxlan&quot;
 </code></pre>
 <ul>
 <li>
@@ -1485,7 +1485,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li>On the Ansible server (using MTPutty) run this playbook by running the command <code>ansible-playbook nxos_fabric.yml --tags "evpn"</code> as shown below:</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook nxos_fabric.yml --tags &quot;evpn&quot;
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook nxos_fabric.yml --tags &quot;evpn&quot;
 </code></pre>
 <p>Below screenshot shows the output of above playbook:</p>
 <p><img alt="" src="../pic/4-6-1.png" /></p>
@@ -1501,7 +1501,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li>Up to this point, you have run the playbook for each step separately (using tags).  You could re-run the whole playbook without giving any tags, but no new changes should be maded to the switches.</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook nxos_fabric.yml
+<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook nxos_fabric.yml
 </code></pre>
 <hr />
 <h3 id="step-12-verify-end-to-end-ip-connectivity">Step 12: Verify end-to-end IP connectivity</h3>
@@ -1605,13 +1605,13 @@ PING 172.21.141.11 (172.21.141.11) 56(84) bytes of data.
       
       
         
-        <a href="../task5-day2-operation/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 5 - Day 2 Operations" rel="next">
+        <a href="../task5-day2-pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 5 - Day 2 Opertions with CI Pipeline" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Task 5 - Day 2 Operations
+              Task 5 - Day 2 Opertions with CI Pipeline
             </div>
           </div>
           <div class="md-footer__button md-icon">
