@@ -323,8 +323,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-add-new-vni" class="md-nav__link">
-    Step 4: Add new VNI
+  <a href="#step-4-add-all-playbooks-to-gitlab-project" class="md-nav__link">
+    Step 4: Add all playbooks to Gitlab project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-add-ci-pipeline-file" class="md-nav__link">
+    Step 5: Add CI pipeline file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-register-local-gitlab-runner" class="md-nav__link">
+    Step 6: Register local gitlab-runner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-add-stage-branch-and-add-new-vnis" class="md-nav__link">
+    Step 7: Add stage branch and add new VNIs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-review-pipeline-testing-and-staging-results" class="md-nav__link">
+    Step 9: Review pipeline testing and staging results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-merge-to-main-branch" class="md-nav__link">
+    Step 10: Merge to main branch
   </a>
   
 </li>
@@ -400,8 +435,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-add-new-vni" class="md-nav__link">
-    Step 4: Add new VNI
+  <a href="#step-4-add-all-playbooks-to-gitlab-project" class="md-nav__link">
+    Step 4: Add all playbooks to Gitlab project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-add-ci-pipeline-file" class="md-nav__link">
+    Step 5: Add CI pipeline file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-register-local-gitlab-runner" class="md-nav__link">
+    Step 6: Register local gitlab-runner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-add-stage-branch-and-add-new-vnis" class="md-nav__link">
+    Step 7: Add stage branch and add new VNIs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-review-pipeline-testing-and-staging-results" class="md-nav__link">
+    Step 9: Review pipeline testing and staging results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-merge-to-main-branch" class="md-nav__link">
+    Step 10: Merge to main branch
   </a>
   
 </li>
@@ -967,26 +1037,29 @@ root@ubuntu:~/EVPN-Ansible#
 </code></pre>
 <p>Below screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-1.png" /></p>
-<p><img alt="" src="pic/5-3-1.PNG" /></p>
 <ul>
-<li>
-<p>On the Ansible node (in MTputty SSH session), run the commands <code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash</code></p>
-</li>
-<li>
-<p><strong>Before</strong> you run this playbook, <strong>SSH</strong> into <strong>leaf-4</strong> to make some configuration changes by issuing below commands:</p>
-</li>
+<li>On the Ansible node (in MTputty SSH session), run the command <code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash</code></li>
 </ul>
-<pre><code>config t
-no router bgp 65000
-copy run start
-end
+<pre><code>
+root@ubuntu:~/EVPN-Ansible# curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+
+</code></pre>
+<p>Bwlow screenshot shows the execution of the command</p>
+<p><img alt="" src="../pic/5-3-2.png" /></p>
+<ul>
+<li>On the Ansible node (in MTputty SSH session), run the command <code>apt-get install gitlab-runner</code></li>
+</ul>
+<pre><code>
+root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
+
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
-<p><img alt="" src="../pic/5-3-0.png" /></p>
+<p><img alt="" src="../pic/5-3-3.PNG" /></p>
 <ul>
-<li>On the Ansible server (via MTputty SSH session), run the playbook for configuration compliance check by executing <code>ansible-playbook --diff verify_config.yml</code> as shown below below:</li>
+<li>On the Ansible server (via MTputty SSH session), run the command <code>gitlab-runner install -u root</code> as shown below below:</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook --diff verify_config.yml
+<pre><code>root@ubuntu:~/EVPN-Ansible# gitlab-runner install -u root
+
 </code></pre>
 <hr />
 <p><font style=background-color:yellow>The delta between current running config and base line config are highlighted in <font style=color:limegreen>RED</font> from the result</font></p>
@@ -994,155 +1067,17 @@ end
 <ul>
 <li>
 <p>Below partial screenshot shows the output of above command:</p>
-<p><img alt="" src="../pic/5-3-1.png" /></p>
-</li>
-<li>
-<p>Bring leaf-4 back to the baseline config by executing <code>ansible-playbook jinja2_fabric.yml --limit=198.18.4.104</code> command as shown below:</p>
-</li>
-</ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook jinja2_fabric.yml --limit=198.18.4.104
-</code></pre>
-<ul>
-<li>
-<p>Below screenshot shows the output of above command.  You can also log into leaf-4 and verify that bgp configurations are back:</p>
-<p><img alt="" src="../pic/5-3-2.png" /></p>
+<p><img alt="" src="pic/5-3-4.png" /></p>
 </li>
 </ul>
 <hr />
-<h3 id="step-4-add-new-vni">Step 4: Add new VNI</h3>
-<p>In this section, we will introduce following new VNI into the VXLAN fabric.</p>
-<table>
-<thead>
-<tr>
-<th>VLAN ID</th>
-<th>VLAN Name</th>
-<th>VNI</th>
-<th>IP_Add</th>
-<th>mask</th>
-<th>Mcast</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td>L2-VNI-200-Tenant1</td>
-<td>50200</td>
-<td>172.21.200.1</td>
-<td>24</td>
-<td>239.0.0.200</td>
-</tr>
-<tr>
-<td>201</td>
-<td>L2-VNI-201-Tenant1</td>
-<td>50201</td>
-<td>172.21.201.1</td>
-<td>24</td>
-<td>239.0.0.201</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>First we will creat a new role, and name it <strong>“vni_provision”</strong> under folder roles using <strong>ansible-galaxy</strong> using below commands on the Ansible node (using MTputty via SSH connection):</li>
-</ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# cd /root/EVPN-Ansible/roles/
-[root@rhel7-tools roles]# ansible-galaxy init vni_provision
-</code></pre>
-<ul>
-<li>
-<p>Verify vni_provision was created successfully</p>
-</li>
-<li>
-<p>Ansible-galaxy init will create new role with base role structure and empty <strong>main.yml</strong> file as role requires.  </p>
-</li>
-<li>
-<p>Switch to <strong>“Atom”</strong> and sync the new created folders between Ansible node and remote desktop. Right click on project folder <strong>“EVPN-Ansible”</strong>, open <strong>“Remote Sync”</strong> select <strong>“Download Folder”</strong></p>
-<p><img alt="" src="../pic/5-4-1.png" /></p>
-</li>
-<li>
-<p>Edit variable file <strong>main.yml</strong> for <strong>“vni_provision”</strong> role under “<strong>/root/EVPN-Ansible/roles/vni_provision/vars</strong>” and enter below data.  Make sure to click <code>File</code> and <code>Save</code> on Atom to push this to Ansible server:</p>
-</li>
-</ul>
-<pre><code class="language-YAML">---
-# vars file for vni_provision
-  L2VNI:
-  - { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
-  - { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }
-</code></pre>
-<p><img alt="" src="../pic/5-4-2.png" /></p>
-<ul>
-<li>Edit playbook file <strong>main.yml</strong> for <strong>“vni_provision”</strong> role under <strong>“/root/EVPN-Ansible/roles/vni_provision/tasks”</strong> and enter below data.   Make sure to click <code>File</code> and <code>Save</code> on Atom to push this to Ansible server:</li>
-</ul>
-<pre><code class="language-YAML">---
-# tasks file for vni_provision
-       - name: Configure VLAN to VNI
-         cisco.nxos.nxos_vlan:
-           vlan_id: &quot;{{ item.vlan_id }}&quot;
-           mapped_vni: &quot;{{ item.vni }}&quot;
-           name: &quot;{{ item.vlan_name }}&quot;
-         with_items:
-         - &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI
-         cisco.nxos.nxos_interface:
-           interface: vlan&quot;{{ item.vlan_id }}&quot;
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Assign interface to Tenant VRF
-         cisco.nxos.nxos_vrf_interface:
-           vrf: Tenant-1
-           interface: &quot;vlan{{ item.vlan_id }}&quot;
-         with_items:
-         - &quot;{{ L2VNI }}&quot;
-       - name: Configure SVI IP
-         cisco.nxos.nxos_l3_interfaces:
-           config:
-             - name: &quot;vlan{{ item.vlan_id }}&quot;
-               ipv4:
-                 - address: &quot;{{ item.ip_add }}/{{ item.mask }}&quot;
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI SVI
-         cisco.nxos.nxos_interface:
-           interface: vlan&quot;{{ item.vlan_id }}&quot;
-           fabric_forwarding_anycast_gateway: true
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI to VTEP
-         cisco.nxos.nxos_vxlan_vtep_vni:
-            interface: nve1
-            vni: &quot;{{ item.vni }}&quot;
-            multicast_group: &quot;{{ item.mcast }}&quot;
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI RD/RT
-         cisco.nxos.nxos_evpn_vni:
-          vni: &quot;{{ item.vni }}&quot;
-          route_distinguisher: auto
-          route_target_both: auto
-         with_items: &quot;{{ L2VNI }}&quot;
-
-</code></pre>
-<p>this is shown in below screenshot:</p>
-<p><img alt="" src="../pic/5-4-3.png" /></p>
-<ul>
-<li>Switch to “Atom”  create new playbook <strong>‘vni_provision.yml’</strong> under project folder <strong>EVPN-Ansible</strong> and enter below data.  Make sure to click <code>File</code> and <code>Save</code> on Atom to push this to Ansible server:</li>
-</ul>
-<pre><code class="language-YAML">---
-- hosts: leaf,jinja2_leaf
-  connection: local
-  roles:
-    - vni_provision
-</code></pre>
-<ul>
-<li>Run playbook <strong>vni_provision.yml</strong> to add new VNIs on the fabric by issuing <code>ansible-playbook vni_provision.yml</code> command as shown below:</li>
-</ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook vni_provision.yml
-</code></pre>
-<p>Below screenshot shows the output of above command:</p>
-<p><img alt="" src="../pic/5-4-4.png" /></p>
-<ul>
-<li>Switch to <strong>MTPutty</strong> and connect to <strong>leaf-4</strong> (SSH connection0, verify the change on leaf switches by issuing below command:</li>
-</ul>
-<pre><code>show nve vni
-</code></pre>
-<p>Notice the new created L2VNI as shown in below screenshot:</p>
-<p><img alt="" src="../pic/5-4-5-new.png" /></p>
-<h1 id="congratulation-you-have-completed-vxlan-fabric-lab">Congratulation! You have completed VXLAN Fabric Lab.</h1>
+<h3 id="step-4-add-all-playbooks-to-gitlab-project">Step 4: Add all playbooks to Gitlab project</h3>
+<h3 id="step-5-add-ci-pipeline-file">Step 5: Add CI pipeline file</h3>
+<h3 id="step-6-register-local-gitlab-runner">Step 6: Register local gitlab-runner</h3>
+<h3 id="step-7-add-stage-branch-and-add-new-vnis">Step 7: Add stage branch and add new VNIs</h3>
+<h3 id="step-9-review-pipeline-testing-and-staging-results">Step 9: Review pipeline testing and staging results</h3>
+<h3 id="step-10-merge-to-main-branch">Step 10: Merge to main branch</h3>
+<h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
 
               
             </article>
