@@ -309,15 +309,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-version-control-playbooks" class="md-nav__link">
-    Step 2: Version control playbooks
+  <a href="#step-2-install-git-and-gitlab-runner" class="md-nav__link">
+    Step 2: Install git and gitlab runner
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-install-git-and-gitlab-runner" class="md-nav__link">
-    Step 3: Install git and gitlab runner
+  <a href="#step-3-version-control-playbooks" class="md-nav__link">
+    Step 3: Version control playbooks
   </a>
   
 </li>
@@ -421,15 +421,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-version-control-playbooks" class="md-nav__link">
-    Step 2: Version control playbooks
+  <a href="#step-2-install-git-and-gitlab-runner" class="md-nav__link">
+    Step 2: Install git and gitlab runner
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-install-git-and-gitlab-runner" class="md-nav__link">
-    Step 3: Install git and gitlab runner
+  <a href="#step-3-version-control-playbooks" class="md-nav__link">
+    Step 3: Version control playbooks
   </a>
   
 </li>
@@ -1017,24 +1017,7 @@ PLAY RECAP *********************************************************************
 root@ubuntu:~/EVPN-Ansible#
 </code></pre>
 <hr />
-<h3 id="step-2-version-control-playbooks">Step 2: Version control playbooks</h3>
-<p>In this step, you will use Gitlab to set version control for the playbooks.</p>
-<ul>
-<li>
-<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. sign in with <strong>Username: lab.ciscolive@gmail.com</strong> <strong>Password: C1sci12345</strong> as shown below.</p>
-<p><img alt="" src="pic/5-2-3.png" /></p>
-</li>
-<li>
-<p>After sign in to <strong>lab.ciscolive</strong> gitlab account, click <strong>New project</strong> on the top right to build a new project.</p>
-<p><img alt="" src="../pic/5-2-4.png" /></p>
-</li>
-<li>
-<p>Select <strong>Create blank project</strong> and create new project with your assigned <strong>POD ID</strong>. The screenshot below uses <strong>POD 1</strong> as example, find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
-<p><img alt="" src="../pic/5-2-5.png" /></p>
-</li>
-</ul>
-<hr />
-<h3 id="step-3-install-git-and-gitlab-runner">Step 3: Install git and gitlab runner</h3>
+<h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and gitlab runner</h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
 <li>On the Ansible node (in MTputty SSH session), run the command <code>apt-get install git</code> to install git as shown below:</li>
@@ -1067,9 +1050,6 @@ root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
 <pre><code>root@ubuntu:~/EVPN-Ansible# gitlab-runner install -u root
 
 </code></pre>
-<hr />
-<p><font style=background-color:yellow>The delta between current running config and base line config are highlighted in <font style=color:limegreen>RED</font> from the result</font></p>
-<hr />
 <ul>
 <li>
 <p>Below partial screenshot shows the output of above command:</p>
@@ -1077,7 +1057,39 @@ root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
 </li>
 </ul>
 <hr />
+<h3 id="step-3-version-control-playbooks">Step 3: Version control playbooks</h3>
+<p>In this step, you will use Gitlab to set version control for the playbooks.</p>
+<ul>
+<li>
+<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. sign in with <strong>Username: lab.ciscolive@gmail.com</strong> <strong>Password: C1sco12345</strong> as shown below.</p>
+<p><img alt="" src="pic/5-2-3.png" /></p>
+</li>
+<li>
+<p>After sign in to <strong>lab.ciscolive</strong> gitlab account, click <strong>New project</strong> on the top right to build a new project.</p>
+<p><img alt="" src="../pic/5-2-4.png" /></p>
+</li>
+<li>
+<p>Select <strong>Create blank project</strong> and create new project with your assigned <strong>POD ID</strong>. The screenshot below uses <strong>POD 1</strong> as example, find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
+<p><img alt="" src="../pic/5-2-5.png" /></p>
+</li>
+<li>
+<p>On the Ansible node (in MTputty SSH session), run the command <code>cd EVPN-Ansible</code> and <code>git init</code> as shown below:</p>
+</li>
+</ul>
+<pre><code>root@ubuntu:~# cd EVPN-Ansible/
+root@ubuntu:~/EVPN-Ansible# git init
+Initialized empty Git repository in /root/EVPN-Ansible/.git/
+root@ubuntu:~/EVPN-Ansible#
+</code></pre>
+<p>Below screenshot shows the execution of the command</p>
+<pre><code>![](pic/5-3-5.png)
+</code></pre>
+<ul>
+<li>On the Gitlab</li>
+<li>On the same folder, run</li>
+</ul>
 <h3 id="step-4-add-all-playbooks-to-gitlab-project">Step 4: Add all playbooks to Gitlab project</h3>
+<p>In this step,</p>
 <h3 id="step-5-add-ci-pipeline-file">Step 5: Add CI pipeline file</h3>
 <h3 id="step-6-register-local-gitlab-runner">Step 6: Register local gitlab-runner</h3>
 <h3 id="step-7-add-stage-branch-and-add-new-vnis">Step 7: Add stage branch and add new VNIs</h3>
