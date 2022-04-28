@@ -323,22 +323,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-add-all-playbooks-to-gitlab-project" class="md-nav__link">
-    Step 4: Add all playbooks to Gitlab project
+  <a href="#step-4-add-ci-pipeline-file" class="md-nav__link">
+    Step 4: Add CI pipeline file
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-add-ci-pipeline-file" class="md-nav__link">
-    Step 5: Add CI pipeline file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-register-local-gitlab-runner" class="md-nav__link">
-    Step 6: Register local gitlab-runner
+  <a href="#step-5-register-local-gitlab-runner" class="md-nav__link">
+    Step 5: Register local gitlab-runner
   </a>
   
 </li>
@@ -435,22 +428,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-add-all-playbooks-to-gitlab-project" class="md-nav__link">
-    Step 4: Add all playbooks to Gitlab project
+  <a href="#step-4-add-ci-pipeline-file" class="md-nav__link">
+    Step 4: Add CI pipeline file
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-add-ci-pipeline-file" class="md-nav__link">
-    Step 5: Add CI pipeline file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-register-local-gitlab-runner" class="md-nav__link">
-    Step 6: Register local gitlab-runner
+  <a href="#step-5-register-local-gitlab-runner" class="md-nav__link">
+    Step 5: Register local gitlab-runner
   </a>
   
 </li>
@@ -1073,6 +1059,18 @@ root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 </li>
 <li>
+<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_#.git</strong>  </p>
+</li>
+</ul>
+<p>The screenshot below uses <strong>POD 1</strong> as example.</p>
+<pre><code>![](pic/5-2-6.png)
+</code></pre>
+<ul>
+<li>
+<p>By default the <strong>main</strong> branch is protected branch, change it to unprotected in order to add and commit files from git command. Change the <strong>main</strong> branch to unprotected from project <strong>Settings - Repository - Protected branches - unprotect</strong> as shown in below screenshot.
+    <img alt="" src="../pic/5-2-7.png" /></p>
+</li>
+<li>
 <p>On the Ansible node (in MTputty SSH session), run the command <code>cd EVPN-Ansible</code> and <code>git init</code> as shown below:</p>
 </li>
 </ul>
@@ -1085,13 +1083,102 @@ root@ubuntu:~/EVPN-Ansible#
 <pre><code>![](pic/5-3-5.png)
 </code></pre>
 <ul>
-<li>On the Gitlab</li>
-<li>On the same folder, run</li>
+<li>On the Ansible node, run following commands to add playbooks to the project <code>git remote add origin https://gitlab.com/lab.ciscolive/pod_1.git</code> <code>git add .</code> as shown below:</li>
 </ul>
-<h3 id="step-4-add-all-playbooks-to-gitlab-project">Step 4: Add all playbooks to Gitlab project</h3>
-<p>In this step,</p>
-<h3 id="step-5-add-ci-pipeline-file">Step 5: Add CI pipeline file</h3>
-<h3 id="step-6-register-local-gitlab-runner">Step 6: Register local gitlab-runner</h3>
+<pre><code>root@ubuntu:~/EVPN-Ansible#
+root@ubuntu:~/EVPN-Ansible# git remote add origin https://gitlab.com/lab.ciscolive/pod_1.git
+root@ubuntu:~/EVPN-Ansible# git add .
+root@ubuntu:~/EVPN-Ansible#
+</code></pre>
+<ul>
+<li>Commit and push all files to <strong>main</strong> branch with command <code>git checkout -b main</code> <code>git commit -m "Initial commit</code> <code>git push -f origin main</code> as shown Below:
+Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</li>
+</ul>
+<pre><code>root@ubuntu:~/EVPN-Ansible# git checkout -b main
+Switched to a new branch 'main'
+root@ubuntu:~/EVPN-Ansible# git commit -m &quot;initial commit&quot;
+root@ubuntu:~/EVPN-Ansible# git push -f origin main
+Username for 'https://gitlab.com': lab.ciscolive
+Password for 'https://lab.ciscolive@gitlab.com':
+</code></pre>
+<p>Below screenshot shows partial outputs of the commands</p>
+<pre><code>![](pic/5-3-6.png)
+</code></pre>
+<h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
+<p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration. The file needs to be placed in root of the repository. Inside the file, you will define
+ - The stages you want run in the pipeline
+ - The scripts you want run in each stage
+ - The runner you want use for each script
+ - How is the runner triggered for each script</p>
+<p>Pipeline file can be added from gitlab UI using pipeline file editor, or from local and push to girlab repo using Git command. We will use atom to add pipeline file in this lab.</p>
+<ul>
+<li>Switch to <strong>"Atom"</strong>, right click on the folder <strong>EVPN-Ansible</strong> and Click New File to create a new file named <strong>.gitlab-ci.yml</strong></li>
+<li>In the <strong>.gitlab-ci.yml</strong> enter the contents shown below</li>
+</ul>
+<pre><code class="language-YAML">stages:
+- test
+- staging
+- production
+
+verify:
+  stage: test
+  tags:
+    - EVPN
+  script:
+    - ansible-playbook jinja2_fabric.yml --check
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == &quot;push&quot; &amp;&amp; $CI_COMMIT_BRANCH != &quot;main&quot;'
+staging:
+  stage: staging
+  tags:
+    - EVPN
+  script:
+    - ansible-playbook jinja2_fabric.yml
+    - ansible-playbook nxos_fabric.yml
+    - ansible-playbook verify_fabric.yml
+  artifacts:
+    paths:
+      - overlay.txt
+      - underlay.txt
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == &quot;push&quot;  &amp;&amp; $CI_COMMIT_BRANCH != &quot;main&quot;'
+deploy:
+  stage: production
+  tags:
+    - EVPN
+  script:
+    - ansible-playbook jinja2_fabric.yml
+    - ansible-playbook nxos_fabric.yml
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;'
+      when: manual
+</code></pre>
+<p>Below screenshot shows the file after added above contents on Atom</p>
+<pre><code>![](pic/5-3-7.png)
+</code></pre>
+<ul>
+<li>From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new pipeline to Ansible node.</li>
+</ul>
+<p><strong>Note</strong>, in the above pipeline file, you have configured
+- Three stages for pipeline with <strong>test</strong>, <strong>staging</strong> and <strong>production</strong>
+- In <strong>test</strong> stage, pipeline will do dyr-run for the ansible playbook using a git-runner with tag <strong>EVPN</strong>. This script will be triggered by change in branch.
+- In <strong>staging</strong> stage, pipeline will run playbooks to build EVPN fabric for new VNIs, also collrect show outputs files for manual verification. This scripts will be triggered after success of test stage.
+- In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
+<ul>
+<li>Switch to Ansible node (via MTPuTTY), run <code>git add .gitlab-ci.yml</code>, <code>git commit -m "add ci file"</code>, <code>git push origin main</code> as shown Below:
+Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</li>
+</ul>
+<pre><code>root@ubuntu:~/EVPN-Ansible# git add .gitlab-ci.yml
+root@ubuntu:~/EVPN-Ansible# git commit -m &quot;add ci file&quot;
+root@ubuntu:~/EVPN-Ansible# git push origin main
+Username for 'https://gitlab.com': lab.ciscolive
+Password for 'https://lab.ciscolive@gitlab.com':
+</code></pre>
+<p>Below screenshot shows the outputs of the commands</p>
+<pre><code>![](pic/5-3-8.png)
+</code></pre>
+<h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
+<p>In this task, you will create local gitlab runner to run pipeline jobs. You will give the runner <strong>EVPN</strong> tag and register it to your project.</p>
 <h3 id="step-7-add-stage-branch-and-add-new-vnis">Step 7: Add stage branch and add new VNIs</h3>
 <h3 id="step-9-review-pipeline-testing-and-staging-results">Step 9: Review pipeline testing and staging results</h3>
 <h3 id="step-10-merge-to-main-branch">Step 10: Merge to main branch</h3>
