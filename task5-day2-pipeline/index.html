@@ -1080,8 +1080,7 @@ Initialized empty Git repository in /root/EVPN-Ansible/.git/
 root@ubuntu:~/EVPN-Ansible#
 </code></pre>
 <p>Below screenshot shows the execution of the command</p>
-<pre><code>![](pic/5-3-5.png)
-</code></pre>
+<p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
 <li>On the Ansible node, run following commands to add playbooks to the project <code>git remote add origin https://gitlab.com/lab.ciscolive/pod_1.git</code> <code>git add .</code> as shown below:</li>
 </ul>
@@ -1102,8 +1101,7 @@ Username for 'https://gitlab.com': lab.ciscolive
 Password for 'https://lab.ciscolive@gitlab.com':
 </code></pre>
 <p>Below screenshot shows partial outputs of the commands</p>
-<pre><code>![](pic/5-3-6.png)
-</code></pre>
+<p><img alt="" src="../pic/5-3-6.png" /></p>
 <h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
 <p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration. The file needs to be placed in root of the repository. Inside the file, you will define
  - The stages you want run in the pipeline
@@ -1154,11 +1152,8 @@ deploy:
       when: manual
 </code></pre>
 <p>Below screenshot shows the file after added above contents on Atom</p>
-<pre><code>![](pic/5-3-7.png)
-</code></pre>
-<ul>
-<li>From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new pipeline to Ansible node.</li>
-</ul>
+<p><img alt="" src="../pic/5-3-7.png" />
+* From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new pipeline to Ansible node.</p>
 <p><strong>Note</strong>, in the above pipeline file, you have configured
 - Three stages for pipeline with <strong>test</strong>, <strong>staging</strong> and <strong>production</strong>
 - In <strong>test</strong> stage, pipeline will do dyr-run for the ansible playbook using a git-runner with tag <strong>EVPN</strong>. This script will be triggered by change in branch.
@@ -1178,8 +1173,40 @@ Password for 'https://lab.ciscolive@gitlab.com':
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
 <p>In this task, you will create local gitlab runner to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner and register it to your project.</p>
-<p>*</p>
+<ul>
+<li>Switch to Chrome brower with gitlab project page, select <strong>Settings - CI/CD</strong> from navigation menu on the left and then <strong>Expand</strong> <strong>Runners</strong> setting as shown in below screenshot.</li>
+</ul>
+<p>Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</p>
+<p><img alt="" src="../pic/5-5-1.png" /></p>
+<ul>
+<li>Click the toggle switch under <strong>Shared runners</strong> to disable shared runners for this project. <strong>Note</strong> the regitration URL and registration token will be used on next step.</li>
+</ul>
+<p><img alt="" src="../pic/5-5-2.png" /></p>
+<ul>
+<li>On the Ansible node (in MTputty SSH session), run command <code>gitlab-runner register</code> and provide the runner registration info as shown below</li>
+</ul>
+<p><strong>Enter the GitLab instance URL</strong> / <strong>https://gitlab.com/</strong>
+<strong>Enter the registration token:</strong> / <strong>get registration token from previous step</strong>
+<strong>Enter a description for the runner:</strong> / <strong>enter without change</strong>
+<strong>Enter tags for the runner (comma-separated):</strong> / <strong>EVPN</strong> (case sensitive)
+<strong>Enter optional maintenance note for the runner:</strong> / <strong>enter without change</strong>
+<strong>Enter an executor:</strong> / <strong>shell</strong></p>
+<p>Below screenshot shows the outputs of the commands</p>
+<p><img alt="" src="../pic/5-5-3.png" /></p>
+<ul>
+<li>On the Ansible node (in MTputty SSH session), run command <code>gitlab-runner start</code> as shown below</li>
+</ul>
+<pre><code>
+root@ubuntu:~# gitlab-runner start
+Runtime platform                                    arch=amd64 os=linux pid=287872 revision=c6bb62f6 version=14.10.0
+root@ubuntu:~#
+
+</code></pre>
 <h3 id="step-7-add-stage-branch-and-add-new-vnis">Step 7: Add stage branch and add new VNIs</h3>
+<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. Todo that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline file.</p>
+<ul>
+<li>Switch to <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles - jinja2_leaf - vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</li>
+</ul>
 <h3 id="step-9-review-pipeline-testing-and-staging-results">Step 9: Review pipeline testing and staging results</h3>
 <h3 id="step-10-merge-to-main-branch">Step 10: Merge to main branch</h3>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
