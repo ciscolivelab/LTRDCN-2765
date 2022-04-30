@@ -1048,7 +1048,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <p><strong><font style=background-color:yellow>Note: there is no NXOS ansible module for Anycast RP.  Hence, 'nxos_config' module will be used to push the Anycast RP configuration<font></strong></p>
 <h5 id="edit-playbook-for-spine-role">Edit playbook for spine role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the <strong>“main.yml”</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open <strong>“main.yml”</strong> file under <strong>“roles/spine/tasks/”</strong> and save the below tasks at the end the file:</li>
+<li>Use <strong>“Atom”</strong> to edit the <strong>“main.yml”</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open <strong>“main.yml”</strong> file under <strong>“roles/spine/tasks/”</strong> and save the below tasks at the end the file(<strong>Do not replace existing content</strong>):</li>
 </ul>
 <hr />
 <p><font style=background-color:yellow>Note: It is recommended to write your playbook and learn from mistakes, but you can also copy the content below to avoid any formatting error.</font></p>
@@ -1222,7 +1222,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </table>
 <h5 id="edit-playbook-for-spine-role_1">Edit playbook for spine role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the “<strong>main.yml</strong>” file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/spine/tasks/”</strong> and enter the below content (you may copy &amp; paste with correct spaces) at the end of the file:</li>
+<li>Use <strong>“Atom”</strong> to edit the “<strong>main.yml</strong>” file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/spine/tasks/”</strong> and enter the below content (you may copy &amp; paste with correct spaces) at the end of the file(<strong>Do not replace existing content</strong>):</li>
 </ul>
 <pre><code class="language-YAML">#task to configure vxlan fabric
        - name: Enable VXLAN Feature
@@ -1351,7 +1351,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </ul>
 <h5 id="edit-variable-file-for-leaf-role_1">Edit variable file for leaf role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the <strong>main.yml</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open "<strong>main.yml</strong>"" file under <strong>“roles/leaf/vars/”</strong>.  Add the below content in the file at the end of the file (i.e., in addition to existing content), and then make sure to click <strong>“File”-&gt;“Save”</strong> on Atom, so that the updated file is pushed to Ansible server.</li>
+<li>Use <strong>“Atom”</strong> to edit the <strong>main.yml</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open "<strong>main.yml</strong>"" file under <strong>“roles/leaf/vars/”</strong>.  Add the below content in the file at the end of the file (<strong>Do not replace existing content</strong>), and then make sure to click <strong>“File”-&gt;“Save”</strong> on Atom, so that the updated file is pushed to Ansible server.</li>
 </ul>
 <pre><code class="language-YAML">  L2VNI:
   - { vlan_id: 140, vni: 50140, ip_add: 172.21.140.1, mask: 24, vlan_name: L2-VNI-140-Tenant1, mcast: 239.0.0.140 }
