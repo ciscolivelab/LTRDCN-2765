@@ -365,21 +365,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../appendixB-Upgrade/" class="md-nav__link">
-        Appendix A - Upgrade
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -1244,9 +1229,90 @@ git push -u origin newvni
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
 <ul>
-<li>Switch to Chrome brower with gitlab project page, select <strong>CI/CD - Pipelines</strong> from navigation menu on the left</li>
+<li>Switch to Chrome brower with gitlab project page, select <strong>CI/CD - Pipelines</strong> from navigation menu on the left.</li>
 </ul>
+<p><img alt="" src="../pic/5-7-1.png" /></p>
+<ul>
+<li>Wait for the jobs finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> as shown below</li>
+</ul>
+<p><img alt="" src="../pic/5-7-2.png" /></p>
+<ul>
+<li>After both pipeline stags are passed, you can verify the staging result from the stage artifacts. Click the <strong>...</strong> on the right most of the pipeline and <strong>Download artifacts</strong> as shown below.</li>
+</ul>
+<p><img alt="" src="../pic/5-7-3.png" /></p>
+<ul>
+<li>Unzip the downloaded <strong>artifacts.zip</strong>, and you will see <strong>overlay.txt</strong> and <strong>underlay.txt</strong> which are the show outputs from the ansible playbook.</li>
+<li>Read the overlay show outputs and you can see new vni 50200 and 50201 are deployed on staging environment as shown below.</li>
+</ul>
+<pre><code>-   - 'Codes: CP - Control Plane        DP - Data Plane          '
+    - '       UC - Unconfigured         SA - Suppress ARP        '
+    - '       SU - Suppress Unknown Unicast'
+    - ' '
+    - Interface VNI      Multicast-group   State Mode Type [BD/VRF]      Flags
+    - '--------- -------- ----------------- ----- ---- ------------------ -----'
+    - 'nve1      50140    239.0.0.140       Up    CP   L2 [140]                  '
+    - 'nve1      50141    239.0.0.141       Up    CP   L2 [141]                  '
+    - 'nve1      50200    239.0.0.200       Up    CP   L2 [200]                  '
+    - 'nve1      50201    239.0.0.201       Up    CP   L2 [201]                  '
+    - nve1      50999    n/a               Up    CP   L3 [Tenant-1]
+-   - ''
+-   - IP Route Table for VRF &quot;Tenant-1&quot;
+    - '''*'' denotes best ucast next-hop'
+    - '''**'' denotes best mcast next-hop'
+    - '''[x/y]'' denotes [preference/metric]'
+    - '''%&lt;string&gt;'' in via output denotes VRF &lt;string&gt;'
+    - ''
+    - '172.21.140.0/24, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.140.1, Vlan140, [0/0], 17:56:06, direct'
+    - '172.21.140.1/32, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.140.1, Vlan140, [0/0], 17:56:06, local'
+    - '172.21.141.0/24, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.141.1, Vlan141, [0/0], 17:56:05, direct'
+    - '172.21.141.1/32, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.141.1, Vlan141, [0/0], 17:56:05, local'
+    - '172.21.200.0/24, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.200.1, Vlan200, [0/0], 17:56:04, direct'
+    - '172.21.200.1/32, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.200.1, Vlan200, [0/0], 17:56:04, local'
+    - '172.21.201.0/24, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.201.1, Vlan201, [0/0], 17:56:04, direct'
+    - '172.21.201.1/32, ubest/mbest: 1/0, attached'
+    - '    *via 172.21.201.1, Vlan201, [0/0], 17:56:04, local'
+-   - ''
+-   - 'Flags -(Rmac):Router MAC (Stt):Static (L):Local (R):Remote (V):vPC link '
+    - (Dup):Duplicate (Spl):Split (Rcv):Recv(D):Del Pending (S):Stale (C):Clear
+    - '(Ps):Peer Sync (Ro):Re-Originated '
+    - 'Topology    Mac Address    Prod   Flags         Seq No     Host IP         Next-Hops      '
+    - '----------- -------------- ------ ---------- --------------- ---------------'
+</code></pre>
 <h3 id="step-8-merge-to-main-branch">Step 8: Merge to main branch</h3>
+<p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment. In this lab, we are using same inventory for staging and production environment for simplicy, and different inventory should be used in real world.</p>
+<ul>
+<li>Switch to Chrome brower with gitlab project page, select <strong>Merge requests</strong> from navigation menu on the left and select <strong>New merge request</strong> as shown below.</li>
+</ul>
+<p><img alt="" src="../pic/5-8-1.png" /></p>
+<ul>
+<li>Select <strong>newvni</strong> as source branch and <strong>main</strong> as target branch as shown in the screenshot below.
+ Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</li>
+</ul>
+<p><img alt="" src="../pic/5-8-2.png" /></p>
+<ul>
+<li>Give a Title for the merge request, leave anything as default and click <strong>Create merge request</strong></li>
+<li>On the merge request, you have option to <strong>Delete source branch</strong> after merge, and add merger commit message. After you have reviewed the merge request, click the <strong>Merge</strong> button as showen in the screenshot below.</li>
+</ul>
+<p><img alt="" src="../pic/5-8-3.png" /></p>
+<ul>
+<li>Since the CI pipeline file uses <strong>manul</strong> for production deployment, the job for deploying production will not be triggered automatically. Instead, you will manually kickoff the production deployment job on pipeline.</li>
+<li>Switch to Chrome brower with gitlab project page, select <strong>CI/CD - Pipelines</strong> from navigation menu on the left.</li>
+<li>
+<p>Deploy the newvni on production enviroment by selecting <strong>deploy</strong> on the pipeline job from previous merger request as showen in the screenshot below.
+<img alt="" src="../pic/5-8-4.png" /></p>
+</li>
+<li>
+<p>Wait for the job finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> as shown below
+<img alt="" src="../pic/5-8-5.png" /></p>
+</li>
+</ul>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
 
               
@@ -1280,21 +1346,6 @@ git push -u origin newvni
           </div>
         </a>
       
-      
-        
-        <a href="../appendixB-Upgrade/" class="md-footer__link md-footer__link--next" aria-label="Next: Appendix A - Upgrade" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Appendix A - Upgrade
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
