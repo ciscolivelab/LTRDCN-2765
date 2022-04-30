@@ -337,22 +337,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-add-stage-branch-and-add-new-vnis" class="md-nav__link">
-    Step 7: Add stage branch and add new VNIs
+  <a href="#step-6-add-stage-branch-and-add-new-vnis" class="md-nav__link">
+    Step 6: Add stage branch and add new VNIs
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-review-pipeline-testing-and-staging-results" class="md-nav__link">
-    Step 9: Review pipeline testing and staging results
+  <a href="#step-7-review-pipeline-testing-and-staging-results" class="md-nav__link">
+    Step 7: Review pipeline testing and staging results
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-10-merge-to-main-branch" class="md-nav__link">
-    Step 10: Merge to main branch
+  <a href="#step-8-merge-to-main-branch" class="md-nav__link">
+    Step 8: Merge to main branch
   </a>
   
 </li>
@@ -442,22 +442,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-add-stage-branch-and-add-new-vnis" class="md-nav__link">
-    Step 7: Add stage branch and add new VNIs
+  <a href="#step-6-add-stage-branch-and-add-new-vnis" class="md-nav__link">
+    Step 6: Add stage branch and add new VNIs
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-review-pipeline-testing-and-staging-results" class="md-nav__link">
-    Step 9: Review pipeline testing and staging results
+  <a href="#step-7-review-pipeline-testing-and-staging-results" class="md-nav__link">
+    Step 7: Review pipeline testing and staging results
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-10-merge-to-main-branch" class="md-nav__link">
-    Step 10: Merge to main branch
+  <a href="#step-8-merge-to-main-branch" class="md-nav__link">
+    Step 8: Merge to main branch
   </a>
   
 </li>
@@ -1202,13 +1202,51 @@ Runtime platform                                    arch=amd64 os=linux pid=2878
 root@ubuntu:~#
 
 </code></pre>
-<h3 id="step-7-add-stage-branch-and-add-new-vnis">Step 7: Add stage branch and add new VNIs</h3>
+<h3 id="step-6-add-stage-branch-and-add-new-vnis">Step 6: Add stage branch and add new VNIs</h3>
 <p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. Todo that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline file.</p>
 <ul>
 <li>Switch to <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles - jinja2_leaf - vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</li>
 </ul>
-<h3 id="step-9-review-pipeline-testing-and-staging-results">Step 9: Review pipeline testing and staging results</h3>
-<h3 id="step-10-merge-to-main-branch">Step 10: Merge to main branch</h3>
+<pre><code class="language-YANL">
+- { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
+- { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
+
+</code></pre>
+<p>Below screenshot shows the file after added above contents on Atom</p>
+<p><img alt="" src="../pic/5-6-1.png" />
+* From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new jinja2 varilabe file to Ansible node.</p>
+<ul>
+<li>From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles - leaf - vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</li>
+</ul>
+<pre><code class="language-YANL">
+- { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
+- { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
+
+</code></pre>
+<p>Below screenshot shows the file after added above contents on Atom</p>
+<p><img alt="" src="../pic/5-6-2.png" />
+* From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new leaf varilabe file to Ansible node.</p>
+<ul>
+<li>On the Ansible node (in MTputty SSH session), switch to <strong>EVPN-Ansible</strong> project folder</li>
+</ul>
+<pre><code>root@ubuntu:~# cd EVPN-Ansible/
+</code></pre>
+<ul>
+<li>Run the following git commands to create new branch <strong>newvni</strong>, commit the updated variable files to that new branch and push to Gitlab project.</li>
+</ul>
+<pre><code>git branch -m newvni
+git add .
+git commit -m &quot;newvni&quot;
+git push -u origin newvni
+</code></pre>
+<p>Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</p>
+<p><img alt="" src="../pic/5-6-3.png" /></p>
+<h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
+<p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage. </p>
+<ul>
+<li>Switch to Chrome brower with gitlab project page, select <strong>CI/CD - Pipelines</strong> from navigation menu on the left</li>
+</ul>
+<h3 id="step-8-merge-to-main-branch">Step 8: Merge to main branch</h3>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
 
               
