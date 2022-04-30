@@ -13,7 +13,7 @@
     
     
       
-        <title>Task3 vxlan jinja2 - Cisco Live 2022 LTRDCN-2765</title>
+        <title>Task 3 - Use of Jinja2 templates with Ansible Playbook - Cisco Live 2022 LTRDCN-2765</title>
       
     
     
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task3 vxlan jinja2
+              Task 3 - Use of Jinja2 templates with Ansible Playbook
             
           </span>
         </div>
@@ -236,11 +236,125 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../task3-vxlan-jinja2-new/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 3 - Use of Jinja2 templates with Ansible Playbook
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Task 3 - Use of Jinja2 templates with Ansible Playbook
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-install-jinja2" class="md-nav__link">
+    Step 1: Install jinja2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-playbook-for-jinja2-spine" class="md-nav__link">
+    Step 2: Playbook for jinja2 Spine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-new-roles-and-vars" class="md-nav__link">
+    Step 3: Create new roles and vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-variable-file-for-jina2_spine-role" class="md-nav__link">
+    Step 4: Create variable file for “jina2_spine” role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-create-jinja2-template-for-spine-role" class="md-nav__link">
+    Step 5: Create Jinja2 template for spine role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-playbook-for-jinja2_spine-role" class="md-nav__link">
+    Step 6: Create playbook for jinja2_spine role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-run-jinja2_fabric-playbook" class="md-nav__link">
+    Step 7: Run Jinja2_fabric playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-modify-playbook-for-leaf" class="md-nav__link">
+    Step 8: Modify playbook for Leaf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-variable-file-for-jinja2_leaf-role" class="md-nav__link">
+    Step 9: Variable file for jinja2_leaf role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-jinja2-template-for-leaf-role" class="md-nav__link">
+    Step 10: Jinja2 template for leaf role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-create-playbook-for-jinja2_leaf-role" class="md-nav__link">
+    Step 11: Create playbook for jinja2_leaf role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-run-jinja2_fabric-playbook" class="md-nav__link">
+    Step 12: Run Jinja2_fabric playbook
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -397,7 +511,7 @@
                 
 
 
-  <h1>Task3 vxlan jinja2</h1>
+  <h1>Task 3 - Use of Jinja2 templates with Ansible Playbook</h1>
 
 <p>In this task, we are going to install Jinja2 - that provides templating option.  In this section, we use Jinja2 to create template for spine and leaf and configure VXLAN fabric using this Jinja2 templates.</p>
 <p><img alt="" src="../pic/3-0-1-new.png" /></p>
@@ -579,28 +693,54 @@ root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
 <p><img alt="" src="../pic/3-5-1.png" /></p>
 <p>Now that the file/folder appears properly on ATOM, go ahead and proceed with further steps:</p>
 <ul>
-<li>
-<p>To reduce the typo, you can move (or copy) <strong>spine.j2</strong> file from local <strong>playbook</strong> folder</p>
-<p><code>TFTP_Data (\\AD1) (X:)</code> --&gt;  <code>playbook</code> --&gt; <code>roles</code> --&gt; <code>jinja2_spine</code> --&gt; `templates``</p>
-</li>
+<li>use “<strong>Atom</strong>” to edit the “<strong>spine.j2</strong>” file for jinja2 template.  You can copy and paste all of the below content into spine.j2 file.  Note: as per steps in previous tasks, be careful with YAML content since its space sensitive.</li>
 </ul>
-<p>and paste the file in the projects folder</p>
-<pre><code>`TFTP_Data (\\AD1) (X:)` --&gt;  `EVPN-Ansible` --&gt; `roles` --&gt; `jinja2_spine` --&gt; `templates`
+<pre><code class="language-YAML">feature bgp
+feature nv overlay
+feature vn-segment-vlan-based
+nv overlay evpn
+feature pim
+!
+router bgp {{ asn }}
+router-id {{ router_id }}
+address-family ipv4 unicast
+address-family l2vpn evpn
+retain route-target all
+!
+#for loop to configure bgp neighbor for each leaf
+{% for neighbor in bgp_neighbors %}
+neighbor {{ neighbor['neighbor'] }}
+remote-as {{neighbor['remote_as']}}
+update-source {{neighbor['update_source']}}
+address-family ipv4 unicast
+send-community both
+route-reflector-client
+address-family l2vpn evpn
+send-community both
+route-reflector-client
+!
+{% endfor %}
+interface loopback 1
+ip address {{loopback1}}/32
+ip pim sparse-mode
+ip router ospf 1 area 0.0.0.0
+
+!
+ip pim rp-address {{loopback1}}
+ip pim anycast-rp {{loopback1}} {{s1_loopback}}
+ip pim anycast-rp {{loopback1}} {{s2_loopback}}
+!
+#for loop to enable pim on link to each leaf
+{% for interface in L3_interfaces %}
+interface {{interface['interface']}}
+ip pim sparse-mode
+!
+{% endfor %}
+
 </code></pre>
-<p>as shown below:</p>
-<p><img alt="" src="../pic/3-5-3.png" /></p>
 <ul>
-<li>
-<p>After moving/copying this file to above folder location, open this file on ATOM.  You do this by going to <code>File</code> then <code>Open File…</code> on ATOM, and browse to this <code>spine.j2</code> file that was just saved in <code>X:\EVPN-Ansible\roles\jinja2_spine\templates</code> as shown below:
-    <img alt="" src="../pic/3-5-4.png" /></p>
-</li>
-<li>
-<p>After opening “<strong>spine.j2</strong>” file from ATOM (as shown in below screenshot confirming the updated content), go to <code>File</code> –-&gt; <code>Save</code> to push template file to Ansible node:</p>
-<p><img alt="" src="../pic/3-5-5.png" /></p>
-</li>
-<li>
-<p>You can verify that updated file content is on Ansible server (198.18.134.150) using your SSH session by issuing below commands:</p>
-</li>
+<li>Go to <code>File</code> –-&gt; <code>Save</code> to push template file to Ansible node.</li>
+<li>You can verify that updated file content is on Ansible server (198.18.134.150) using your SSH session by issuing below commands:</li>
 </ul>
 <pre><code>root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# cd /root/EVPN-Ansible/roles/jinja2_spine/templates
 root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# more spine.j2
@@ -751,23 +891,104 @@ root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
 <p>Now that the file/folder appears properly on ATOM, go ahead and proceed with further steps:</p>
 <ul>
 <li>
-<p>To reduce the typo, you can move (or copy) <strong>leaf.j2</strong> file from local <strong>playbook</strong> folder</p>
-<p><code>TFTP_Data (\\AD1) (X:)</code> --&gt;  <code>playbook</code> --&gt; <code>roles</code> --&gt; <code>jinja2_leaf</code> --&gt; `templates``</p>
+<ul>
+<li>use “<strong>Atom</strong>” to edit the “<strong>leaf.j2</strong>” file for jinja2 template.  You can copy and paste all of the below content into leaf.j2 file.  Note: as per steps in previous tasks, be careful with YAML content since its space sensitive.</li>
+</ul>
 </li>
 </ul>
-<p>and paste the file in the projects folder</p>
-<pre><code>`TFTP_Data (\\AD1) (X:)` --&gt;  `EVPN-Ansible` --&gt; `roles` --&gt; `jinja2_leaf` --&gt; `templates`
+<pre><code class="language-YAML">feature bgp
+feature nv overlay
+feature vn-segment-vlan-based
+nv overlay evpn
+feature pim
+!
+ip pim rp-address {{rp_address}}
+spanning-tree vlan 1,140,141,999 priority 4096
+{% for L2VNI in L2VNI %}
+vlan {{L2VNI['vlan_id']}}
+name {{L2VNI['vlan_name']}}
+vn-segment {{L2VNI['vni']}}
+!
+{% endfor %}
+
+{% for L3VNI in L3VNI %}
+vlan {{L3VNI['vlan_id']}}
+vn-segment {{L3VNI['vni']}}
+vrf context Tenant-1
+vni {{L3VNI['vni']}}
+ rd auto
+ address-family ipv4 unicast
+route-target both auto
+route-target both auto evpn
+!
+{% endfor %}
+
+fabric forwarding anycast-gateway-mac 0000.2222.3333
+!
+#for loop to configure SVI
+{% for L2VNI in L2VNI %}
+interface Vlan{{L2VNI['vlan_id']}}
+  no shutdown
+  vrf member Tenant-1
+  no ip redirects
+  ip address {{L2VNI['ip_add']}}/{{L2VNI['mask']}}
+  fabric forwarding mode anycast-gateway
+  !
+{% endfor %}
+{% for L3VNI in L3VNI %}
+interface vlan{{L3VNI['vlan_id']}}
+ no shutdown
+ vrf member Tenant-1
+ ip forward
+ !
+{% endfor %}
+#for loop to enable PIM on L3 interface
+{% for interface in L3_interfaces %}
+interface {{interface['interface']}}
+ip pim sparse-mode
+!
+{% endfor %}
+
+interface nve1
+no shutdown
+source-interface loopback1
+host-reachability protocol bgp
+{% for L2VNI in L2VNI %}
+member vni {{L2VNI['vni']}}
+mcast-group {{L2VNI['mcast']}}
+{% endfor %}
+{% for L3VNI in L3VNI %}
+member vni {{L3VNI['vni']}} associate-vrf
+!
+{% endfor %}
+
+router bgp {{ asn }}
+router-id {{ router_id }}
+address-family ipv4 unicast
+address-family l2vpn evpn
+retain route-target all
+#for loop to configure bgp neighbor with spine
+{% for neighbor in bgp_neighbors %}
+neighbor {{neighbor['neighbor']}}
+remote-as {{neighbor['remote_as']}}
+update-source {{neighbor['update_source']}}
+address-family ipv4 unicast
+send-community both
+address-family l2vpn evpn
+send-community both
+!
+{% endfor %}
+evpn
+{% for L2VNI in L2VNI %}
+  vni {{L2VNI['vni']}} l2
+    rd auto
+    route-target import auto
+    route-target export auto
+{% endfor %}
+
 </code></pre>
-<p>as shown below:</p>
-<p><img alt="" src="../pic/3-10-2.png" /></p>
 <ul>
-<li>
-<p>On ATOM, go to <code>File</code> then <code>Open File…</code> and browse to this <code>leaf.j2</code> that was just saved in <code>X:\EVPN-Ansible\roles\jinja2_leaf\templates</code> as shown below screenshot:</p>
-<p><img alt="" src="../pic/3-10-4.png" /></p>
-</li>
-<li>
-<p>After opening “<strong>leaf.j2</strong>” file from ATOM, go to <code>File</code> – <code>Save</code> to push template file to Ansible node:</p>
-</li>
+<li>Go to <code>File</code> – <code>Save</code> to push template file to Ansible node:</li>
 </ul>
 <hr />
 <h3 id="step-11-create-playbook-for-jinja2_leaf-role">Step 11: Create playbook for jinja2_leaf role</h3>
@@ -833,6 +1054,41 @@ root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../task2-first-ansible/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 2 - First Simple Ansible Playbook" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Task 2 - First Simple Ansible Playbook
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../task4-vxlan-nxos/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 4 - Config switches using Ansible NXOS modules" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Task 4 - Config switches using Ansible NXOS modules
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
