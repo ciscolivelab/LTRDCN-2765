@@ -1015,19 +1015,6 @@ root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-3-3.png" /></p>
-<ul>
-<li>On the Ansible server (via MTputty SSH session), run the command <code>gitlab-runner install -u root</code> as shown below below:</li>
-</ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# gitlab-runner install -u root
-
-</code></pre>
-<ul>
-<li>
-<p>Below partial screenshot shows the output of above command:</p>
-<p><img alt="" src="pic/5-3-4.png" /></p>
-</li>
-</ul>
-<hr />
 <h3 id="step-3-version-control-playbooks">Step 3: Version control playbooks</h3>
 <p>In this step, you will use Gitlab to set version control for the playbooks.</p>
 <ul>
@@ -1222,7 +1209,7 @@ root@ubuntu:~#
 <pre><code>git branch -m newvni
 git add .
 git commit -m &quot;newvni&quot;
-git push -u origin newvni
+git push -f origin newvni
 </code></pre>
 <p>Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
