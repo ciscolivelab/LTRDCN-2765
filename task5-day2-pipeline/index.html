@@ -462,10 +462,21 @@
 
 
 <h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline</h1>
-<p>In this section, we will implement CI/CD pipeline for day 2 operation tasks.</p>
+<p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose </p>
 <ul>
-<li>Create playbook to verify underlay and overlay</li>
-<li>Version control the EVPN ansible playbooks using GitLab</li>
+<li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system</li>
+<li>GitLab runner is an application that run tests &amp; results i.e., jobs in a pipeline and then send the results to GitLab</li>
+<li>The cloud hosted GitLab is used in this lab, while the GitLab runner will be installed on the same local server which is used as Ansible host in this lab setup</li>
+</ul>
+<p>The process for creating a CI/CD pipeline with GitLab &amp; GitLab runner include below procedure:
+* Create a project in GitLab
+* Install and register the GitLab Runner for your project
+* Define a CI/CD job (steps, tests) in a file named <code>.gitlab-ci.yml</code> in the root of the repository
+* Conditions/rules can be defined in <code>.gitlab-ci.yml</code> file (YAML syntax) that will perform a job and display the results in GitLab pipeline e.g. When a commit to repository is done then the runner may execute the job and display the results in GitLab pipeline</p>
+<p>In this section, CI/CD pipeline for day 2 operation tasks will be implemented.  Below steps will be done:</p>
+<ul>
+<li>Create an Ansible playbook to verify underlay and overlay</li>
+<li>Version control for the EVPN Ansible playbooks using GitLab version control capabilities</li>
 <li>Create CI pipeline using GitLab</li>
 <li>Add new VNIs into existing fabric</li>
 <li>Verify CI pipeline in test and staging stages</li>
@@ -528,21 +539,19 @@
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 </li>
 <li>
-<p>On the Ansible node (via MTPutty), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag):</p>
+<p>On the Ansible node (via <strong>MTPutty</strong>), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag).  This command will show ospf, bgp and pim neighbors for all leaf switches:</p>
 </li>
 </ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
+<pre><code>cd ~/EVPN-Ansible
+ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 </code></pre>
-<hr />
-<p><font style=background-color:yellow>The output shows ospf, bgp and pim neighbors for all leaf switches</font></p>
-<hr />
 <ul>
 <li>
-<p>Below screenshot shows the partial output of above command:</p>
+<p>Below screenshot shows the partial output of above command and shows ospf, bgp and pim neighbors for all leaf switches:</p>
 <p><img alt="" src="../pic/5-2-1.png" /></p>
 </li>
 </ul>
-<p>Here is a log of execution of above command:</p>
+<p>Here is complete log of execution of above playbook/command:</p>
 <pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 
 PLAY [leaf, jinja2_leaf] *********************************************************************************************************************************************************************************************
@@ -652,20 +661,17 @@ PLAY RECAP *********************************************************************
 </code></pre>
 <p>Next:</p>
 <ul>
-<li>Run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>overlay</strong> using the respective tag in the command (as shown below):</li>
+<li>Run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>overlay</strong> using the respective tag in the command (as shown below).  This command will show the nve tunnel peer, host route in BGP EVPN from all leaf switches:</li>
 </ul>
 <pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
 </code></pre>
-<hr />
-<p><font style=background-color:yellow>The output shows nve tunnel peer, host route in bgp EVPN from all leaf switches</font></p>
-<hr />
 <ul>
 <li>
 <p>Below screenshot of the partial output of above command:</p>
 <p><img alt="" src="../pic/5-2-2.png" /></p>
 </li>
 <li>
-<p>Below shows the complete log output of execution of above playbook command.   Verify the output for <strong>vne vni</strong> status, <strong>vne</strong> dynamic neighbors, type host <strong>mac+ip evpn route update for each L2VNI, l2fib</strong> information.</p>
+<p>Below shows the complete log output of execution of above playbook command.   Verify the output for <strong>vne vni</strong> status, <strong>vne</strong> dynamic neighbors, type host <strong>mac+ip evpn route update for each L2VNI, l2fib</strong> information</p>
 </li>
 </ul>
 <pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
@@ -991,27 +997,25 @@ root@ubuntu:~/EVPN-Ansible#
 <h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and gitlab runner</h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run the command <code>apt-get install git</code> to install git as shown below:</li>
+<li>On the Ansible node (in <strong>MTputty</strong> SSH session), run the command <code>apt-get install git</code> to install git as shown below:</li>
 </ul>
-<pre><code>    root@ubuntu:~/EVPN-Ansible# apt-get install git
+<pre><code>cd ~/EVPN-Ansible
+apt-get install git
 </code></pre>
 <p>Below screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-1.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run the command <code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash</code></li>
+<li>On the Ansible node (in MTputty SSH session), run the below <code>curl</code> command to download and run a shell script that adds the official GitLab repository required for runner installation:</li>
 </ul>
-<pre><code>
-root@ubuntu:~/EVPN-Ansible# curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+<pre><code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
 
 </code></pre>
 <p>Bwlow screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-2.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run the command <code>apt-get install gitlab-runner</code></li>
+<li>On the Ansible node (in MTputty SSH session), run the below command to install <code>gitlab-runner</code></li>
 </ul>
-<pre><code>
-root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
-
+<pre><code>apt-get install gitlab-runner
 </code></pre>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-3-3.png" /></p>
@@ -1019,7 +1023,7 @@ root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
 <p>In this step, you will use Gitlab to set version control for the playbooks.</p>
 <ul>
 <li>
-<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. sign in with <strong>Username: lab.ciscolive@gmail.com</strong> <strong>Password: C1sco12345</strong> as shown below.</p>
+<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>xx</code> as shown below.</p>
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
@@ -1027,62 +1031,66 @@ root@ubuntu:~/EVPN-Ansible# apt-get install gitlab-runner
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
-<p>Select <strong>Create blank project</strong> and create new project with your assigned <strong>POD ID</strong>. The screenshot below uses <strong>POD 1</strong> as example, find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
+<p>Select <strong>Create blank project</strong> and create new project with your assigned <strong>POD_{ID}</strong>. The screenshot below uses <strong>POD_1</strong> as example - you must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 </li>
 <li>
-<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_#.git</strong>  </p>
+<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   Note: you must replace <code>{ID}</code> with your respective pod number.  </p>
+<p>The screenshot below uses <strong>POD_1</strong> as example.</p>
 </li>
 </ul>
-<p>The screenshot below uses <strong>POD 1</strong> as example.</p>
 <p><img alt="" src="../pic/5-2-6.png" /></p>
 <ul>
-<li>
-<p>By default the <strong>main</strong> branch is protected branch, change it to unprotected in order to add and commit files from git command. Change the <strong>main</strong> branch to unprotected from project <strong>Settings - Repository - Protected branches - unprotect</strong> as shown in below screenshot.
-    <img alt="" src="../pic/5-2-7.png" /></p>
-</li>
-<li>
-<p>On the Ansible node (in MTputty SSH session), run the command <code>cd EVPN-Ansible</code> and <code>git init</code> as shown below:</p>
-</li>
+<li>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change is done by cl the <strong>main</strong> branch to unprotected from project from the left pane Select <strong>Settings &gt; Repository</strong> and then on right pane Click <strong>Protected branches &gt; unprotect</strong> as shown in below screenshot:</li>
 </ul>
-<pre><code>root@ubuntu:~# cd EVPN-Ansible/
-root@ubuntu:~/EVPN-Ansible# git init
-Initialized empty Git repository in /root/EVPN-Ansible/.git/
-root@ubuntu:~/EVPN-Ansible#
+<p><img alt="" src="../pic/5-2-7.png" /></p>
+<ul>
+<li>On the Ansible node (in <strong><em>MTputty</em></strong> SSH session), run the below commands to initialize git in appropriate directory:</li>
+</ul>
+<pre><code>cd ~/EVPN-Ansible
+git init
 </code></pre>
-<p>Below screenshot shows the execution of the command</p>
+<p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
-<li>On the Ansible node, run following commands to add playbooks to the project <code>git remote add origin https://gitlab.com/lab.ciscolive/pod_1.git</code> <code>git add .</code> as shown below:</li>
+<li>On the Ansible node, run following commands to add the remote repository as origin and verify it's result:</li>
 </ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible#
-root@ubuntu:~/EVPN-Ansible# git remote add origin https://gitlab.com/lab.ciscolive/pod_1.git
-root@ubuntu:~/EVPN-Ansible# git add .
-root@ubuntu:~/EVPN-Ansible#
+<pre><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
+git remote -v
 </code></pre>
+<p>Below screenshot shows the execution of the above commands:</p>
+<p><img alt="" src="../pic/5-3-5b.png" /></p>
 <ul>
-<li>Commit and push all files to <strong>main</strong> branch with command <code>git checkout -b main</code> <code>git commit -m "Initial commit</code> <code>git push -f origin main</code> as shown Below:
-Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</li>
+<li>Then to add all the files (Ansible playbooks, roles etc) to the staging area and check the status by using below commands:</li>
 </ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# git checkout -b main
-Switched to a new branch 'main'
-root@ubuntu:~/EVPN-Ansible# git commit -m &quot;initial commit&quot;
-root@ubuntu:~/EVPN-Ansible# git push -f origin main
-Username for 'https://gitlab.com': lab.ciscolive
-Password for 'https://lab.ciscolive@gitlab.com':
+<pre><code>git add .
+git status 
 </code></pre>
-<p>Below screenshot shows partial outputs of the commands</p>
+<p>Below screenshot shows the execution of the above commands:</p>
+<p><img alt="" src="../pic/5-3-5c.png" /></p>
+<ul>
+<li>Next, commit and push all files to <strong>main</strong> branch with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>xx</code></li>
+</ul>
+<pre><code>git checkout -b main
+git commit -m &quot;initial commit&quot;
+git push -f origin main
+</code></pre>
+<p>Below screenshot shows partial outputs of the commands:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
 <h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
-<p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration. The file needs to be placed in root of the repository. Inside the file, you will define
- - The stages you want run in the pipeline
- - The scripts you want run in each stage
- - The runner you want use for each script
- - How is the runner triggered for each script</p>
-<p>Pipeline file can be added from gitlab UI using pipeline file editor, or from local and push to girlab repo using Git command. We will use atom to add pipeline file in this lab.</p>
+<p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration.  <em>Note, the file name starts with </em><em>.</em><em> and it's not a mistake</em>.  The file needs to be placed in root of the repository.  Inside the file, you will define:
+- The stages you want run in the pipeline
+- The scripts you want run in each stage
+- The runner you want use for each script
+- How is the runner triggered for each script</p>
+<p>Pipeline file can be added from GitLab UI using pipeline file editor, or from local and push to GitLab repo using git commands.  We will use Atom to add pipeline file in this lab.</p>
 <ul>
-<li>Switch to <strong>"Atom"</strong>, right click on the folder <strong>EVPN-Ansible</strong> and Click New File to create a new file named <strong>.gitlab-ci.yml</strong></li>
-<li>In the <strong>.gitlab-ci.yml</strong> enter the contents shown below</li>
+<li>
+<p>Switch to <strong>"Atom"</strong> application on your remote desktop.  Right click on the folder <strong>EVPN-Ansible</strong> and Click <strong>New File</strong> to create a new file named <strong>.gitlab-ci.yml</strong></p>
+</li>
+<li>
+<p>In the <code>.gitlab-ci.yml</code> file enter the contents shown below:</p>
+</li>
 </ul>
 <pre><code class="language-YAML">stages:
 - test
@@ -1123,112 +1131,127 @@ deploy:
       when: manual
 </code></pre>
 <p>Below screenshot shows the file after added above contents on Atom</p>
-<p><img alt="" src="../pic/5-3-7.png" />
-* From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new pipeline to Ansible node.</p>
-<p><strong>Note</strong>, in the above pipeline file, you have configured
-- Three stages for pipeline with <strong>test</strong>, <strong>staging</strong> and <strong>production</strong>
-- In <strong>test</strong> stage, pipeline will do dyr-run for the ansible playbook using a git-runner with tag <strong>EVPN</strong>. This script will be triggered by change in branch.
-- In <strong>staging</strong> stage, pipeline will run playbooks to build EVPN fabric for new VNIs, also collrect show outputs files for manual verification. This scripts will be triggered after success of test stage.
-- In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
+<p><img alt="" src="../pic/5-3-7.png" /></p>
 <ul>
-<li>Switch to Ansible node (via MTPuTTY), run <code>git add .gitlab-ci.yml</code>, <code>git commit -m "add ci file"</code>, <code>git push origin main</code> as shown Below:
-Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</li>
+<li>
+<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new pipeline to Ansible node</p>
+<p><strong>Note</strong>, in the above pipeline file, you have configured
+* Three stages for pipeline named <strong>test</strong>, <strong>staging</strong> and <strong>production</strong>
+* In <strong>test</strong> stage, pipeline will do dry-run for the ansible playbook using a git-runner with tag <strong>EVPN</strong>. This script will be triggered by change in branch
+* In <strong>staging</strong> stage, pipeline will run playbooks to build EVPN fabric for new VNIs, also collrect show outputs files for manual verification. This scripts will be triggered after success of test stage.
+* In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
+</li>
+<li>
+<p>Next, Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>xx</code>for GitLab access:</p>
+</li>
 </ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# git add .gitlab-ci.yml
-root@ubuntu:~/EVPN-Ansible# git commit -m &quot;add ci file&quot;
-root@ubuntu:~/EVPN-Ansible# git push origin main
-Username for 'https://gitlab.com': lab.ciscolive
-Password for 'https://lab.ciscolive@gitlab.com':
+<pre><code>git add .gitlab-ci.yml
+git commit -m &quot;add ci file&quot;
+git push origin main
 </code></pre>
-<p>Below screenshot shows the outputs of the commands</p>
+<p>Below screenshot shows the outputs of the commands (note your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
 <p>In this task, you will create local gitlab runner to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner and register it to your project.</p>
 <ul>
-<li>Switch to Chrome brower with gitlab project page, select <strong>Settings - CI/CD</strong> from navigation menu on the left and then <strong>Expand</strong> <strong>Runners</strong> setting as shown in below screenshot.</li>
-</ul>
+<li>
+<p>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left side, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</p>
 <p>Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/5-5-1.png" /></p>
 <ul>
-<li>Click the toggle switch under <strong>Shared runners</strong> to disable shared runners for this project. <strong>Note</strong> the regitration URL and registration token will be used on next step.</li>
+<li>As shown in below screenshot: under the <strong>Specific runners</strong>, note down the URL of <code>Register the runner with this URL</code>, and the <code>Registration token</code>.  Both of these will be used on next step.   Further, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
 </ul>
 <p><img alt="" src="../pic/5-5-2.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run command <code>gitlab-runner register</code> and provide the runner registration info as shown below</li>
+<li>On the Ansible node (in <strong>MTputty</strong> SSH session), register the GitLab runner by issuing the below command.  Further, when prompted provide the runner registration info as shown below:</li>
 </ul>
+<pre><code>gitlab-runner register
+</code></pre>
 <p><strong>Enter the GitLab instance URL:</strong>  <strong><font style=background-color:yellow>https://gitlab.com/</font></strong></p>
 <p><strong>Enter the registration token:</strong>  <strong><font style=background-color:yellow> get registration token from previous step </font></strong></p>
 <p><strong>Enter a description for the runner:</strong> <strong><font style=background-color:yellow>enter without change </font></strong></p>
 <p><strong>Enter tags for the runner (comma-separated):</strong>  <strong><font style=background-color:yellow>EVPN </font></strong> (case sensitive)</p>
 <p><strong>Enter optional maintenance note for the runner:</strong>  <strong><font style=background-color:yellow>enter without change</font></strong></p>
-<p><strong>Enter an executor:</strong> / <strong><font style=background-color:yellow>shell</font></strong></p>
-<p>Below screenshot shows the outputs of the commands</p>
+<p><strong>Enter an executor:</strong> <strong><font style=background-color:yellow>shell</font></strong></p>
+<p>Below screenshot shows the outputs of the commands:</p>
 <p><img alt="" src="../pic/5-5-3.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run command <code>gitlab-runner start</code> as shown below</li>
+<li>On the Ansible node (in <strong>MTputty</strong> SSH session), run command the below command to start &amp; check status of runner:</li>
 </ul>
-<pre><code>
-root@ubuntu:~# gitlab-runner start
-Runtime platform                                    arch=amd64 os=linux pid=287872 revision=c6bb62f6 version=14.10.0
-root@ubuntu:~#
-
+<pre><code>gitlab-runner start
+gitlab-runner status
 </code></pre>
+<p>Below screenshots shown the output of above commands</p>
+<p><img alt="" src="../pic/5-5-4.png" /></p>
 <h3 id="step-6-add-stage-branch-and-add-new-vnis">Step 6: Add stage branch and add new VNIs</h3>
-<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. Todo that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline file.</p>
+<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. In order to do that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline file.</p>
 <ul>
-<li>Switch to <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles - jinja2_leaf - vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</li>
+<li>Switch to <strong>"Atom"</strong>, Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.   Enter following new VNI information under the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
 </ul>
-<pre><code class="language-YANL">
-- { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
-- { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
+<pre><code class="language-YAML">  - { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
+  - { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
 
 </code></pre>
-<p>Below screenshot shows the file after added above contents on Atom</p>
-<p><img alt="" src="../pic/5-6-1.png" />
-* From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new jinja2 varilabe file to Ansible node.</p>
+<p><strong>Note:</strong> YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (column number 3).  </p>
+<p>Below screenshot shows the file after addition of above contents on Atom:</p>
+<p><img alt="" src="../pic/5-6-1.png" /></p>
 <ul>
-<li>From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles - leaf - vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</li>
+<li>
+<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new jinja2 varilabe file to Ansible node.</p>
+</li>
+<li>
+<p>Next, the variables will be added to Leaf role.  From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles &gt; leaf &gt; vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</p>
+</li>
 </ul>
-<pre><code class="language-YANL">
-- { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
-- { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
+<pre><code class="language-YAML">   - { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
+   - { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
 
 </code></pre>
-<p>Below screenshot shows the file after added above contents on Atom</p>
-<p><img alt="" src="../pic/5-6-2.png" />
-* From <strong>Atom</strong>, goto <strong>File - Save</strong> to push the new leaf varilabe file to Ansible node.</p>
+<p><strong>Note:</strong> YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (column number 3).  Below screenshot shows the file after added above contents on Atom</p>
+<p><img alt="" src="../pic/5-6-2.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), switch to <strong>EVPN-Ansible</strong> project folder</li>
+<li>
+<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new leaf variable file to Ansible node</p>
+</li>
+<li>
+<p>On the Ansible node (in <strong>MTputty</strong> SSH session), change directory to <strong>EVPN-Ansible</strong> project folder</p>
+</li>
 </ul>
-<pre><code>root@ubuntu:~# cd EVPN-Ansible/
+<pre><code>cd ~/EVPN-Ansible
 </code></pre>
 <ul>
-<li>Run the following git commands to create new branch <strong>newvni</strong>, commit the updated variable files to that new branch and push to Gitlab project.</li>
+<li>Run the following git commands to create new branch <strong>newvni</strong>, <code>commit</code> the updated variable files to that new branch and <code>push</code> to Gitlab project:</li>
 </ul>
 <pre><code>git branch -m newvni
 git add .
 git commit -m &quot;newvni&quot;
 git push -f origin newvni
 </code></pre>
-<p>Use <strong>username:lab.ciscolive</strong> and <strong>password:C1sco12345</strong> for gitlab access</p>
+<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>xx</code> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
 <ul>
-<li>Switch to Chrome brower with gitlab project page, select <strong>CI/CD - Pipelines</strong> from navigation menu on the left.</li>
+<li>Switch to Chrome brower with GitLab project page.  On the navigation menu on left side, select <strong>CI/CD &gt; Pipelines</strong>  as shown below:</li>
 </ul>
 <p><img alt="" src="../pic/5-7-1.png" /></p>
 <ul>
-<li>Wait for the jobs finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> as shown below</li>
+<li>Wait for the jobs finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> and view the Job details as shown below:</li>
 </ul>
 <p><img alt="" src="../pic/5-7-2.png" /></p>
 <ul>
-<li>After both pipeline stags are passed, you can verify the staging result from the stage artifacts. Click the <strong>...</strong> on the right most of the pipeline and <strong>Download artifacts</strong> as shown below.</li>
+<li>After both pipeline stags are passed, you can verify the staging result from the stage artifacts. Click the the three vertical dots (<strong>...</strong>) on the right most of the <code>pipeline</code> and <strong>Download artifacts</strong> as shown below.</li>
 </ul>
 <p><img alt="" src="../pic/5-7-3.png" /></p>
 <ul>
-<li>Unzip the downloaded <strong>artifacts.zip</strong>, and you will see <strong>overlay.txt</strong> and <strong>underlay.txt</strong> which are the show outputs from the ansible playbook.</li>
-<li>Read the overlay show outputs and you can see new vni 50200 and 50201 are deployed on staging environment as shown below.</li>
+<li>
+<p>Unzip the downloaded <strong>artifacts.zip</strong> on your remote desktop, and you will see <strong>overlay.txt</strong> and <strong>underlay.txt</strong> files - these are the outputs from the ansible playbook.</p>
+</li>
+<li>
+<p>Review the overlay show outputs and you can see new vni 50200 and 50201 are deployed on staging environment as shown below:</p>
+</li>
 </ul>
 <pre><code>-   - 'Codes: CP - Control Plane        DP - Data Plane          '
     - '       UC - Unconfigured         SA - Suppress ARP        '
@@ -1272,33 +1295,44 @@ git push -f origin newvni
     - '----------- -------------- ------ ---------- --------------- ---------------'
 </code></pre>
 <h3 id="step-8-merge-to-main-branch">Step 8: Merge to main branch</h3>
-<p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment. In this lab, we are using same inventory for staging and production environment for simplicy, and different inventory should be used in real world.</p>
+<p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment. </p>
+<p>Typically in real world there will (should!) be separate environments for staging and production.  In this lab, we are using same inventory for staging and production environments for simplicy purposes.  So once the merge is done then the changes can be rolled out to production (by appling ansible playbooks)</p>
 <ul>
-<li>Switch to Chrome brower with gitlab project page, select <strong>Merge requests</strong> from navigation menu on the left and select <strong>New merge request</strong> as shown below.</li>
+<li>Switch to Chrome browser with gitlab project page for your respective <code>pod_{ID}</code> <strong>repository</strong>.  Select <strong>Merge requests</strong> from navigation menu on the left, and select <strong>New merge request</strong> as shown below.</li>
 </ul>
 <p><img alt="" src="../pic/5-8-1.png" /></p>
 <ul>
-<li>Select <strong>newvni</strong> as source branch and <strong>main</strong> as target branch as shown in the screenshot below.
- Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</li>
+<li>Under the <code>Source branch</code> section, from the <code>Select source branch</code> drop down menu select <strong>newvni</strong> branch.  Further, on the <code>Target branch</code> section, under <code>Select target branch</code> drop down menu make sure that <strong>main</strong> branch is selected as shown in the screenshot below.  <strong>Note:</strong> below screenshot uses POD 1 as example, you must use your assigned POD ID from table in task1.</li>
 </ul>
 <p><img alt="" src="../pic/5-8-2.png" /></p>
 <ul>
-<li>Give a Title for the merge request, leave anything as default and click <strong>Create merge request</strong></li>
-<li>On the merge request, you have option to <strong>Delete source branch</strong> after merge, and add merger commit message. After you have reviewed the merge request, click the <strong>Merge</strong> button as showen in the screenshot below.</li>
+<li>
+<p>Next, click <strong>Compare branches and continue</strong> on the above page</p>
+</li>
+<li>
+<p>On the next page, give a <strong>Title</strong> for the merge request as <strong>newvni Pod_#</strong> (replace <code>#</code> with your respective Pod ID), leave anything as default and click <strong>Create merge request</strong></p>
+</li>
+<li>
+<p>On the merge request, <strong>un-check</strong> the <strong>Delete source branch</strong> after merge option.  You may add any merger commit message.  And after you have reviewed the merge request, click the <strong>Merge</strong> button as shown in the screenshot below</p>
+</li>
 </ul>
 <p><img alt="" src="../pic/5-8-3.png" /></p>
 <ul>
-<li>Since the CI pipeline file uses <strong>manul</strong> for production deployment, the job for deploying production will not be triggered automatically. Instead, you will manually kickoff the production deployment job on pipeline.</li>
-<li>Switch to Chrome brower with gitlab project page, select <strong>CI/CD - Pipelines</strong> from navigation menu on the left.</li>
 <li>
-<p>Deploy the newvni on production enviroment by selecting <strong>deploy</strong> on the pipeline job from previous merger request as showen in the screenshot below.
-<img alt="" src="../pic/5-8-4.png" /></p>
+<p>As per the CI pipeline file (named: <strong>.gitlab-ci.yml</strong> ) the <code>rules</code> was configured for <strong>manual</strong> trigger for production deployment, hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.</p>
 </li>
 <li>
-<p>Wait for the job finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> as shown below
-<img alt="" src="../pic/5-8-5.png" /></p>
+<p>Switch to Chrome brower with gitlab project page, select <strong>CI/CD &gt; Pipelines</strong> from navigation menu on the left</p>
+</li>
+<li>
+<p>Deploy the newvni on production enviroment by selecting <strong>deploy</strong> on the pipeline job from previous merger request as shown in the screenshot below:</p>
 </li>
 </ul>
+<p><img alt="" src="../pic/5-8-4.png" /></p>
+<ul>
+<li>Wait for the job finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> as shown below:</li>
+</ul>
+<p><img alt="" src="../pic/5-8-5.png" /></p>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
 
               

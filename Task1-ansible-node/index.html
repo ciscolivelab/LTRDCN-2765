@@ -647,15 +647,15 @@
 <p>Ansible can be run from any machine with Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.</p>
 <p><img alt="" src="../pic/1-6-python.png" /></p>
 <h4 id="step-7-update-ubuntu-package-tool-and-install-pip">Step 7: Update Ubuntu package tool and install PIP</h4>
-<p>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool using <code>apt-get update</code> and install PIP python package using <code>apt install pip</code> command as shown below:</p>
-<pre><code>root@ubuntu:~# apt-get update
-root@ubuntu:~# apt install pip
+<p>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) and install PIP python package (using <code>apt install pip</code>) commands:</p>
+<pre><code>apt-get update
+apt install pip
 </code></pre>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-7-1-apt-get.png" /></p>
 <p><img alt="" src="../pic/1-6-2-python-new.png" /></p>
-<p>Next, update pip to version 20.3.4 by executing command <code>pip install --upgrade pip==20.3.4</code> as shown below:</p>
-<pre><code>root@ubuntu:~# pip install --upgrade pip==20.3.4
+<p>Next, update pip to version 20.3.4 by executing below command:</p>
+<pre><code>pip install --upgrade pip==20.3.4
 </code></pre>
 <p><strong>Note:</strong> you can ignore the warning related to python version.  Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-3-python-new.png" /></p>
@@ -666,24 +666,24 @@ root@ubuntu:~# apt install pip
 <li>Jinj2</li>
 <li>Httplib2</li>
 </ul>
-<p>Run the command <code>pip install paramiko PyYAML jinja2 httplib2</code>, as shown below, to install these packages:</p>
-<pre><code>root@ubuntu:~# pip install paramiko PyYAML jinja2 httplib2
+<p>Run the below command to install the above packages:</p>
+<pre><code>pip install paramiko PyYAML jinja2 httplib2
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-4-python-new.png" /></p>
-<p>As a final step, we are going to install Ansible on this Ubuntu. Once the install is initiated by using <code>pip install ansible==2.10.6</code> command (as shown below).  It may take few minutes for it to download and install.</p>
-<pre><code>root@ubuntu:~# pip install ansible==2.10.6
+<p>As a final step, we are going to install Ansible on this Ubuntu.  Initiate the installation of ansible using below command -  note: it may take few minutes for it to download and install:</p>
+<pre><code>pip install ansible==2.10.6
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-5-ansible-new.png" /></p>
-<p>Starting from Ansible 2.9, plugins and modules for network platform are moved in to <strong>collection</strong>. To install NX-OS collection with Ansible Galaxy by using <code>ansible-galaxy collection install cisco.nxos</code></p>
-<pre><code>root@ubuntu:~# ansible-galaxy collection install cisco.nxos
+<p>Starting from Ansible 2.9, plugins and modules for network platform are moved in to <strong>collection</strong>. To install NX-OS collection with Ansible Galaxy by using below <code>ansible-galaxy ...</code> command:</p>
+<pre><code>ansible-galaxy collection install cisco.nxos
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-7-4-collection.png" /></p>
 <h4 id="step-8-verify-ansible">Step 8: Verify Ansible</h4>
-<p>After installation is complete, check Ansible version by executing command <code>ansible --version</code>, as shown below:</p>
-<pre><code>root@ubuntu:~# ansible --version
+<p>After installation is complete, check Ansible version by executing below command:</p>
+<pre><code>ansible --version
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-8-1-version-new.png" /></p>
@@ -691,11 +691,11 @@ root@ubuntu:~# apt install pip
 <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
 <h4 id="step-9-create-ansible-inventory">Step 9: Create Ansible Inventory</h4>
 <p>Now, we are going to create inventory, host variables and Configuration file. This is important as Ansible works  against multiple systems in the system by selecting portions of systems listed in Ansible inventory. Similarly, configuration settings in Ansible are adjustable via configuration file.</p>
-<p>Create folder named EVPN-Ansible as working environment and verify that it’s empty:</p>
-<pre><code>root@ubuntu:~# mkdir EVPN-Ansible &amp;&amp; cd EVPN-Ansible
+<p>Create folder named EVPN-Ansible as working environment and verify that it’s empty by issuing below commands:</p>
+<pre><code>mkdir EVPN-Ansible &amp;&amp; cd EVPN-Ansible
+ls
 </code></pre>
-<p>root@ubuntu:~# ls</p>
-<p>Below screenshot shows the execution of above command:</p>
+<p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9-1-dir.png" /></p>
 <p>Next:</p>
 <ul>
@@ -730,13 +730,12 @@ EOF
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/1-9a-1-hosts.png" /></p>
 <ul>
-<li>
-<p>Now you may verify the content of this file using below command:</p>
-<p>root@ubuntu:~/EVPN-Ansible# more hosts</p>
-</li>
+<li>Now you may verify the content of this file using below command:</li>
 </ul>
-<p>Below screenshot shows the execution of above command:
-<img alt="" src="../pic/1-9a-2-hosts.png" /></p>
+<pre><code>more hosts
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9a-2-hosts.png" /></p>
 <ul>
 <li>
 <p>Create Ansible config (ansible.cfg) using the same steps as above.  <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</p>
@@ -752,26 +751,28 @@ EOF
 </li>
 <li>
 <p>Now you may verify the content of this file using below command:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# more ansible.cfg
-</code></pre>
 </li>
 </ul>
+<pre><code>more ansible.cfg
+</code></pre>
 <p>Below screenshot shows the output of above commands:</p>
 <p><img alt="" src="../pic/1-9a-3-ansible.png" /></p>
 <ul>
-<li>
-<p>Do <code>ls</code> to verify the file that you just created under project folder EVPN-Ansible.   </p>
-<p>Below screenshot shows the execution of above command:</p>
-<p><img alt="" src="../pic/1-9-3-ls.png" /></p>
-</li>
-<li>
-<p>Create host variable folder named <code>host_vars</code> in folder <code>EVPN-Ansible</code> by using below command.  In this lab, we will use host_vars file to define the variables for various hosts (in next bullets):</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# mkdir host_vars &amp;&amp; cd host_vars
+<li>To verify the file that you just created under project folder EVPN-Ansible, issue the list command:</li>
+</ul>
+<pre><code>ls
 </code></pre>
-</li>
-<li>
-<p>Create host variable file for each host in inventory by using the cat command.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</p>
-</li>
+<pre><code>Below screenshot shows the execution of above command:
+
+![](pic/1-9-3-ls.png)
+</code></pre>
+<ul>
+<li>Create host variable folder named <code>host_vars</code> in folder <code>EVPN-Ansible</code> by using below command.  In this lab, we will use host_vars file to define the variables for various hosts (in next bullets):</li>
+</ul>
+<pre><code>mkdir host_vars &amp;&amp; cd host_vars
+</code></pre>
+<ul>
+<li>Create host variable file for each host in inventory by using the cat command.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
 </ul>
 <pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.101.yml
 ---
@@ -784,10 +785,10 @@ EOF
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-101.png" /></p>
 <ul>
-<li>Now you may verify the content of this file using <code>more 198.18.4.101.yml</code> as shown below:<pre><code>root@ubuntu:~/EVPN-Ansible/host_vars# more 198.18.4.101.yml
-</code></pre>
-</li>
+<li>Now you may verify the content of this file using <code>more 198.18.4.101.yml</code> command as shown below:</li>
 </ul>
+<pre><code>more 198.18.4.101.yml
+</code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-101-more.png" /></p>
 <ul>
@@ -804,10 +805,10 @@ EOF
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-103.png" /></p>
 <ul>
-<li>Now you may verify the content of this file using <code>more 198.18.4.103.yml</code> as shown below:<pre><code>root@ubuntu:~/EVPN-Ansible/host_vars# more 198.18.4.103.yml
-</code></pre>
-</li>
+<li>Now you may verify the content of this file using <code>more 198.18.4.103.yml</code> as shown below:</li>
 </ul>
+<pre><code>more 198.18.4.103.yml
+</code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-103-more.png" /></p>
 <ul>
@@ -822,10 +823,10 @@ EOF
 EOF
 </code></pre>
 <ul>
-<li>Now you may verify the content of this file using <code>more 198.18.4.104.yml</code> as shown below:<pre><code>root@ubuntu:~/EVPN-Ansible/host_vars# more 198.18.4.104.yml
-</code></pre>
-</li>
+<li>Now you may verify the content of this file using <code>more</code> command as shown below:</li>
 </ul>
+<pre><code>more 198.18.4.104.yml
+</code></pre>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-104.png" /></p>
 <ul>
@@ -840,10 +841,10 @@ EOF
 EOF
 </code></pre>
 <ul>
-<li>Now you may verify the content of this file using <code>more 198.18.4.201.yml</code> as shown below:<pre><code>root@ubuntu:~/EVPN-Ansible/host_vars# more 198.18.4.201.yml
-</code></pre>
-</li>
+<li>Now you may verify the content of this file using <code>more</code> command as shown below:</li>
 </ul>
+<pre><code>more 198.18.4.201.yml
+</code></pre>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-201.png" /></p>
 <ul>
@@ -858,10 +859,10 @@ EOF
 EOF
 </code></pre>
 <ul>
-<li>Now you may verify the content of this file using <code>more 198.18.4.202.yml</code> as shown below:<pre><code>root@ubuntu:~/EVPN-Ansible/host_vars# more 198.18.4.202.yml
-</code></pre>
-</li>
+<li>Now you may verify the content of this file using <code>more</code> command as shown below:</li>
 </ul>
+<pre><code>more 198.18.4.202.yml
+</code></pre>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-202.png" /></p>
 <h4 id="step-10-ansible-role-structure">Step 10: Ansible role structure</h4>
@@ -871,14 +872,14 @@ In this lab, we will use two different playbooks to manage configuration for Spi
 A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.</p>
 <p>In this lab:</p>
 <ul>
-<li>we will use vars, templates and tasks folders</li>
-<li>main.yml file in <code>/vars</code>  folder contains dictionary of variables for this role</li>
-<li>main.yml file in <code>/tasks</code> folder contains the Ansible playbook for this role</li>
+<li>we will use <code>vars</code>, <code>templates</code> and <code>tasks</code> folders</li>
+<li><code>main.yml</code> file in <code>/vars</code>  folder contains dictionary of variables for this role</li>
+<li><code>main.yml</code> file in <code>/tasks</code> folder contains the Ansible playbook for this role</li>
 </ul>
 <p>To proceed further with roles in subsequent Tasks:</p>
 <p>•   Create roles directory in folder EVPN-Ansible by issuing below commands:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible/host_vars# cd /root/EVPN-Ansible
-root@ubuntu:~/EVPN-Ansible# mkdir roles
+<pre><code>cd /root/EVPN-Ansible
+mkdir roles
 </code></pre>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-10-1.png" /></p>
