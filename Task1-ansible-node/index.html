@@ -259,8 +259,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-mtputty" class="md-nav__link">
-    Step 4: MTputty
+  <a href="#step-4-ssh-client-mtputty" class="md-nav__link">
+    Step 4: SSH client - MTputty
   </a>
   
 </li>
@@ -280,22 +280,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-update-ubuntu-package-tool-and-install-pip" class="md-nav__link">
-    Step 7: Update Ubuntu package tool and install PIP
+  <a href="#step-7-update-ubuntu-package-tool-and-install-pip-packages" class="md-nav__link">
+    Step 7: Update Ubuntu package tool and install PIP &amp; Packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-verify-ansible" class="md-nav__link">
-    Step 8: Verify Ansible
+  <a href="#step-8-ansible-installation" class="md-nav__link">
+    Step 8: Ansible Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-create-ansible-inventory" class="md-nav__link">
-    Step 9: Create Ansible Inventory
+  <a href="#step-9-create-ansible-settings-inventory-and-variables" class="md-nav__link">
+    Step 9: Create Ansible Settings, Inventory and variables
   </a>
   
 </li>
@@ -421,8 +421,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-mtputty" class="md-nav__link">
-    Step 4: MTputty
+  <a href="#step-4-ssh-client-mtputty" class="md-nav__link">
+    Step 4: SSH client - MTputty
   </a>
   
 </li>
@@ -442,22 +442,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-update-ubuntu-package-tool-and-install-pip" class="md-nav__link">
-    Step 7: Update Ubuntu package tool and install PIP
+  <a href="#step-7-update-ubuntu-package-tool-and-install-pip-packages" class="md-nav__link">
+    Step 7: Update Ubuntu package tool and install PIP &amp; Packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-verify-ansible" class="md-nav__link">
-    Step 8: Verify Ansible
+  <a href="#step-8-ansible-installation" class="md-nav__link">
+    Step 8: Ansible Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-create-ansible-inventory" class="md-nav__link">
-    Step 9: Create Ansible Inventory
+  <a href="#step-9-create-ansible-settings-inventory-and-variables" class="md-nav__link">
+    Step 9: Create Ansible Settings, Inventory and variables
   </a>
   
 </li>
@@ -624,7 +624,7 @@
 </ul>
 <p><img alt="" src="../pic/1-2-vpn-accept.png" /></p>
 <h4 id="step-3-rdp-to-workstation">Step 3: RDP to workstation</h4>
-<p>In this step, you will connect to the workstation with RDP client on your machines.  Use below details for this RDP session:</p>
+<p>In this step, you will connect to the workstation with Remote Desktop (RDP) client on your machines.  Use below details for this RDP session:</p>
 <ul>
 <li>Workstation: <strong>198.18.133.36</strong></li>
 <li>Username: <strong>dcloud\demouser</strong></li>
@@ -632,66 +632,83 @@
 </ul>
 <p>Below screenshot is only an example for this RDP connection:</p>
 <p><img alt="" src="../pic/1-3-RDP.png" /></p>
-<h4 id="step-4-mtputty">Step 4: MTputty</h4>
-<p>Once you have the RDP session to the remote workstation, then you will use MTputty client to connect to all devices in this lab.  </p>
+<h4 id="step-4-ssh-client-mtputty">Step 4: SSH client - MTputty</h4>
+<p>Once you have the RDP session to the remote workstation, then you will use MTputty client to connect to all devices (Nexus, Ansible node) in this lab.</p>
 <p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by clicking on the icon on the desktop:</p>
 <p><img alt="" src="../pic/1-4-mtputty.png" /></p>
 <h4 id="step-5-ssh-into-ansible-node">Step 5: SSH into Ansible node</h4>
 <p>SSH into Ansible node (198.18.134.150) by double clicking the Ansible icon on the left pan with username <strong>root</strong> and password <strong>C1sco12345</strong></p>
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
 <h4 id="step-6-verify-python">Step 6: Verify Python</h4>
-<p>Once successfully SSH into the ansible node, the very first thing we are going to do after logging into Ansible server is verify the python version by running <code>python --version</code> command - as shown below:</p>
-<pre><code>root@ubuntu:~# python --version
+<p>Ansible can be run from any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansbile. </p>
+<p>Hence, once successfully SSH into the ansible node, the very first thing we are going to do after logging into Ansible server is verify the python version by running below command:</p>
+<pre><code>python --version
 </code></pre>
-<p>It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansbile.  The output of above command confirms this version.</p>
-<p>Ansible can be run from any machine with Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.</p>
+<p>The output of above command confirms this version.</p>
 <p><img alt="" src="../pic/1-6-python.png" /></p>
-<h4 id="step-7-update-ubuntu-package-tool-and-install-pip">Step 7: Update Ubuntu package tool and install PIP</h4>
-<p>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) and install PIP python package (using <code>apt install pip</code>) commands:</p>
+<h4 id="step-7-update-ubuntu-package-tool-and-install-pip-packages">Step 7: Update Ubuntu package tool and install PIP &amp; Packages</h4>
+<ul>
+<li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) and install PIP python package (using <code>apt install pip</code>) commands.  <em>Note:</em> At the <code>Do you want to continue? [Y/n]</code> prompt, you must enter <strong><code>Y</code></strong> to proceed with update/install: </li>
+</ul>
 <pre><code>apt-get update
 apt install pip
 </code></pre>
-<p>Below screenshot shows the execution of above commands:</p>
+<p>Below two screenshot shows the partial execution of above commands:</p>
 <p><img alt="" src="../pic/1-7-1-apt-get.png" /></p>
 <p><img alt="" src="../pic/1-6-2-python-new.png" /></p>
-<p>Next, update pip to version 20.3.4 by executing below command:</p>
+<ul>
+<li>Next, update pip to version 20.3.4 by executing below command:</li>
+</ul>
 <pre><code>pip install --upgrade pip==20.3.4
 </code></pre>
 <p><strong>Note:</strong> you can ignore the warning related to python version.  Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-3-python-new.png" /></p>
-<p>After installing PIP package, we are going to add the relevant packages that are needed for this Ansible based VXLAN lab. Below are the packages required for this lab.  </p>
+<p>After installing PIP package, we are going to add the relevant packages that are needed for this Ansible based VXLAN lab. Below are the required packages in this lab:</p>
 <ul>
 <li>Paramiko</li>
 <li>PyYAML</li>
 <li>Jinj2</li>
-<li>Httplib2</li>
-</ul>
+<li>
+<p>Httplib2</p>
+</li>
+<li>
 <p>Run the below command to install the above packages:</p>
+</li>
+</ul>
 <pre><code>pip install paramiko PyYAML jinja2 httplib2
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
-<p><img alt="" src="../pic/1-6-4-python-new.png" /></p>
-<p>As a final step, we are going to install Ansible on this Ubuntu.  Initiate the installation of ansible using below command -  note: it may take few minutes for it to download and install:</p>
+<p><img alt="" src="../pic/1-6-4-python-new2.png" /></p>
+<h4 id="step-8-ansible-installation">Step 8: Ansible Installation</h4>
+<p>In this step, Ansible and the required modules for this lab are going to be installed on this node/server (running Ubuntu).</p>
+<ul>
+<li>Initiate the installation of ansible using below command -  note: it may take few minutes for it to download and install:</li>
+</ul>
 <pre><code>pip install ansible==2.10.6
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-5-ansible-new.png" /></p>
-<p>Starting from Ansible 2.9, plugins and modules for network platform are moved in to <strong>collection</strong>. To install NX-OS collection with Ansible Galaxy by using below <code>ansible-galaxy ...</code> command:</p>
-<pre><code>ansible-galaxy collection install cisco.nxos
-</code></pre>
-<p>Below screenshot shows the execution of above command:</p>
-<p><img alt="" src="../pic/1-7-4-collection.png" /></p>
-<h4 id="step-8-verify-ansible">Step 8: Verify Ansible</h4>
-<p>After installation is complete, check Ansible version by executing below command:</p>
+<ul>
+<li>Once the installation is complete, check Ansible version by executing below command:</li>
+</ul>
 <pre><code>ansible --version
 </code></pre>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-8-1-version-new.png" /></p>
+<ul>
+<li>Starting from Ansible 2.9, plugins and modules for network platform are moved in to <strong>Collection</strong>.  To install NX-OS collection with Ansible Galaxy by using below <code>ansible-galaxy ...</code> command:</li>
+</ul>
+<pre><code>ansible-galaxy collection install cisco.nxos
+</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-7-4-collection.png" /></p>
 <p><strong>Note:</strong>: Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page.
 <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
-<h4 id="step-9-create-ansible-inventory">Step 9: Create Ansible Inventory</h4>
-<p>Now, we are going to create inventory, host variables and Configuration file. This is important as Ansible works  against multiple systems in the system by selecting portions of systems listed in Ansible inventory. Similarly, configuration settings in Ansible are adjustable via configuration file.</p>
-<p>Create folder named EVPN-Ansible as working environment and verify that it’s empty by issuing below commands:</p>
+<h4 id="step-9-create-ansible-settings-inventory-and-variables">Step 9: Create Ansible Settings, Inventory and variables</h4>
+<p>Ansible server uses host inventory to communicate with target devices (called as hosts). Like other programming languages, ansible uses variables to represent variations among different target devices.   This is important as Ansible works against multiple systems by selecting portions of systems listed in Ansible inventory.  Additionally, Ansible settings such as how SSH keys verification is done, name/location of inventory file to be used etc are adjustable via a configuration file named <code>ansible.cfg</code>.  It is an INI based file.</p>
+<ul>
+<li>Create folder named EVPN-Ansible as working environment and verify that it’s empty by issuing below commands:</li>
+</ul>
 <pre><code>mkdir EVPN-Ansible &amp;&amp; cd EVPN-Ansible
 ls
 </code></pre>
@@ -737,8 +754,8 @@ EOF
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-2-hosts.png" /></p>
 <ul>
-<li>
-<p>Create Ansible config (ansible.cfg) using the same steps as above.  <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</p>
+<li>Create Ansible config (ansible.cfg) using the same steps as above.  <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</li>
+</ul>
 <pre><code>cat &lt;&lt; EOF &gt;&gt; ansible.cfg
 [defaults]
 inventory = hosts
@@ -748,10 +765,8 @@ stdout_callback = debug
 deprecation_warnings = False
 EOF
 </code></pre>
-</li>
-<li>
-<p>Now you may verify the content of this file using below command:</p>
-</li>
+<ul>
+<li>Now you may verify the content of this file using below command:</li>
 </ul>
 <pre><code>more ansible.cfg
 </code></pre>
@@ -762,10 +777,8 @@ EOF
 </ul>
 <pre><code>ls
 </code></pre>
-<pre><code>Below screenshot shows the execution of above command:
-
-![](pic/1-9-3-ls.png)
-</code></pre>
+<p>Below screenshot shows the execution of above command:</p>
+<p><img alt="" src="../pic/1-9-3-ls.png" /></p>
 <ul>
 <li>Create host variable folder named <code>host_vars</code> in folder <code>EVPN-Ansible</code> by using below command.  In this lab, we will use host_vars file to define the variables for various hosts (in next bullets):</li>
 </ul>
@@ -877,7 +890,9 @@ A role directory structure contains several directories of defaults, vars, files
 <li><code>main.yml</code> file in <code>/tasks</code> folder contains the Ansible playbook for this role</li>
 </ul>
 <p>To proceed further with roles in subsequent Tasks:</p>
-<p>•   Create roles directory in folder EVPN-Ansible by issuing below commands:</p>
+<ul>
+<li>Create roles directory in folder EVPN-Ansible by issuing below commands:</li>
+</ul>
 <pre><code>cd /root/EVPN-Ansible
 mkdir roles
 </code></pre>
