@@ -548,36 +548,33 @@
 <h3 id="step-5-execute-playbook">Step 5: Execute playbook</h3>
 <p>After creating the playbook, it is now time to execute the playbook.  Before executing the playbook, we will verify the leaf switch that desired vlan configurations are not present</p>
 <ul>
-<li>
-<p>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch in previous playbook - remember the <strong><em>hosts</em>:</strong> variable in the file).  Then execute below command:</p>
-<p>~~~
-show vlan brief
-~~~</p>
+<li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch in previous playbook - remember the <strong><em>hosts</em>:</strong> variable in the file).  Then execute below command:</li>
+</ul>
+<pre><code>show vlan brief
+</code></pre>
 <p>This command will show the vlans that currently exist on the leaf switch.  As you note from below screenshot, only the default VLAN (vlan number 1) is configured:</p>
 <p><img alt="" src="../pic/2-5-1.png" /></p>
-</li>
+<ul>
 <li>
 <p>Now, from the <strong>MTPuTTy</strong>, launch a new <strong>ssh</strong> into Ansible node (198.18.134.150)</p>
 </li>
 <li>
 <p>Execute the ansible playbook using below commands under directory <code>EVPN-Ansible</code> :</p>
-<p>~~~
-cd ~/EVPN-Ansible
-ansible-playbook vlan_provision.yml --tags "add vlans"
-~~~</p>
+</li>
+</ul>
+<pre><code>cd ~/EVPN-Ansible
+ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
+</code></pre>
 <p>The below screenshot shows the execution of the playbook:</p>
 <p><img alt="" src="../pic/2-5-2.png" /></p>
 <p><strong>Note: If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</strong></p>
-</li>
-<li>
-<p>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appears by executing below command again:</p>
-<p>~~~
-show vlan brief
-~~~</p>
+<ul>
+<li>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appears by executing below command again:</li>
+</ul>
+<pre><code>show vlan brief
+</code></pre>
 <p>Below screenshot shows the execution of above command in the switch:</p>
 <p><img alt="" src="../pic/2-5-3.png" /></p>
-</li>
-</ul>
 <hr />
 <h3 id="step-6-server-port-vlan-tasks-in-playbook">Step 6: Server port VLAN tasks in playbook</h3>
 <p>We have just tested our first playbook with basic configuration (i.e, by adding 2 VLANs).  Now we are going to add more tasks in the same/existing playbook <strong><code>vlan_provision.yml</code></strong> in this step:</p>
@@ -637,35 +634,32 @@ show vlan brief
 <h3 id="step-7-execute-playbook">Step 7: Execute playbook</h3>
 <p>Now, we are going to execute this playbook:</p>
 <ul>
-<li>
-<p>Before executing the ansible playbook, log into switch (<strong>leaf1</strong>, <strong>leaf3</strong> or <strong>leaf4</strong>) using <strong>MTPuTTy</strong> client.  And check the existing configuration by executing the below command:</p>
-<p>~~~<br />
-show run interface ethernet1/3
-~~~</p>
-</li>
+<li>Before executing the ansible playbook, log into switch (<strong>leaf1</strong>, <strong>leaf3</strong> or <strong>leaf4</strong>) using <strong>MTPuTTy</strong> client.  And check the existing configuration by executing the below command:</li>
+</ul>
+<pre><code>show run interface ethernet1/3
+</code></pre>
+<ul>
 <li>
 <p>On <strong>MTPuTTy</strong>, log back into (or launch a new ssh) into “Ansible” node</p>
 </li>
 <li>
 <p>Execute below command to run the Ansible playbook in the <code>EVPN-Ansible</code> directory:</p>
-<p>~~~
-cd ~/EVPN-Ansible
+</li>
+</ul>
+<pre><code>cd ~/EVPN-Ansible
 ansible-playbook vlan_provision.yml
-~~~</p>
+</code></pre>
 <p>Below screeenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/2-7-1-new.png" /></p>
-</li>
-<li>
-<p>After we push the configuration, <strong>login</strong> to the <strong>leaf-3</strong> switch, and check if the server facing port has the access vlan configured with the below command:</p>
-<p>~~~<br />
-show run interface ethernet1/3
-~~~</p>
+<ul>
+<li>After we push the configuration, <strong>login</strong> to the <strong>leaf-3</strong> switch, and check if the server facing port has the access vlan configured with the below command:</li>
+</ul>
+<pre><code>show run interface ethernet1/3
+</code></pre>
 <p>The output of above command on leaf-3 or leaf-1 is shown in below screenshot:</p>
 <p><img alt="" src="../pic/2-7-2.png" /></p>
 <p>The output of above command on leaf-4 is shown in below screenshot:</p>
 <p><img alt="" src="../pic/2-7-3.png" /></p>
-</li>
-</ul>
 <hr />
 <p><strong>Congratulation! You have created your first ansible playbook, automatically provisioned new VLANs and assigned port to new created VLANs using Ansible. Next we are going to create VXLAN Fabric using Ansible.</strong></p>
 
