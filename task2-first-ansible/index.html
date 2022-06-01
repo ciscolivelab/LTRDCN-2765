@@ -260,8 +260,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-atom-folder" class="md-nav__link">
-    Step 2: Atom folder
+  <a href="#step-2-lab-folder-on-atom" class="md-nav__link">
+    Step 2: Lab folder on Atom
   </a>
   
 </li>
@@ -386,8 +386,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-atom-folder" class="md-nav__link">
-    Step 2: Atom folder
+  <a href="#step-2-lab-folder-on-atom" class="md-nav__link">
+    Step 2: Lab folder on Atom
   </a>
   
 </li>
@@ -443,45 +443,51 @@
 
   <h1>Task 2 - First Simple Ansible Playbook</h1>
 
-<p>In this section, we will create the first Ansible Playbook. In the playbook, we will configure VLANs on leaf switches, and assign VLANs to the server facing port.</p>
-<p>You will learn create variables inside playbook, learn simple loop using “<strong>with_items</strong>”, learn simple logical using “<strong>when</strong>” and learn “<strong>tags</strong>” to isolate tasks from whole playbook.</p>
+<p>In this section, your will create the first Ansible Playbook for this lab.  This Ansible Playbook will be used to configure VLANs on leaf switches, and to assign VLANs to the server facing port.  Further, you will create and learn about:</p>
+<ul>
+<li>using variables inside playbook, </li>
+<li>loop within Ansible by using “<strong>with_items</strong>”, </li>
+<li>logic of using “<strong>when</strong>” and “<strong>tags</strong>” to isolate tasks from whole playbook</li>
+</ul>
 <hr />
 <h3 id="step-1-using-atom-text-editor">Step 1: Using "Atom" text Editor</h3>
 <ul>
 <li>
-<p>Open “Atom” text editor by double click the icon on desktop. Atom is the recommended text editor for this lab:</p>
+<p>Open <strong>“Atom”</strong> text editor by double click the icon on desktop.  Atom is the recommended text editor for this lab:</p>
 <p><img alt="" src="../pic/2-1-atom.png" /></p>
 </li>
 <li>
-<p>After opening ATOM, <strong>Click</strong> <code>No, Never</code> to the <strong><em>“Register as default atom:// URI handler”</em></strong> message as show below:</p>
+<p>After opening ATOM, <strong>Click</strong> the <code>"No, Never"</code> button on the <strong><em>“Register as default atom:// URI handler”</em></strong> message as show below:</p>
 <p><img alt="" src="../pic/2-1-2-atom.png" /></p>
 </li>
 <li>
-<p>As an optional step: on ATOM you may close the Welcome, Welcome Guide, Telemetry Consent tabs.</p>
+<p>For a cleaner view and focussed work later in the labs, optionally, on <strong>ATOM</strong> you may <strong>close</strong> the <code>"Welcome"</code>, <code>"Welcome Guide"</code> and <code>"Telemetry Consent"</code> tabs</p>
 </li>
 </ul>
 <hr />
-<h3 id="step-2-atom-folder">Step 2: Atom folder</h3>
+<h3 id="step-2-lab-folder-on-atom">Step 2: Lab folder on Atom</h3>
 <ul>
-<li>After opening ATOM, there should be a folder in the left pane named “EVPN-Ansible.”</li>
 <li>
-<p><strong>Right click</strong> the pre-configured project folder <code>EVPN-Ansible</code> and select <code>New File</code></p>
+<p>After opening <strong>ATOM</strong>, there should be a folder in the left pane named: <strong><code>EVPN-Ansible</code></strong></p>
+</li>
+<li>
+<p><strong>Right click</strong> on this pre-configured project folder <code>EVPN-Ansible</code> and <strong>select</strong> <code>New File</code> as shown below:</p>
 <p><img alt="" src="../pic/2-2-atom-folder.png" /></p>
 </li>
 <li>
-<p>Name the new file <code>vlan_provision.yml</code> and hit enter. This will create the new file:</p>
+<p>Name the new file <code>vlan_provision.yml</code> and hit enter.  This will create the new file:</p>
 <p><img alt="" src="../pic/2-2-2-atom-vlan.png" /></p>
 </li>
 <li>
-<p>Also, on the lower bar of the ATOM, verify that  file grammar of <strong>YAML</strong> is selected instead of default "<strong>Plain Text</strong>".  If <strong>YAML</strong> is not selected, then you should <strong>choose</strong> it from the listed options.</p>
+<p>Also, on the lower bar right of the ATOM, verify that Language Mode (grammar) of <strong>YAML</strong> is selected instead of default <strong><code>"Plain Text"</code></strong>.  If <strong><code>"YAML"</code></strong> is not selected, then you should <strong>Select</strong> YAML from the listed options as shown in below screenshot:</p>
 <p><img alt="" src="../pic/2-2-3-atom-yaml.png" /></p>
 </li>
 </ul>
 <hr />
 <h3 id="step-3-define-variables-tasks-for-playbook">Step 3: Define variables, tasks for playbook</h3>
-<p>In this step, we are going to define the scope, variable for playbook and tasks</p>
+<p>In this step, we are going to create a playbook and define the variable &amp; tasks in the playbook</p>
 <ul>
-<li>In the opened window for ‘vlan_provision.yml’ file, enter the below content.<ul>
+<li>In the <strong>Atom</strong> application, under the <code>vlan_provision.yml</code> file, enter the below content: <ul>
 <li><strong>NOTE: YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</strong></li>
 </ul>
 </li>
@@ -491,10 +497,10 @@
   - hosts: leaf:jinja2_leaf
 
 </code></pre>
-<p>Further note:</p>
+<p>Note:</p>
 <ul>
-<li>“<strong>hosts:</strong>” defines the scope of this playbook applies to all switches in group ‘leaf’ and ‘jinja2_leaf’ (within the <strong><em>"hosts"</em></strong> file created in pervious task).<ul>
-<li><strong>Note</strong> that you can review the IP addresses of the three (2) “leaf” and one (1) “jinja2_leaf” in the “<strong><em>hosts</em></strong>” file (configured in previous steps).  The IP addresses are:<ul>
+<li>“<strong>hosts:</strong>” defines the scope of this playbook applies to all switches in group <code>‘leaf’</code> and <code>‘jinja2_leaf’</code> (these were added within the <strong><em>"hosts"</em></strong> file created in pervious task)<ul>
+<li><strong>Note</strong> that you can review the IP addresses of the two “leaf” switches and one “jinja2_leaf” switch in the “<strong><em>hosts</em></strong>” file (configured in previous steps).  For reference, the IP addresses are:<ul>
 <li>jinja2_leaf: 198.18.4.104</li>
 <li>leaf: 198.18.4.101</li>
 <li>leaf: 198.18.4.103</li>
@@ -506,7 +512,7 @@
 <hr />
 <h3 id="step-4-vlan-tasks-in-playbook">Step 4: VLAN tasks in playbook</h3>
 <ul>
-<li>Continue to add below tasks on the same  playbook file:<ul>
+<li>In the <strong>Atom</strong>, in the same <code>vlan_provision.yml</code> add below tasks below the previously added content:<ul>
 <li><strong>NOTE: YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</strong></li>
 </ul>
 </li>
@@ -522,54 +528,66 @@
          -  141
         tags: add vlans
 </code></pre>
-<p>Note:</p>
+<p><strong>Note:</strong>
+* This play creates multiple VLANs using <strong>cisco.nxos.nxos_vlans</strong> module
+* Above only one play is added but multiple plays can be defined in one playbook under “<strong>tasks</strong>”, each starts with <strong><code>“-“</code></strong>
+* At the end of this play, we use “<strong>tags</strong>” to name the play “<strong>add vlans</strong>”. This is useful to run a specific part of the configuration without running whole playbook.</p>
 <ul>
-<li>Multiple plays can be defined in one playbook under “<strong>tasks</strong>”, each starts with “-“ .</li>
-<li>
-<p>This kind of play creates multiple VLANs using <strong>cisco.nxos.nxos_vlans</strong> module.</p>
-</li>
-<li>
-<p>At the end of this play, we use “<strong>tags</strong>” to name the play “<strong>add vlans</strong>”. This is useful to run a specific part of the configuration without running whole playbook.</p>
-</li>
 <li>
 <p>Below screenshot shows how playbook will look:</p>
 <p><img alt="" src="../pic/2-4-1.png" /></p>
-<p><strong>NOTE: Formatting is extremely important when working with Ansible. Ansible playbook would return errors if the spaces are not properly aligned or formatting is not correct
-</strong></p>
+<p><strong>NOTE: Formatting is extremely important when working with Ansible. Ansible playbook would return errors if the spaces are not properly aligned or formatting is not correct</strong></p>
 </li>
 <li>
-<p><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
+<p><strong>Click</strong> <code>File</code> and <code>Save</code> .  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 <p><img alt="" src="../pic/2-4-2.png" /></p>
 <p><strong>NOTE: Once the Save button is pressed, then at the lower part of ATOM app, you will see message about connecting to Ansibe host (198.18.134.150) and saving the vlan_provision.yml file</strong></p>
 </li>
 </ul>
 <hr />
 <h3 id="step-5-execute-playbook">Step 5: Execute playbook</h3>
-<p>After creating the playbook, it is now time to execute the playbook.
-*  Before executing the playbook, we will verify the leaf switch if it has any vlan configuration present on it.
-*  <strong>Login</strong> to leaf-3 switch using the Mputty client, or any leaf switch in previous playbook (remember <strong>hosts:</strong> variable in the file), and execute <code>show vlan brief</code> command.
-    *  This command will show the vlans that currently exist on the leaf switch.  As you note from below screenshot, only the default VLAN (vlan number 1) is configured:</p>
-<p><img alt="" src="../pic/2-5-1.png" /></p>
+<p>After creating the playbook, it is now time to execute the playbook.  Before executing the playbook, we will verify the leaf switch that desired vlan configurations are not present</p>
 <ul>
-<li>Now, go to mputty, login or launch a new ssh into Ansible node (198.18.134.150)</li>
 <li>
-<p>Use command <code>ansible-playbook vlan_provision.yml --tags "add vlans"</code> under folder "EVPN-Ansible" as shown below:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook vlan_provision.yml --tags "add vlans"
-</code></pre>
+<p>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch in previous playbook - remember the <strong><em>hosts</em>:</strong> variable in the file).  Then execute below command:</p>
+<p>~~~
+show vlan brief
+~~~</p>
+<p>This command will show the vlans that currently exist on the leaf switch.  As you note from below screenshot, only the default VLAN (vlan number 1) is configured:</p>
+<p><img alt="" src="../pic/2-5-1.png" /></p>
+</li>
+<li>
+<p>Now, from the <strong>MTPuTTy</strong>, launch a new <strong>ssh</strong> into Ansible node (198.18.134.150)</p>
+</li>
+<li>
+<p>Execute the ansible playbook using below commands under directory <code>EVPN-Ansible</code> :</p>
+<p>~~~
+cd ~/EVPN-Ansible
+ansible-playbook vlan_provision.yml --tags "add vlans"
+~~~</p>
+<p>The below screenshot shows the execution of the playbook:</p>
 <p><img alt="" src="../pic/2-5-2.png" /></p>
 <p><strong>Note: If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</strong></p>
 </li>
 <li>
-<p>After playbook is run successfully, login into leaf 3 again and check if vlan 140 and vlan 141 appears. There would also be a log message on the screen indicating a configuration change was pushed to the device:</p>
+<p>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appears by executing below command again:</p>
+<p>~~~
+show vlan brief
+~~~</p>
+<p>Below screenshot shows the execution of above command in the switch:</p>
 <p><img alt="" src="../pic/2-5-3.png" /></p>
 </li>
 </ul>
 <hr />
 <h3 id="step-6-server-port-vlan-tasks-in-playbook">Step 6: Server port VLAN tasks in playbook</h3>
-<p>We have just tested our first playbook with basic configuration (i.e, by adding 2 VLANS), now we are going to add more tasks in our existing playbook “<strong>vlan_provision.yml</strong>” in this step:</p>
+<p>We have just tested our first playbook with basic configuration (i.e, by adding 2 VLANs).  Now we are going to add more tasks in the same/existing playbook <strong><code>vlan_provision.yml</code></strong> in this step:</p>
 <ul>
-<li>we will add new plays in the playbook to assign VLANs to server facing port. This time, we will configure VLAN towards the server facing ports</li>
-<li>Go back to <strong>ATOM</strong> and <strong>add</strong> the following plays to the <strong>existing playbook</strong><ul>
+<li>
+<p>Lets add new <em>plays</em> in the Ansible playbook to assign VLANs to server facing port.  We will configure VLAN towards the server facing ports</p>
+</li>
+<li>
+<p>Go back to <strong>ATOM</strong> and <strong>add</strong> the following plays to the <strong>existing playbook</strong></p>
+<ul>
 <li><em>NOTE: YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</em></li>
 </ul>
 </li>
@@ -597,20 +615,21 @@
           state: overridden
 </code></pre>
 <ul>
-<li><strong>Click</strong> <code>File</code> and <code>Save</code> on ATOM. This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> on ATOM.  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
-<p>Note: In this new play, we used nxos module “<strong>cisco.nxos.nxos_interfaces</strong>” and “<strong>cisco.nxos.nxos_l2_interfaces</strong>”.</p>
+<p><strong>Note:</strong> In this new play, we used nxos module “<strong>cisco.nxos.nxos_interfaces</strong>” and “<strong>cisco.nxos.nxos_l2_interfaces</strong>”.</p>
 <ul>
 <li>“<strong>cisco.nxos.nxos_interfaces</strong>” provides the capability to manage the physical attributes of an interface<ul>
 <li>In this example, it is used to configure “layer 2” on interface Ethernet 1/3</li>
 </ul>
 </li>
 <li>“<strong>cisco.nxos.nxos_l2_interfaces</strong>” provides the capability to manage the Layer 2 switchport attributes<ul>
-<li>In this example, it is used to configuration it is used to configure mode access on Ethernet ports 1/3</li>
+<li>In this example, it is used to configure access mode on Ethernet ports 1/3</li>
 </ul>
 </li>
-<li>We used “<strong>when</strong>” argument to provide little logic of the play.<ul>
-<li>In our example, the playbook assign VLAN 140 on leaf1 and leaf3 switches; assign VLAN 141 on leaf4 switch.</li>
+<li>We used “<strong>when</strong>” argument to provide little logic of looking at the IP addresses (as per <strong>hosts</strong> i.e., inventory file) to the play and then appropriately assign VLANs to those hosts.  In our example, the playbook assigned:<ul>
+<li>VLAN 140 on leaf1 and leaf3 switches (by matching <code>101</code> and <code>103</code> in the <code>hosts</code> file)</li>
+<li>VLAN 141 on leaf4 switch (by matching <code>102</code> in the <code>hosts</code> file)</li>
 </ul>
 </li>
 </ul>
@@ -618,34 +637,37 @@
 <h3 id="step-7-execute-playbook">Step 7: Execute playbook</h3>
 <p>Now, we are going to execute this playbook:</p>
 <ul>
-<li>Before executing the ansible playbook, you may log into switch (leaf1, leaf3 or leaf4) using MTPutty client, and check the existing configuration by executing the below command:</li>
-</ul>
-<pre><code>show run interface ethernet1/3
-</code></pre>
-<ul>
 <li>
-<p>On MTPuttY, log back into (or launch a new ssh) into “Ansible” node</p>
+<p>Before executing the ansible playbook, log into switch (<strong>leaf1</strong>, <strong>leaf3</strong> or <strong>leaf4</strong>) using <strong>MTPuTTy</strong> client.  And check the existing configuration by executing the below command:</p>
+<p>~~~<br />
+show run interface ethernet1/3
+~~~</p>
 </li>
 <li>
-<p>Execute command <code>ansible-playbook vlan_provision.yml</code> in the “EVPN-Ansible” directory as shown below:</p>
+<p>On <strong>MTPuTTy</strong>, log back into (or launch a new ssh) into “Ansible” node</p>
 </li>
-</ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook vlan_provision.yml
-</code></pre>
-<p>Below screeenshot shows the execution of above command:</p>
+<li>
+<p>Execute below command to run the Ansible playbook in the <code>EVPN-Ansible</code> directory:</p>
+<p>~~~
+cd ~/EVPN-Ansible
+ansible-playbook vlan_provision.yml
+~~~</p>
+<p>Below screeenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/2-7-1-new.png" /></p>
-<ul>
-<li>After we push the configuration, <strong>login</strong> to the <strong>leaf-3</strong> switch, and check if the server facing port has the access vlan configured with the below command:</li>
-</ul>
-<pre><code>show run interface ethernet1/3
-</code></pre>
+</li>
+<li>
+<p>After we push the configuration, <strong>login</strong> to the <strong>leaf-3</strong> switch, and check if the server facing port has the access vlan configured with the below command:</p>
+<p>~~~<br />
+show run interface ethernet1/3
+~~~</p>
 <p>The output of above command on leaf-3 or leaf-1 is shown in below screenshot:</p>
 <p><img alt="" src="../pic/2-7-2.png" /></p>
 <p>The output of above command on leaf-4 is shown in below screenshot:</p>
 <p><img alt="" src="../pic/2-7-3.png" /></p>
+</li>
+</ul>
 <hr />
-<p><strong>Congratulation! You have created your first ansible playbook, automatically provisioned new VLANs and assigned port to new created VLANs using Ansible. Next we are going to create VXLAN Fabric using Ansible.
-</strong></p>
+<p><strong>Congratulation! You have created your first ansible playbook, automatically provisioned new VLANs and assigned port to new created VLANs using Ansible. Next we are going to create VXLAN Fabric using Ansible.</strong></p>
 
               
             </article>
