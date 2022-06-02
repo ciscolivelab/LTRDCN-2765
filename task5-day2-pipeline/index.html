@@ -468,11 +468,13 @@
 <li>GitLab runner is an application that run tests &amp; results i.e., jobs in a pipeline and then send the results to GitLab</li>
 <li>The cloud hosted GitLab is used in this lab, while the GitLab runner will be installed on the same local server which is used as Ansible host in this lab setup</li>
 </ul>
-<p>The process for creating a CI/CD pipeline with GitLab &amp; GitLab runner include below procedure:
-* Create a project in GitLab
-* Install and register the GitLab Runner for your project
-* Define a CI/CD job (steps, tests) in a file named <code>.gitlab-ci.yml</code> in the root of the repository
-* Conditions/rules can be defined in <code>.gitlab-ci.yml</code> file (YAML syntax) that will perform a job and display the results in GitLab pipeline e.g. When a commit to repository is done then the runner may execute the job and display the results in GitLab pipeline</p>
+<p>The process for creating a CI/CD pipeline with GitLab &amp; GitLab runner include below procedure:</p>
+<ul>
+<li>Create a project in GitLab</li>
+<li>Install and register the GitLab Runner for your project</li>
+<li>Define a CI/CD job (steps, tests) in a file named <code>.gitlab-ci.yml</code> in the root of the repository</li>
+<li>Conditions/rules can be defined in <code>.gitlab-ci.yml</code> file (YAML syntax) that will perform a job and display the results in GitLab pipeline e.g. When a commit to repository is done then the runner may execute the job and display the results in GitLab pipeline</li>
+</ul>
 <p>In this section, CI/CD pipeline for day 2 operation tasks will be implemented.  Below steps will be done:</p>
 <ul>
 <li>Create an Ansible playbook to verify underlay and overlay</li>
@@ -498,7 +500,7 @@
 -   show l2route evpn mac-ip all
 </code></pre>
 <ul>
-<li>Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</li>
+<li>Switch to <strong>Atom</strong>.  On the left page <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>.   Enter this file name and hit <strong>enter</strong>.  Then <strong>Copy</strong> and <strong>Paste</strong> the below content to this newly created file: </li>
 </ul>
 <pre><code class="language-YAML">---
   - hosts: leaf, jinja2_leaf
@@ -539,7 +541,7 @@
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 </li>
 <li>
-<p>On the Ansible node (via <strong>MTPutty</strong>), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag).  This command will show ospf, bgp and pim neighbors for all leaf switches:</p>
+<p>On the <strong>Ansible</strong> node (via <strong>MTPutty</strong>), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag).  This command will show ospf, bgp and pim neighbors for all leaf switches:</p>
 </li>
 </ul>
 <pre><code>cd ~/EVPN-Ansible
@@ -659,11 +661,11 @@ PLAY RECAP *********************************************************************
 198.18.4.104               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 </code></pre>
-<p>Next:</p>
+<p><strong>Next:</strong></p>
 <ul>
-<li>Run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>overlay</strong> using the respective tag in the command (as shown below).  This command will show the nve tunnel peer, host route in BGP EVPN from all leaf switches:</li>
+<li>On the <strong>Ansible</strong> node (via <strong>MTPutty</strong>), execute the <strong>verify_fabric.yml</strong> playbook by issuing below command.  As per below, this command uses the <em>--tags</em> in the syntax to execute the respective tasks (as per the tag) in the playbook.  As per the output, <strong>verify</strong> the <strong>overlay</strong> outputs (as shown below).  <em>Note:</em> This command will show the nve tunnel peer, host route in BGP EVPN from all leaf switches:</li>
 </ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
+<pre><code>ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
 </code></pre>
 <ul>
 <li>
@@ -997,7 +999,7 @@ root@ubuntu:~/EVPN-Ansible#
 <h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and gitlab runner</h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
-<li>On the Ansible node (in <strong>MTputty</strong> SSH session), run the command <code>apt-get install git</code> to install git as shown below:</li>
+<li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below package installation command to install git:</li>
 </ul>
 <pre><code>cd ~/EVPN-Ansible
 apt-get install git
@@ -1005,15 +1007,15 @@ apt-get install git
 <p>Below screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-1.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run the below <code>curl</code> command to download and run a shell script that adds the official GitLab repository required for runner installation:</li>
+<li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below <code>curl</code> command to download and run a shell script that adds the official GitLab repository required for runner installation:</li>
 </ul>
 <pre><code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
 
 </code></pre>
-<p>Bwlow screenshot shows the execution of the command</p>
+<p>Below screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-2.png" /></p>
 <ul>
-<li>On the Ansible node (in MTputty SSH session), run the below command to install <code>gitlab-runner</code></li>
+<li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below command to install <code>gitlab-runner</code></li>
 </ul>
 <pre><code>apt-get install gitlab-runner
 </code></pre>
@@ -1027,15 +1029,24 @@ apt-get install git
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
-<p>After sign in to <strong>lab.ciscolive</strong> gitlab account, click <strong>New project</strong> on the top right to build a new project.</p>
+<p>After sign in to <strong>lab.ciscolive</strong> gitlab account, click <strong>New project</strong> on the top right to build a new project as shown below:</p>
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
-<p>Select <strong>Create blank project</strong> and create new project with your assigned <strong>POD_{ID}</strong>. The screenshot below uses <strong>POD_1</strong> as example - you must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
+<p>Select <strong>Create project</strong> to create a blank project with your assigned <strong>POD_{ID}</strong>.  Note: The screenshot below uses:</p>
+<ul>
+<li>
+<p><strong>POD_1</strong> as example - you must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
+</li>
+<li>
+<p>On this page, <strong>Select</strong> the <strong>Visibility Level</strong> to <code>Private</code></p>
+</li>
+<li>On this page, <strong>Click</strong> the <code>checkbox</code> to <code>Initialize repository with a README</code>  </li>
+</ul>
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 </li>
 <li>
-<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   Note: you must replace <code>{ID}</code> with your respective pod number.  </p>
+<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   Note: you must replace <code>{ID}</code> with your respective pod number.  </p>
 <p>The screenshot below uses <strong>POD_1</strong> as example.</p>
 </li>
 </ul>
