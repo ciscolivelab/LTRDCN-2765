@@ -310,27 +310,22 @@
 <h1 id="steps-for-missing-spinej2-file">Steps for missing <code>spine.j2</code> file</h1>
 <p><strong>NOTE: If the file does not appear on the Atom, then go ahead and execute below 4 steps to get it sync.  If the <code>spine.j2</code> file appears in above folder then you can skip below 4 steps and proceed with your lab steps:</strong></p>
 <ol>
-<li>
-<p>On Ansible server (198.18.134.150) using your SSH session, change Directory to folder EVPN-Ansible using below command:</p>
-<p>~~~
-cd ~/EVPN-Ansible/
-~~~</p>
-</li>
-<li>
-<p>further, change Directory (cd) to folder roles/jinja2_spine/templates using below command:</p>
-<p>~~~
-cd roles/jinja2_spine/templates/
-~~~</p>
-</li>
-<li>
-<p>Type <code>touch spine.j2</code> as shown below:</p>
-<p>~~~
-touch spine.j2
-~~~</p>
-</li>
-<li>
-<p>After entering the command, go back to ATOM,  <strong>right click</strong> on folder <code>EVPN-Ansible</code>, scroll to choose option <code>Remote Sync</code> option and choose <code>Download Folder</code> as shown below:</p>
-</li>
+<li>On Ansible server (198.18.134.150) using your SSH session, change Directory to folder EVPN-Ansible using below command:</li>
+</ol>
+<pre><code>cd ~/EVPN-Ansible/
+</code></pre>
+<ol>
+<li>further, change Directory (cd) to folder roles/jinja2_spine/templates using below command:</li>
+</ol>
+<pre><code>cd roles/jinja2_spine/templates/
+</code></pre>
+<ol>
+<li>Type <code>touch spine.j2</code> as shown below:</li>
+</ol>
+<pre><code>touch spine.j2
+</code></pre>
+<ol>
+<li>After entering the command, go back to ATOM,  <strong>right click</strong> on folder <code>EVPN-Ansible</code>, scroll to choose option <code>Remote Sync</code> option and choose <code>Download Folder</code> as shown below:</li>
 </ol>
 <p><img alt="" src="../pic/3-5-1.png" /></p>
 <p>Now that the file/folder appears properly on ATOM, go ahead and proceed with further steps on your lab guide</p>
