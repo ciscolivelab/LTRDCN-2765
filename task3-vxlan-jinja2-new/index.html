@@ -727,7 +727,7 @@ more spine.j2
 <img alt="" src="../pic/3-5-6.png" /></p>
 <hr />
 <h3 id="step-6-create-playbook-for-jinja2_spine-role">Step 6: Create playbook for jinja2_spine role</h3>
-<p>The playbook for <code>jinja2_spine</code> roles has two tasks. </p>
+<p>The playbook for <code>jinja2_spine</code> roles has two tasks.</p>
 <ul>
 <li>First task uses ansible <strong>template</strong> module to generate configuration file based on jinja2 template created in last step.  The configuration file is saved in “<strong>file</strong>” folder</li>
 <li>Second task pushes the configuration to switch</li>
@@ -767,9 +767,8 @@ ansible-playbook jinja2_fabric.yml
 <pre><code>**Note: It will take few minutes to push configuration**
 
 Below screenshot shows the execution of above playbook:
-
-![](pic/3-7-1.png)
 </code></pre>
+<p><img alt="" src="../pic/3-7-1.png" /></p>
 <p>To verify the execution of this playbook, you can:</p>
 <ul>
 <li>
@@ -788,7 +787,7 @@ Below screenshot shows the execution of above playbook:
 <p>In this section, we will use Jina2 template and Ansible to provision the VXLAN Fabric on leaf-4.   We are going to add jinja2_leaf this time in the hosts list to the already created playbook in step 2.</p>
 <ul>
 <li>
-<p>Switch to “<strong>Atom</strong>”, then <strong>click</strong> on the folder <code>EVPN-Ansible</code>, select the existing playbook <code>jinja2_fabric.yml</code> file for a role for leaf (named jinja2_leaf) </p>
+<p>Switch to “<strong>Atom</strong>”, then <strong>click</strong> on the folder <code>EVPN-Ansible</code>, select the existing playbook <code>jinja2_fabric.yml</code> file for a role for leaf (named jinja2_leaf)</p>
 </li>
 <li>
 <p><strong>Add</strong> (i.e., <strong>Copy</strong> and <strong>Paste</strong>) the below content at the end of existing file i.e., add the below content to existing content in this file.  <strong><em>Note: do not overwrite existing content</em></strong>:</p>
