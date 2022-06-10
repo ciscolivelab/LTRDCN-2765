@@ -764,10 +764,8 @@ more spine.j2
 <pre><code>cd ~/EVPN-Ansible/
 ansible-playbook jinja2_fabric.yml
 </code></pre>
-<pre><code>**Note: It will take few minutes to push configuration**
-
-Below screenshot shows the execution of above playbook:
-</code></pre>
+<p><strong>Note: It will take few minutes to push configuration</strong></p>
+<p>Below screenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/3-7-1.png" /></p>
 <p>To verify the execution of this playbook, you can:</p>
 <ul>
@@ -813,11 +811,11 @@ Below screenshot shows the execution of above playbook:
   asn: 65000
   bgp_neighbors:
   -  remote_as: 65000
-    neighbor: 192.168.0.6
-    update_source: Loopback0
+     neighbor: 192.168.0.6
+     update_source: Loopback0
   -  remote_as: 65000
-    neighbor: 192.168.0.7
-    update_source: Loopback0
+     neighbor: 192.168.0.7
+     update_source: Loopback0
   rp_address: 192.168.0.100
   L3_interfaces:
   -  interface: Ethernet 1/1
@@ -826,21 +824,21 @@ Below screenshot shows the execution of above playbook:
   -  interface: loopback 1
   L2VNI:
   -  vlan_id: 140
-    vni: 50140
-    ip_add: 172.21.140.1
-    mask: 24
-    vlan_name: L2-VNI-140-Tenant1
-    mcast: 239.0.0.140
+     vni: 50140
+     ip_add: 172.21.140.1
+     mask: 24
+     vlan_name: L2-VNI-140-Tenant1
+     mcast: 239.0.0.140
   -  vlan_id: 141
-    vni: 50141
-    ip_add: 172.21.141.1
-    mask: 24
-    vlan_name: L2-VNI-141-Tenant1
-    mcast: 239.0.0.141
+     vni: 50141
+     ip_add: 172.21.141.1
+     mask: 24
+     vlan_name: L2-VNI-141-Tenant1
+     mcast: 239.0.0.141
   L3VNI:
   -  vlan_id: 999
-    vlan_name: L3-VNI-999-Tenant1
-    vni: 50999
+     vlan_name: L3-VNI-999-Tenant1
+     vni: 50999
 </code></pre>
 <p>Below screenshot shows the contents of jinja2_leaf\vars\main.yml file in Atom:</p>
 <p><img alt="" src="../pic/3-9-1.png" /></p>
