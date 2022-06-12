@@ -516,7 +516,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.**</p>
+<p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provision VLAN</span><span class="w"></span>
@@ -534,28 +534,34 @@
 <ul>
 <li>This play creates multiple VLANs using <strong>cisco.nxos.nxos_vlans</strong> module</li>
 <li>Above only one play is added but multiple plays can be defined in one playbook under “<strong>tasks</strong>”, each starts with <strong><code>“-“</code></strong></li>
-<li>
-<p>At the end of this play, we use “<strong>tags</strong>” to name the play “<strong>add vlans</strong>”. This is useful to run a specific part of the configuration without running whole playbook.</p>
-</li>
+<li>At the end of this play, we use “<strong>tags</strong>” to name the play “<strong>add vlans</strong>”. This is useful to run a specific part of the configuration without running whole playbook.</li>
+</ul>
+</div>
+<ul>
 <li>
 <p>Below screenshot shows how playbook will look:</p>
+<p><img alt="" src="../pic/2-4-1.png" /></p>
 </li>
 </ul>
-<p><img alt="" src="../pic/2-4-1.png" /></p>
-<p><strong>NOTE: Formatting is extremely important when working with Ansible. Ansible playbook would return errors if the spaces are not properly aligned or formatting is not correct</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Formatting is extremely important when working with Ansible. Ansible playbook would return errors if the spaces are not properly aligned or formatting is not correct.</p>
 </div>
 <ul>
 <li>
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> .  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 <p><img alt="" src="../pic/2-4-2.png" /></p>
-<p><strong>NOTE: Once the Save button is pressed, then at the lower part of ATOM app, you will see message about connecting to Ansibe host (198.18.134.150) and saving the vlan_provision.yml file</strong></p>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once the Save button is pressed, then at the lower part of ATOM app, you will see message about connecting to Ansibe host (198.18.134.150) and saving the vlan_provision.yml file.</p>
+</div>
 <hr />
 <h3 id="step-5-execute-playbook">Step 5: Execute playbook</h3>
 <p>After creating the playbook, it is now time to execute the playbook.  Before executing the playbook, we will verify the leaf switch that desired vlan configurations are not present</p>
 <ul>
-<li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch as per <strong>hosts*:</strong> variable in the <code>vlan_provision.yml</code> file).  Then execute below command:</li>
+<li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch as per <strong>hosts:</strong> variable in the <code>vlan_provision.yml</code> file).  Then execute below command:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>show vlan brief
 </code></pre></div>
