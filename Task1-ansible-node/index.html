@@ -487,7 +487,7 @@
 
 <p>Your first task will be to build an Ansible node on a server running redhat CentOS operating system.  At the end of this task, you will have a fully operational Ansible node.</p>
 <h4 id="step-1-connect-to-lab-using-anyconnect-vpn">Step 1: Connect to lab using anyconnect VPN</h4>
-<p>You will connect to <strong>dcloud-lon-anyconnect.cisco.com</strong> using Cisco VPN AnyConnect client, as shown in below picture, with the username and password provided by the lab admin.</p>
+<p>You will connect to <strong>Anyconnect url</strong> using Cisco VPN AnyConnect client and with the username &amp; password as documented in below table.  Below screenshot shows an example of that VPN connection.</p>
 <table>
 <thead>
 <tr>
@@ -619,8 +619,10 @@
 </div>
 <p><img alt="" src="../pic/1-1-1-rtp.png" /></p>
 <h4 id="step-2-enter-vpn-credentials">Step 2: Enter VPN credentials</h4>
-<p>After prompted for credentials, use the credentials provided by the lab admin.    <br />
-•   Below is an example of user logging into a reference POD:</p>
+<p>After prompted for credentials, use the credentials documented in above table or provided by the lab admin.</p>
+<ul>
+<li>Below is an example of user logging into a reference POD:</li>
+</ul>
 <p><img alt="" src="../pic/1-2-vpn-credentials.png" /></p>
 <ul>
 <li>Hit accept when the prompt appears to accept the VPN connection login</li>
@@ -636,11 +638,11 @@
 <p>Below screenshot is only an example for this RDP connection:</p>
 <p><img alt="" src="../pic/1-3-RDP.png" /></p>
 <h4 id="step-4-ssh-client-mtputty">Step 4: SSH client - MTputty</h4>
-<p>Once you have the RDP session to the remote workstation, then you will use MTputty client to connect to all devices (Nexus, Ansible node) in this lab.</p>
+<p>Once you have the RDP session to the remote workstation, then you will use MTputty client to connect to all devices (Nexus and Ansible server/node) in this lab.</p>
 <p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by clicking on the icon on the desktop:</p>
 <p><img alt="" src="../pic/1-4-mtputty.png" /></p>
 <h4 id="step-5-ssh-into-ansible-node">Step 5: SSH into Ansible node</h4>
-<p>SSH into Ansible node (198.18.134.150) by double clicking the Ansible icon on the left pane with username <strong>root</strong> and password <strong>C1sco12345</strong></p>
+<p>SSH into Ansible node (198.18.134.150) by double clicking the Ansible icon on the left pane.  The passwords are pre-configured but if prompted then use credentials of username <strong>root</strong> and password <strong>C1sco12345</strong> for SSH</p>
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
 <h4 id="step-6-verify-python">Step 6: Verify Python</h4>
 <p>Ansible can be run from any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansbile.</p>
