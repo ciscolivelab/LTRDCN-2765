@@ -487,11 +487,12 @@
 <h3 id="step-3-define-variables-tasks-for-playbook">Step 3: Define variables, tasks for playbook</h3>
 <p>In this step, we are going to create a playbook and define the variable &amp; tasks in the playbook</p>
 <ul>
-<li>In the <strong>Atom</strong> application, under the <code>vlan_provision.yml</code> file, enter the below content:<ul>
-<li><strong>NOTE: YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</strong></li>
+<li>In the <strong>Atom</strong> application, under the <code>vlan_provision.yml</code> file, enter the below content:</li>
 </ul>
-</li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w">                     </span>
 <span class="c1">#Task 2: Simple playbook assign VLAN to server facing port</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf:jinja2_leaf</span><span class="w"></span>
