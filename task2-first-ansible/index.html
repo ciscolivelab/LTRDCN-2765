@@ -445,8 +445,8 @@
 
 <p>In this section, your will create the first Ansible Playbook for this lab.  This Ansible Playbook will be used to configure VLANs on leaf switches, and to assign VLANs to the server facing port.  Further, you will create and learn about:</p>
 <ul>
-<li>using variables inside playbook, </li>
-<li>loop within Ansible by using “<strong>with_items</strong>”, </li>
+<li>using variables inside playbook,</li>
+<li>loop within Ansible by using “<strong>with_items</strong>”,</li>
 <li>logic of using “<strong>when</strong>” and “<strong>tags</strong>” to isolate tasks from whole playbook</li>
 </ul>
 <hr />
@@ -487,7 +487,7 @@
 <h3 id="step-3-define-variables-tasks-for-playbook">Step 3: Define variables, tasks for playbook</h3>
 <p>In this step, we are going to create a playbook and define the variable &amp; tasks in the playbook</p>
 <ul>
-<li>In the <strong>Atom</strong> application, under the <code>vlan_provision.yml</code> file, enter the below content: <ul>
+<li>In the <strong>Atom</strong> application, under the <code>vlan_provision.yml</code> file, enter the below content:<ul>
 <li><strong>NOTE: YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</strong></li>
 </ul>
 </li>
@@ -547,7 +547,7 @@
 <h3 id="step-5-execute-playbook">Step 5: Execute playbook</h3>
 <p>After creating the playbook, it is now time to execute the playbook.  Before executing the playbook, we will verify the leaf switch that desired vlan configurations are not present</p>
 <ul>
-<li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch in previous playbook - remember the <strong><em>hosts</em>:</strong> variable in the file).  Then execute below command:</li>
+<li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch as per <strong>hosts*:</strong> variable in the <code>vlan_provision.yml</code> file).  Then execute below command:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>show vlan brief
 </code></pre></div>
@@ -566,7 +566,10 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 </code></pre></div>
 <p>The below screenshot shows the execution of the playbook:</p>
 <p><img alt="" src="../pic/2-5-2.png" /></p>
-<p><strong>Note: If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</p>
+</div>
 <ul>
 <li>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appears by executing below command again:</li>
 </ul>

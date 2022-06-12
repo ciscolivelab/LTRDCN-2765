@@ -777,14 +777,14 @@ EOF
 <p class="admonition-title">Note</p>
 <p>you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</p>
 </div>
-<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; ansible.cfg
-[defaults]
-inventory = hosts
-host_key_checking = false
-record_host_key = true
-stdout_callback = debug
-deprecation_warnings = False
-EOF
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; ansible.cfg</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">[defaults]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">inventory = hosts</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">host_key_checking = false</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">record_host_key = true</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">stdout_callback = debug</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">deprecation_warnings = False</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
 </code></pre></div>
 <ul>
 <li>Now you may verify the content of this file using below command:</li>
