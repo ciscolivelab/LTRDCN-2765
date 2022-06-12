@@ -765,10 +765,7 @@ more spine.j2
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>In the above YAML file, ansible module named “<strong>cisco.nxos.nxos_config</strong>” is used.  This module performs below activities:</p>
-</div>
 <ul>
 <li>It uses source path of the file (“<strong><em>src</em></strong>”) that contains the configuration or configuration template to load into spine</li>
 <li>Since “<strong><em>match</em></strong>” option is set to none (yes), hence the module will not attempt to compare the source configuration with the running configuration on the remote device.</li>
@@ -784,7 +781,7 @@ ansible-playbook jinja2_fabric.yml
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It will take few minutes to push configuration**</p>
+<p>It will take few minutes to push configuration</p>
 </div>
 <p>Below screenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/3-7-1.png" /></p>
