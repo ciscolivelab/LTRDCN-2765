@@ -1044,10 +1044,14 @@ apt-get install git
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 </li>
 <li>
-<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   Note: you must replace <code>{ID}</code> with your respective pod number.  </p>
-<p>The screenshot below uses <strong>POD_1</strong> as example.</p>
+<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   </p>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  </p>
+</div>
+<p>The screenshot below uses <strong>POD_1</strong> as example.</p>
 <p><img alt="" src="../pic/5-2-6.png" /></p>
 <ul>
 <li>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change is done by cl the <strong>main</strong> branch to unprotected from project from the left pane Select <strong>Settings &gt; Repository</strong> and then on right pane Click <strong>Protected branches &gt; unprotect</strong> as shown in below screenshot:</li>
@@ -1087,7 +1091,12 @@ git push -f origin main
 <p>Below screenshot shows partial outputs of the commands:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
 <h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
-<p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration.  <em>Note, the file name starts with </em><em>.</em><em> and it's not a mistake</em>.  The file needs to be placed in root of the repository.  Inside the file, you will define:
+<p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The file name starts with <strong>.</strong> and it's not a mistake.  </p>
+</div>
+<p>The file needs to be placed in root of the repository.  Inside the file, you will define:
 - The stages you want run in the pipeline
 - The scripts you want run in each stage
 - The runner you want use for each script
@@ -1202,7 +1211,10 @@ gitlab-runner status
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w">  </span>
 </code></pre></div>
-<p><strong>Note:</strong> YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (column number 3).  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (column number 3).  </p>
+</div>
 <p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-1.png" /></p>
 <ul>
@@ -1216,7 +1228,10 @@ gitlab-runner status
 <div class="highlight"><pre><span></span><code><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w">  </span>
 </code></pre></div>
-<p><strong>Note:</strong> YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (column number 3).  Below screenshot shows the file after added above contents on Atom</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (column number 3).  Below screenshot shows the file after added above contents on Atom</p>
+</div>
 <p><img alt="" src="../pic/5-6-2.png" /></p>
 <ul>
 <li>
@@ -1309,8 +1324,12 @@ git push -f origin newvni
 </ul>
 <p><img alt="" src="../pic/5-8-1.png" /></p>
 <ul>
-<li>Under the <code>Source branch</code> section, from the <code>Select source branch</code> drop down menu select <strong>newvni</strong> branch.  Further, on the <code>Target branch</code> section, under <code>Select target branch</code> drop down menu make sure that <strong>main</strong> branch is selected as shown in the screenshot below.  <strong>Note:</strong> below screenshot uses POD 1 as example, you must use your assigned POD ID from table in task1.</li>
+<li>Under the <code>Source branch</code> section, from the <code>Select source branch</code> drop down menu select <strong>newvni</strong> branch.  Further, on the <code>Target branch</code> section, under <code>Select target branch</code> drop down menu make sure that <strong>main</strong> branch is selected as shown in the screenshot below.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below screenshot uses POD 1 as example, you must use your assigned POD ID from table in task1.</p>
+</div>
 <p><img alt="" src="../pic/5-8-2.png" /></p>
 <ul>
 <li>
