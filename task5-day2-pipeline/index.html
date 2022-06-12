@@ -462,7 +462,7 @@
 
 
 <h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline</h1>
-<p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose </p>
+<p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose</p>
 <ul>
 <li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system</li>
 <li>GitLab runner is an application that run tests &amp; results i.e., jobs in a pipeline and then send the results to GitLab</li>
@@ -500,7 +500,7 @@
 -   show l2route evpn mac-ip all
 </code></pre>
 <ul>
-<li>Switch to <strong>Atom</strong>.  On the left page <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>.   Enter this file name and hit <strong>enter</strong>.  Then <strong>Copy</strong> and <strong>Paste</strong> the below content to this newly created file: </li>
+<li>Switch to <strong>Atom</strong>.  On the left page <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>.   Enter this file name and hit <strong>enter</strong>.  Then <strong>Copy</strong> and <strong>Paste</strong> the below content to this newly created file:</li>
 </ul>
 <pre><code class="language-YAML">---
   - hosts: leaf, jinja2_leaf
@@ -1025,7 +1025,7 @@ apt-get install git
 <p>In this step, you will use Gitlab to set version control for the playbooks.</p>
 <ul>
 <li>
-<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>xx</code> as shown below.</p>
+<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>C1sco12345</code> as shown below.</p>
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
@@ -1075,12 +1075,12 @@ git remote -v
 <li>Then to add all the files (Ansible playbooks, roles etc) to the staging area and check the status by using below commands:</li>
 </ul>
 <pre><code>git add .
-git status 
+git status
 </code></pre>
 <p>Below screenshot shows the execution of the above commands:</p>
 <p><img alt="" src="../pic/5-3-5c.png" /></p>
 <ul>
-<li>Next, commit and push all files to <strong>main</strong> branch with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>xx</code></li>
+<li>Next, commit and push all files to <strong>main</strong> branch with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code></li>
 </ul>
 <pre><code>git checkout -b main
 git commit -m &quot;initial commit&quot;
@@ -1153,7 +1153,7 @@ deploy:
 * In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
 </li>
 <li>
-<p>Next, Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>xx</code>for GitLab access:</p>
+<p>Next, Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</p>
 </li>
 </ul>
 <pre><code>git add .gitlab-ci.yml
@@ -1240,7 +1240,7 @@ git add .
 git commit -m &quot;newvni&quot;
 git push -f origin newvni
 </code></pre>
-<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>xx</code> for gitlab access</p>
+<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>C1sco12345</code> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
@@ -1306,7 +1306,7 @@ git push -f origin newvni
     - '----------- -------------- ------ ---------- --------------- ---------------'
 </code></pre>
 <h3 id="step-8-merge-to-main-branch">Step 8: Merge to main branch</h3>
-<p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment. </p>
+<p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment.</p>
 <p>Typically in real world there will (should!) be separate environments for staging and production.  In this lab, we are using same inventory for staging and production environments for simplicy purposes.  So once the merge is done then the changes can be rolled out to production (by appling ansible playbooks)</p>
 <ul>
 <li>Switch to Chrome browser with gitlab project page for your respective <code>pod_{ID}</code> <strong>repository</strong>.  Select <strong>Merge requests</strong> from navigation menu on the left, and select <strong>New merge request</strong> as shown below.</li>
