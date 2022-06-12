@@ -640,7 +640,7 @@
 <p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by clicking on the icon on the desktop:</p>
 <p><img alt="" src="../pic/1-4-mtputty.png" /></p>
 <h4 id="step-5-ssh-into-ansible-node">Step 5: SSH into Ansible node</h4>
-<p>SSH into Ansible node (198.18.134.150) by double clicking the Ansible icon on the left pan with username <strong>root</strong> and password <strong>C1sco12345</strong></p>
+<p>SSH into Ansible node (198.18.134.150) by double clicking the Ansible icon on the left pane with username <strong>root</strong> and password <strong>C1sco12345</strong></p>
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
 <h4 id="step-6-verify-python">Step 6: Verify Python</h4>
 <p>Ansible can be run from any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansbile.</p>
@@ -665,7 +665,10 @@ apt install pip
 </ul>
 <div class="highlight"><pre><span></span><code>pip install --upgrade pip==20.3.4
 </code></pre></div>
-<p><strong>Note:</strong> you can ignore the warning related to python version.  Below screenshot shows the execution of above command:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can ignore the warning related to python version.  Below screenshot shows the execution of above command.</p>
+</div>
 <p><img alt="" src="../pic/1-6-3-python-new.png" /></p>
 <p>After installing PIP package, we are going to add the relevant packages that are needed for this Ansible based VXLAN lab. Below are the required packages in this lab:</p>
 <ul>
@@ -686,8 +689,12 @@ apt install pip
 <h4 id="step-8-ansible-installation">Step 8: Ansible Installation</h4>
 <p>In this step, Ansible and the required modules for this lab are going to be installed on this node/server (running Ubuntu).</p>
 <ul>
-<li>Initiate the installation of ansible using below command -  note: it may take few minutes for it to download and install:</li>
+<li>Initiate the installation of ansible using below command:</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take few minutes for it to download and install.</p>
+</div>
 <div class="highlight"><pre><span></span><code>pip install ansible==2.10.6
 </code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
@@ -706,8 +713,11 @@ apt install pip
 </code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-7-4-collection.png" /></p>
-<p><strong>Note:</strong>: Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page.
-<a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page.</p>
+</div>
+<p><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
 <h4 id="step-9-create-ansible-settings-inventory-and-variables">Step 9: Create Ansible Settings, Inventory and variables</h4>
 <p>Ansible server uses host inventory to communicate with target devices (called as hosts). Like other programming languages, ansible uses variables to represent variations among different target devices.   This is important as Ansible works against multiple systems by selecting portions of systems listed in Ansible inventory.  Additionally, Ansible settings such as how SSH keys verification is done, name/location of inventory file to be used etc are adjustable via a configuration file named <code>ansible.cfg</code>.  It is an INI based file.</p>
 <ul>
@@ -722,7 +732,12 @@ ls
 <ul>
 <li>Create Ansible inventory file to include Spine and Leaf switches.</li>
 <li>By default Ansible has inventory file saved in location /etc/ansible/hosts.</li>
-<li>In this lab we will create hosts file in the working environment. This file is created from ansible host prompt using <code>cat</code> command.   <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code> (also shown in subsequent screenshot):<pre><code>cat &lt;&lt; EOF &gt;&gt; hosts
+<li>In this lab we will create hosts file in the working environment. This file is created from ansible host prompt using <code>cat</code> command.   </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code> (also shown in subsequent screenshot):</p>
+<pre><code>cat &lt;&lt; EOF &gt;&gt; hosts
 #define global variables, groups and host variables
 [all:vars]
 ansible_connection = ansible.netcommon.network_cli
@@ -746,8 +761,7 @@ gather_fact=no
 198.18.134.53 eth1=172.21.141.11 gw=172.21.141.1
 EOF
 </code></pre>
-</li>
-</ul>
+</div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/1-9a-1-hosts.png" /></p>
 <ul>
@@ -758,8 +772,12 @@ EOF
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-2-hosts.png" /></p>
 <ul>
-<li>Create Ansible config (ansible.cfg) using the same steps as above.  <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</li>
+<li>Create Ansible config (ansible.cfg) using the same steps as above.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</p>
+</div>
 <div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; ansible.cfg
 [defaults]
 inventory = hosts
@@ -789,8 +807,12 @@ EOF
 <div class="highlight"><pre><span></span><code>mkdir host_vars &amp;&amp; cd host_vars
 </code></pre></div>
 <ul>
-<li>Create host variable file for each host in inventory by using the cat command.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+<li>Create host variable file for each host in inventory by using the cat command.  The variable file for a switch is created using the below cat command.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot). The spaces in the file are important so do not remove those.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.101.yml</span><span class="w"></span>
 <span class="nn">---</span><span class="w"></span>
 <span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf_1</span><span class="w"></span>
@@ -809,8 +831,12 @@ EOF
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-101-more.png" /></p>
 <ul>
-<li>Create a new host variable file for next host in inventory.   The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+<li>Create a new host variable file for next host in inventory.   The variable file for a switch is created using the below <code>cat</code> command:</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  The spaces in the file are important so do not remove those.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.103.yml</span><span class="w"></span>
 <span class="nn">---</span><span class="w"></span>
 <span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf_3</span><span class="w"></span>
@@ -829,8 +855,12 @@ EOF
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-103-more.png" /></p>
 <ul>
-<li>Create a new host variable file for next host in inventory. The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+<li>Create a new host variable file for next host in inventory. The variable file for a switch is created using the below cat command.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot). The spaces in the file are important so do not remove those.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.104.yml</span><span class="w"></span>
 <span class="nn">---</span><span class="w"></span>
 <span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf_4</span><span class="w"></span>
@@ -847,8 +877,12 @@ EOF
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-104.png" /></p>
 <ul>
-<li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from cat till EOF (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+<li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy and paste starting from cat till EOF (as shown in below screenshot). The spaces in the file are important so do not remove those.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.201.yml</span><span class="w"></span>
 <span class="nn">---</span><span class="w"></span>
 <span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine-1</span><span class="w"></span>
@@ -865,8 +899,12 @@ EOF
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-201.png" /></p>
 <ul>
-<li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from cat till EOF (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
+<li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy and paste starting from cat till EOF (as shown in below screenshot). The spaces in the file are important so do not remove those.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.202.yml</span><span class="w"></span>
 <span class="nn">---</span><span class="w"></span>
 <span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine-2</span><span class="w"></span>
