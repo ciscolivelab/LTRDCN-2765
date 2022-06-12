@@ -1177,9 +1177,10 @@ git push -f origin main
 <li>
 <p>In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
 </li>
-<li>
-<p>Next, Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</p>
-</li>
+</ul>
+<p>Continuing the lab steps next:</p>
+<ul>
+<li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git add .gitlab-ci.yml
 git commit -m &quot;add ci file&quot;
