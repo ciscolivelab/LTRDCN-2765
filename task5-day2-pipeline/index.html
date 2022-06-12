@@ -1191,11 +1191,12 @@ git push origin main
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
 <p>In this task, you will create local gitlab runner to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner and register it to your project.</p>
 <ul>
-<li>
-<p>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left side, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</p>
-<p>Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</p>
-</li>
+<li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left side, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</p>
+</div>
 <p><img alt="" src="../pic/5-5-1.png" /></p>
 <ul>
 <li>As shown in below screenshot: under the <strong>Specific runners</strong>, note down the URL of <code>Register the runner with this URL</code>, and the <code>Registration token</code>.  Both of these will be used on next step.   Further, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
