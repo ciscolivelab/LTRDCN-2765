@@ -715,9 +715,8 @@ apt install pip
 <p><img alt="" src="../pic/1-7-4-collection.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page.</p>
+<p>Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page <a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
 </div>
-<p><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html</a></p>
 <h4 id="step-9-create-ansible-settings-inventory-and-variables">Step 9: Create Ansible Settings, Inventory and variables</h4>
 <p>Ansible server uses host inventory to communicate with target devices (called as hosts). Like other programming languages, ansible uses variables to represent variations among different target devices.   This is important as Ansible works against multiple systems by selecting portions of systems listed in Ansible inventory.  Additionally, Ansible settings such as how SSH keys verification is done, name/location of inventory file to be used etc are adjustable via a configuration file named <code>ansible.cfg</code>.  It is an INI based file.</p>
 <ul>
@@ -737,31 +736,30 @@ ls
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code> (also shown in subsequent screenshot):</p>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; hosts
-#define global variables, groups and host variables
-[all:vars]
-ansible_connection = ansible.netcommon.network_cli
-ansible_network_os = cisco.nxos.nxos
-ansible_user=admin
-ansible_password=C1sco12345
-ansible_command_timeout=180
-gather_fact=no
-[jinja2_spine]
-198.18.4.202
-[jinja2_leaf]
-198.18.4.104
-[spine]
-198.18.4.201
-[leaf]
-198.18.4.101
-198.18.4.103
-[server]
-198.18.134.50 eth1=172.21.140.10 gw=172.21.140.1
-198.18.134.52 eth1=172.21.140.11 gw=172.21.140.1
-198.18.134.53 eth1=172.21.141.11 gw=172.21.141.1
-EOF
-</code></pre>
 </div>
+<p>cat &lt;&lt; EOF &gt;&gt; hosts
+    #define global variables, groups and host variables
+    [all:vars]
+    ansible_connection = ansible.netcommon.network_cli
+    ansible_network_os = cisco.nxos.nxos
+    ansible_user=admin
+    ansible_password=C1sco12345
+    ansible_command_timeout=180
+    gather_fact=no
+    [jinja2_spine]
+    198.18.4.202
+    [jinja2_leaf]
+    198.18.4.104
+    [spine]
+    198.18.4.201
+    [leaf]
+    198.18.4.101
+    198.18.4.103
+    [server]
+    198.18.134.50 eth1=172.21.140.10 gw=172.21.140.1
+    198.18.134.52 eth1=172.21.140.11 gw=172.21.140.1
+    198.18.134.53 eth1=172.21.141.11 gw=172.21.141.1
+EOF</p>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/1-9a-1-hosts.png" /></p>
 <ul>
