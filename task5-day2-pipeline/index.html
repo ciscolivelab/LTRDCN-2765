@@ -1151,17 +1151,15 @@ git push -f origin main
 <p>Below screenshot shows the file after added above contents on Atom</p>
 <p><img alt="" src="../pic/5-3-7.png" /></p>
 <ul>
-<li>
-<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new pipeline to Ansible node</p>
+<li>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new pipeline to Ansible node</li>
+</ul>
 <p><strong>Note</strong>, in the above pipeline file, you have configured
 * Three stages for pipeline named <strong>test</strong>, <strong>staging</strong> and <strong>production</strong>
 * In <strong>test</strong> stage, pipeline will do dry-run for the ansible playbook using a git-runner with tag <strong>EVPN</strong>. This script will be triggered by change in branch
 * In <strong>staging</strong> stage, pipeline will run playbooks to build EVPN fabric for new VNIs, also collrect show outputs files for manual verification. This scripts will be triggered after success of test stage.
 * In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
-</li>
-<li>
-<p>Next, Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</p>
-</li>
+<ul>
+<li>Next, Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git add .gitlab-ci.yml
 git commit -m &quot;add ci file&quot;
