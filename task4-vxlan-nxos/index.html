@@ -879,7 +879,10 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<p><strong>Note</strong>, in the above <code>task/main.yml</code> file multiple NXOS ansible modules have been used:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the above <code>task/main.yml</code> file multiple NXOS ansible modules have been used:</p>
+</div>
 <ul>
 <li>
 <p>“<strong>cisco.nxos.nxos_feature</strong>” module provides the capability to manage features in NX-OS features.  It is used to enable bgp as a feature in above configurations</p>
