@@ -630,12 +630,16 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on ATOM.  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
-<p>In this new play, we used nxos module “<strong>cisco.nxos.nxos_interfaces</strong>” and “<strong>cisco.nxos.nxos_l2_interfaces</strong>”:
-* “<strong>cisco.nxos.nxos_interfaces</strong>” provides the capability to manage the physical attributes of an interface.  In this example, it is used to configure “layer 2” on interface Ethernet 1/3
-* “<strong>cisco.nxos.nxos_l2_interfaces</strong>” provides the capability to manage the Layer 2 switchport attributes.  In this example, it is used to configure access mode on Ethernet ports 1/3
-* We used “<strong>when</strong>” argument to provide little logic of looking at the IP addresses (as per <strong>hosts</strong> i.e., inventory file) to the play and then appropriately assign VLANs to those hosts.  In our example, the playbook assigned:
-    *  VLAN 140 on leaf1 and leaf3 switches (by matching <code>101</code> and <code>103</code> in the <code>hosts</code> file)
-    *  VLAN 141 on leaf4 switch (by matching <code>102</code> in the <code>hosts</code> file)</p>
+<p>In this new play, we used nxos module “<strong>cisco.nxos.nxos_interfaces</strong>” and “<strong>cisco.nxos.nxos_l2_interfaces</strong>”:</p>
+<ul>
+<li>“<strong>cisco.nxos.nxos_interfaces</strong>” provides the capability to manage the physical attributes of an interface.  In this example, it is used to configure “layer 2” on interface Ethernet 1/3</li>
+<li>“<strong>cisco.nxos.nxos_l2_interfaces</strong>” provides the capability to manage the Layer 2 switchport attributes.  In this example, it is used to configure access mode on Ethernet ports 1/3</li>
+<li>We used “<strong>when</strong>” argument to provide little logic of looking at the IP addresses (as per <strong>hosts</strong> i.e., inventory file) to the play and then appropriately assign VLANs to those hosts.  In our example, the playbook assigned:<ul>
+<li>VLAN 140 on leaf1 and leaf3 switches (by matching <code>101</code> and <code>103</code> in the <code>hosts</code> file)</li>
+<li>VLAN 141 on leaf4 switch (by matching <code>102</code> in the <code>hosts</code> file)</li>
+</ul>
+</li>
+</ul>
 <hr />
 <h3 id="step-7-execute-playbook">Step 7: Execute playbook</h3>
 <p>Now, we are going to execute this playbook:</p>
