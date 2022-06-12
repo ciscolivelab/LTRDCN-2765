@@ -829,7 +829,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/4-2-1.png" /></p>
 <p>​
-*  Switch to “<strong>Atom</strong>” and sync the new created folders between Ansible node and Remote desktop by pressing <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code>, then open <code>Remote Sync</code> select <code>Download Folder</code> as shown below:</p>
+* Switch to “<strong>Atom</strong>” and sync the new created folders between Ansible node and Remote desktop by pressing <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code>, then open <code>Remote Sync</code> select <code>Download Folder</code> as shown below:</p>
 <p><img alt="" src="../pic/4-2-2.png" /></p>
 <hr />
 <h3 id="step-3-build-playbook-for-spine-role-tasks">Step 3: Build playbook for Spine role - tasks:</h3>
@@ -1034,8 +1034,8 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>Do not replace existing content</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="c1">#task to enable pim and configure anycast rp for underlay multicast</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable PIM</span><span class="w"></span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span><span class="w"></span>
@@ -1108,8 +1108,11 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Do not replace existing content.  On Atom, Make sure to click <strong>File-&gt;Save</strong> after entering the below data in this file so it is pushed to Ansible server:</p>
+<p>Do not replace existing content.  </p>
 </div>
+<ul>
+<li>On Atom, Make sure to <strong>click</strong> <code>File-&gt;Save</code> after entering the below data in this file so it is pushed to Ansible server:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1">#task to enable PIM for underlay multicast</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable PIM</span><span class="w"></span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span><span class="w"></span>
