@@ -1030,8 +1030,12 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </table>
 <h5 id="edit-playbook-for-spine-role">Edit playbook for spine role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the <strong>“main.yml”</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open <strong>“main.yml”</strong> file under <strong>“roles/spine/tasks/”</strong> and save the below tasks at the end the file(<strong>Do not replace existing content</strong>):</li>
+<li>Use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and open <code>“main.yml”</code> file under <code>“roles/spine/tasks/”</code> and save the below tasks at the end the file.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Do not replace existing content</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#task to enable pim and configure anycast rp for underlay multicast</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable PIM</span><span class="w"></span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span><span class="w"></span>
@@ -1329,8 +1333,12 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </ul>
 <h5 id="edit-variable-file-for-leaf-role_1">Edit variable file for leaf role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the <strong>main.yml</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open "<strong>main.yml</strong>"" file under <strong>“roles/leaf/vars/”</strong>.  Add the below content in the file at the end of the file (<strong>Do not replace existing content</strong>), and then make sure to click <strong>“File”-&gt;“Save”</strong> on Atom, so that the updated file is pushed to Ansible server.</li>
+<li>Use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>EVPN-Ansible</code> and open <code>main.yml</code> file under <code>roles/leaf/vars/</code>.  Add the below content in the file at <strong>the end of the file</strong> and then make sure to <strong>click</strong> <code>“File” -&gt; “Save”</code> on Atom, so that the updated file is pushed to Ansible server</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content. Below contents must be added at the end of the file.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">L2VNI</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">140</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50140</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.140.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-140-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.140</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">141</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50141</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.141.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-141-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.141</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
