@@ -596,15 +596,16 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 <p>We have just tested our first playbook with basic configuration (i.e, by adding 2 VLANs).  Now we are going to add more tasks in the same/existing playbook <strong><code>vlan_provision.yml</code></strong> in this step:</p>
 <ul>
 <li>
-<p>Lets add new <em>plays</em> in the Ansible playbook to assign VLANs to server facing port.  We will configure VLAN towards the server facing ports</p>
+<p>Lets add new <em>tasks</em> in the Ansible playbook to assign VLANs to server facing port.  We will configure VLAN towards the server facing ports</p>
 </li>
 <li>
-<p>Go back to <strong>ATOM</strong> and <strong>add</strong> the following plays to the <strong>existing playbook</strong></p>
-<ul>
-<li><em>NOTE: YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</em></li>
-</ul>
+<p>Go back to <strong>ATOM</strong> and <strong>add</strong> the following tasks to the <strong>existing playbook</strong></p>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure server facing port to L2</span><span class="w"></span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span><span class="w"></span>
 <span class="w">          </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
