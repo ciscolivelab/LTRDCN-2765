@@ -314,60 +314,60 @@
 <ul>
 <li>On <strong>Atom,</strong> open up the project folder <code>EVPN-Ansible</code> and create new file under this folder (“EVPN-Ansible”). Name the new file <strong>“code_upgrade.yml”.</strong> and add below content (you may copy and paste):</li>
 </ul>
-<pre><code class="language-yaml">---
-#Appendix code upgrade
-  - hosts: spine,leaf
-    vars:
-      - standard: 7.0(3)I7(4)
-      - image_file: nxos.7.0.3.I7.4.bin
-    tasks:
-      - name: &quot;software complaince check&quot;
-        cisco.nxos.nxos_facts:
-          gather_subset: all
-      - name: &quot;change to standard code&quot;
-        block:
-          - debug: msg=&quot;{{ansible_net_hostname}} is not running standard {{standard}}&quot;
-          - cisco.nxos.nxos_feature:
-              feature: scp-server
-              state: enabled
-          - name: &quot;upload image file&quot;
-            cisco.nxos.nxos_file_copy:
-              file_pull: True
-              file_pull_timeout: 1200
-              remote_file: &quot;/root/downloads/{{image_file}}&quot;
-              remote_scp_server: &quot;198.18.4.150&quot;
-              remote_scp_server_user: &quot;root&quot;
-              remote_scp_server_password: &quot;C1sco12345&quot;
-          - name: &quot;change boot statement&quot;
-            cisco.nxos.nxos_config:
-              lines: boot nxos bootflash:{{image_file}}
-              save_when: modified
-          - name: &quot;reload switch&quot;
-            cisco.nxos.nxos_command:
-              commands:
-                - command: reload
-                  prompt: '(y/n)?'
-                  answer: 'y'
-        when: ansible_net_version != standard
-        rescue:
-          - debug:
-              msg: &quot;{{ansible_net_hostname}} is reloading&quot;
-          - name: Wait For Device To Come Back Up
-            wait_for:
-              port: 22
-              state: started
-              timeout: 900
-              delay: 60
-              host: &quot;{{ inventory_hostname }}&quot;
-        always:
-          - debug:
-              msg: &quot;All devices are running {{standard}}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1">#Appendix code upgrade</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine,leaf</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">standard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7.0(3)I7(4)</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nxos.7.0.3.I7.4.bin</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;software</span><span class="nv"> </span><span class="s">complaince</span><span class="nv"> </span><span class="s">check&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_facts</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">gather_subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;change</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">standard</span><span class="nv"> </span><span class="s">code&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">msg=&quot;{{ansible_net_hostname}} is not running standard {{standard}}&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scp-server</span><span class="w"></span>
+<span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;upload</span><span class="nv"> </span><span class="s">image</span><span class="nv"> </span><span class="s">file&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nt">cisco.nxos.nxos_file_copy</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">file_pull</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">              </span><span class="nt">file_pull_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1200</span><span class="w"></span>
+<span class="w">              </span><span class="nt">remote_file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/root/downloads/{{image_file}}&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">remote_scp_server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;198.18.4.150&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">remote_scp_server_user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">remote_scp_server_password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;C1sco12345&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;change</span><span class="nv"> </span><span class="s">boot</span><span class="nv"> </span><span class="s">statement&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">lines</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boot nxos bootflash:{{image_file}}</span><span class="w"></span>
+<span class="w">              </span><span class="nt">save_when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">modified</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;reload</span><span class="nv"> </span><span class="s">switch&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nt">cisco.nxos.nxos_command</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reload</span><span class="w"></span>
+<span class="w">                  </span><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;(y/n)?&#39;</span><span class="w"></span>
+<span class="w">                  </span><span class="nt">answer</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;y&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible_net_version != standard</span><span class="w"></span>
+<span class="w">        </span><span class="nt">rescue</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{ansible_net_hostname}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">reloading&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Wait For Device To Come Back Up</span><span class="w"></span>
+<span class="w">            </span><span class="nt">wait_for</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22</span><span class="w"></span>
+<span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span><span class="w"></span>
+<span class="w">              </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">900</span><span class="w"></span>
+<span class="w">              </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">              </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">always</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;All</span><span class="nv"> </span><span class="s">devices</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">running</span><span class="nv"> </span><span class="s">{{standard}}&quot;</span><span class="w"></span>
+</code></pre></div>
 <ul>
-<li>On the Ansible server, run the playbook for software compliance check and code upgrade by issuing the <code>ansible-playbook code_upgrade.yml</code> command as shown below:</li>
+<li>On the Ansible server, run the playbook for software compliance check and code upgrade by issuing the <code>ansible-playbook code_upgrade.yml</code> command as shown below:
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook code_upgrade.yml
+</code></pre></div></li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook code_upgrade.yml
-</code></pre>
 <hr />
 <p><font style= "background-color:  yellow"><strong>Note:</strong> It is expected to see timeout error message when playbook reloads the switch.</font></p>
 <hr />

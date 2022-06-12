@@ -613,8 +613,10 @@
 </tr>
 </tbody>
 </table>
-<p>!!! Note
-      lab admin will furnish the credentials information to the participant.  If you don't have this information please ask the lab speakers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>lab admin will furnish the credentials information to the participant.  If you don't have this information please ask the lab speakers.</p>
 <p><img alt="" src="../pic/1-1-1-rtp.png" /></p>
 <h4 id="step-2-enter-vpn-credentials">Step 2: Enter VPN credentials</h4>
 <p>After prompted for credentials, use the credentials provided by the lab admin.    <br />
@@ -643,26 +645,26 @@
 <h4 id="step-6-verify-python">Step 6: Verify Python</h4>
 <p>Ansible can be run from any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansbile.</p>
 <p>Hence, once successfully SSH into the ansible node, the very first thing we are going to do after logging into Ansible server is verify the python version by running below command:</p>
-<pre><code>python --version
-</code></pre>
+<div class="highlight"><pre><span></span><code>python --version
+</code></pre></div>
 <p>The output of above command confirms this version.</p>
 <p><img alt="" src="../pic/1-6-python.png" /></p>
 <h4 id="step-7-update-ubuntu-package-tool-and-install-pip-packages">Step 7: Update Ubuntu package tool and install PIP &amp; Packages</h4>
 <ul>
 <li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) and install PIP python package (using <code>apt install pip</code>) commands.  <em>Note:</em> At the <code>Do you want to continue? [Y/n]</code> prompt, you must enter <strong><code>Y</code></strong> to proceed with update/install:</li>
 </ul>
-<pre><code>sudo route add default gw 198.18.128.1
+<div class="highlight"><pre><span></span><code>sudo route add default gw 198.18.128.1
 apt-get update
 apt install pip
-</code></pre>
+</code></pre></div>
 <p>Below two screenshot shows the partial execution of above commands:</p>
 <p><img alt="" src="../pic/1-7-1-apt-get.png" /></p>
 <p><img alt="" src="../pic/1-6-2-python-new.png" /></p>
 <ul>
 <li>Next, update pip to version 20.3.4 by executing below command:</li>
 </ul>
-<pre><code>pip install --upgrade pip==20.3.4
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install --upgrade pip==20.3.4
+</code></pre></div>
 <p><strong>Note:</strong> you can ignore the warning related to python version.  Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-3-python-new.png" /></p>
 <p>After installing PIP package, we are going to add the relevant packages that are needed for this Ansible based VXLAN lab. Below are the required packages in this lab:</p>
@@ -677,8 +679,8 @@ apt install pip
 <p>Run the below command to install the above packages:</p>
 </li>
 </ul>
-<pre><code>pip install paramiko PyYAML jinja2 httplib2
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install paramiko PyYAML jinja2 httplib2
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-4-python-new2.png" /></p>
 <h4 id="step-8-ansible-installation">Step 8: Ansible Installation</h4>
@@ -686,22 +688,22 @@ apt install pip
 <ul>
 <li>Initiate the installation of ansible using below command -  note: it may take few minutes for it to download and install:</li>
 </ul>
-<pre><code>pip install ansible==2.10.6
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install ansible==2.10.6
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-5-ansible-new.png" /></p>
 <ul>
 <li>Once the installation is complete, check Ansible version by executing below command:</li>
 </ul>
-<pre><code>ansible --version
-</code></pre>
+<div class="highlight"><pre><span></span><code>ansible --version
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-8-1-version-new.png" /></p>
 <ul>
 <li>Starting from Ansible 2.9, plugins and modules for network platform are moved in to <strong>Collection</strong>.  To install NX-OS collection with Ansible Galaxy by using below <code>ansible-galaxy ...</code> command:</li>
 </ul>
-<pre><code>ansible-galaxy collection install cisco.nxos
-</code></pre>
+<div class="highlight"><pre><span></span><code>ansible-galaxy collection install cisco.nxos
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-7-4-collection.png" /></p>
 <p><strong>Note:</strong>: Your output might show different version than the installed version. This is due to the separation of ansible-base (ansible-core) and community package starting from version 2.10. The above command shows ansible-base version. You can find more detail explanation from Ansible documentation page.
@@ -711,9 +713,9 @@ apt install pip
 <ul>
 <li>Create folder named EVPN-Ansible as working environment and verify that it’s empty by issuing below commands:</li>
 </ul>
-<pre><code>mkdir EVPN-Ansible &amp;&amp; cd EVPN-Ansible
+<div class="highlight"><pre><span></span><code>mkdir EVPN-Ansible &amp;&amp; cd EVPN-Ansible
 ls
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9-1-dir.png" /></p>
 <p>Next:</p>
@@ -751,14 +753,14 @@ EOF
 <ul>
 <li>Now you may verify the content of this file using below command:</li>
 </ul>
-<pre><code>more hosts
-</code></pre>
+<div class="highlight"><pre><span></span><code>more hosts
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-2-hosts.png" /></p>
 <ul>
 <li>Create Ansible config (ansible.cfg) using the same steps as above.  <strong><em>Note:</em></strong> you should copy and paste the complete section below i.e., starting from <code>cat</code> till <code>EOF</code>  (as shown in below screenshot):</li>
 </ul>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; ansible.cfg
+<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; ansible.cfg
 [defaults]
 inventory = hosts
 host_key_checking = false
@@ -766,118 +768,118 @@ record_host_key = true
 stdout_callback = debug
 deprecation_warnings = False
 EOF
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Now you may verify the content of this file using below command:</li>
 </ul>
-<pre><code>more ansible.cfg
-</code></pre>
+<div class="highlight"><pre><span></span><code>more ansible.cfg
+</code></pre></div>
 <p>Below screenshot shows the output of above commands:</p>
 <p><img alt="" src="../pic/1-9a-3-ansible.png" /></p>
 <ul>
 <li>To verify the file that you just created under project folder EVPN-Ansible, issue the list command:</li>
 </ul>
-<pre><code>ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9-3-ls.png" /></p>
 <ul>
 <li>Create host variable folder named <code>host_vars</code> in folder <code>EVPN-Ansible</code> by using below command.  In this lab, we will use host_vars file to define the variables for various hosts (in next bullets):</li>
 </ul>
-<pre><code>mkdir host_vars &amp;&amp; cd host_vars
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir host_vars &amp;&amp; cd host_vars
+</code></pre></div>
 <ul>
 <li>Create host variable file for each host in inventory by using the cat command.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
 </ul>
-<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.101.yml
----
-  hostname: leaf_1
-  loopback0: 192.168.0.8
-  loopback1: 192.168.0.18
-  router_id: 192.168.0.8
-EOF
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.101.yml</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf_1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.8</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.18</span><span class="w"></span>
+<span class="w">  </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.8</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-101.png" /></p>
 <ul>
 <li>Now you may verify the content of this file using <code>more 198.18.4.101.yml</code> command as shown below:</li>
 </ul>
-<pre><code>more 198.18.4.101.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>more 198.18.4.101.yml
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-101-more.png" /></p>
 <ul>
 <li>Create a new host variable file for next host in inventory.   The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
 </ul>
-<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.103.yml
----
-  hostname: leaf_3
-  loopback0: 192.168.0.10
-  loopback1: 192.168.0.110
-  router_id: 192.168.0.10
-EOF
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.103.yml</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf_3</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.10</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.110</span><span class="w"></span>
+<span class="w">  </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.10</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-103.png" /></p>
 <ul>
 <li>Now you may verify the content of this file using <code>more 198.18.4.103.yml</code> as shown below:</li>
 </ul>
-<pre><code>more 198.18.4.103.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>more 198.18.4.103.yml
+</code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-9a-4-103-more.png" /></p>
 <ul>
 <li>Create a new host variable file for next host in inventory. The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from <code>cat</code> till <code>EOF</code> (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
 </ul>
-<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.104.yml
----
-  hostname: leaf_4
-  loopback0: 192.168.0.11
-  loopback1: 192.168.0.111
-  router_id: 192.168.0.11
-EOF
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.104.yml</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf_4</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.11</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.111</span><span class="w"></span>
+<span class="w">  </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.11</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>Now you may verify the content of this file using <code>more</code> command as shown below:</li>
 </ul>
-<pre><code>more 198.18.4.104.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>more 198.18.4.104.yml
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-104.png" /></p>
 <ul>
 <li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from cat till EOF (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
 </ul>
-<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.201.yml
----
-  hostname: spine-1
-  loopback0: 192.168.0.6
-  loopback1: 192.168.0.100
-  router_id: 192.168.0.6
-EOF
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.201.yml</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine-1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.6</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.100</span><span class="w"></span>
+<span class="w">  </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.6</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>Now you may verify the content of this file using <code>more</code> command as shown below:</li>
 </ul>
-<pre><code>more 198.18.4.201.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>more 198.18.4.201.yml
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-201.png" /></p>
 <ul>
 <li>Create a new host variable file for next host in inventory.  The variable file for a switch is created using the below cat command.  <strong>Note:</strong> you can copy and paste starting from cat till EOF (as shown in below screenshot).  <strong>Note:</strong> the spaces in the file are important so do not remove those:</li>
 </ul>
-<pre><code class="language-YAML">cat &lt;&lt; EOF &gt;&gt; 198.18.4.202.yml
----
-  hostname: spine-2
-  loopback0: 192.168.0.7
-  loopback1: 192.168.0.100
-  router_id: 192.168.0.7
-EOF
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt; EOF &gt;&gt; 198.18.4.202.yml</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine-2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.7</span><span class="w"></span>
+<span class="w">  </span><span class="nt">loopback1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.100</span><span class="w"></span>
+<span class="w">  </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.7</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>Now you may verify the content of this file using <code>more</code> command as shown below:</li>
 </ul>
-<pre><code>more 198.18.4.202.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>more 198.18.4.202.yml
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-202.png" /></p>
 <h4 id="step-10-ansible-role-structure">Step 10: Ansible role structure</h4>
@@ -895,9 +897,9 @@ A role directory structure contains several directories of defaults, vars, files
 <ul>
 <li>Create roles directory in folder EVPN-Ansible by issuing below commands:</li>
 </ul>
-<pre><code>cd /root/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible
 mkdir roles
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-10-1.png" /></p>
 <p>This will be used in the subsequent tasks in this lab.</p>

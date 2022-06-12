@@ -363,13 +363,13 @@
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 </li>
 </ul>
-<pre><code class="language-YAML">---
-   - hosts: spine,leaf,jinja2_leaf,jinja2_spine
-     tasks:
-      - name: save running
-        cisco.nxos.nxos_config:
-          backup: yes
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine,leaf,jinja2_leaf,jinja2_spine</span><span class="w"></span>
+<span class="w">     </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">save running</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">backup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>
 <p>On the Ansible node (using MTputty via SSH), run <strong>“get_config.yml”</strong> playbook and verify the backup configurations in <strong>“backup”</strong> folder by using below commands:</p>
@@ -399,44 +399,44 @@
 <ul>
 <li>Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</li>
 </ul>
-<pre><code class="language-YAML">---
-  - hosts: leaf, jinja2_leaf
-    connection: local
-    gather_facts: false
-    tasks:
-      - name: verify underlay
-        register: underlay_output
-        cisco.nxos.nxos_command:
-          commands:
-            - show ip ospf neighbors
-            - show ip bgp sum
-            - show ip pim neighbor
-        tags: underlay
-      - debug: var=underlay_output.stdout_lines
-        tags: underlay
-      - name: Verify Overlay
-        register: overlay_output
-        cisco.nxos.nxos_command:
-          commands:
-            - show nve vni
-            - show nve peer
-            - show ip route vrf Tenant-1
-            - show bgp l2vpn evpn
-            - show l2route evpn mac-ip all
-        tags: overlay
-      - debug: var=overlay_output.stdout_lines
-        tags: overlay
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf, jinja2_leaf</span><span class="w"></span>
+<span class="w">    </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span><span class="w"></span>
+<span class="w">    </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">verify underlay</span><span class="w"></span>
+<span class="w">        </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay_output</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_command</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip ospf neighbors</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip bgp sum</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip pim neighbor</span><span class="w"></span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var=underlay_output.stdout_lines</span><span class="w"></span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Verify Overlay</span><span class="w"></span>
+<span class="w">        </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay_output</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_command</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show nve vni</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show nve peer</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip route vrf Tenant-1</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show bgp l2vpn evpn</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show l2route evpn mac-ip all</span><span class="w"></span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var=overlay_output.stdout_lines</span><span class="w"></span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 </li>
 <li>
-<p>On the Ansible node (via MTPutty), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag):</p>
+<p>On the Ansible node (via MTPutty), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag):
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
+</code></pre></div></p>
 </li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
-</code></pre>
 <hr />
 <p><font style=background-color:yellow>The output shows ospf, bgp and pim neighbors for all leaf switches</font></p>
 <hr />
@@ -447,7 +447,7 @@
 </li>
 </ul>
 <p>Here is a log of execution of above command:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 
 PLAY [leaf, jinja2_leaf] *********************************************************************************************************************************************************************************************
 
@@ -552,14 +552,13 @@ PLAY RECAP *********************************************************************
 198.18.4.101               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 198.18.4.103               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 198.18.4.104               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
-</code></pre>
+</code></pre></div>
 <p>Next:</p>
 <ul>
 <li>Run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>overlay</strong> using the respective tag in the command (as shown below):</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
+</code></pre></div>
 <hr />
 <p><font style=background-color:yellow>The output shows nve tunnel peer, host route in bgp EVPN from all leaf switches</font></p>
 <hr />
@@ -572,7 +571,7 @@ PLAY RECAP *********************************************************************
 <p>Below shows the complete log output of execution of above playbook command.   Verify the output for <strong>vne vni</strong> status, <strong>vne</strong> dynamic neighbors, type host <strong>mac+ip evpn route update for each L2VNI, l2fib</strong> information.</p>
 </li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
 
 PLAY [leaf, jinja2_leaf] *********************************************************************************************************************************************************************************************
 
@@ -603,10 +602,10 @@ ok: [198.18.4.104] =&gt; {
         ],
         [
             &quot;IP Route Table for VRF \&quot;Tenant-1\&quot;&quot;,
-            &quot;'*' denotes best ucast next-hop&quot;,
-            &quot;'**' denotes best mcast next-hop&quot;,
-            &quot;'[x/y]' denotes [preference/metric]&quot;,
-            &quot;'%&lt;string&gt;' in via output denotes VRF &lt;string&gt;&quot;,
+            &quot;&#39;*&#39; denotes best ucast next-hop&quot;,
+            &quot;&#39;**&#39; denotes best mcast next-hop&quot;,
+            &quot;&#39;[x/y]&#39; denotes [preference/metric]&quot;,
+            &quot;&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;&quot;,
             &quot;&quot;,
             &quot;172.21.140.0/24, ubest/mbest: 1/0, attached&quot;,
             &quot;    *via 172.21.140.1, Vlan140, [0/0], 22:39:01, direct&quot;,
@@ -704,10 +703,10 @@ ok: [198.18.4.103] =&gt; {
         ],
         [
             &quot;IP Route Table for VRF \&quot;Tenant-1\&quot;&quot;,
-            &quot;'*' denotes best ucast next-hop&quot;,
-            &quot;'**' denotes best mcast next-hop&quot;,
-            &quot;'[x/y]' denotes [preference/metric]&quot;,
-            &quot;'%&lt;string&gt;' in via output denotes VRF &lt;string&gt;&quot;,
+            &quot;&#39;*&#39; denotes best ucast next-hop&quot;,
+            &quot;&#39;**&#39; denotes best mcast next-hop&quot;,
+            &quot;&#39;[x/y]&#39; denotes [preference/metric]&quot;,
+            &quot;&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;&quot;,
             &quot;&quot;,
             &quot;172.21.140.0/24, ubest/mbest: 1/0, attached&quot;,
             &quot;    *via 172.21.140.1, Vlan140, [0/0], 01:24:28, direct&quot;,
@@ -804,10 +803,10 @@ ok: [198.18.4.101] =&gt; {
         ],
         [
             &quot;IP Route Table for VRF \&quot;Tenant-1\&quot;&quot;,
-            &quot;'*' denotes best ucast next-hop&quot;,
-            &quot;'**' denotes best mcast next-hop&quot;,
-            &quot;'[x/y]' denotes [preference/metric]&quot;,
-            &quot;'%&lt;string&gt;' in via output denotes VRF &lt;string&gt;&quot;,
+            &quot;&#39;*&#39; denotes best ucast next-hop&quot;,
+            &quot;&#39;**&#39; denotes best mcast next-hop&quot;,
+            &quot;&#39;[x/y]&#39; denotes [preference/metric]&quot;,
+            &quot;&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;&quot;,
             &quot;&quot;,
             &quot;172.21.140.0/24, ubest/mbest: 1/0, attached&quot;,
             &quot;    *via 172.21.140.1, Vlan140, [0/0], 01:24:29, direct&quot;,
@@ -890,7 +889,7 @@ PLAY RECAP *********************************************************************
 198.18.4.104               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 [root@rhel7-tools EVPN-Ansible]#
-</code></pre>
+</code></pre></div>
 <hr />
 <h3 id="step-3-baseline-configuration-comparison">Step 3: Baseline configuration comparison</h3>
 <p>In this section we will compare the running configuration with baseline configuration for configuration compliance check. The configuration file that we backed in tak 1 will be used as baseline configuration.</p>
@@ -898,37 +897,37 @@ PLAY RECAP *********************************************************************
 <ul>
 <li>On Atom, Open up the project folder <code>EVPN-Ansible</code> and create new file under <strong>“EVPN-Ansible”</strong>. Name the new file <code>verify_config.yml</code> and enter below data in this playbook:</li>
 </ul>
-<pre><code class="language-YAML">---
-   - hosts: jinja2_leaf,leaf,jinja2_spine,spine
-     vars:
-      filename: &quot;{{ lookup('pipe', 'ls backup/{{ inventory_hostname}}_config.*')}}&quot;
-     tasks:
-       - name: configure compliance
-         register: diff_config
-         cisco.nxos.nxos_config:
-           diff_against: intended
-           intended_config: &quot;{{ lookup('file', '{{filename}}') }}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jinja2_leaf,leaf,jinja2_spine,spine</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">lookup(&#39;pipe&#39;,</span><span class="nv"> </span><span class="s">&#39;ls</span><span class="nv"> </span><span class="s">backup/{{</span><span class="nv"> </span><span class="s">inventory_hostname}}_config.*&#39;)}}&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure compliance</span><span class="w"></span>
+<span class="w">         </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">diff_config</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">diff_against</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">intended</span><span class="w"></span>
+<span class="w">           </span><span class="nt">intended_config</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">lookup(&#39;file&#39;,</span><span class="nv"> </span><span class="s">&#39;{{filename}}&#39;)</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
 </li>
 <li>
-<p><strong>Before</strong> you run this playbook, <strong>SSH</strong> into <strong>leaf-4</strong> to make some configuration changes by issuing below commands:</p>
-</li>
-</ul>
-<pre><code>config t
+<p><strong>Before</strong> you run this playbook, <strong>SSH</strong> into <strong>leaf-4</strong> to make some configuration changes by issuing below commands:
+<div class="highlight"><pre><span></span><code>config t
 no router bgp 65000
 copy run start
 end
-</code></pre>
+</code></pre></div></p>
+</li>
+</ul>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-3-0.png" /></p>
 <ul>
 <li>On the Ansible server (via MTputty SSH session), run the playbook for configuration compliance check by executing <code>ansible-playbook --diff verify_config.yml</code> as shown below below:</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook --diff verify_config.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook --diff verify_config.yml
+</code></pre></div>
 <hr />
 <p><font style=background-color:yellow>The delta between current running config and base line config are highlighted in <font style=color:limegreen>RED</font> from the result</font></p>
 <hr />
@@ -941,8 +940,8 @@ end
 <p>Bring leaf-4 back to the baseline config by executing <code>ansible-playbook jinja2_fabric.yml --limit=198.18.4.104</code> command as shown below:</p>
 </li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook jinja2_fabric.yml --limit=198.18.4.104
-</code></pre>
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook jinja2_fabric.yml --limit=198.18.4.104
+</code></pre></div>
 <ul>
 <li>
 <p>Below screenshot shows the output of above command.  You can also log into leaf-4 and verify that bgp configurations are back:</p>
@@ -985,9 +984,9 @@ end
 <ul>
 <li>First we will creat a new role, and name it <strong>“vni_provision”</strong> under folder roles using <strong>ansible-galaxy</strong> using below commands on the Ansible node (using MTputty via SSH connection):</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# cd /root/EVPN-Ansible/roles/
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# cd /root/EVPN-Ansible/roles/
 [root@rhel7-tools roles]# ansible-galaxy init vni_provision
-</code></pre>
+</code></pre></div>
 <ul>
 <li>
 <p>Verify vni_provision was created successfully</p>
@@ -1003,84 +1002,83 @@ end
 <p>Edit variable file <strong>main.yml</strong> for <strong>“vni_provision”</strong> role under “<strong>/root/EVPN-Ansible/roles/vni_provision/vars</strong>” and enter below data.  Make sure to click <code>File</code> and <code>Save</code> on Atom to push this to Ansible server:</p>
 </li>
 </ul>
-<pre><code class="language-YAML">---
-# vars file for vni_provision
-  L2VNI:
-  - { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
-  - { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1"># vars file for vni_provision</span><span class="w"></span>
+<span class="w">  </span><span class="nt">L2VNI</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+</code></pre></div>
 <p><img alt="" src="../pic/5-4-2.png" /></p>
 <ul>
 <li>Edit playbook file <strong>main.yml</strong> for <strong>“vni_provision”</strong> role under <strong>“/root/EVPN-Ansible/roles/vni_provision/tasks”</strong> and enter below data.   Make sure to click <code>File</code> and <code>Save</code> on Atom to push this to Ansible server:</li>
 </ul>
-<pre><code class="language-YAML">---
-# tasks file for vni_provision
-       - name: Configure VLAN to VNI
-         cisco.nxos.nxos_vlan:
-           vlan_id: &quot;{{ item.vlan_id }}&quot;
-           mapped_vni: &quot;{{ item.vni }}&quot;
-           name: &quot;{{ item.vlan_name }}&quot;
-         with_items:
-         - &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI
-         cisco.nxos.nxos_interface:
-           interface: vlan&quot;{{ item.vlan_id }}&quot;
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Assign interface to Tenant VRF
-         cisco.nxos.nxos_vrf_interface:
-           vrf: Tenant-1
-           interface: &quot;vlan{{ item.vlan_id }}&quot;
-         with_items:
-         - &quot;{{ L2VNI }}&quot;
-       - name: Configure SVI IP
-         cisco.nxos.nxos_l3_interfaces:
-           config:
-             - name: &quot;vlan{{ item.vlan_id }}&quot;
-               ipv4:
-                 - address: &quot;{{ item.ip_add }}/{{ item.mask }}&quot;
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI SVI
-         cisco.nxos.nxos_interface:
-           interface: vlan&quot;{{ item.vlan_id }}&quot;
-           fabric_forwarding_anycast_gateway: true
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI to VTEP
-         cisco.nxos.nxos_vxlan_vtep_vni:
-            interface: nve1
-            vni: &quot;{{ item.vni }}&quot;
-            multicast_group: &quot;{{ item.mcast }}&quot;
-         with_items: &quot;{{ L2VNI }}&quot;
-       - name: Configure L2VNI RD/RT
-         cisco.nxos.nxos_evpn_vni:
-          vni: &quot;{{ item.vni }}&quot;
-          route_distinguisher: auto
-          route_target_both: auto
-         with_items: &quot;{{ L2VNI }}&quot;
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1"># tasks file for vni_provision</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure VLAN to VNI</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_vlan</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">mapped_vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vni</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vlan_name</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_interface</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vlan&quot;{{ item.vlan_id }}&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Assign interface to Tenant VRF</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_vrf_interface</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant-1</span><span class="w"></span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vlan{{</span><span class="nv"> </span><span class="s">item.vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure SVI IP</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_l3_interfaces</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">             </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vlan{{</span><span class="nv"> </span><span class="s">item.vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">               </span><span class="nt">ipv4</span><span class="p">:</span><span class="w"></span>
+<span class="w">                 </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.ip_add</span><span class="nv"> </span><span class="s">}}/{{</span><span class="nv"> </span><span class="s">item.mask</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI SVI</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_interface</span><span class="p">:</span><span class="w"></span>
+<span class="w">           </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vlan&quot;{{ item.vlan_id }}&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="nt">fabric_forwarding_anycast_gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI to VTEP</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_vxlan_vtep_vni</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nve1</span><span class="w"></span>
+<span class="w">            </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vni</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nt">multicast_group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.mcast</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI RD/RT</span><span class="w"></span>
+<span class="w">         </span><span class="nt">cisco.nxos.nxos_evpn_vni</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vni</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">route_distinguisher</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span><span class="w"></span>
+<span class="w">          </span><span class="nt">route_target_both</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span><span class="w"></span>
+<span class="w">         </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+</code></pre></div>
 <p>this is shown in below screenshot:</p>
 <p><img alt="" src="../pic/5-4-3.png" /></p>
 <ul>
 <li>Switch to “Atom”  create new playbook <strong>‘vni_provision.yml’</strong> under project folder <strong>EVPN-Ansible</strong> and enter below data.  Make sure to click <code>File</code> and <code>Save</code> on Atom to push this to Ansible server:</li>
 </ul>
-<pre><code class="language-YAML">---
-- hosts: leaf,jinja2_leaf
-  connection: local
-  roles:
-    - vni_provision
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf,jinja2_leaf</span><span class="w"></span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span><span class="w"></span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vni_provision</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>Run playbook <strong>vni_provision.yml</strong> to add new VNIs on the fabric by issuing <code>ansible-playbook vni_provision.yml</code> command as shown below:</li>
 </ul>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook vni_provision.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook vni_provision.yml
+</code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-4-4.png" /></p>
 <ul>
-<li>Switch to <strong>MTPutty</strong> and connect to <strong>leaf-4</strong> (SSH connection0, verify the change on leaf switches by issuing below command:</li>
+<li>Switch to <strong>MTPutty</strong> and connect to <strong>leaf-4</strong> (SSH connection0, verify the change on leaf switches by issuing below command:
+<div class="highlight"><pre><span></span><code>show nve vni
+</code></pre></div></li>
 </ul>
-<pre><code>show nve vni
-</code></pre>
 <p>Notice the new created L2VNI as shown in below screenshot:</p>
 <p><img alt="" src="../pic/5-4-5-new.png" /></p>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-lab">Congratulation! You have completed VXLAN Fabric Lab.</h1>

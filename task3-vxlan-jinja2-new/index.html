@@ -521,8 +521,8 @@
 <ul>
 <li>On the Ansible node, install jinja2 using <code>pip install jinja2</code> command below.  If it is already installed, we will get the message “requirement is satisfied”:</li>
 </ul>
-<pre><code>pip install jinja2
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install jinja2
+</code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-1-1-new.png" /></p>
 <hr />
@@ -546,13 +546,12 @@
 <p>Now enter (<strong>copy</strong> and <strong>paste</strong>) below data in this playbook:</p>
 </li>
 </ul>
-<pre><code class="language-YAML">---
-- hosts: jinja2_spine
-  connection: local
-  roles:
-    - jinja2_spine
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jinja2_spine</span><span class="w"></span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span><span class="w"></span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jinja2_spine</span><span class="w"></span>
+</code></pre></div>
 <p>The contents of the <strong>jinja2_fabric.yml</strong> file should look like below screenshot:</p>
 <p><img alt="" src="../pic/3-2-2-new.png" /></p>
 <ul>
@@ -566,9 +565,9 @@
 <p>On Ansible server node (198.18.134.150), <strong>verify</strong> that the (below highlighted) 2 groups named  <code>jinja2_spine</code> and <code>jinja2_leaf</code> exists in the inventory file name "<strong>hosts</strong>" (under EVPN-Ansible directory) exists by issuing below commands:</p>
 </li>
 </ul>
-<pre><code>cd /root/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible
 more hosts
-</code></pre>
+</code></pre></div>
 <p>Below screenshot confirms the ouptut and appropriate IP addresses of above command:</p>
 <p><img alt="" src="../pic/3-2-3.png" /></p>
 <hr />
@@ -577,10 +576,10 @@ more hosts
 <ul>
 <li>On the <strong>MTPuTTy</strong>, go back to Ansible Server node (198.18.134.150), switch to ‘<strong>roles</strong>’ directory; <strong>create</strong> <code>‘jinja2_spine’</code> and <code>‘jinja2_leaf’</code> roles using ansible-galaxy using below commands:</li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible/
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible/
 cd roles/
 ansible-galaxy init jinja2_spine&amp;&amp;ansible-galaxy init jinja2_leaf
-</code></pre>
+</code></pre></div>
 <ul>
 <li>
 <p>Below screenshot shows the output of above command:</p>
@@ -591,9 +590,9 @@ ansible-galaxy init jinja2_spine&amp;&amp;ansible-galaxy init jinja2_leaf
 <p><strong>change directory</strong> path to <code>EVPN-Ansible/roles/jinja2_spine</code> and check the content of local directory (<code>ls</code>) as per below commands:</p>
 </li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible/roles/jinja2_spine/
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible/roles/jinja2_spine/
 ls
-</code></pre>
+</code></pre></div>
 <ul>
 <li>
 <p>Below screenshot shows the output of above file.  Note that various directories including tasks, templates, vars exists.  We will use these in later steps</p>
@@ -604,10 +603,10 @@ ls
 <ul>
 <li><strong>Create</strong> empty jinja2 template files for spine and leaf under templates folder for each role by running below commands:</li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible/roles
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible/roles
 touch jinja2_spine/templates/spine.j2
 touch jinja2_leaf/templates/leaf.j2
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Switch to “<strong>Atom</strong>” and <em>sync</em> the new created folders between Ansible node and Remote desktop by pressing <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code>, then <strong>Click</strong> <code>Remote Sync</code>, and <strong>Select</strong> <code>Download Folder</code> as shown in below screenshot:</li>
 </ul>
@@ -627,29 +626,29 @@ touch jinja2_leaf/templates/leaf.j2
 <p>use “<strong>Atom</strong>” to edit the “<strong>main.yml</strong>” file to include the below variables that will be used in jinja2 template.  You can <strong>copy</strong> and <strong>paste</strong> all of the below content into <code>main.yml</code> file.  <em>Note: as per steps in previous tasks, be careful with content since its space sensitive.</em></p>
 </li>
 </ul>
-<pre><code class="language-YAML">---
-# vars file for jinja2_spine
-  asn: 65000
-  bgp_neighbors:
-  -  remote_as: 65000
-    neighbor: 192.168.0.8
-    update_source: Loopback0
-  -  remote_as: 65000
-    neighbor: 192.168.0.10
-    update_source: Loopback0
-  -  remote_as: 65000
-    neighbor: 192.168.0.11
-    update_source: Loopback0
-  L3_interfaces:
-  -  interface: Ethernet 1/1
-  -  interface: Ethernet 1/2
-  -  interface: Ethernet 1/3
-  -  interface: Ethernet 1/4
-  -  interface: loopback 0
-  -  interface: loopback 1
-  s1_loopback: 192.168.0.6
-  s2_loopback: 192.168.0.7
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1"># vars file for jinja2_spine</span><span class="w"></span>
+<span class="w">  </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bgp_neighbors</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">  </span><span class="w w-Error">  </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Loopback0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">  </span><span class="w w-Error">  </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.10</span><span class="w"></span>
+<span class="w">    </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Loopback0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">  </span><span class="w w-Error">  </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.11</span><span class="w"></span>
+<span class="w">    </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Loopback0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">L3_interfaces</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet 1/1</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet 1/2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet 1/3</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet 1/4</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback 0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback 1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">s1_loopback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.6</span><span class="w"></span>
+<span class="w">  </span><span class="nt">s2_loopback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.7</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>
 <p>Contents of the ‘<strong>main.yml</strong>’ file should look like below screenshot:</p>
@@ -669,49 +668,48 @@ touch jinja2_leaf/templates/leaf.j2
 <ul>
 <li>use “<strong>Atom</strong>” to edit the “<strong>spine.j2</strong>” file for jinja2 template.  You can <strong>copy</strong> and <strong>paste</strong> all of the below content into <code>spine.j2</code> file.  Note: as per steps in previous tasks, be careful with content since its space sensitive.</li>
 </ul>
-<pre><code class="language-YAML">feature bgp
-feature nv overlay
-feature vn-segment-vlan-based
-nv overlay evpn
-feature pim
-!
-router bgp {{ asn }}
-router-id {{ router_id }}
-address-family ipv4 unicast
-address-family l2vpn evpn
-retain route-target all
-!
-#for loop to configure bgp neighbor for each leaf
-{% for neighbor in bgp_neighbors %}
-neighbor {{ neighbor['neighbor'] }}
-remote-as {{neighbor['remote_as']}}
-update-source {{neighbor['update_source']}}
-address-family ipv4 unicast
-send-community both
-route-reflector-client
-address-family l2vpn evpn
-send-community both
-route-reflector-client
-!
-{% endfor %}
-interface loopback 1
-ip address {{loopback1}}/32
-ip pim sparse-mode
-ip router ospf 1 area 0.0.0.0
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">feature bgp</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">feature nv overlay</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">feature vn-segment-vlan-based</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">nv overlay evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">feature pim</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">router bgp {{ asn }}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">router-id {{ router_id }}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family ipv4 unicast</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family l2vpn evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">retain route-target all</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">#for loop to configure bgp neighbor for each leaf</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for neighbor in bgp_neighbors %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">neighbor {{ neighbor[&#39;neighbor&#39;] }}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">remote-as {{neighbor[&#39;remote_as&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">update-source {{neighbor[&#39;update_source&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family ipv4 unicast</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">send-community both</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">route-reflector-client</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family l2vpn evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">send-community both</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">route-reflector-client</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">interface loopback 1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip address {{loopback1}}/32</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim sparse-mode</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip router ospf 1 area 0.0.0.0</span><span class="w"></span>
 
-!
-ip pim rp-address {{loopback1}}
-ip pim anycast-rp {{loopback1}} {{s1_loopback}}
-ip pim anycast-rp {{loopback1}} {{s2_loopback}}
-!
-#for loop to enable pim on link to each leaf
-{% for interface in L3_interfaces %}
-interface {{interface['interface']}}
-ip pim sparse-mode
-!
-{% endfor %}
-
-</code></pre>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim rp-address {{loopback1}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim anycast-rp {{loopback1}} {{s1_loopback}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim anycast-rp {{loopback1}} {{s2_loopback}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">#for loop to enable pim on link to each leaf</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for interface in L3_interfaces %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">interface {{interface[&#39;interface&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim sparse-mode</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>
 <p>Next, <strong>Click</strong> on <code>File</code> and then <code>Save</code> to push template file to Ansible node</p>
@@ -720,9 +718,9 @@ ip pim sparse-mode
 <p>You can verify that updated file content is on Ansible server (198.18.134.150) using your SSH session by issuing below commands:</p>
 </li>
 </ul>
-<pre><code>cd /root/EVPN-Ansible/roles/jinja2_spine/templates
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible/roles/jinja2_spine/templates
 more spine.j2
-</code></pre>
+</code></pre></div>
 <p>Partial output of above command is shown in below screenshot confirming :
 <img alt="" src="../pic/3-5-6.png" /></p>
 <hr />
@@ -736,15 +734,15 @@ more spine.j2
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code>.  Then <strong>open</strong> <code>main.yml</code> file under <code>roles/jinja2_spine/tasks/</code> to include below content:</li>
 </ul>
-<pre><code class="language-YAML">---
-# tasks file for jinja2_spine
-  - name: Generate Spine Config
-    template: src=spine.j2 dest=roles/jinja2_spine/files/{{inventory_hostname}}.cfg
-  - name: Push Spine Config
-    cisco.nxos.nxos_config:
-      src: roles/jinja2_spine/files/{{inventory_hostname}}.cfg
-      match: none
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1"># tasks file for jinja2_spine</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate Spine Config</span><span class="w"></span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src=spine.j2 dest=roles/jinja2_spine/files/{{inventory_hostname}}.cfg</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push Spine Config</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">roles/jinja2_spine/files/{{inventory_hostname}}.cfg</span><span class="w"></span>
+<span class="w">      </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span><span class="w"></span>
+</code></pre></div>
 <p>Contents of the ‘<strong>main.yml</strong>’ file should look like below:</p>
 <p><img alt="" src="../pic/3-6-1.png" /></p>
 <ul>
@@ -761,9 +759,9 @@ more spine.j2
 <ul>
 <li>Run the ansible playbook by going to folder EVPN-Ansible and executing the below commands:</li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible/
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible/
 ansible-playbook jinja2_fabric.yml
-</code></pre>
+</code></pre></div>
 <p><strong>Note: It will take few minutes to push configuration</strong></p>
 <p>Below screenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/3-7-1.png" /></p>
@@ -776,8 +774,8 @@ ansible-playbook jinja2_fabric.yml
 <p><strong>Execute</strong> below command on <strong>Spine-2</strong> switch to confirm the configurations have been provisioned:</p>
 </li>
 </ul>
-<pre><code>show run bgp
-</code></pre>
+<div class="highlight"><pre><span></span><code>show run bgp
+</code></pre></div>
 <p>The execution of this command is captured in below screenshot:</p>
 <p><img alt="" src="../pic/3-7-2-new.png" /></p>
 <hr />
@@ -791,11 +789,11 @@ ansible-playbook jinja2_fabric.yml
 <p><strong>Add</strong> (i.e., <strong>Copy</strong> and <strong>Paste</strong>) the below content at the end of existing file i.e., add the below content to existing content in this file.  <strong><em>Note: do not overwrite existing content</em></strong>:</p>
 </li>
 </ul>
-<pre><code class="language-YAML">- hosts: jinja2_leaf
-  connection: local
-  roles:
-    - jinja2_leaf
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jinja2_leaf</span><span class="w"></span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span><span class="w"></span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jinja2_leaf</span><span class="w"></span>
+</code></pre></div>
 <p>Below screenshot shows the contents of <strong>jinja2_fabric.yml</strong> file in Atom after adding the above configs:</p>
 <p><img alt="" src="../pic/3-8-1.png" /></p>
 <ul>
@@ -806,40 +804,40 @@ ansible-playbook jinja2_fabric.yml
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/jinja2_leaf/vars/</code> to include following:</li>
 </ul>
-<pre><code class="language-YAML">---
-# vars file for jinja2_leaf
-  asn: 65000
-  bgp_neighbors:
-  -  remote_as: 65000
-     neighbor: 192.168.0.6
-     update_source: Loopback0
-  -  remote_as: 65000
-     neighbor: 192.168.0.7
-     update_source: Loopback0
-  rp_address: 192.168.0.100
-  L3_interfaces:
-  -  interface: Ethernet 1/1
-  -  interface: Ethernet 1/2
-  -  interface: loopback 0
-  -  interface: loopback 1
-  L2VNI:
-  -  vlan_id: 140
-     vni: 50140
-     ip_add: 172.21.140.1
-     mask: 24
-     vlan_name: L2-VNI-140-Tenant1
-     mcast: 239.0.0.140
-  -  vlan_id: 141
-     vni: 50141
-     ip_add: 172.21.141.1
-     mask: 24
-     vlan_name: L2-VNI-141-Tenant1
-     mcast: 239.0.0.141
-  L3VNI:
-  -  vlan_id: 999
-     vlan_name: L3-VNI-999-Tenant1
-     vni: 50999
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1"># vars file for jinja2_leaf</span><span class="w"></span>
+<span class="w">  </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bgp_neighbors</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">     </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.6</span><span class="w"></span>
+<span class="w">     </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Loopback0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span><span class="w"></span>
+<span class="w">     </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.7</span><span class="w"></span>
+<span class="w">     </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Loopback0</span><span class="w"></span>
+<span class="w">  </span><span class="nt">rp_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.100</span><span class="w"></span>
+<span class="w">  </span><span class="nt">L3_interfaces</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet 1/1</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet 1/2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback 0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback 1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">L2VNI</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50140</span><span class="w"></span>
+<span class="w">     </span><span class="nt">ip_add</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.21.140.1</span><span class="w"></span>
+<span class="w">     </span><span class="nt">mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vlan_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L2-VNI-140-Tenant1</span><span class="w"></span>
+<span class="w">     </span><span class="nt">mcast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">239.0.0.140</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50141</span><span class="w"></span>
+<span class="w">     </span><span class="nt">ip_add</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.21.141.1</span><span class="w"></span>
+<span class="w">     </span><span class="nt">mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vlan_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L2-VNI-141-Tenant1</span><span class="w"></span>
+<span class="w">     </span><span class="nt">mcast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">239.0.0.141</span><span class="w"></span>
+<span class="w">  </span><span class="nt">L3VNI</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">999</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vlan_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L3-VNI-999-Tenant1</span><span class="w"></span>
+<span class="w">     </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50999</span><span class="w"></span>
+</code></pre></div>
 <p>Below screenshot shows the contents of jinja2_leaf\vars\main.yml file in Atom:</p>
 <p><img alt="" src="../pic/3-9-1.png" /></p>
 <ul>
@@ -854,97 +852,96 @@ ansible-playbook jinja2_fabric.yml
 <ul>
 <li>On “<strong>Atom</strong>”, edit this <code>leaf.j2</code> file for jinja2 template by <strong>copy</strong> and <strong>paste</strong> all of the below content in it.  Note: as per steps in previous tasks, be careful with content since its space sensitive.</li>
 </ul>
-<pre><code class="language-YAML">feature bgp
-feature nv overlay
-feature vn-segment-vlan-based
-nv overlay evpn
-feature pim
-!
-ip pim rp-address {{rp_address}}
-spanning-tree vlan 1,140,141,999 priority 4096
-{% for L2VNI in L2VNI %}
-vlan {{L2VNI['vlan_id']}}
-name {{L2VNI['vlan_name']}}
-vn-segment {{L2VNI['vni']}}
-!
-{% endfor %}
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">feature bgp</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">feature nv overlay</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">feature vn-segment-vlan-based</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">nv overlay evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">feature pim</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim rp-address {{rp_address}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">spanning-tree vlan 1,140,141,999 priority 4096</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for L2VNI in L2VNI %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vlan {{L2VNI[&#39;vlan_id&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">name {{L2VNI[&#39;vlan_name&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vn-segment {{L2VNI[&#39;vni&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
 
-{% for L3VNI in L3VNI %}
-vlan {{L3VNI['vlan_id']}}
-vn-segment {{L3VNI['vni']}}
-vrf context Tenant-1
-vni {{L3VNI['vni']}}
-rd auto
-address-family ipv4 unicast
-route-target both auto
-route-target both auto evpn
-!
-{% endfor %}
+<span class="l l-Scalar l-Scalar-Plain">{% for L3VNI in L3VNI %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vlan {{L3VNI[&#39;vlan_id&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vn-segment {{L3VNI[&#39;vni&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vrf context Tenant-1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vni {{L3VNI[&#39;vni&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">rd auto</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family ipv4 unicast</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">route-target both auto</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">route-target both auto evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
 
-fabric forwarding anycast-gateway-mac 0000.2222.3333
-!
-#for loop to configure SVI
-{% for L2VNI in L2VNI %}
-interface Vlan{{L2VNI['vlan_id']}}
-  no shutdown
-  vrf member Tenant-1
-  no ip redirects
-  ip address {{L2VNI['ip_add']}}/{{L2VNI['mask']}}
-  fabric forwarding mode anycast-gateway
-  !
-{% endfor %}
-{% for L3VNI in L3VNI %}
-interface vlan{{L3VNI['vlan_id']}}
-no shutdown
-vrf member Tenant-1
-ip forward
-!
-{% endfor %}
-#for loop to enable PIM on L3 interface
-{% for interface in L3_interfaces %}
-interface {{interface['interface']}}
-ip pim sparse-mode
-!
-{% endfor %}
+<span class="l l-Scalar l-Scalar-Plain">fabric forwarding anycast-gateway-mac 0000.2222.3333</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">#for loop to configure SVI</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for L2VNI in L2VNI %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">interface Vlan{{L2VNI[&#39;vlan_id&#39;]}}</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">no shutdown</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">vrf member Tenant-1</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">no ip redirects</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ip address {{L2VNI[&#39;ip_add&#39;]}}/{{L2VNI[&#39;mask&#39;]}}</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">fabric forwarding mode anycast-gateway</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for L3VNI in L3VNI %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">interface vlan{{L3VNI[&#39;vlan_id&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">no shutdown</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">vrf member Tenant-1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip forward</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">#for loop to enable PIM on L3 interface</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for interface in L3_interfaces %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">interface {{interface[&#39;interface&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ip pim sparse-mode</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
 
-interface nve1
-no shutdown
-source-interface loopback1
-host-reachability protocol bgp
-{% for L2VNI in L2VNI %}
-member vni {{L2VNI['vni']}}
-mcast-group {{L2VNI['mcast']}}
-{% endfor %}
-{% for L3VNI in L3VNI %}
-member vni {{L3VNI['vni']}} associate-vrf
-!
-{% endfor %}
+<span class="l l-Scalar l-Scalar-Plain">interface nve1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">no shutdown</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">source-interface loopback1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">host-reachability protocol bgp</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for L2VNI in L2VNI %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">member vni {{L2VNI[&#39;vni&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">mcast-group {{L2VNI[&#39;mcast&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for L3VNI in L3VNI %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">member vni {{L3VNI[&#39;vni&#39;]}} associate-vrf</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
 
-router bgp {{ asn }}
-router-id {{ router_id }}
-address-family ipv4 unicast
-address-family l2vpn evpn
-retain route-target all
-#for loop to configure bgp neighbor with spine
-{% for neighbor in bgp_neighbors %}
-neighbor {{neighbor['neighbor']}}
-remote-as {{neighbor['remote_as']}}
-update-source {{neighbor['update_source']}}
-address-family ipv4 unicast
-send-community both
-address-family l2vpn evpn
-send-community both
-!
-{% endfor %}
-evpn
-{% for L2VNI in L2VNI %}
-  vni {{L2VNI['vni']}} l2
-    rd auto
-    route-target import auto
-    route-target export auto
-{% endfor %}
-
-</code></pre>
+<span class="l l-Scalar l-Scalar-Plain">router bgp {{ asn }}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">router-id {{ router_id }}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family ipv4 unicast</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family l2vpn evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">retain route-target all</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">#for loop to configure bgp neighbor with spine</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for neighbor in bgp_neighbors %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">neighbor {{neighbor[&#39;neighbor&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">remote-as {{neighbor[&#39;remote_as&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">update-source {{neighbor[&#39;update_source&#39;]}}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family ipv4 unicast</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">send-community both</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">address-family l2vpn evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">send-community both</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">!</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">evpn</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% for L2VNI in L2VNI %}</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">vni {{L2VNI[&#39;vni&#39;]}} l2</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">rd auto</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">route-target import auto</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">route-target export auto</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">{% endfor %}</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>Next on <strong>Atom</strong>, you can <strong>Select</strong> <code>File</code> and <code>Save</code> to push template file to Ansible node</li>
 </ul>
@@ -959,15 +956,15 @@ evpn
 <ul>
 <li>On <strong>Atom</strong>, you can <strong>Select</strong> project folder <code>EVPN-Ansible</code> and <strong>Click</strong> to edit “<code>main.yml</code>” file under “<code>roles/jinja2_leaf/tasks/</code>” and include following content:</li>
 </ul>
-<pre><code class="language-YAML">---
-# tasks file for jinja2_leaf
-  - name: Generate Leaf Config
-    template: src=leaf.j2 dest=roles/jinja2_leaf/files/{{inventory_hostname}}.cfg
-  - name: Push Leaf Config
-    cisco.nxos.nxos_config:
-      src: roles/jinja2_leaf/files/{{inventory_hostname}}.cfg
-      match: none
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w"></span>
+<span class="c1"># tasks file for jinja2_leaf</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate Leaf Config</span><span class="w"></span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src=leaf.j2 dest=roles/jinja2_leaf/files/{{inventory_hostname}}.cfg</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push Leaf Config</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">roles/jinja2_leaf/files/{{inventory_hostname}}.cfg</span><span class="w"></span>
+<span class="w">      </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span><span class="w"></span>
+</code></pre></div>
 <p>Below screenshot shows how the contents of <code>jinja2_leaf/taks/main.yml</code> file looks like in Atom:</p>
 <p><img alt="" src="../pic/3-11-1.png" /></p>
 <hr />
@@ -976,23 +973,23 @@ evpn
 <ul>
 <li>Before running the ansible-playbook, on the <strong>MTPuTTy</strong> you can <strong>login/SSH</strong> into the <strong>leaf-4</strong>, and verify that no bgp configurations exist by running below command:</li>
 </ul>
-<pre><code>show running bgp
-</code></pre>
+<div class="highlight"><pre><span></span><code>show running bgp
+</code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-12-0.png" /></p>
 <ul>
 <li>On the Ansible node (in MTputty SSH session), run the below command (<code>ansible-playbook jinja2_fabric.yml</code>) to execute the playbook:</li>
 </ul>
-<pre><code>ansible-playbook jinja2_fabric.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>ansible-playbook jinja2_fabric.yml
+</code></pre></div>
 <p><em>NOTE: It might take couple of minutes for the configuration to be pushed to via the Ansible Server. It is working in the background.</em></p>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/3-12-1.png" /></p>
 <ul>
 <li>After the configuration push is successful, <strong>login/SSH</strong> (on <strong>MTpuTT</strong> SSH session) to <strong>leaf-4</strong> switch to verify configuration has been pushed by running below command:</li>
 </ul>
-<pre><code>show running-config bgp
-</code></pre>
+<div class="highlight"><pre><span></span><code>show running-config bgp
+</code></pre></div>
 <p>The output of above command is shown below:</p>
 <p><img alt="" src="../pic/3-12-2.png" /></p>
 <hr />

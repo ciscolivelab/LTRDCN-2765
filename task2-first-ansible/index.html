@@ -492,11 +492,10 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-YAML">---                     
-#Task 2: Simple playbook assign VLAN to server facing port
-  - hosts: leaf:jinja2_leaf
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span><span class="w">                     </span>
+<span class="c1">#Task 2: Simple playbook assign VLAN to server facing port</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf:jinja2_leaf</span><span class="w"></span>
+</code></pre></div>
 <p>Note:</p>
 <ul>
 <li>“<strong>hosts:</strong>” defines the scope of this playbook applies to all switches in group <code>‘leaf’</code> and <code>‘jinja2_leaf’</code> (these were added within the <strong><em>"hosts"</em></strong> file created in pervious task)<ul>
@@ -517,17 +516,17 @@
 </ul>
 </li>
 </ul>
-<pre><code class="language-YAML">    tasks:
-      - name: provision VLAN
-        cisco.nxos.nxos_vlans:
-          config:
-            - vlan_id: &quot;{{item}}&quot;
-              state: active
-        with_items:
-         -  140
-         -  141
-        tags: add vlans
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provision VLAN</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vlans</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{item}}&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span><span class="w"></span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">140</span><span class="w"></span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">141</span><span class="w"></span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add vlans</span><span class="w"></span>
+</code></pre></div>
 <p><strong>Note:</strong>
 * This play creates multiple VLANs using <strong>cisco.nxos.nxos_vlans</strong> module
 * Above only one play is added but multiple plays can be defined in one playbook under “<strong>tasks</strong>”, each starts with <strong><code>“-“</code></strong>
@@ -550,8 +549,8 @@
 <ul>
 <li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch in previous playbook - remember the <strong><em>hosts</em>:</strong> variable in the file).  Then execute below command:</li>
 </ul>
-<pre><code>show vlan brief
-</code></pre>
+<div class="highlight"><pre><span></span><code>show vlan brief
+</code></pre></div>
 <p>This command will show the vlans that currently exist on the leaf switch.  As you note from below screenshot, only the default VLAN (vlan number 1) is configured:</p>
 <p><img alt="" src="../pic/2-5-1.png" /></p>
 <ul>
@@ -562,17 +561,17 @@
 <p>Execute the ansible playbook using below commands under directory <code>EVPN-Ansible</code> :</p>
 </li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
-</code></pre>
+</code></pre></div>
 <p>The below screenshot shows the execution of the playbook:</p>
 <p><img alt="" src="../pic/2-5-2.png" /></p>
 <p><strong>Note: If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</strong></p>
 <ul>
 <li>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appears by executing below command again:</li>
 </ul>
-<pre><code>show vlan brief
-</code></pre>
+<div class="highlight"><pre><span></span><code>show vlan brief
+</code></pre></div>
 <p>Below screenshot shows the execution of above command in the switch:</p>
 <p><img alt="" src="../pic/2-5-3.png" /></p>
 <hr />
@@ -589,28 +588,28 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 </ul>
 </li>
 </ul>
-<pre><code class="language-YAML">      - name: configure server facing port to L2
-        cisco.nxos.nxos_interfaces:
-          config:
-            - name: eth1/3
-              mode: layer2
-      - name: configure VLAN for server port
-        when: (&quot;101&quot; in inventory_hostname) or (&quot;103&quot; in inventory_hostname)
-        cisco.nxos.nxos_l2_interfaces:
-          config:
-            - name: eth1/3
-              access:
-                vlan: 140
-          state: overridden
-      - name: configure VLAN for server port
-        when: (&quot;102&quot; in inventory_hostname) or (&quot;104&quot; in inventory_hostname)
-        cisco.nxos.nxos_l2_interfaces:
-          config:
-            - name: eth1/3
-              access:
-                vlan: 141
-          state: overridden
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure server facing port to L2</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span><span class="w"></span>
+<span class="w">              </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">layer2</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span><span class="w"></span>
+<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;101&quot; in inventory_hostname) or (&quot;103&quot; in inventory_hostname)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span><span class="w"></span>
+<span class="w">              </span><span class="nt">access</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span><span class="w"></span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span><span class="w"></span>
+<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;102&quot; in inventory_hostname) or (&quot;104&quot; in inventory_hostname)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span><span class="w"></span>
+<span class="w">              </span><span class="nt">access</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span><span class="w"></span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on ATOM.  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
@@ -636,8 +635,8 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 <ul>
 <li>Before executing the ansible playbook, log into switch (<strong>leaf1</strong>, <strong>leaf3</strong> or <strong>leaf4</strong>) using <strong>MTPuTTy</strong> client.  And check the existing configuration by executing the below command:</li>
 </ul>
-<pre><code>show run interface ethernet1/3
-</code></pre>
+<div class="highlight"><pre><span></span><code>show run interface ethernet1/3
+</code></pre></div>
 <ul>
 <li>
 <p>On <strong>MTPuTTy</strong>, log back into (or launch a new ssh) into “Ansible” node</p>
@@ -646,16 +645,16 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 <p>Execute below command to run the Ansible playbook in the <code>EVPN-Ansible</code> directory:</p>
 </li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 ansible-playbook vlan_provision.yml
-</code></pre>
+</code></pre></div>
 <p>Below screeenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/2-7-1-new.png" /></p>
 <ul>
 <li>After we push the configuration, <strong>login</strong> to the <strong>leaf-3</strong> switch, and check if the server facing port has the access vlan configured with the below command:</li>
 </ul>
-<pre><code>show run interface ethernet1/3
-</code></pre>
+<div class="highlight"><pre><span></span><code>show run interface ethernet1/3
+</code></pre></div>
 <p>The output of above command on leaf-3 or leaf-1 is shown in below screenshot:</p>
 <p><img alt="" src="../pic/2-7-2.png" /></p>
 <p>The output of above command on leaf-4 is shown in below screenshot:</p>
