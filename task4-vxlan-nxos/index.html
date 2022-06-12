@@ -1083,8 +1083,12 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </ul>
 <h5 id="edit-variable-file-for-spine-role">Edit variable file for Spine role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the variables file for Spine i.e. <strong>“main.yml”</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and add the below content at the end of <strong>“main.yml”</strong> file under <strong>“roles/spine/vars/”</strong> (<strong>Do not replace existing content</strong>)</li>
+<li>Use <strong>“Atom”</strong> to edit the variables file for Spine i.e. <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and add the below content at the end of <code>“main.yml”</code> file under <code>“roles/spine/vars/”</code></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">L3_interfaces</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/1</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/2</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
@@ -1100,8 +1104,12 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </ul>
 <h5 id="edit-playbook-for-leaf-role">Edit playbook for leaf role</h5>
 <ul>
-<li>use <strong>“Atom”</strong> to edit the <strong>“main.yml”</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and add below content at the end of <strong>“main.yml”</strong> file under <strong>“roles/leaf/tasks/”</strong>.(<strong>Do not replace existing content</strong>)   On Atom, Make sure to click <strong>File-&gt;Save</strong> after entering the below data in this file so it is pushed to Ansible server:</li>
+<li>use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and add below content at the end of <code>“main.yml”</code> file under <code>“roles/leaf/tasks/”</code>.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content.  On Atom, Make sure to click <strong>File-&gt;Save</strong> after entering the below data in this file so it is pushed to Ansible server:</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="c1">#task to enable PIM for underlay multicast</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable PIM</span><span class="w"></span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span><span class="w"></span>
@@ -1204,8 +1212,12 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </table>
 <h5 id="edit-playbook-for-spine-role_1">Edit playbook for spine role</h5>
 <ul>
-<li>Use <strong>“Atom”</strong> to edit the “<strong>main.yml</strong>” file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/spine/tasks/”</strong> and enter the below content (you may copy &amp; paste with correct spaces) at the end of the file(<strong>Do not replace existing content</strong>):</li>
+<li>Use <strong>“Atom”</strong> to edit the “<strong>main.yml</strong>” file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/spine/tasks/”</strong> and enter the below content (you may copy &amp; paste with correct spaces) at the end of the file</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="c1">#task to configure vxlan fabric</span><span class="w"></span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable VXLAN Feature</span><span class="w"></span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span><span class="w"></span>
