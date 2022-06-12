@@ -879,17 +879,12 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the above <code>task/main.yml</code> file multiple NXOS ansible modules have been used:</p>
-<ul>
-<li>“<strong>cisco.nxos.nxos_feature</strong>” module provides the capability to manage features in NX-OS features.  It is used to enable bgp as a feature in above configurations</li>
-<li>“<strong>cisco.nxos.nxos_bgp</strong>” module provides the capability to manage BGP configuration in NX-OS.  Here it is used to configure bgp</li>
-<li>“<strong>cisco.nxos.nxos_bgp_af</strong>” module provides the capability to manage BGP Address-family configuration in NX-OS.  </li>
-<li>“<strong>cisco.nxos.nxos_bgp_neighbor</strong>” module is used to configure the BGP Neighbour in NX-OS.  </li>
-<li>“<strong>cisco.nxos.nxos_bgp_neighbor_af</strong>” module provides the capability to manage BGP Address-family Neighbour configuration in NX-OS.  </li>
-</ul>
-</div>
+<p>In the above <code>task/main.yml</code> file multiple NXOS ansible modules have been used:      <br />
+<em> “</em><em>cisco.nxos.nxos_feature</em><em>” module provides the capability to manage features in NX-OS features.  It is used to enable bgp as a feature in above configurations
+* “</em><em>cisco.nxos.nxos_bgp</em><em>” module provides the capability to manage BGP configuration in NX-OS.  Here it is used to configure bgp
+* “</em><em>cisco.nxos.nxos_bgp_af</em><em>” module provides the capability to manage BGP Address-family configuration in NX-OS.<br />
+</em> “<strong>cisco.nxos.nxos_bgp_neighbor</strong>” module is used to configure the BGP Neighbour in NX-OS.<br />
+<em> “</em><em>cisco.nxos.nxos_bgp_neighbor_af</em>*” module provides the capability to manage BGP Address-family Neighbour configuration in NX-OS.  </p>
 <hr />
 <h3 id="step-4-build-playbook-for-spine-role-vars">Step 4:  Build playbook for Spine role - vars</h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
