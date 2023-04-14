@@ -1,0 +1,71 @@
+---
+#Appendix code upgrade
+  - hosts: spine,leaf,jinja2_leaf,jinja2_spine
+    vars:
+      - standard: 7.0(3)I7(4)
+      - image_file: nxos.7.0.3.I7.4.bin
+      - connection: network_cli
+      - ansible_network_os: nxos
+      - ansible_user: "{{ user }}"
+      - ansible_password: "{{ pwd }}"
+      - ansible_connect_timeout: 90
+      # - nxos_provider:
+      #     username: "{{ user }}"
+      #     password: "{{ pwd }}"
+      #     transport: network_cli
+      #     timeout: 30
+      #     host: "{{ inventory_hostname }}"
+    tasks:
+      - name: "software complaince check"
+        nxos_facts:
+          gather_subset: all
+          # provider: "{{nxos_provider}}"
+      - name: "change to standard code"
+        block:
+          - debug: msg="{{ansible_net_hostname}} is not running standard {{standard}}"
+          - nxos_feature:
+              feature: scp-server
+              # provider: "{{nxos_provider}}"
+              state: enabled
+          - name: "upload image file"
+            nxos_file_copy:
+              file_pull: True
+              file_pull_timeout: 1200
+              remote_file: "/root/downloads/{{image_file}}"
+              remote_scp_server: "198.18.4.150"
+              remote_scp_server_user: "root"
+              remote_scp_server_password: "C1sco12345"
+              # provider: "{{nxos_provider}}"
+          # - name: "upload image file"
+          #   nxos_file_copy:
+          #     file_pull: no
+          #     local_file: "/root/downloads/{{image_file}}"
+          #     # remote_file: "/root/downloads/{{image_file}}"
+          #     provider: "{{nxos_provider}}"
+          - name: "change boot statement"
+            nxos_config:
+              lines: boot nxos bootflash:{{image_file}}
+              save_when: modified
+              # provider: "{{nxos_provider}}"
+          - name: "reload switch"
+            ios_command:
+              commands:
+                - command: reload
+                  prompt: '(y/n)?'
+                  answer: 'y'
+              username: "{{ user }}"
+              password: "{{ pwd }}"
+        when: ansible_net_version != standard
+        rescue:
+          - debug:
+              msg: "{{ansible_net_hostname}} is reloading"
+          - name: Wait For Device To Come Back Up
+            wait_for:
+              port: 22
+              state: started
+              timeout: 900
+              delay: 60
+              host: "{{ inventory_hostname }}"
+        always:
+          - debug:
+              msg: "All devices are running {{standard}}"

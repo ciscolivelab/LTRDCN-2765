@@ -1,0 +1,93 @@
+---
+- name: Configurating BIG-IP
+  hosts: localhost
+  gather_facts: false
+  vars:
+    provider:
+      password: admin
+      server: 198.18.4.10
+      user: admin
+      validate_certs: False
+
+  tasks:
+  - name: Configure server facing port to L2
+    nxos_interface:
+      interface: eth1/4
+      mode: layer2
+      username: "{{ user }}"
+      password: "{{ pwd }}"
+      transport: nxapi
+      host: "198.18.4.104"
+  - name: Configure VLAN for F5 port
+    nxos_switchport:
+      interface: eth1/4
+      mode: access
+      access_vlan: 140
+      username: "{{ user }}"
+      password: "{{ pwd }}"
+      transport: nxapi
+      host: "198.18.4.104"
+  - name: Configure VLANs on the BIG-IP
+    bigip_vlan:
+      name: "External"
+      tag: "140"
+      untagged_interface: "1.1"
+      provider: "{{ provider }}"
+  - name: Configure SELF-IPs on the BIG-IP
+    bigip_selfip:
+     name: "172.21.140.50"
+     address: "172.21.140.50"
+     netmask: "255.255.255.0"
+     vlan: "External"
+     allow_service: "default"
+     provider: "{{ provider }}"
+  - name: Create static route
+    bigip_static_route:
+     provider: "{{ provider }}"
+     destination: 0.0.0.0
+     netmask: 0.0.0.0
+     gateway_address: 172.21.140.1
+     name: "defult"
+  - name: Create nodes
+    bigip_node:
+      provider: "{{ provider }}"
+      host: "{{item}}"
+      name: "{{item}}"
+    with_items:
+      - 172.21.140.10
+      - 172.21.140.11
+      - 172.21.141.10
+      - 172.21.141.11
+
+  - name: Create pool
+    bigip_pool:
+      provider: "{{ provider }}"
+      name: "web-pool"
+      lb_method: "round-robin"
+      monitors: "/Common/http"
+      monitor_type: "and_list"
+
+  - name: Add Pool members
+    bigip_pool_member:
+      provider: "{{ provider }}"
+      name: "{{item}}"
+      host: "{{item}}"
+      port: "80"
+      pool: "web-pool"
+    with_items:
+      - 172.21.140.10
+      - 172.21.140.11
+      - 172.21.141.10
+      - 172.21.141.11
+
+  - name: Add Virtual Server
+    bigip_virtual_server:
+      provider: "{{ provider }}"
+      name: "http-virtualserver"
+      destination: "172.21.140.100"
+      port: "80"
+      enabled_vlans: "ALL"
+      all_profiles:
+      - http
+      pool: "web-pool"
+      snat: "Automap"

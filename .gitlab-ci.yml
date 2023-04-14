@@ -1,0 +1,40 @@
+stages:
+- test
+- staging
+- production
+
+verify:
+  stage: test
+  tags:
+    - EVPN
+  script:
+#    - cd /root/EVPN-Ansible/
+    - ansible-playbook jinja2_fabric.yml --check
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != "main"'
+staging:
+  stage: staging
+  tags:
+    - EVPN
+  script:
+#    - cd /root/EVPN-Ansible/
+    - ansible-playbook jinja2_fabric.yml
+    - ansible-playbook nxos_fabric.yml
+    - ansible-playbook verify_fabric.yml
+  artifacts:
+    paths:
+      - overlay.txt
+      - underlay.txt
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"  && $CI_COMMIT_BRANCH != "main"'
+deploy:
+  stage: production
+  tags:
+    - EVPN
+  script:
+#    - cd /root/EVPN-Ansible/
+    - ansible-playbook jinja2_fabric.yml
+    - ansible-playbook nxos_fabric.yml
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: manual

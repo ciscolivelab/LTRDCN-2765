@@ -1,0 +1,6 @@
+---
+   - hosts: spine,leaf,jinja2_leaf,jinja2_spine
+     tasks:
+      - name: save running
+        cisco.nxos.nxos_config:
+          backup: yes

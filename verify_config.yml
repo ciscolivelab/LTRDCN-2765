@@ -1,0 +1,10 @@
+---
+   - hosts: jinja2_leaf,leaf,jinja2_spine,spine
+     vars:
+      filename: "{{ lookup('pipe', 'ls backup/{{ inventory_hostname}}_config.*')}}"
+     tasks:
+       - name: configure compliance
+         register: diff_config
+         cisco.nxos.nxos_config:
+           diff_against: intended
+           intended_config: "{{ lookup('file', '{{filename}}') }}"

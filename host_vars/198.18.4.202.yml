@@ -1,0 +1,30 @@
+---
+  hostname: spine-2
+  loopback0: 192.168.0.7
+  loopback1: 192.168.0.100
+  l3ip:
+  - interface: Ethernet1/1
+    ip: 10.0.128.5
+    mask: 30
+  - interface: Ethernet1/2
+    ip: 10.0.128.9
+    mask: 30
+  - interface: Ethernet1/3
+    ip: 10.0.128.13
+    mask: 30
+  - interface: Ethernet1/4
+    ip: 10.0.128.17
+    mask: 30
+  loopbacks:
+  - interface: loopback0
+    ip: 192.168.0.7
+    mask: 32
+  - interface: loopback1
+    ip: 192.168.0.100
+    mask: 32
+  router_id: 192.168.0.7
+  feature:
+    - telnet
+    - nxapi
+    - ospf
+    - interface-vlan

@@ -1,0 +1,48 @@
+---
+#Appendix code upgrade
+  - hosts: spine,leaf
+    vars:
+      - standard: 7.0(3)I7(4)
+      - image_file: nxos.7.0.3.I7.4.bin
+    tasks:
+      - name: "software complaince check"
+        cisco.nxos.nxos_facts:
+          gather_subset: all
+      - name: "change to standard code"
+        block:
+          - debug: msg="{{ansible_net_hostname}} is not running standard {{standard}}"
+          - cisco.nxos.nxos_feature:
+              feature: scp-server
+              state: enabled
+          - name: "upload image file"
+            cisco.nxos.nxos_file_copy:
+              file_pull: True
+              file_pull_timeout: 1200
+              remote_file: "/root/downloads/{{image_file}}"
+              remote_scp_server: "198.18.4.150"
+              remote_scp_server_user: "root"
+              remote_scp_server_password: "C1sco12345"
+          - name: "change boot statement"
+            cisco.nxos.nxos_config:
+              lines: boot nxos bootflash:{{image_file}}
+              save_when: modified
+          - name: "reload switch"
+            cisco.nxos.nxos_command:
+              commands:
+                - command: reload
+                  prompt: '(y/n)?'
+                  answer: 'y'
+        when: ansible_net_version != standard
+        rescue:
+          - debug:
+              msg: "{{ansible_net_hostname}} is reloading"
+          - name: Wait For Device To Come Back Up
+            wait_for:
+              port: 22
+              state: started
+              timeout: 900
+              delay: 60
+              host: "{{ inventory_hostname }}"
+        always:
+          - debug:
+              msg: "All devices are running {{standard}}"

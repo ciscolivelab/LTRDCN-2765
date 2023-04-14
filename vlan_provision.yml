@@ -1,0 +1,34 @@
+---
+#Task 2: Simple playbook assign VLAN to server facing port
+  - hosts: leaf:jinja2_leaf
+    tasks:
+      - name: provision VLAN
+        cisco.nxos.nxos_vlans:
+          config:
+            - vlan_id: "{{item}}"
+              state: active
+        with_items:
+          -  140
+          -  141
+        tags: add vlans
+      - name: configure server facing port to L2
+        cisco.nxos.nxos_interfaces:
+          config:
+            - name: eth1/3
+              mode: layer2
+      - name: configure VLAN for server port
+        when: ("101" in inventory_hostname) or ("103" in inventory_hostname)
+        cisco.nxos.nxos_l2_interfaces:
+          config:
+            - name: eth1/3
+              access:
+                vlan: 140
+          state: overridden
+      - name: configure VLAN for server port
+        when: ("102" in inventory_hostname) or ("104" in inventory_hostname)
+        cisco.nxos.nxos_l2_interfaces:
+          config:
+            - name: eth1/3
+              access:
+                vlan: 141
+          state: overridden

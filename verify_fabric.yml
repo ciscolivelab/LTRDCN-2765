@@ -1,0 +1,33 @@
+---
+  - hosts: leaf, jinja2_leaf
+    connection: local
+    gather_facts: false
+    tasks:
+      - name: verify underlay
+        register: underlay_output
+        cisco.nxos.nxos_command:
+          commands:
+            - show ip ospf neighbors
+            - show ip bgp sum
+            - show ip pim neighbor
+        tags: underlay
+      - debug: var=underlay_output.stdout_lines
+        tags: underlay
+      - set_fact:
+          savefile: "{{underlay_output.stdout_lines | to_nice_yaml}}"
+      - local_action: copy content="{{savefile}}" dest=./underlay.txt
+      - name: Verify Overlay
+        register: overlay_output
+        cisco.nxos.nxos_command:
+          commands:
+            - show nve vni
+            - show nve peer
+            - show ip route vrf Tenant-1
+            - show bgp l2vpn evpn
+            - show l2route evpn mac-ip all
+        tags: overlay
+      - debug: var=overlay_output.stdout_lines
+        tags: overlay
+      - set_fact:
+          savefile: "{{overlay_output.stdout_lines | to_nice_yaml}}"
+      - local_action: copy content="{{savefile}}" dest=./overlay.txt

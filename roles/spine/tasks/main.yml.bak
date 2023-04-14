@@ -1,0 +1,115 @@
+---
+# tasks file for spine
+#task to configure bgp neighbor to all leaf switches
+       - name: Enable BGP
+         cisco.nxos.nxos_feature:
+           feature: bgp
+           state: enabled
+         tags: bgp
+       - name: Configure BGP AS
+         cisco.nxos.nxos_bgp:
+           asn: "{{ asn }}"
+           router_id: "{{ router_id }}"
+           state: present
+         tags: bgp
+       - name: Configure BGP AF
+         cisco.nxos.nxos_bgp_af:
+           asn: "{{ asn }}"
+           afi: ipv4
+           safi: unicast
+         tags: bgp
+       - name: Configure iBGP neighbors
+         cisco.nxos.nxos_bgp_neighbor:
+           asn: "{{ asn }}"
+           neighbor: "{{ item.neighbor }}"
+           remote_as: "{{ item.remote_as }}"
+           update_source: "{{ item.update_source }}"
+         with_items: "{{ bgp_neighbors }}"
+         tags: bgp
+       - name: Configure iBGP neighbor AF
+         cisco.nxos.nxos_bgp_neighbor_af:
+           asn: "{{ asn }}"
+           neighbor: "{{ item.neighbor }}"
+           afi: ipv4
+           safi: unicast
+           route_reflector_client: "true"
+           send_community: both
+         with_items: "{{ bgp_neighbors }}"
+         tags: bgp
+#task to enable pim and configure anycast rp for underlay multicast
+       - name: Enable PIM
+         cisco.nxos.nxos_feature:
+           feature: pim
+           state: enabled
+         tags: multicast
+       - name: Configure Anycast RP interfce
+         cisco.nxos.nxos_interfaces:
+           config:
+             - name: loopback1
+               enabled: true
+         tags: multicast
+       - name: Configure IP Address on New LP1
+         cisco.nxos.nxos_l3_interfaces:
+           config:
+             - name: loopback1
+               ipv4:
+                - address: "{{ loopback1 }}/32"
+         tags: multicast
+       - name: Configure PIM int
+         cisco.nxos.nxos_pim_interface:
+           interface: "{{ item.interface }}"
+           sparse: true
+         with_items: "{{L3_interfaces}}"
+         tags: multicast
+      - name: Enable OSPF on New LP1
+        cisco.nxos.nxos_ospf_interfaces:
+          config:
+            - name: loopback1
+              address_family:
+                - afi: ipv4
+                  processes:
+                    - process_id: "1"
+                      area:
+                        area_id: 0.0.0.0
+        tags: multicast
+       - name: Configure PIM RP
+         cisco.nxos.nxos_pim_rp_address:
+           rp_address: "{{ loopback1 }}"
+         tags: multicast
+       - name: Configure Anycast RP
+         cisco.nxos.nxos_config:
+           lines:
+            - "ip pim anycast-rp {{ loopback1 }} {{ s1_loopback }}"
+            - "ip pim anycast-rp {{ loopback1 }} {{ s2_loopback }}"
+         tags: multicast
+#task to configure vxlan fabric
+       - name: Enable VXLAN Feature
+         cisco.nxos.nxos_feature:
+            feature: "{{item}}"
+            # provider: "{{cisco.nxos.nxos_provider }}"
+            state: enabled
+         with_items:
+            - nv overlay
+            - vn-segment-vlan-based
+         tags: vxlan
+       - name: Enable NV Overlay
+         cisco.nxos.nxos_evpn_global:
+           nv_overlay_evpn: true
+         tags: vxlan
+# task to configure BGP EVPN
+       - name: Configure BGP EVPN
+         cisco.nxos.nxos_bgp_af:
+           asn: "{{ asn }}"
+           afi: l2vpn
+           safi: evpn
+         tags: evpn
+       - name: Configure iBGP neighbor EVPN AF
+         cisco.nxos.nxos_bgp_neighbor_af:
+           asn: "{{ asn }}"
+           neighbor: "{{ item.neighbor }}"
+           afi: l2vpn
+           safi: evpn
+           route_reflector_client: "true"
+           send_community: both
+         with_items: "{{ bgp_neighbors }}"
+         tags: evpn
