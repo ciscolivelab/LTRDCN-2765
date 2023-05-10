@@ -1,0 +1,1702 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../task3-vxlan-jinja2-new/">
+      
+      
+        <link rel="next" href="../task5-day2-pipeline0/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+    
+    
+      
+        <title>Task 4 - Config switches using Ansible NXOS modules - Cisco Live 2023 LTRDCN-2765</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-create-new-playbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco Live 2023 LTRDCN-2765
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 4 - Config switches using Ansible NXOS modules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ciscolivelab/LTRDCN-2765" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cisco Live 2023 LTRDCN-2765
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ciscolivelab/LTRDCN-2765" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Task1-ansible-node0/" class="md-nav__link">
+        Task 1 - Prepare Ansible node
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task2-first-ansible/" class="md-nav__link">
+        Task 2 - First Simple Ansible Playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task3-vxlan-jinja2-new/" class="md-nav__link">
+        Task 3 - Use of Jinja2 templates with Ansible Playbook
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 4 - Config switches using Ansible NXOS modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Task 4 - Config switches using Ansible NXOS modules
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-new-playbook" class="md-nav__link">
+    Step 1: Create new playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-new-roles-for-spine-leaf" class="md-nav__link">
+    Step 2: Create new roles for Spine &amp; Leaf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-build-playbook-for-spine-role-tasks" class="md-nav__link">
+    Step 3: Build playbook for Spine role - tasks:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-build-playbook-for-spine-role-vars" class="md-nav__link">
+    Step 4:  Build playbook for Spine role - vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-build-playbook-for-leaf-role-tasks" class="md-nav__link">
+    Step 5:  Build playbook for leaf role - tasks:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-build-playbook-for-leaf-role-vars" class="md-nav__link">
+    Step 6: Build playbook for leaf role - vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-execute-playbook" class="md-nav__link">
+    Step 7: Execute playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-configure-multicast-using-ansible-nxos" class="md-nav__link">
+    Step 8: Configure Multicast using Ansible NXOS
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Configure Multicast using Ansible NXOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-configure-vxlan-using-ansible" class="md-nav__link">
+    Step 9: Configure VXLAN using Ansible
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 9: Configure VXLAN using Ansible">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role_1" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role_1" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role_1" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role_1" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes_1" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-configure-evpn-using-ansible" class="md-nav__link">
+    Step 10: Configure EVPN using Ansible
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 10: Configure EVPN using Ansible">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role_2" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role_2" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role_2" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role_2" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes_2" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-run-nxos_fabric-playbook" class="md-nav__link">
+    Step 11: Run nxos_fabric playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-verify-end-to-end-ip-connectivity" class="md-nav__link">
+    Step 12: Verify end-to-end IP connectivity
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task5-day2-pipeline0/" class="md-nav__link">
+        Task 5 - Day 2 Opertions with CI Pipeline
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-new-playbook" class="md-nav__link">
+    Step 1: Create new playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-new-roles-for-spine-leaf" class="md-nav__link">
+    Step 2: Create new roles for Spine &amp; Leaf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-build-playbook-for-spine-role-tasks" class="md-nav__link">
+    Step 3: Build playbook for Spine role - tasks:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-build-playbook-for-spine-role-vars" class="md-nav__link">
+    Step 4:  Build playbook for Spine role - vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-build-playbook-for-leaf-role-tasks" class="md-nav__link">
+    Step 5:  Build playbook for leaf role - tasks:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-build-playbook-for-leaf-role-vars" class="md-nav__link">
+    Step 6: Build playbook for leaf role - vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-execute-playbook" class="md-nav__link">
+    Step 7: Execute playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-configure-multicast-using-ansible-nxos" class="md-nav__link">
+    Step 8: Configure Multicast using Ansible NXOS
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Configure Multicast using Ansible NXOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-configure-vxlan-using-ansible" class="md-nav__link">
+    Step 9: Configure VXLAN using Ansible
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 9: Configure VXLAN using Ansible">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role_1" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role_1" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role_1" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role_1" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes_1" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-configure-evpn-using-ansible" class="md-nav__link">
+    Step 10: Configure EVPN using Ansible
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 10: Configure EVPN using Ansible">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role_2" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role_2" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role_2" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role_2" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes_2" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-run-nxos_fabric-playbook" class="md-nav__link">
+    Step 11: Run nxos_fabric playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-verify-end-to-end-ip-connectivity" class="md-nav__link">
+    Step 12: Verify end-to-end IP connectivity
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Task 4 - Config switches using Ansible NXOS modules</h1>
+
+<p>In this section, you will build remaining VXLAN fabric using Ansible NXOS modules.  These modules will be used to configure leaf-1, leaf-3 and spine-1 switches within the VXLAN Fabric.  We will configure BGP neighbors between spine and leaf switching by using Ansible NXOS modules.  The following NXOS ansible modules are used:</p>
+<table>
+<thead>
+<tr>
+<th align="center">cisco.nxos.nxos_feature</th>
+<th align="center">Manage features on Nexus switches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">cisco.nxos.nxos_bgp</td>
+<td align="center">Manage BGP config</td>
+</tr>
+<tr>
+<td align="center">cisco.nxos.nxos_bgp_neighbor</td>
+<td align="center">Manage BGP neighbor config</td>
+</tr>
+<tr>
+<td align="center">cisco.nxos.nxos_bgp_af</td>
+<td align="center">Manage BGP address-famility config</td>
+</tr>
+<tr>
+<td align="center">cisco.nxos.nxos_bgp_neighbor_af</td>
+<td align="center">Manage BGP neighbor address-famility config</td>
+</tr>
+</tbody>
+</table>
+<p></n></p>
+<p>In comparison to Jinja2, NXOS modules are more abstract from NXOS CLI based configuration. There is no need to have knowledge of exact NXOS CLI syntax to use NXOS modules.  You will follow the steps to configure BGP, Multicast, VXLAN and EVPN.  In each step, you will use different Ansible NXOS modules to accomplish the step.</p>
+<p><img alt="" src="../pic/4-0-1-new.png" /></p>
+<p>After each step, you can login the switches to verify configuration changes.</p>
+<hr />
+<h3 id="step-1-create-new-playbook">Step 1: Create new playbook</h3>
+<p>Again we will use roles structure to make the playbook more modular.  The roles included in the new playbook are “<strong>spine</strong>” and “<strong>leaf</strong>”.  </p>
+<ul>
+<li>
+<p>Switch to “<strong>Atom”</strong>, then <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>nxos_fabric.yml</code>.  Enter this file name and hit <strong>enter</strong></p>
+</li>
+<li>
+<p>In the <code>nxos_fabric.yml</code> enter the content as shown below:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine</span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spine</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf</span>
+<span class="w">  </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf</span>
+</code></pre></div>
+<p>Below screenshot shows the actual content:</p>
+<p><img alt="" src="../pic/4-1-1.png" /></p>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<hr />
+<h3 id="step-2-create-new-roles-for-spine-leaf">Step 2: Create new roles for Spine &amp; Leaf</h3>
+<ul>
+<li>On the <strong>MTpuTTy</strong>, go back (or initiate a new <strong>login/SSH</strong>) to <strong>Ansible Server</strong> node (198.18.134.150).  Switch to ‘<strong>roles</strong>’ directory; then <strong>create</strong> ‘spine’ and ‘leaf’ roles using ansible-galaxy as per below commands:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible/roles/
+ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
+</code></pre></div>
+<p>Below screenshot shows the output of above command:</p>
+<p><img alt="" src="../pic/4-2-1.png" /></p>
+<ul>
+<li>Switch to “<strong>Atom</strong>” and sync the new created folders between Ansible node and Remote desktop by pressing <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code>, then open <code>Remote Sync</code> select <code>Download Folder</code> as shown below:</li>
+</ul>
+<p><img alt="" src="../pic/4-2-2.png" /></p>
+<hr />
+<h3 id="step-3-build-playbook-for-spine-role-tasks">Step 3: Build playbook for Spine role - tasks:</h3>
+<p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>tasks</strong>” folder.  We are going to use “<strong>Atom</strong>” to edit the <strong>main.yml</strong> file.</p>
+<ul>
+<li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/spine/tasks/</code> to include following:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="c1"># tasks file for spine</span>
+<span class="c1">#task to configure bgp neighbor to all leaf switches</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable BGP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure BGP AS</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">router_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure BGP AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unicast</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure iBGP neighbors</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_neighbor</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.neighbor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.remote_as</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.update_source</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure iBGP neighbor AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_neighbor_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.neighbor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unicast</span>
+<span class="w">          </span><span class="nt">route_reflector_client</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">send_community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">both</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<p>In the above <code>task/main.yml</code> file multiple NXOS ansible modules have been used:</p>
+<ul>
+<li>
+<p>“<strong>cisco.nxos.nxos_feature</strong>” module provides the capability to manage features in NX-OS features.  It is used to enable bgp as a feature in above configurations</p>
+</li>
+<li>
+<p>“<strong>cisco.nxos.nxos_bgp</strong>” module provides the capability to manage BGP configuration in NX-OS.  Here it is used to configure bgp</p>
+</li>
+<li>
+<p>“<strong>cisco.nxos.nxos_bgp_af</strong>” module provides the capability to manage BGP Address-family configuration in NX-OS.  </p>
+</li>
+<li>
+<p>“<strong>cisco.nxos.nxos_bgp_neighbor</strong>” module is used to configure the BGP Neighbour in NX-OS.  </p>
+</li>
+<li>
+<p>“<strong>cisco.nxos.nxos_bgp_neighbor_af</strong>” module provides the capability to manage BGP Address-family Neighbour configuration in NX-OS.  </p>
+</li>
+</ul>
+<hr />
+<h3 id="step-4-build-playbook-for-spine-role-vars">Step 4:  Build playbook for Spine role - vars</h3>
+<p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
+<ul>
+<li>Switch to <strong>Atom</strong>, then open up the project folder <code>EVPN-Ansible</code> from the left pane and <strong>open</strong> <code>main.yml</code> file under “<strong>roles/spine/vars/</strong>” and enter below content:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="c1"># vars file for spine</span>
+<span class="w">  </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span>
+
+<span class="w">  </span><span class="nt">bgp_neighbors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> remote_as</span><span class="p">:</span><span class="w"> </span><span class="nv">65000</span><span class="p p-Indicator">,</span><span class="nt"> neighbor</span><span class="p">:</span><span class="w"> </span><span class="nv">192.168.0.8</span><span class="p p-Indicator">,</span><span class="nt"> update_source</span><span class="p">:</span><span class="w"> </span><span class="nv">Loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> remote_as</span><span class="p">:</span><span class="w"> </span><span class="nv">65000</span><span class="p p-Indicator">,</span><span class="nt"> neighbor</span><span class="p">:</span><span class="w"> </span><span class="nv">192.168.0.10</span><span class="p p-Indicator">,</span><span class="nt"> update_source</span><span class="p">:</span><span class="w"> </span><span class="nv">Loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> remote_as</span><span class="p">:</span><span class="w"> </span><span class="nv">65000</span><span class="p p-Indicator">,</span><span class="nt"> neighbor</span><span class="p">:</span><span class="w"> </span><span class="nv">192.168.0.11</span><span class="p p-Indicator">,</span><span class="nt"> update_source</span><span class="p">:</span><span class="w"> </span><span class="nv">Loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<hr />
+<h3 id="step-5-build-playbook-for-leaf-role-tasks">Step 5:  Build playbook for leaf role - tasks:</h3>
+<p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>tasks</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
+<ul>
+<li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/leaf/tasks/</code> to include following:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="c1"># tasks file for leaf</span>
+<span class="c1">#task to configure bgp neighbor to all spine switches</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable BGP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure BGP AS</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">router_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">router_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure BGP AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unicast</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure iBGP neighbors</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_neighbor</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.neighbor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">remote_as</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.remote_as</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">update_source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.update_source</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure iBGP neighbor AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_neighbor_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.neighbor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unicast</span>
+<span class="w">          </span><span class="nt">send_community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">both</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bgp</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<hr />
+<h3 id="step-6-build-playbook-for-leaf-role-vars">Step 6: Build playbook for leaf role - vars</h3>
+<p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
+<ul>
+<li>Switch to <strong>ATOM</strong>, then open up the project folder <code>EVPN-Ansible</code> from the left pane and <strong>open</strong> <code>main.yml</code> file under “<strong>roles/leaf/vars/</strong>” and enter below content:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="c1"># vars file for leaf</span>
+<span class="w">  </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65000</span>
+
+<span class="w">  </span><span class="nt">bgp_neighbors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> remote_as</span><span class="p">:</span><span class="w"> </span><span class="nv">65000</span><span class="p p-Indicator">,</span><span class="nt"> neighbor</span><span class="p">:</span><span class="w"> </span><span class="nv">192.168.0.6</span><span class="p p-Indicator">,</span><span class="nt"> update_source</span><span class="p">:</span><span class="w"> </span><span class="nv">Loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> remote_as</span><span class="p">:</span><span class="w"> </span><span class="nv">65000</span><span class="p p-Indicator">,</span><span class="nt"> neighbor</span><span class="p">:</span><span class="w"> </span><span class="nv">192.168.0.7</span><span class="p p-Indicator">,</span><span class="nt"> update_source</span><span class="p">:</span><span class="w"> </span><span class="nv">Loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<hr />
+<h3 id="step-7-execute-playbook">Step 7: Execute playbook</h3>
+<ul>
+<li>On the Ansible node (in MTputty SSH session), run the command (<code>ansible-playbook nxos_fabric.yml --tags "bgp"</code>) to execute the playbook as shown below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
+ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
+</code></pre></div>
+<p>Below screenshots shows the execution of above playbook:
+<img alt="" src="../pic/4-3-1.png" />
+<img alt="" src="../pic/4-3-2.png" /></p>
+<ul>
+<li>After the configuration push is successful, <strong>login</strong> (on MTputty SSH session) to <strong>leaf-1, leaf-3</strong> or <strong>spine-1</strong> switch to verify configuration has been pushed and BGP neighbours are operational by running below command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>show ip bgp summary
+</code></pre></div>
+<p>The output of above command providing the BGP neighbours info on Spine-1 and Leaf-3 is shown below:</p>
+<p><img alt="" src="../pic/4-3-3.png" /></p>
+<p><img alt="" src="../pic/4-3-4.png" /></p>
+<hr />
+<h3 id="step-8-configure-multicast-using-ansible-nxos">Step 8: Configure Multicast using Ansible NXOS</h3>
+<p>In this section, we will be configuring underlay multicast to support BUM traffic in the VXLAN fabric. The NXOS modules we will be using in this section are
+nxos_feature    Manage fatures on Nexus switchs
+nxos_pim_interface  Manage PIM interface configuration</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cisco.nxos.nxos_pim_rp_address</td>
+<td>Manage static RP configuration</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_config</td>
+<td>Manage NXOS arbitrary configuration command</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_interface_ospf</td>
+<td>Manage configuration OSPF interface instance</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_interfaces</td>
+<td>Manage physical attribute of interface</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_l3_interfaces</td>
+<td>Manage L3 interfaces on Cisco NXOS network devices</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_pim_interface</td>
+<td>Manages PIM interface configuration</td>
+</tr>
+</tbody>
+</table>
+<h5 id="edit-playbook-for-spine-role">Edit playbook for spine role</h5>
+<ul>
+<li>Use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and open <code>“main.yml”</code> file under <code>“roles/spine/tasks/”</code> and save the below tasks at the end the file.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1">#task to enable pim and configure anycast rp for underlay multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable PIM</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pim</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure Anycast RP interfce</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback1</span>
+<span class="w">              </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure IP Address on New LP1</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_l3_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback1</span>
+<span class="w">              </span><span class="nt">ipv4</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">loopback1</span><span class="nv"> </span><span class="s">}}/32&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure PIM int</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_pim_interface</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.interface</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">sparse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{L3_interfaces}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable OSPF on New LP1</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_ospf_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback1</span>
+<span class="w">              </span><span class="nt">address_family</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+<span class="w">                  </span><span class="nt">processes</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">process_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">                      </span><span class="nt">area</span><span class="p">:</span>
+<span class="w">                        </span><span class="nt">area_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure PIM RP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_pim_rp_address</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">rp_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">loopback1</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure Anycast RP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">lines</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ip</span><span class="nv"> </span><span class="s">pim</span><span class="nv"> </span><span class="s">anycast-rp</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">loopback1</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">s1_loopback</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ip</span><span class="nv"> </span><span class="s">pim</span><span class="nv"> </span><span class="s">anycast-rp</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">loopback1</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">s2_loopback</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="edit-variable-file-for-spine-role">Edit variable file for Spine role</h5>
+<ul>
+<li>Use <strong>“Atom”</strong> to edit the variables file for Spine i.e. <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and add the below content at the end of <code>“main.yml”</code> file under <code>“roles/spine/vars/”</code></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">L3_interfaces</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/2</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/3</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/4</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">loopback1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">s1_loopback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.6</span>
+<span class="w">  </span><span class="nt">s2_loopback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.7</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="edit-playbook-for-leaf-role">Edit playbook for leaf role</h5>
+<ul>
+<li>use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and add below content at the end of <code>“main.yml”</code> file under <code>“roles/leaf/tasks/”</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content.  </p>
+</div>
+<ul>
+<li>On Atom, Make sure to <strong>click</strong> <code>File-&gt;Save</code> after entering the below data in this file so it is pushed to Ansible server:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#task to enable PIM for underlay multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable PIM</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pim</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure PIM int</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_pim_interface</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.interface</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">sparse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{L3_interfaces}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure PIM RP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_pim_rp_address</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">rp_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">rp_address</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multicast</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="edit-variable-file-for-leaf-role">Edit variable file for leaf role</h5>
+<ul>
+<li>Use <strong>“Atom”</strong> to edit the main.yml file. Open up the project folder <strong>“EVPN-Ansible”</strong> and add below content at the end of <strong>“main.yml”</strong> file under <strong>“roles/leaf/vars/”</strong>.  On Atom, Make sure to click <strong>File-&gt;Save</strong> after entering the below data in this file so it is pushed to Ansible server:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">rp_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.100</span>
+<span class="w">  </span><span class="nt">L3_interfaces</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">Ethernet1/2</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">loopback0</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interface</span><span class="p">:</span><span class="w"> </span><span class="nv">loopback1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="run-the-playbook-and-verify-configuration-changes">Run the playbook and verify configuration changes</h5>
+<ul>
+<li>Execute the playbook by running <code>ansible-playbook nxos_fabric.yml --tags "multicast"</code> command on Ansible server as shown below :</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml --tags &quot;multicast&quot;
+</code></pre></div>
+<p>Below screenshots shows the output of above command:
+<img alt="" src="../pic/4-4-1.png" />
+<img alt="" src="../pic/4-4-2.png" /></p>
+<ul>
+<li>
+<p>login to <strong>any leaf</strong> (leaf1, leaf3, leaf4) or <strong>Spine-1</strong> switch (via SSH using MTPutty) to verify multicast configuration and PIM neighbors by executing command:
+<div class="highlight"><pre><span></span><code>show ip pim neighbor
+</code></pre></div></p>
+</li>
+<li>
+<p>Below screenshot shows the output of above command (<code>show ip pim neighbor</code>) from Spine-1:</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/4-4-3.png" /></p>
+<p>This confirms Multicast has been enabled using Ansible modules</p>
+<hr />
+<h3 id="step-9-configure-vxlan-using-ansible">Step 9: Configure VXLAN using Ansible</h3>
+<p>In this section, we will be configuring VXLAN on leaf and spine switches. The NXOS modules we will be using in this section are</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nxos_feature</td>
+<td>Manages features on Nexus switches</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_evpn_global</td>
+<td>Handles EVPN control plane for VXLAN</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_vlan</td>
+<td>Manages VLAN resources and attributes</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_vrf</td>
+<td>Manages global VRF configuration</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_vrf_af</td>
+<td>Manages VRF address falimily</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_overlay_global</td>
+<td>Configuration anycast gateway MAC</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_vxlan_vtep</td>
+<td>Manages VXLAN Network Virtualization Endpoint</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_vxlan_vtep_vni</td>
+<td>Creates Virtual Network Identifier member</td>
+</tr>
+</tbody>
+</table>
+<h5 id="edit-playbook-for-spine-role_1">Edit playbook for spine role</h5>
+<ul>
+<li>Use <strong>“Atom”</strong> to edit the “<strong>main.yml</strong>” file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/spine/tasks/”</strong> and enter the below content (you may copy &amp; paste with correct spaces) at the end of the file</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1">#task to configure vxlan fabric</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable VXLAN Feature</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{item}}&quot;</span>
+<span class="w">            </span><span class="c1"># provider: &quot;{{cisco.nxos.nxos_provider }}&quot;</span>
+<span class="w">            </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nv overlay</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vn-segment-vlan-based</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable NV Overlay</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_evpn_global</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">nv_overlay_evpn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="edit-variable-file-for-spine-role_1">Edit variable file for Spine role</h5>
+<p>No new variable required for Spine</p>
+<h5 id="edit-playbook-for-leaf-role_1">Edit playbook for leaf role</h5>
+<ul>
+<li>use <strong>“Atom”</strong> to edit the <strong>main.yml</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/leaf/tasks/”</strong>.  Add the below content in the file at the end of the file (i.e., in addition to existing content), and then make sure to click <strong>“File”-&gt;“Save”</strong> on Atom, so that the updated file is pushed to Ansible server.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#task to configure VXLAN fabric</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable VXLAN Feature</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nv overlay</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vn-segment-vlan-based</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable VXLAN Feature</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nv overlay</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vn-segment-vlan-based</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable NV Overlay</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_evpn_global</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">nv_overlay_evpn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure VLAN to VNI</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vlans</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">            </span><span class="nt">mapped_vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vni</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vlan_name</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L3VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure Tenant VRF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vrf</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant-1</span>
+<span class="w">          </span><span class="nt">rd</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="w">          </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L3VNI[0].vni</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure VRF AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vrf_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant-1</span>
+<span class="w">          </span><span class="nt">route_target_both_auto_evpn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure Anycast GW</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_overlay_global</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">anycast_gateway_mac</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0000.2222.3333</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vlan&quot;{{ item.vlan_id }}&quot;</span>
+<span class="w">            </span><span class="nt">fabric_forwarding_anycast_gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L3VNI</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vlan&quot;{{ L3VNI[0].vlan_id }}&quot;</span>
+<span class="w">            </span><span class="nt">ip_forward</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No shut VLAN</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_config</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">lines</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no shutdown</span>
+<span class="w">          </span><span class="nt">parents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interface vlan{{ item.vlan_id }}</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L3VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Assign interface to Tenant VRF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vrf_interface</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant-1</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vlan{{</span><span class="nv"> </span><span class="s">item.vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L3VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure SVI IP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_l3_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vlan{{</span><span class="nv"> </span><span class="s">item.vlan_id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">              </span><span class="nt">ipv4</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.ip_add</span><span class="nv"> </span><span class="s">}}/{{</span><span class="nv"> </span><span class="s">item.mask</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure VTEP Tunnel</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vxlan_vtep</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nve1</span>
+<span class="w">            </span><span class="nt">shutdown</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="nt">source_interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Loopback1</span>
+<span class="w">            </span><span class="nt">host_reachability</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI to VTEP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vxlan_vtep_vni</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nve1</span>
+<span class="w">            </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vni</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">            </span><span class="nt">multicast_group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.mcast</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L3VNI to VTEP</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vxlan_vtep_vni</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nve1</span>
+<span class="w">            </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L3VNI[0].vni</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">            </span><span class="nt">assoc_vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="edit-variable-file-for-leaf-role_1">Edit variable file for leaf role</h5>
+<ul>
+<li>Use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>EVPN-Ansible</code> and open <code>main.yml</code> file under <code>roles/leaf/vars/</code>.  Add the below content in the file at <strong>the end of the file</strong> and then make sure to <strong>click</strong> <code>“File” -&gt; “Save”</code> on Atom, so that the updated file is pushed to Ansible server</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not replace existing content. Below contents must be added at the end of the file.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">L2VNI</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">140</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50140</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.140.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-140-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.140</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">141</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50141</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.141.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-141-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.141</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">L3VNI</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">999</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L3-VNI-999-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50999</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="run-the-playbook-and-verify-configuration-changes_1">Run the playbook and verify configuration changes</h5>
+<ul>
+<li>On Ansible server (via SSH connection on MTputty), run the below command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml --tags &quot;vxlan&quot;
+</code></pre></div>
+<ul>
+<li>
+<p>Below screenshot show partial output of above command:</p>
+<p><img alt="" src="../pic/4-5-1a.png" />
+<img alt="" src="../pic/4-5-1b.png" /></p>
+</li>
+<li>
+<p>After finishing this task: <strong>login</strong> to any <strong>leaf</strong> switch (on MTPutty) to verify VXLAN configuration and the VNI by issuing the command:  </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>show nve vni
+</code></pre></div>
+<p>Below screenshot shows the output of above command from Leaf-3:</p>
+<p><img alt="" src="../pic/4-5-2.png" /></p>
+<hr />
+<h3 id="step-10-configure-evpn-using-ansible">Step 10: Configure EVPN using Ansible</h3>
+<p>In this section, we will be configuring BGP EVPN on leaf and spine switches. The NXOS modules we will be using in this section are:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cisco.nxos.nxos_bgp_af</td>
+<td>Manage BGP address-famility config</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_bgp_neighbor_af</td>
+<td>Manage BGP neighbor address-famility config</td>
+</tr>
+<tr>
+<td>cisco.nxos.nxos_evpn_vni</td>
+<td>Manage Cisco EVPN VXLAN Network Identifier</td>
+</tr>
+</tbody>
+</table>
+<h5 id="edit-playbook-for-spine-role_2">Edit playbook for spine role</h5>
+<ul>
+<li>Use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and open <code>main.yml</code> file under <code>“roles/spine/tasks/”</code>.  Add the below content in the file in addition to existing content.</li>
+<li>Then make sure to click <code>“File”-&gt;“Save”</code> on Atom, so that the updated file is pushed to Ansible server.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># task to configure BGP EVPN</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure BGP EVPN</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l2vpn</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure iBGP neighbor EVPN AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_neighbor_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.neighbor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l2vpn</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">          </span><span class="nt">route_reflector_client</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">send_community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">both</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+</code></pre></div>
+<h5 id="edit-variable-file-for-spine-role_2">Edit variable file for Spine role</h5>
+<p>No new variables required for Spine</p>
+<h5 id="edit-playbook-for-leaf-role_2">Edit playbook for leaf role</h5>
+<ul>
+<li>use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>EVPN-Ansible</code> and open <code>main.yml</code> file under <code>“roles/leaf/tasks/”</code>.  Add the below content in the file in addition to existing content.</li>
+<li>Then make sure to click <code>“File”-&gt;“Save”</code> on Atom, so that the updated file is pushed to Ansible server.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#task to configure BGP EVPN</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure BGP EVPN</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l2vpn</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure iBGP neighbor EVPN AF</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_bgp_neighbor_af</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">asn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">asn</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">neighbor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.neighbor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">afi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l2vpn</span>
+<span class="w">          </span><span class="nt">safi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">          </span><span class="nt">send_community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">both</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure L2VNI RD/RT</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_evpn_vni</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item.vni</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">          </span><span class="nt">route_distinguisher</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="w">          </span><span class="nt">route_target_both</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">L2VNI</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
+</code></pre></div>
+<ul>
+<li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
+</ul>
+<h5 id="edit-variable-file-for-leaf-role_2">Edit variable file for leaf role</h5>
+<p>No new variables required for Leaf</p>
+<h5 id="run-the-playbook-and-verify-configuration-changes_2">Run the playbook and verify configuration changes</h5>
+<ul>
+<li>On the Ansible server (using MTPutty) run this playbook by running the command <code>ansible-playbook nxos_fabric.yml --tags "evpn"</code> as shown below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml --tags &quot;evpn&quot;
+</code></pre></div>
+<p>Below screenshot shows the output of above playbook:</p>
+<p><img alt="" src="../pic/4-6-1.png" /></p>
+<ul>
+<li>After successful execution of the playbook: <strong>login</strong> to <strong>any leaf or spine</strong> switch to verify BGP EVPN configuration and evpn neighbor by issuing command:
+<div class="highlight"><pre><span></span><code>show bgp l2vpn evpn summary
+</code></pre></div></li>
+</ul>
+<p>Below screenshot shows the output of above command from leaf-3 switch.  As expected it shows the spine-1 and spine-2 as neighbors:</p>
+<p><img alt="" src="../pic/4-6-2.png" /></p>
+<hr />
+<h3 id="step-11-run-nxos_fabric-playbook">Step 11: Run nxos_fabric playbook</h3>
+<ul>
+<li>Up to this point, you have run the playbook for each step separately (using tags).  You could re-run the whole playbook without giving any tags, but no new changes should be maded to the switches.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml
+</code></pre></div>
+<hr />
+<h3 id="step-12-verify-end-to-end-ip-connectivity">Step 12: Verify end-to-end IP connectivity</h3>
+<p>Now Let’s verify the VXLAN bridging and VXLAN routing from servers that are pre-configured in following VLANs and IPs</p>
+<table>
+<thead>
+<tr>
+<th>Server Name</th>
+<th>Connect to switch</th>
+<th>In VLAN</th>
+<th>IP of server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server-1</td>
+<td>Leaf-1</td>
+<td>140</td>
+<td>172.21.140.10</td>
+</tr>
+<tr>
+<td>Server-3</td>
+<td>Leaf-3</td>
+<td>140</td>
+<td>172.21.140.11</td>
+</tr>
+<tr>
+<td>Server-4</td>
+<td>Leaf-4</td>
+<td>141</td>
+<td>172.21.141.11</td>
+</tr>
+</tbody>
+</table>
+<p>Below figure shows the topology &amp; connectivity of servers to Leaf switches and their respective IP addresses:</p>
+<p><img alt="" src="../pic/4-7-1-new.png" /></p>
+<ul>
+<li>
+<p>Switch to <strong>MTPuTTY</strong> and <strong>SSH</strong> to <strong><code>server-1</code></strong>.  If prompted enter the credentials of <code>root</code>and <code>C1sco12345</code></p>
+</li>
+<li>
+<p><strong>Ping</strong> default gateway from server-1 by issuing command <strong><code>ping 172.21.140.1</code></strong> as shown below:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>[root@server-1 ~]# ping 172.21.140.1
+PING 172.21.140.1 (172.21.140.1) 56(84) bytes of data.
+64 bytes from 172.21.140.1: icmp_seq=2 ttl=255 time=15.7 ms
+64 bytes from 172.21.140.1: icmp_seq=3 ttl=255 time=4.11 ms
+</code></pre></div>
+<ul>
+<li>Next, <strong>Ping</strong> server 3 and server 4 from server-1 (in same VLAN and inter-VLAN respectively) by using <strong><code>ping 172.21.140.11</code></strong> and <strong><code>ping 172.21.141.11</code></strong> commands as shown below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>[[root@server-1 ~]# ping 172.21.140.11
+PING 172.21.140.11 (172.21.140.11) 56(84) bytes of data.
+64 bytes from 172.21.140.11: icmp_seq=1 ttl=64 time=1032 ms
+64 bytes from 172.21.140.11: icmp_seq=2 ttl=64 time=35.7 ms
+64 bytes from 172.21.140.11: icmp_seq=3 ttl=64 time=14.4 ms
+^C
+--- 172.21.140.11 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2112ms
+rtt min/avg/max/mdev = 14.431/360.839/1032.335/474.899 ms, pipe 2
+[root@server-1 ~]# ping 172.21.141.11
+PING 172.21.141.11 (172.21.141.11) 56(84) bytes of data.
+64 bytes from 172.21.141.11: icmp_seq=994 ttl=62 time=30.2 ms
+64 bytes from 172.21.141.11: icmp_seq=995 ttl=62 time=16.1 ms
+64 bytes from 172.21.141.11: icmp_seq=996 ttl=62 time=18.0 ms
+</code></pre></div>
+<hr />
+<p><strong>Congratulation! You have successfully built VXLAN fabric using ansible + Jinja2 template and ansible + NXOS modules.</strong></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../task3-vxlan-jinja2-new/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 3 - Use of Jinja2 templates with Ansible Playbook" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Task 3 - Use of Jinja2 templates with Ansible Playbook
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../task5-day2-pipeline0/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 5 - Day 2 Opertions with CI Pipeline" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Task 5 - Day 2 Opertions with CI Pipeline
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.footer", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+    
+  </body>
+</html>

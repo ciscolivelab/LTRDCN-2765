@@ -1,0 +1,35 @@
+site_name: Cisco Live 2023 LTRDCN-2765
+# repo_url: https://github.com/fchaudhr/LTRDCN1572.git
+repo_url: https://github.com/ciscolivelab/LTRDCN-2765
+remote_branch: gh-pages
+remote_name: origin
+nav:
+    - Home: index.md
+    - Introduction: intro.md
+    - Task 1 - Prepare Ansible node: Task1-ansible-node0.md
+    - Task 2 - First Simple Ansible Playbook: task2-first-ansible.md
+    - Task 3 - Use of Jinja2 templates with Ansible Playbook: task3-vxlan-jinja2-new.md
+    - Task 4 - Config switches using Ansible NXOS modules: task4-vxlan-nxos.md
+    - Task 5 - Day 2 Opertions with CI Pipeline: task5-day2-pipeline0.md
+#    - Task 5 - Day 2 Operations: task5-day2-operation.md
+#    - Appendix A - Upgrade: appendixB-Upgrade.md
+theme:
+  name: material
+  features:
+    - navigation.top
+    - navigation.footer
+    - content.code.annotate
+    # - toc.integrate
+    # - navigation.expand
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+#    - toc:
+#        toc_depth: 2
+
+#plugins:
+#    - search
+#    - pdf-export
