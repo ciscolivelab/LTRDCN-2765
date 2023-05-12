@@ -415,36 +415,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-create-new-roles-for-spine-leaf" class="md-nav__link">
-    Step 2: Create new roles for Spine &amp; Leaf
+  <a href="#step-2-create-spine-leaf-roles" class="md-nav__link">
+    Step 2: Create Spine &amp; Leaf roles
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-build-playbook-for-spine-role-tasks" class="md-nav__link">
-    Step 3: Build playbook for Spine role - tasks:
+  <a href="#step-3-spine-role-tasks" class="md-nav__link">
+    Step 3: Spine role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-build-playbook-for-spine-role-vars" class="md-nav__link">
-    Step 4:  Build playbook for Spine role - vars
+  <a href="#step-4-spine-role-vars" class="md-nav__link">
+    Step 4: Spine role - vars
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-build-playbook-for-leaf-role-tasks" class="md-nav__link">
-    Step 5:  Build playbook for leaf role - tasks:
+  <a href="#step-5-leaf-role-tasks" class="md-nav__link">
+    Step 5:  Leaf role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-build-playbook-for-leaf-role-vars" class="md-nav__link">
-    Step 6: Build playbook for leaf role - vars
+  <a href="#step-6-leaf-role-vars" class="md-nav__link">
+    Step 6: Leaf role - vars
   </a>
   
 </li>
@@ -669,36 +669,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-create-new-roles-for-spine-leaf" class="md-nav__link">
-    Step 2: Create new roles for Spine &amp; Leaf
+  <a href="#step-2-create-spine-leaf-roles" class="md-nav__link">
+    Step 2: Create Spine &amp; Leaf roles
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-build-playbook-for-spine-role-tasks" class="md-nav__link">
-    Step 3: Build playbook for Spine role - tasks:
+  <a href="#step-3-spine-role-tasks" class="md-nav__link">
+    Step 3: Spine role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-build-playbook-for-spine-role-vars" class="md-nav__link">
-    Step 4:  Build playbook for Spine role - vars
+  <a href="#step-4-spine-role-vars" class="md-nav__link">
+    Step 4: Spine role - vars
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-build-playbook-for-leaf-role-tasks" class="md-nav__link">
-    Step 5:  Build playbook for leaf role - tasks:
+  <a href="#step-5-leaf-role-tasks" class="md-nav__link">
+    Step 5:  Leaf role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-build-playbook-for-leaf-role-vars" class="md-nav__link">
-    Step 6: Build playbook for leaf role - vars
+  <a href="#step-6-leaf-role-vars" class="md-nav__link">
+    Step 6: Leaf role - vars
   </a>
   
 </li>
@@ -948,7 +948,7 @@
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-2-create-new-roles-for-spine-leaf">Step 2: Create new roles for Spine &amp; Leaf</h3>
+<h3 id="step-2-create-spine-leaf-roles">Step 2: Create Spine &amp; Leaf roles</h3>
 <ul>
 <li>On the <strong>MTpuTTy</strong>, go back (or initiate a new <strong>login/SSH</strong>) to <strong>Ansible Server</strong> node (198.18.134.150).  Switch to ‘<strong>roles</strong>’ directory; then <strong>create</strong> ‘spine’ and ‘leaf’ roles using ansible-galaxy as per below commands:</li>
 </ul>
@@ -962,7 +962,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 </ul>
 <p><img alt="" src="../pic/4-2-2.png" /></p>
 <hr />
-<h3 id="step-3-build-playbook-for-spine-role-tasks">Step 3: Build playbook for Spine role - tasks:</h3>
+<h3 id="step-3-spine-role-tasks">Step 3: Spine role - tasks</h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>tasks</strong>” folder.  We are going to use “<strong>Atom</strong>” to edit the <strong>main.yml</strong> file.</p>
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/spine/tasks/</code> to include following:</li>
@@ -1028,7 +1028,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 </li>
 </ul>
 <hr />
-<h3 id="step-4-build-playbook-for-spine-role-vars">Step 4:  Build playbook for Spine role - vars</h3>
+<h3 id="step-4-spine-role-vars">Step 4: Spine role - vars</h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
 <ul>
 <li>Switch to <strong>Atom</strong>, then open up the project folder <code>EVPN-Ansible</code> from the left pane and <strong>open</strong> <code>main.yml</code> file under “<strong>roles/spine/vars/</strong>” and enter below content:</li>
@@ -1046,7 +1046,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-5-build-playbook-for-leaf-role-tasks">Step 5:  Build playbook for leaf role - tasks:</h3>
+<h3 id="step-5-leaf-role-tasks">Step 5:  Leaf role - tasks</h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>tasks</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/leaf/tasks/</code> to include following:</li>
@@ -1093,7 +1093,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-6-build-playbook-for-leaf-role-vars">Step 6: Build playbook for leaf role - vars</h3>
+<h3 id="step-6-leaf-role-vars">Step 6: Leaf role - vars</h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
 <ul>
 <li>Switch to <strong>ATOM</strong>, then open up the project folder <code>EVPN-Ansible</code> from the left pane and <strong>open</strong> <code>main.yml</code> file under “<strong>roles/leaf/vars/</strong>” and enter below content:</li>
@@ -1167,7 +1167,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </tr>
 </tbody>
 </table>
-<h6 id="edit-playbook-for-spine-role">Edit playbook for spine role</h6>
+<h5 id="edit-playbook-for-spine-role">Edit playbook for spine role</h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and open <code>“main.yml”</code> file under <code>“roles/spine/tasks/”</code> and save the below tasks at the end the file.</li>
 </ul>
