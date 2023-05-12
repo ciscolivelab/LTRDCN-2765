@@ -73,9 +73,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
@@ -155,8 +153,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -250,13 +254,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -800,14 +798,19 @@
 <p><img alt="" src="../pic/1-6-python.png" /></p>
 <h4 id="step-7-update-ubuntu-package-tool-and-install-pip-packages">Step 7: Update Ubuntu package tool and install PIP &amp; Packages</h4>
 <ul>
-<li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) and install PIP python package (using <code>apt install pip</code>) commands.  PIP is a package manager that is used to install and maintain Python software packages.</li>
+<li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) </li>
+</ul>
+<div class="highlight"><pre><span></span><code>apt-get update
+</code></pre></div>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-7-1-apt-get.png" /></p>
+<ul>
+<li>Next, installation of PIP python package (using <code>apt install pip</code>) command is done.  PIP is a package manager that is used to install and maintain Python software packages.</li>
 </ul>
 <p><strong>Note:</strong> At the <code>Do you want to continue? [Y/n]</code> prompt, you must enter <strong><code>Y</code></strong> to proceed with update/install:</p>
-<div class="highlight"><pre><span></span><code>apt-get update
-apt install pip
+<div class="highlight"><pre><span></span><code>apt install pip
 </code></pre></div>
-<p>Below two screenshot shows the partial execution of above commands:</p>
-<p><img alt="" src="../pic/1-7-1-apt-get.png" /></p>
+<p>Below screenshot shows the partial execution of above command:</p>
 <p><img alt="" src="../pic/1-6-2-python-new.png" /></p>
 <ul>
 <li>Next, update pip to version 20.3.4 by executing below command:</li>
@@ -1139,7 +1142,7 @@ mkdir roles
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
