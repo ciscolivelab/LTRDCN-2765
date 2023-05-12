@@ -457,11 +457,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-configure-multicast-using-ansible-nxos" class="md-nav__link">
-    Step 8: Configure Multicast using Ansible NXOS
+  <a href="#step-8-multicast-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 8: Multicast config with Ansible NXOS modules
   </a>
   
-    <nav class="md-nav" aria-label="Step 8: Configure Multicast using Ansible NXOS">
+    <nav class="md-nav" aria-label="Step 8: Multicast config with Ansible NXOS modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -505,11 +505,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-configure-vxlan-using-ansible" class="md-nav__link">
-    Step 9: Configure VXLAN using Ansible
+  <a href="#step-9-vxlan-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 9: VXLAN config with Ansible NXOS modules
   </a>
   
-    <nav class="md-nav" aria-label="Step 9: Configure VXLAN using Ansible">
+    <nav class="md-nav" aria-label="Step 9: VXLAN config with Ansible NXOS modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -553,11 +553,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-10-configure-evpn-using-ansible" class="md-nav__link">
-    Step 10: Configure EVPN using Ansible
+  <a href="#step-10-evpn-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 10: EVPN config with Ansible NXOS modules
   </a>
   
-    <nav class="md-nav" aria-label="Step 10: Configure EVPN using Ansible">
+    <nav class="md-nav" aria-label="Step 10: EVPN config with Ansible NXOS modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -711,11 +711,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-configure-multicast-using-ansible-nxos" class="md-nav__link">
-    Step 8: Configure Multicast using Ansible NXOS
+  <a href="#step-8-multicast-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 8: Multicast config with Ansible NXOS modules
   </a>
   
-    <nav class="md-nav" aria-label="Step 8: Configure Multicast using Ansible NXOS">
+    <nav class="md-nav" aria-label="Step 8: Multicast config with Ansible NXOS modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -759,11 +759,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-configure-vxlan-using-ansible" class="md-nav__link">
-    Step 9: Configure VXLAN using Ansible
+  <a href="#step-9-vxlan-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 9: VXLAN config with Ansible NXOS modules
   </a>
   
-    <nav class="md-nav" aria-label="Step 9: Configure VXLAN using Ansible">
+    <nav class="md-nav" aria-label="Step 9: VXLAN config with Ansible NXOS modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -807,11 +807,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-10-configure-evpn-using-ansible" class="md-nav__link">
-    Step 10: Configure EVPN using Ansible
+  <a href="#step-10-evpn-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 10: EVPN config with Ansible NXOS modules
   </a>
   
-    <nav class="md-nav" aria-label="Step 10: Configure EVPN using Ansible">
+    <nav class="md-nav" aria-label="Step 10: EVPN config with Ansible NXOS modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1129,7 +1129,7 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 <p><img alt="" src="../pic/4-3-3.png" /></p>
 <p><img alt="" src="../pic/4-3-4.png" /></p>
 <hr />
-<h3 id="step-8-configure-multicast-using-ansible-nxos">Step 8: Configure Multicast using Ansible NXOS</h3>
+<h3 id="step-8-multicast-config-with-ansible-nxos-modules">Step 8: Multicast config with Ansible NXOS modules</h3>
 <p>In this section, we will be configuring underlay multicast to support BUM traffic in the VXLAN fabric. The NXOS modules we will be using in this section are
 nxos_feature    Manage fatures on Nexus switchs
 nxos_pim_interface  Manage PIM interface configuration</p>
@@ -1313,7 +1313,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <p><img alt="" src="../pic/4-4-3.png" /></p>
 <p>This confirms Multicast has been enabled using Ansible modules</p>
 <hr />
-<h3 id="step-9-configure-vxlan-using-ansible">Step 9: Configure VXLAN using Ansible</h3>
+<h3 id="step-9-vxlan-config-with-ansible-nxos-modules">Step 9: VXLAN config with Ansible NXOS modules</h3>
 <p>In this section, we will be configuring VXLAN on leaf and spine switches. The NXOS modules we will be using in this section are</p>
 <table>
 <thead>
@@ -1536,7 +1536,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <p>Below screenshot shows the output of above command from Leaf-3:</p>
 <p><img alt="" src="../pic/4-5-2.png" /></p>
 <hr />
-<h3 id="step-10-configure-evpn-using-ansible">Step 10: Configure EVPN using Ansible</h3>
+<h3 id="step-10-evpn-config-with-ansible-nxos-modules">Step 10: EVPN config with Ansible NXOS modules</h3>
 <p>In this section, we will be configuring BGP EVPN on leaf and spine switches. The NXOS modules we will be using in this section are:</p>
 <table>
 <thead>
