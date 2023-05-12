@@ -1154,24 +1154,21 @@ apt-get install git
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
-<p>After sign in to <strong>lab.ciscolive</strong> gitlab account, click <strong>New project</strong> on the top right to build a new project as shown below:</p>
+<p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, click <strong>Create a project</strong> from main page as shown below:</p>
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
-<p>Select <strong>Create project</strong> to create a blank project with your assigned <strong><code>POD_{ID}</code></strong>.  Note: In the below screenshot:</p>
+<p>On the next page, select <strong>Create a blank project</strong>.  On the next page enter <strong>Project name</strong> of your assigned <strong><code>POD_{ID}</code></strong> and click <strong>Create project</strong>  at the bottom of this page.  Note: In the below screenshot of this page:</p>
 <ul>
-<li>
-<p><strong>POD_1</strong> is shown as an example - you must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node/">task1</a>.   </p>
-</li>
-<li>
-<p>On this page, <strong>Select</strong> the <strong>Visibility Level</strong> to <code>Private</code></p>
-</li>
-<li>On this page, <strong>Click</strong> the <code>checkbox</code> to <code>Initialize repository with a README</code>  </li>
+<li><strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only. You must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node0/">task1</a></li>
+<li><strong>Project slug</strong> is automatically populated</li>
+<li>Leave the default setting of <strong>Visibility Level</strong> to <code>Private</code></li>
+<li>Leave the default setting of <code>checkbox</code> for <strong>Initialize repository with a README</strong> to automatically add README file in git repository</li>
 </ul>
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 </li>
 <li>
-<p>On the project page, copy the project url from <strong>Clone with HTTPS</strong> as shown below. The project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   </p>
+<p>On the project page, copy the project url by clicking on <strong>Clone</strong> and then <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   </p>
 </li>
 </ul>
 <div class="admonition note">
@@ -1181,7 +1178,7 @@ apt-get install git
 <p>The screenshot below uses <strong>POD_1</strong> as example.</p>
 <p><img alt="" src="../pic/5-2-6.png" /></p>
 <ul>
-<li>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change is done by cl the <strong>main</strong> branch to unprotected from project from the left pane Select <strong>Settings &gt; Repository</strong> and then on right pane Click <strong>Protected branches &gt; unprotect</strong> as shown in below screenshot:</li>
+<li>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change of <strong>main</strong> branch to unprotected is performed by navigating on left sidebar (pane) and Selecting <strong>Settings &gt; Repository</strong>.  Then on right pane Click <strong>Expand</strong> next to <strong>Protected branches</strong> and then Click on <strong>Unprotect</strong> (in Red color) as shown in below screenshot.  Also, acknolwedge by clicking on <strong>Unprotect branch</strong> on the pop-up message.</li>
 </ul>
 <p><img alt="" src="../pic/5-2-7.png" /></p>
 <ul>
@@ -1193,12 +1190,16 @@ git init
 <p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
-<li>On the Ansible node, run following commands to add the remote repository as origin and verify it's result:</li>
+<li>On the Ansible node, run following commands to add the remote repository as origin for your respective <strong>Pod {ID}</strong> and verify it's result:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
 git remote -v
 </code></pre></div>
-<p>Below screenshot shows the execution of the above commands:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  </p>
+</div>
+<p>Below screenshot shows the execution of the above commands for Pod_1 (as an example):</p>
 <p><img alt="" src="../pic/5-3-5b.png" /></p>
 <ul>
 <li>Then to add all the files (Ansible playbooks, roles etc) to the staging area and check the status by using below commands:</li>
@@ -1209,16 +1210,20 @@ git status
 <p>Below screenshot shows the execution of the above commands:</p>
 <p><img alt="" src="../pic/5-3-5c.png" /></p>
 <ul>
-<li>Next, commit and push all files to <strong>main</strong> branch with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code></li>
+<li>Next, commit the files to local repository by executing below commands:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git checkout -b main
 git commit -m &quot;initial commit&quot;
-git push -f origin main
 </code></pre></div>
-<p>Below screenshot shows partial outputs of the commands:</p>
+<ul>
+<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>git push -f origin main
+</code></pre></div>
+<p>Below screenshot shows partial out of the above command:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
 <h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
-<p>In this step, you will create CI pepeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration.  </p>
+<p>In this step, you will create CI pipeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The file name starts with <strong>.</strong> and it's not a mistake.  </p>
