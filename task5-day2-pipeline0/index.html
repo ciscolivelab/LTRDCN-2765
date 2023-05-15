@@ -1158,17 +1158,17 @@ apt-get install git
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
-<p>On the next page, select <strong>Create a blank project</strong>.  On the next page enter <strong>Project name</strong> of your assigned <strong><code>POD_{ID}</code></strong> and click <strong>Create project</strong>  at the bottom of this page.  Note: In the below screenshot of this page:</p>
+<p>On the next page, select <strong>Create a blank project</strong>.  Then enter <strong>Project name</strong> of your assigned as <strong><code>POD_{ID}</code></strong> and click <strong>Create project</strong>  at the bottom of this page.  Note: In the below screenshot of this page:</p>
 <ul>
-<li><strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only. You must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node0/">task1</a></li>
+<li><strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only. You must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD_ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node0/">Task1</a></li>
 <li><strong>Project slug</strong> is automatically populated</li>
 <li>Leave the default setting of <strong>Visibility Level</strong> to <code>Private</code></li>
-<li>Leave the default setting of <code>checkbox</code> for <strong>Initialize repository with a README</strong> to automatically add README file in git repository</li>
+<li>Leave the default setting of <strong>Initialize repository with a README</strong> with <code>checkbox</code> selected to automatically add <code>README</code> file in git repository</li>
 </ul>
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 </li>
 <li>
-<p>On the project page, copy the project url by clicking on <strong>Clone</strong> and then <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.   </p>
+<p>On the project page, copy the project url by clicking on <strong>Clone</strong> and then click <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -1223,10 +1223,10 @@ git commit -m &quot;initial commit&quot;
 <p>Below screenshot shows partial out of the above command:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
 <h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
-<p>In this step, you will create CI pipeline file for gitlab. Gitlab uses a special file named <strong>.gitlab-ci.yml</strong> for CI/CD configuration.  </p>
+<p>In this step, you will create CI pipeline file for gitlab. Gitlab uses a special file named <strong><code>.gitlab-ci.yml</code></strong> for CI/CD configuration.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The file name starts with <strong>.</strong> and it's not a mistake.  </p>
+<p>The file name starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
 </div>
 <p>The file needs to be placed in root of the repository.  Inside the file, you will define:</p>
 <ul>
@@ -1323,7 +1323,7 @@ git push origin main
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
 <p>In this task, you will create local gitlab runner to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner and register it to your project.</p>
 <ul>
-<li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left side, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
+<li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left sidebar, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1331,7 +1331,23 @@ git push origin main
 </div>
 <p><img alt="" src="../pic/5-5-1.png" /></p>
 <ul>
-<li>As shown in below screenshot: under the <strong>Specific runners</strong>, note down the URL of <code>Register the runner with this URL</code>, and the <code>Registration token</code>.  Both of these will be used on next step.   Further, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
+<li>After expanding the <strong>Runners</strong> setting, under <strong>Project runners</strong> click on <strong>New project runner</strong>.  </li>
+</ul>
+<p><img alt="" src="pic/5-5-1a.png" /></p>
+<ul>
+<li>
+<p>On the next screen, select <strong>Linux</strong> Operating systems under the <strong>Platform</strong>.  </p>
+</li>
+<li>
+<p>Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong> and Leave other settings as default and click <strong>Submit</strong> on this page.</p>
+</li>
+<li>
+<p>On the next screen, copy the command line (<code>gitlab-runner register ...</code>) in <strong>Step 1</strong>.  This will be used to register the runner in our lab setup.  Then click on <strong>Go to runners page</strong>.</p>
+</li>
+</ul>
+<p><img alt="" src="pic/5-5-1c.png" /></p>
+<ul>
+<li>As shown in below screenshot, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
 </ul>
 <p><img alt="" src="../pic/5-5-2.png" /></p>
 <ul>
@@ -1339,12 +1355,11 @@ git push origin main
 </ul>
 <div class="highlight"><pre><span></span><code>gitlab-runner register
 </code></pre></div>
-<p><strong>Enter the GitLab instance URL:</strong>  <strong><font style=background-color:yellow>https://gitlab.com/</font></strong></p>
+<p><strong>Enter the GitLab instance URL</strong>  <strong><font style=background-color:yellow>https://gitlab.com/</font></strong></p>
 <p><strong>Enter the registration token:</strong>  <strong><font style=background-color:yellow> get registration token from previous step </font></strong></p>
-<p><strong>Enter a description for the runner:</strong> <strong><font style=background-color:yellow>enter without change </font></strong></p>
-<p><strong>Enter tags for the runner (comma-separated):</strong>  <strong><font style=background-color:yellow>EVPN </font></strong> (case sensitive)</p>
-<p><strong>Enter optional maintenance note for the runner:</strong>  <strong><font style=background-color:yellow>enter without change</font></strong></p>
+<p><strong>Enter a name for the runner. This is stored only in the local config.toml file:</strong> <strong><font style=background-color:yellow>enter without change </font></strong></p>
 <p><strong>Enter an executor:</strong> <strong><font style=background-color:yellow>shell</font></strong></p>
+<p>After entering executor, wait few seconds for the registration of the runner.</p>
 <p>Below screenshot shows the outputs of the commands:</p>
 <p><img alt="" src="../pic/5-5-3.png" /></p>
 <ul>
@@ -1365,7 +1380,7 @@ gitlab-runner status
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (Starting from column number 3).  </p>
+<p>Do not replace existing content in this file.  Above content should be added to the end of this existing file.  YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (Starting from column number 3).</p>
 </div>
 <p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-1.png" /></p>
@@ -1377,13 +1392,14 @@ gitlab-runner status
 <p>Next, the variables will be added to Leaf role.  From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles &gt; leaf &gt; vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w">  </span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (Starting from column number 3).  Below screenshot shows the file after added above contents on Atom.</p>
+<p>Do not replace existing content in this file.  Above content should be added to the end of this existing file.  YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (Starting from column number 3).  Below screenshot shows the file after added above contents on Atom.</p>
 </div>
+<p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-2.png" /></p>
 <ul>
 <li>
