@@ -987,13 +987,11 @@ EOF
 <h4 id="step-10-ansible-role-structure">Step 10: Ansible role structure</h4>
 <p>Role is very useful technique to manage a set of playbooks in Ansible.
 In this lab, we will use two different playbooks to manage configuration for Spine and Leaf switches.</p>
-<p>We will use role structure and manage the two plays into single playbook.
-A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.</p>
-<p>In this lab:</p>
+<p>A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.  Here are few folders:</p>
 <ul>
-<li>we will use <code>vars</code>, <code>templates</code> and <code>tasks</code> folders</li>
-<li><code>main.yml</code> file in <code>/vars</code>  folder contains dictionary of variables for this role</li>
-<li><code>main.yml</code> file in <code>/tasks</code> folder contains the Ansible playbook for this role</li>
+<li><code>main.yml</code> file in <code>/vars</code>  folder contains variables for a role</li>
+<li><code>main.yml</code> file in <code>/tasks</code> folder contains Ansible playbook for a role</li>
+<li><code>templates</code> folder may contain Jinja2 files, if these are used for a role </li>
 </ul>
 <p>To proceed further with roles in subsequent Tasks:</p>
 <ul>
@@ -1085,7 +1083,7 @@ mkdir roles
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.footer", "content.code.annotate", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "search.suggest", {"toc": {"toc_depth": 1}}], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.footer", "content.code.annotate", "content.code.copy", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "search.suggest", {"toc": {"toc_depth": 1}}], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
