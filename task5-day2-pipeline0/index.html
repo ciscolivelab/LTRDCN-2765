@@ -617,18 +617,20 @@
 <h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline</h1>
 <p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose</p>
 <ul>
-<li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system</li>
-<li>GitLab runner is an application that run tests &amp; results i.e., jobs in a pipeline and then send the results to GitLab</li>
-<li>The cloud hosted GitLab is used in this lab, while the GitLab runner will be installed on the same local server which is used as Ansible host in this lab setup</li>
+<li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system. </li>
+<li>The cloud hosted GitLab (SaaS) is used in this lab.  VCS and CI/CD capabilities of GitLab will be used in this lab. </li>
+<li>To execute tasks in a private network (i.e. behind Firewall, private infrastructure), GitLab Runner is used.  </li>
+<li>GitLab Runner is an application that run tests &amp; results i.e., jobs in a pipeline and then send the results to GitLab.  GitLab runner will be installed on the same local server as Ansible host in this lab setup.</li>
 </ul>
+<p>As a Version Control System (VCS), a Git repository will created on the GitLab (SaaS).  All the code (Ansible playbooks, roles etc.) will be saved on this repository.  The centralized &amp; Cloud hosted (SaaS) VCS provided by GitLab allows to maintain version control, track changes of files, collaboration among many engineers etc.  In this lab, the CI/CD component of GitLab will be integrated with VCS, so that changes made on repository can automatically trigger execution of job via a pipeline file.</p>
 <p>The process for creating a CI/CD pipeline with GitLab &amp; GitLab runner include below procedure:</p>
 <ul>
-<li>Create a project in GitLab</li>
-<li>Install and register the GitLab Runner for your project</li>
-<li>Define a CI/CD job (steps, tests) in a file named <code>.gitlab-ci.yml</code> in the root of the repository</li>
-<li>Conditions/rules can be defined in <code>.gitlab-ci.yml</code> file (YAML syntax) that will perform a job and display the results in GitLab pipeline e.g. When a commit to repository is done then the runner may execute the job and display the results in GitLab pipeline</li>
+<li>Create a project in GitLab.</li>
+<li>Install and register the GitLab Runner for your project.</li>
+<li>Define a CI/CD job (steps, tests) in a file named <code>.gitlab-ci.yml</code> in the root of the repository.</li>
+<li>Conditions/rules can be defined in <code>.gitlab-ci.yml</code> file (YAML syntax) that will perform a job and display the results in GitLab pipeline e.g. When a commit to repository is done then the runner may execute the job and display the results in GitLab pipeline.</li>
 </ul>
-<p>In this section, CI/CD pipeline for day 2 operation tasks will be implemented.  Below steps will be done:</p>
+<p>In this section, CI/CD pipeline for day 2 operation tasks will be implemented.  Below steps will be performed:</p>
 <ul>
 <li>Create an Ansible playbook to verify underlay and overlay</li>
 <li>Version control for the EVPN Ansible playbooks using GitLab version control capabilities</li>
@@ -1656,7 +1658,7 @@ git push -f origin newvni
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", {"toc": {"toc_depth": 1}}], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
