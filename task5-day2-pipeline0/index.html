@@ -446,8 +446,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-add-ci-pipeline-file" class="md-nav__link">
-    Step 4: Add CI pipeline file
+  <a href="#step-4-add-cicd-pipeline-file" class="md-nav__link">
+    Step 4: Add CI/CD pipeline file
   </a>
   
 </li>
@@ -549,8 +549,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-add-ci-pipeline-file" class="md-nav__link">
-    Step 4: Add CI pipeline file
+  <a href="#step-4-add-cicd-pipeline-file" class="md-nav__link">
+    Step 4: Add CI/CD pipeline file
   </a>
   
 </li>
@@ -1184,18 +1184,30 @@ apt-get install git
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
-<p>On the next page, select <strong>Create a blank project</strong>.  Then enter <strong>Project name</strong> of your assigned as <strong><code>POD_{ID}</code></strong> and click <strong>Create project</strong>  at the bottom of this page.  Note: In the below screenshot of this page:</p>
-<ul>
-<li><strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only. You must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD_ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node0/">Task1</a></li>
-<li><strong>Project slug</strong> is automatically populated</li>
-<li>Leave the default setting of <strong>Visibility Level</strong> to <code>Private</code></li>
-<li>Leave the default setting of <strong>Initialize repository with a README</strong> with <code>checkbox</code> selected to automatically add <code>README</code> file in git repository</li>
-</ul>
-<p><img alt="" src="../pic/5-2-5.png" /></p>
+<p>On the next page, click on <strong>Create a blank project</strong>.  </p>
 </li>
 <li>
-<p>On the project page, copy the project url by clicking on <strong>Clone</strong> and then click <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.</p>
+<p>On the next page, enter <strong>Project name</strong> of your assigned as <strong><code>POD_{ID}</code></strong>.  Note: In the below screenshot of this page:</p>
+<ul>
+<li>You must replace the <code>{ID}</code> with your respective pod number.  Find your assigned <strong>POD_ID</strong> from table in <a href="https://ciscolivelab.github.io/LTRDCN-2765/Task1-ansible-node0/">Task1</a></li>
+<li><code>Project slug</code> is automatically populated</li>
+<li>Leave the default setting of <code>Visibility Level</code> to <code>Private</code></li>
+<li>Leave the default setting of <code>Initialize repository with a README</code> with <code>checkbox</code> selected to automatically add <code>README</code> file in git repository</li>
+</ul>
 </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  <strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only.</p>
+</div>
+<p>Below screenshot shows execution of above for Pod_1 as a reference only:</p>
+<p><img alt="" src="../pic/5-2-5.png" /></p>
+<ul>
+<li>Then click <strong>Create project</strong>  at the bottom of this <code>Create a blank project</code> page. </li>
+</ul>
+<p>A new project for your respective Pod is now created on GitLab.</p>
+<ul>
+<li>On the project page, copy the project url by clicking on <strong>Clone</strong> button, and then click <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1203,10 +1215,14 @@ apt-get install git
 </div>
 <p>The screenshot below uses <strong>POD_1</strong> as example.</p>
 <p><img alt="" src="../pic/5-2-6.png" /></p>
+<p>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change of <strong>main</strong> branch to unprotected is performed as per below steps and shown in below screenshot:</p>
 <ul>
-<li>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change of <strong>main</strong> branch to unprotected is performed by navigating on left sidebar (pane) and Selecting <strong>Settings &gt; Repository</strong>.  Then on right pane Click <strong>Expand</strong> next to <strong>Protected branches</strong> and then Click on <strong>Unprotect</strong> (in Red color) as shown in below screenshot.  Also, acknolwedge by clicking on <strong>Unprotect branch</strong> on the pop-up message.</li>
+<li>Navigate on left sidebar (pane) and Select <strong>Settings &gt; Repository</strong>.  </li>
+<li>Then on right pane next to <strong>Protected branches</strong>, Click <strong>Expand</strong>. </li>
+<li>Further, Click on <strong>Unprotect</strong> (in Red color) as shown in below screenshot.  Also, acknolwedge by clicking on <strong>Unprotect branch</strong> on the pop-up message.</li>
 </ul>
 <p><img alt="" src="../pic/5-2-7.png" /></p>
+<p>Now the Git repository is setup properly for colloboration. And it can be used for keeping all the code i.e., Ansible playbooks and roles files.  Since all the code resides on local machine (Ansible node), so let's push this code to this newlly created centralized repository on GitLab.</p>
 <ul>
 <li>On the Ansible node (in <strong><em>MTputty</em></strong> SSH session), run the below commands to initialize git in appropriate directory:</li>
 </ul>
@@ -1216,7 +1232,7 @@ git init
 <p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
-<li>On the Ansible node, run following commands to add the remote repository as origin for your respective <strong>Pod {ID}</strong> and verify it's result:</li>
+<li>On the Ansible node, run following commands to add the remote repository as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
 git remote -v
@@ -1246,29 +1262,19 @@ git commit -m &quot;initial commit&quot;
 </ul>
 <div class="highlight"><pre><span></span><code>git push -f origin main
 </code></pre></div>
-<p>Below screenshot shows partial out of the above command:</p>
+<p>Below screenshot shows output of the above command:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
-<h3 id="step-4-add-ci-pipeline-file">Step 4: Add CI pipeline file</h3>
-<p>In this step, you will create CI pipeline file for gitlab. Gitlab uses a special file named <strong><code>.gitlab-ci.yml</code></strong> for CI/CD configuration.  </p>
+<h3 id="step-4-add-cicd-pipeline-file">Step 4: Add CI/CD pipeline file</h3>
+<p>In this step, you will create CI/CD pipeline file. Gitlab uses a special file named <strong><code>.gitlab-ci.yml</code></strong> for CI/CD configuration.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The file name starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
 </div>
-<p>The file needs to be placed in root of the repository.  Inside the file, you will define:</p>
-<ul>
-<li>
-<p>The stages you want run in the pipeline</p>
-</li>
-<li>
-<p>The scripts you want run in each stage</p>
-</li>
-<li>
-<p>The runner you want use for each script</p>
-</li>
-<li>
-<p>How is the runner triggered for each script</p>
-</li>
-</ul>
+<p>This file uses YAML syntax and needs to be placed in root directory of the repository.  In this file, you define your intent for the pipeline using a declarative syntax (in YAML) such as:
+- The stages you want run in the pipeline
+- The scripts you want run in each stage
+- The runner you want use for each script
+- How is the runner triggered for each script</p>
 <p>Pipeline file can be added from GitLab UI using pipeline file editor, or from local and push to GitLab repo using git commands.  We will use Atom to add pipeline file in this lab.</p>
 <ul>
 <li>
@@ -1316,7 +1322,7 @@ git commit -m &quot;initial commit&quot;
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$CI_PIPELINE_SOURCE</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&quot;merge_request_event&quot;&#39;</span>
 <span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
 </code></pre></div>
-<p>Below screenshot shows the file after added above contents on Atom</p>
+<p>Below screenshot shows the file after adding the above contents on Atom:</p>
 <p><img alt="" src="../pic/5-3-7.png" /></p>
 <ul>
 <li>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new pipeline to Ansible node</li>
@@ -1327,16 +1333,16 @@ git commit -m &quot;initial commit&quot;
 <p>Three stages for pipeline named <strong>test</strong>, <strong>staging</strong> and <strong>production</strong></p>
 </li>
 <li>
-<p>In <strong>test</strong> stage, pipeline will do dry-run for the ansible playbook using a git-runner with tag <strong>EVPN</strong>. This script will be triggered by change in branch</p>
+<p>In <strong>test</strong> stage, pipeline will perform dry-run for the Ansible playbook using shell command (<code>ansible-playbook</code> with <code>--check</code> flag).  This is executed by using a git-runner with <code>tag</code> of <code>EVPN</code>.  Further, as per the <strong><code>rules</code></strong> setting, the script will be triggered by change in any <code>branch</code> other than <code>main</code>.</p>
 </li>
 <li>
-<p>In <strong>staging</strong> stage, pipeline will run playbooks to build EVPN fabric for new VNIs, also collrect show outputs files for manual verification. This scripts will be triggered after success of test stage.</p>
+<p>In <strong>staging</strong> stage, pipeline will run mutliple playbooks to add new VNIs on the BGP EVPN fabric.  For manual verification, this stage also collects the output of show commands in multiple files - these are referred to as <code>artifacts</code>.  Further, as per the <strong><code>rules</code></strong> setting, this scripts will be triggered after success of <code>test</code> stage and for any <code>branch</code> other than <code>main</code>.</p>
 </li>
 <li>
-<p>In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. This script will be triggered after merge to main branch with manual trigger.</p>
+<p>In <strong>production</strong> stage, pipeline will run playbook to deploy EVPN fabric for new VNIs in production. Further, as per the <strong><code>rules</code></strong> setting, this script will be triggered after merge to main branch with manual trigger.</p>
 </li>
 </ul>
-<p>Continuing the lab steps next:</p>
+<p>Now lets push this file to GitLab centralized repository by execution of below steps:</p>
 <ul>
 <li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code>for GitLab access:</li>
 </ul>
@@ -1344,10 +1350,10 @@ git commit -m &quot;initial commit&quot;
 git commit -m &quot;add ci file&quot;
 git push origin main
 </code></pre></div>
-<p>Below screenshot shows the outputs of the commands (note your git repository will be based upon your respective Pod_{ID}):</p>
+<p>Below screenshot shows the outputs of the commands for Pod_1 (note your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
-<p>In this task, you will create local gitlab runner on Ansible server and register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project.</p>
+<p>In this task, you will create local gitlab runner on Ansible server and register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project on GitLab.</p>
 <ul>
 <li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left sidebar, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
 </ul>
@@ -1357,11 +1363,11 @@ git push origin main
 </div>
 <p><img alt="" src="../pic/5-5-1.png" /></p>
 <ul>
-<li>After expanding the <strong>Runners</strong> setting, under <strong>Project runners</strong> click on <strong>New project runner</strong>.  </li>
+<li>After expanding the <code>Runners</code> setting, under <code>Project runners</code> click on <strong>New project runner</strong>.  </li>
 </ul>
 <p><img alt="" src="../pic/5-5-1a.png" /></p>
 <ul>
-<li>On the next <code>New project runner</code> screen, select <strong>Linux</strong> Operating systems under the <strong>Platform</strong>.  Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
+<li>On the next <code>New project runner</code> page, select <strong>Linux</strong> Operating systems under the <strong>Platform</strong>.  Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
 </ul>
 <p><img alt="" src="../pic/5-5-1b.png" /></p>
 <ul>
