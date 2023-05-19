@@ -474,9 +474,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-merge-to-main-branch" class="md-nav__link">
-    Step 8: Merge to main branch
+  <a href="#step-8-merge-code-to-main-branch" class="md-nav__link">
+    Step 8: Merge code to main branch
   </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Merge code to main branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#so-what-is-happening" class="md-nav__link">
+    So what is happening?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -564,9 +577,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-merge-to-main-branch" class="md-nav__link">
-    Step 8: Merge to main branch
+  <a href="#step-8-merge-code-to-main-branch" class="md-nav__link">
+    Step 8: Merge code to main branch
   </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Merge code to main branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#so-what-is-happening" class="md-nav__link">
+    So what is happening?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1321,7 +1347,7 @@ git push origin main
 <p>Below screenshot shows the outputs of the commands (note your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
-<p>In this task, you will create local gitlab runner to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner and register it to your project.</p>
+<p>In this task, you will create local gitlab runner on Ansible server and register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project.</p>
 <ul>
 <li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left sidebar, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong>Runners</strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
 </ul>
@@ -1335,61 +1361,79 @@ git push origin main
 </ul>
 <p><img alt="" src="pic/5-5-1a.png" /></p>
 <ul>
-<li>
-<p>On the next screen, select <strong>Linux</strong> Operating systems under the <strong>Platform</strong>.  </p>
-</li>
-<li>
-<p>Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong> and Leave other settings as default and click <strong>Submit</strong> on this page.</p>
-</li>
-<li>
-<p>On the next screen, copy the command line (<code>gitlab-runner register ...</code>) in <strong>Step 1</strong>.  This will be used to register the runner in our lab setup.  Then click on <strong>Go to runners page</strong>.</p>
-</li>
+<li>On the next <code>New project runner</code> screen, select <strong>Linux</strong> Operating systems under the <strong>Platform</strong>.  Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
 </ul>
+<p><img alt="" src="pic/5-5-1b.png" /></p>
+<ul>
+<li>On the next <code>Rewgister run</code> page, under <strong>Step 1</strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the runner that runs on Ansible server/node.  Then click on <strong>Go to runners page</strong>.  If <code>Leave site?</code> prompt is displayed, then click <code>Leave</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to copy the runner token in this step.</p>
+</div>
 <p><img alt="" src="pic/5-5-1c.png" /></p>
 <ul>
 <li>As shown in below screenshot, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
 </ul>
 <p><img alt="" src="../pic/5-5-2.png" /></p>
 <ul>
-<li>On the Ansible node (in <strong>MTputty</strong> SSH session), register the GitLab runner by issuing the below command.  Further, when prompted provide the runner registration info as shown below:</li>
+<li>
+<p>Next switch to Ansible node (in <strong>MTputty</strong> SSH session) to register the GitLab runner by issuing the below command.  As part of this registration process, below settings are configured:</p>
+<ul>
+<li><code>GitLab URL</code> pointing to the GitLab running as SaaS. </li>
+<li><code>Registration Token</code> for (authentication) of runner to Gitlab.</li>
+<li><code>Tags</code> - When a CI/CD job runs, it knows which runner to use by looking at the assigned tags.  It allows to filter a runner from a list of available runners for a job.  In this lab only a single runner is used.</li>
+<li><code>Executor</code>: It determines the environment where the job runs in.  In this case Ansible playbooks are executed on a <code>shell</code> enviornment.</li>
+</ul>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code>gitlab-runner register
 </code></pre></div>
-<p><strong>Enter the GitLab instance URL</strong>  <strong><font style=background-color:yellow>https://gitlab.com/</font></strong></p>
-<p><strong>Enter the registration token:</strong>  <strong><font style=background-color:yellow> get registration token from previous step </font></strong></p>
-<p><strong>Enter a name for the runner. This is stored only in the local config.toml file:</strong> <strong><font style=background-color:yellow>enter without change </font></strong></p>
-<p><strong>Enter an executor:</strong> <strong><font style=background-color:yellow>shell</font></strong></p>
-<p>After entering executor, wait few seconds for the registration of the runner.</p>
-<p>Below screenshot shows the outputs of the commands:</p>
+<p>When prompted provide the runner registration info as shown below:</p>
+<ul>
+<li>
+<p><strong>Enter the GitLab instance URL:</strong>  <code>https://gitlab.com/</code></p>
+</li>
+<li>
+<p><strong>Enter the registration token:</strong>  Copy/paste the registration token generated on GitHub and copied in previous step</p>
+</li>
+<li>
+<p><strong>Enter a name for the runner:</strong> <code>EVPN</code></p>
+</li>
+<li>
+<p><strong>Enter an executor:</strong> <code>shell</code></p>
+</li>
+</ul>
+<p>After entering <code>shell</code>, wait few seconds for the registration of the runner.  Below screenshot shows the outputs of the commands:</p>
 <p><img alt="" src="../pic/5-5-3.png" /></p>
 <ul>
-<li>On the Ansible node (in <strong>MTputty</strong> SSH session), run command the below command to start &amp; check status of runner:</li>
+<li>On the Ansible node (in <strong>MTputty</strong> SSH session), run command the below commands to check status of runner:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>gitlab-runner start
-gitlab-runner status
+<div class="highlight"><pre><span></span><code>gitlab-runner status
+gitlab-runner list
 </code></pre></div>
 <p>Below screenshots shown the output of above commands</p>
 <p><img alt="" src="../pic/5-5-4.png" /></p>
 <h3 id="step-6-add-stage-branch-and-add-new-vnis">Step 6: Add stage branch and add new VNIs</h3>
-<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. In order to do that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline file.</p>
+<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. In order to do that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline (.gitlab-ci.yml) file.</p>
 <ul>
-<li>Switch to <strong>"Atom"</strong>, Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.   Enter following new VNI information under the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
+<li>Switch to <strong>"Atom"</strong>.  Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.  Enter the new VNI details in this file below the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w">  </span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Do not replace existing content in this file.  Above content should be added to the end of this existing file.  YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (Starting from column number 3).</p>
+<p>Do not completely replace existing content in this file.  Above content should be added to the end of existing L2VNI and above the existing L3VNI variables.</p>
 </div>
 <p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-1.png" /></p>
 <ul>
 <li>
-<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new jinja2 varilabe file to Ansible node.</p>
+<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new variables to Ansible node.</p>
 </li>
 <li>
-<p>Next, the variables will be added to Leaf role.  From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles &gt; leaf &gt; vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown below</p>
+<p>Next, variables for Leaf role will be added.  From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles &gt; leaf &gt; vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown in below screenshot:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -1397,13 +1441,13 @@ gitlab-runner status
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Do not replace existing content in this file.  Above content should be added to the end of this existing file.  YAML is case and indentation sensitive, so the above vars/content must be properly added to existing file (Starting from column number 3).  Below screenshot shows the file after added above contents on Atom.</p>
+<p>Do not completely replace existing content in this file.  Above content should be added to the end of existing L2VNI and above the existing L3VNI variables.</p>
 </div>
 <p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-2.png" /></p>
 <ul>
 <li>
-<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new leaf variable file to Ansible node</p>
+<p>From <strong>Atom</strong>, go to <strong>File &gt; Save</strong> to push the new leaf variable file to Ansible node.</p>
 </li>
 <li>
 <p>On the Ansible node (in <strong>MTputty</strong> SSH session), change directory to <strong>EVPN-Ansible</strong> project folder</p>
@@ -1428,11 +1472,11 @@ git push -f origin newvni
 </ul>
 <p><img alt="" src="../pic/5-7-1.png" /></p>
 <ul>
-<li>Wait for the jobs finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> and view the Job details as shown below:</li>
+<li>Wait for the jobs finish, you can also access the runner console by clicking on any of the stage under <strong>Stages</strong> heading/column on this page and view the Job details as shown below:</li>
 </ul>
 <p><img alt="" src="../pic/5-7-2.png" /></p>
 <ul>
-<li>After both pipeline stags are passed, you can verify the staging result from the stage artifacts. Click the the three vertical dots (<strong>...</strong>) on the right most of the <code>pipeline</code> and <strong>Download artifacts</strong> as shown below.</li>
+<li>After both pipeline stages are passed, you can verify the result from the artifacts.  Click on the down arrow on the right most of the <code>pipeline</code> page and select <strong>Download artifacts</strong> to download the <code>staging:artifacts</code> as zip file.</li>
 </ul>
 <p><img alt="" src="../pic/5-7-3.png" /></p>
 <ul>
@@ -1440,7 +1484,7 @@ git push -f origin newvni
 <p>Unzip the downloaded <strong>artifacts.zip</strong> on your remote desktop, and you will see <strong>overlay.txt</strong> and <strong>underlay.txt</strong> files - these are the outputs from the ansible playbook.</p>
 </li>
 <li>
-<p>Review the overlay show outputs and you can see new vni 50200 and 50201 are deployed on staging environment as shown below:</p>
+<p>Review the <code>overlay.txt</code> file and you can see new VNIs 50200 and 50201 deployed on staging environment as shown in partial output below:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code>-   - &#39;Codes: CP - Control Plane        DP - Data Plane          &#39;
@@ -1453,8 +1497,12 @@ git push -f origin newvni
     - &#39;nve1      50141    239.0.0.141       Up    CP   L2 [141]                  &#39;
     - &#39;nve1      50200    239.0.0.200       Up    CP   L2 [200]                  &#39;
     - &#39;nve1      50201    239.0.0.201       Up    CP   L2 [201]                  &#39;
+    - &#39;nve1      50203    239.0.0.203       Up    CP   L2 [203]                  &#39;
+    - &#39;nve1      50204    239.0.0.204       Up    CP   L2 [204]                  &#39;
     - nve1      50999    n/a               Up    CP   L3 [Tenant-1]
--   - &#39;&#39;
+-   - &#39;Interface Peer-IP          State LearnType Uptime   Router-Mac       &#39;
+    - &#39;--------- ---------------  ----- --------- -------- -----------------&#39;
+    - nve1      192.168.0.18     Up    CP        1d15h    000c.2997.621c
 -   - IP Route Table for VRF &quot;Tenant-1&quot;
     - &#39;&#39;&#39;*&#39;&#39; denotes best ucast next-hop&#39;
     - &#39;&#39;&#39;**&#39;&#39; denotes best mcast next-hop&#39;
@@ -1462,70 +1510,85 @@ git push -f origin newvni
     - &#39;&#39;&#39;%&lt;string&gt;&#39;&#39; in via output denotes VRF &lt;string&gt;&#39;
     - &#39;&#39;
     - &#39;172.21.140.0/24, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.140.1, Vlan140, [0/0], 17:56:06, direct&#39;
+    - &#39;    *via 172.21.140.1, Vlan140, [0/0], 1d15h, direct&#39;
     - &#39;172.21.140.1/32, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.140.1, Vlan140, [0/0], 17:56:06, local&#39;
+    - &#39;    *via 172.21.140.1, Vlan140, [0/0], 1d15h, local&#39;
+    - &#39;172.21.140.10/32, ubest/mbest: 1/0&#39;
+    - &#39;    *via 192.168.0.18%default, [200/0], 1d13h, bgp-65000, internal, tag 65000
+        (evpn) segid: 50999 tunnelid: 0xc0a80012 encap: VXLAN&#39;
+    - &#39; &#39;
     - &#39;172.21.141.0/24, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.141.1, Vlan141, [0/0], 17:56:05, direct&#39;
+    - &#39;    *via 172.21.141.1, Vlan141, [0/0], 1d15h, direct&#39;
     - &#39;172.21.141.1/32, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.141.1, Vlan141, [0/0], 17:56:05, local&#39;
+    - &#39;    *via 172.21.141.1, Vlan141, [0/0], 1d15h, local&#39;
     - &#39;172.21.200.0/24, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.200.1, Vlan200, [0/0], 17:56:04, direct&#39;
+    - &#39;    *via 172.21.200.1, Vlan200, [0/0], 1d15h, direct&#39;
     - &#39;172.21.200.1/32, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.200.1, Vlan200, [0/0], 17:56:04, local&#39;
+    - &#39;    *via 172.21.200.1, Vlan200, [0/0], 1d15h, local&#39;
     - &#39;172.21.201.0/24, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.201.1, Vlan201, [0/0], 17:56:04, direct&#39;
+    - &#39;    *via 172.21.201.1, Vlan201, [0/0], 1d15h, direct&#39;
     - &#39;172.21.201.1/32, ubest/mbest: 1/0, attached&#39;
-    - &#39;    *via 172.21.201.1, Vlan201, [0/0], 17:56:04, local&#39;
--   - &#39;&#39;
--   - &#39;Flags -(Rmac):Router MAC (Stt):Static (L):Local (R):Remote (V):vPC link &#39;
-    - (Dup):Duplicate (Spl):Split (Rcv):Recv(D):Del Pending (S):Stale (C):Clear
-    - &#39;(Ps):Peer Sync (Ro):Re-Originated &#39;
-    - &#39;Topology    Mac Address    Prod   Flags         Seq No     Host IP         Next-Hops      &#39;
-    - &#39;----------- -------------- ------ ---------- --------------- ---------------&#39;
+    - &#39;    *via 172.21.201.1, Vlan201, [0/0], 1d15h, local&#39;
+    - &#39;172.21.203.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.203.1, Vlan203, [0/0], 1d13h, direct&#39;
+    - &#39;172.21.203.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.203.1, Vlan203, [0/0], 1d13h, local&#39;
+    - &#39;172.21.204.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.204.1, Vlan204, [0/0], 1d13h, direct&#39;
+    - &#39;172.21.204.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.204.1, Vlan204, [0/0], 1d13h, local&#39;
+
+[output omitted]
 </code></pre></div>
-<h3 id="step-8-merge-to-main-branch">Step 8: Merge to main branch</h3>
+<h3 id="step-8-merge-code-to-main-branch">Step 8: Merge code to main branch</h3>
 <p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment.</p>
-<p>Typically in real world there will (should!) be separate environments for staging and production.  In this lab, we are using same inventory for staging and production environments for simplicity purposes.  So once the merge is done then the changes can be rolled out to production (by applying ansible playbooks)</p>
+<p>Typically in real world there will (should!) be separate environments for staging and production.  In this lab, we are using same inventory for staging and production environments for simplicity purposes.  So once the merge is done then the changes can be rolled out to production (by applying ansible playbooks).</p>
 <ul>
-<li>Switch to Chrome browser with gitlab project page for your respective <code>pod_{ID}</code> <strong>repository</strong>.  Select <strong>Merge requests</strong> from navigation menu on the left, and select <strong>New merge request</strong> as shown below.</li>
+<li>Switch to Chrome browser with GitLab project page for your respective <code>Pod_{ID}</code> and then select <strong>Merge requests</strong> in the left sidebar.  Select <strong>New merge request</strong> on the right pane as shown in below screenshot.</li>
 </ul>
 <p><img alt="" src="../pic/5-8-1.png" /></p>
 <ul>
-<li>Under the <code>Source branch</code> section, from the <code>Select source branch</code> drop down menu select <strong>newvni</strong> branch.  Further, on the <code>Target branch</code> section, under <code>Select target branch</code> drop down menu make sure that <strong>main</strong> branch is selected as shown in the screenshot below.  </li>
+<li>Under the <code>Source branch</code> section, from the <code>Select source branch</code> drop down menu select <strong>newvni</strong> branch.  </li>
+<li>Further, on the <code>Target branch</code> section, under <code>Select target branch</code> drop down menu make sure that <strong>main</strong> branch is selected as shown in the screenshot below.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Below screenshot uses POD 1 as example, you must use your assigned POD ID from table in task1.</p>
+<p>Below screenshot uses POD 1 as example, you must use <strong>your</strong> assigned <strong>POD ID</strong> from table in task1.</p>
 </div>
 <p><img alt="" src="../pic/5-8-2.png" /></p>
 <ul>
+<li>Then click <strong>Compare branches and continue</strong> on this page.</li>
+</ul>
+<p>Next, On the <strong>New merge request</strong> page (below screenshot):
+* give a <strong>Title</strong> for the merge request as <strong>Newvni Pod_<code>#</code></strong> (replace <code>#</code> with your respective Pod ID),</p>
+<ul>
 <li>
-<p>Next, click <strong>Compare branches and continue</strong> on the above page</p>
+<p>And <strong>un-check</strong> the <strong>Delete source branch when merge request is accepted</strong>,</p>
 </li>
 <li>
-<p>On the next page, give a <strong>Title</strong> for the merge request as <strong>newvni Pod_<code>#</code></strong> (replace <code>#</code> with your respective Pod ID), leave everything else as default and click <strong>Create merge request</strong></p>
-</li>
-<li>
-<p>On the merge request, <strong>un-check</strong> the <strong>Delete source branch</strong> after merge option.  You may add Edit merger commit message. And after you have reviewed the merge request, click the <strong>Merge</strong> button as shown in the screenshot below:</p>
+<p>Then click the <strong>Create merge request</strong> button as shown in the screenshot below:</p>
 </li>
 </ul>
 <p><img alt="" src="../pic/5-8-3.png" /></p>
+<p>On the next page (below screenshot), you are displayed with the details related to Merge: 
+* Review the details and then click on <strong>Merge</strong> button.   </p>
+<p><img alt="" src="pic/5-8-3a.png" /></p>
+<p>Wait for the <code>Merged by lab.ciscolive</code> message and for <code>Merge details</code> to appear on this page.</p>
+<h6 id="so-what-is-happening">So what is happening?</h6>
+<p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
 <ul>
 <li>
-<p>As per the CI pipeline file (named: <strong>.gitlab-ci.yml</strong> ) the <code>rules</code> was configured for <strong>manual</strong> trigger for production deployment, hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.</p>
+<p>Switch to Chrome brower with GitLab project page (your respective <code>Pod_{ID}</code>), select <strong>CI/CD &gt; Pipelines</strong> from navigation menu on the left sidebar.</p>
 </li>
 <li>
-<p>Switch to Chrome brower with gitlab project page, select <strong>CI/CD &gt; Pipelines</strong> from navigation menu on the left</p>
-</li>
-<li>
-<p>Deploy the newvni on production enviroment by selecting <strong>deploy</strong> on the pipeline job from previous merger request as shown in the screenshot below:</p>
+<p>Deploy the changes to production enviroment by selecting on the <code>Play</code> <strong>button</strong> and then click on <strong>deploy</strong> as shown in the screenshot below:</p>
 </li>
 </ul>
 <p><img alt="" src="../pic/5-8-4.png" /></p>
 <ul>
-<li>Wait for the job finish, you can also access the runner console by clicking the pipeline stage under <strong>Stages</strong> as shown below:</li>
+<li>Wait for the job (all the Stages) to finish. You can also access the runner console output, to see execution of Ansible playbooks by clicking the pipeline stage named <code>deploy</code> under <strong>Stages</strong> on this page.  </li>
 </ul>
+<p>Below screenshot shows the successful execution of this deploy stage: </p>
 <p><img alt="" src="../pic/5-8-5.png" /></p>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
 
