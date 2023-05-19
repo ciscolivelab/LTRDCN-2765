@@ -1359,11 +1359,11 @@ git push origin main
 <ul>
 <li>After expanding the <strong>Runners</strong> setting, under <strong>Project runners</strong> click on <strong>New project runner</strong>.  </li>
 </ul>
-<p><img alt="" src="pic/5-5-1a.png" /></p>
+<p><img alt="" src="../pic/5-5-1a.png" /></p>
 <ul>
 <li>On the next <code>New project runner</code> screen, select <strong>Linux</strong> Operating systems under the <strong>Platform</strong>.  Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
 </ul>
-<p><img alt="" src="pic/5-5-1b.png" /></p>
+<p><img alt="" src="../pic/5-5-1b.png" /></p>
 <ul>
 <li>On the next <code>Rewgister run</code> page, under <strong>Step 1</strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the runner that runs on Ansible server/node.  Then click on <strong>Go to runners page</strong>.  If <code>Leave site?</code> prompt is displayed, then click <code>Leave</code>.</li>
 </ul>
@@ -1371,7 +1371,7 @@ git push origin main
 <p class="admonition-title">Note</p>
 <p>Make sure to copy the runner token in this step.</p>
 </div>
-<p><img alt="" src="pic/5-5-1c.png" /></p>
+<p><img alt="" src="../pic/5-5-1c.png" /></p>
 <ul>
 <li>As shown in below screenshot, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
 </ul>
@@ -1572,7 +1572,7 @@ git push -f origin newvni
 <p><img alt="" src="../pic/5-8-3.png" /></p>
 <p>On the next page (below screenshot), you are displayed with the details related to Merge: 
 * Review the details and then click on <strong>Merge</strong> button.   </p>
-<p><img alt="" src="pic/5-8-3a.png" /></p>
+<p><img alt="" src="../pic/5-8-3a.png" /></p>
 <p>Wait for the <code>Merged by lab.ciscolive</code> message and for <code>Merge details</code> to appear on this page.</p>
 <h6 id="so-what-is-happening">So what is happening?</h6>
 <p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
