@@ -460,8 +460,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-add-stage-branch-and-add-new-vnis" class="md-nav__link">
-    Step 6: Add stage branch and add new VNIs
+  <a href="#step-6-add-new-vnis-in-staging-and-trigger-pipeline" class="md-nav__link">
+    Step 6: Add new VNIs in Staging and trigger pipeline
   </a>
   
 </li>
@@ -563,8 +563,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-add-stage-branch-and-add-new-vnis" class="md-nav__link">
-    Step 6: Add stage branch and add new VNIs
+  <a href="#step-6-add-new-vnis-in-staging-and-trigger-pipeline" class="md-nav__link">
+    Step 6: Add new VNIs in Staging and trigger pipeline
   </a>
   
 </li>
@@ -1425,8 +1425,8 @@ gitlab-runner list
 </code></pre></div>
 <p>Below screenshots shown the output of above commands</p>
 <p><img alt="" src="../pic/5-5-4.png" /></p>
-<h3 id="step-6-add-stage-branch-and-add-new-vnis">Step 6: Add stage branch and add new VNIs</h3>
-<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the change directly to production, you will use the gitlab pipeline to do test and staging first. In order to do that, you will create new branch in your project and push the variable files to the new branch. The push will trigger gitlab-runner to execute scripts configured in pipleline (.gitlab-ci.yml) file.</p>
+<h3 id="step-6-add-new-vnis-in-staging-and-trigger-pipeline">Step 6: Add new VNIs in Staging and trigger pipeline</h3>
+<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the changes (new VNIs) directly to <code>main</code> repository, you will create a new repository named <code>newvni</code> on gitlab to validate and test it on a staging environment.  In order to do that, you will create new branch in your project and push the variable files to the new branch. The push will trigger execution of scripts, by gitlab runner, as per configuration of pipleline file (.gitlab-ci.yml).  Keep in mind that we only have one physical environment i.e., same set of switches are used for both staging and production.</p>
 <ul>
 <li>Switch to <strong>"Atom"</strong>.  Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.  Enter the new VNI details in this file below the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
 </ul>
