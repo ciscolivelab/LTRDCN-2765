@@ -1426,7 +1426,7 @@ gitlab-runner list
 <p>Below screenshots shown the output of above commands</p>
 <p><img alt="" src="../pic/5-5-4.png" /></p>
 <h3 id="step-6-add-new-vnis-in-staging-and-trigger-pipeline">Step 6: Add new VNIs in Staging and trigger pipeline</h3>
-<p>In this task, you will modify the variable file to add new networks on EVPN fabric. Instead of applying the changes (new VNIs) directly to <code>main</code> repository, you will create a new repository named <code>newvni</code> on gitlab to validate and test it on a staging environment.  In order to do that, you will create new branch in your project and push the variable files to the new branch. The push will trigger execution of scripts, by gitlab runner, as per configuration of pipleline file (.gitlab-ci.yml).  Keep in mind that we only have one physical environment i.e., same set of switches are used for both staging and production.</p>
+<p>In this task, you will modify the variable files to add new networks on the EVPN fabric.  Instead of applying the changes (new VNIs) directly to <code>main</code> repository, you will create a new repository named <code>newvni</code> on gitlab to validate and test it on a staging environment.  Once the changes (new VNIs) are pushed to <code>newvni</code> branch on the GitLab repository, it will automatically trigger execution of scripts, by gitlab runner, as per configuration of pipleline file (.gitlab-ci.yml).  Keep in mind that we only have one physical environment i.e., same set of switches are used for both staging and production.</p>
 <ul>
 <li>Switch to <strong>"Atom"</strong>.  Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.  Enter the new VNI details in this file below the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
 </ul>
@@ -1570,9 +1570,11 @@ git push -f origin newvni
 <ul>
 <li>Then click <strong>Compare branches and continue</strong> on this page.</li>
 </ul>
-<p>Next, On the <strong>New merge request</strong> page (below screenshot):
-* give a <strong>Title</strong> for the merge request as <strong>Newvni Pod_<code>#</code></strong> (replace <code>#</code> with your respective Pod ID),</p>
+<p>Next, On the <strong>New merge request</strong> page (below screenshot):</p>
 <ul>
+<li>
+<p>Enter the <strong><code>Title</code></strong> for the merge request as <strong>Newvni Pod_<code>#</code></strong> (replace <code>#</code> with your respective Pod ID),</p>
+</li>
 <li>
 <p>And <strong>un-check</strong> the <strong>Delete source branch when merge request is accepted</strong>,</p>
 </li>
@@ -1580,9 +1582,15 @@ git push -f origin newvni
 <p>Then click the <strong>Create merge request</strong> button as shown in the screenshot below:</p>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  <strong>Project name</strong> of <strong><code>POD_1</code></strong> in below screenshot is shown as an example only.</p>
+</div>
 <p><img alt="" src="../pic/5-8-3.png" /></p>
-<p>On the next page (below screenshot), you are displayed with the details related to Merge: 
-* Review the details and then click on <strong>Merge</strong> button.   </p>
+<p>On the next page (below screenshot), you are displayed with the details related to Merge: </p>
+<ul>
+<li>Review the details and then click on <strong>Merge</strong> button.   </li>
+</ul>
 <p><img alt="" src="../pic/5-8-3a.png" /></p>
 <p>Wait for the <code>Merged by lab.ciscolive</code> message and for <code>Merge details</code> to appear on this page.</p>
 <h6 id="so-what-is-happening">So what is happening?</h6>
@@ -1599,6 +1607,10 @@ git push -f origin newvni
 <ul>
 <li>Wait for the job (all the Stages) to finish. You can also access the runner console output, to see execution of Ansible playbooks by clicking the pipeline stage named <code>deploy</code> under <strong>Stages</strong> on this page.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong><code>POD_1</code></strong> in below screenshot is shown as an example only.  You must browse through to your own Pod #.</p>
+</div>
 <p>Below screenshot shows the successful execution of this deploy stage: </p>
 <p><img alt="" src="../pic/5-8-5.png" /></p>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
