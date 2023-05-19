@@ -1367,11 +1367,16 @@ git push origin main
 </ul>
 <p><img alt="" src="../pic/5-5-1a.png" /></p>
 <ul>
-<li>On the next <code>New project runner</code> page, select <strong>Linux</strong> Operating systems under the <strong><code>Platform</code></strong>.  Further, enter a <strong>Tags</strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
+<li>On the next <code>New project runner</code> page, select <strong>Linux</strong> Operating systems under the <strong><code>Platform</code></strong>.  Further, enter a <strong><code>Tags</code></strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
 </ul>
 <p><img alt="" src="../pic/5-5-1b.png" /></p>
 <ul>
-<li>On the next <code>Rewgister run</code> page, under <strong>Step 1</strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the runner that runs on Ansible server/node.  Then click on <strong>Go to runners page</strong>.  If <code>Leave site?</code> prompt is displayed, then click <code>Leave</code>.</li>
+<li>
+<p>On the next <strong><code>Register runner</code></strong> page, under <strong><code>Step 1</code></strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the gitlab runner that runs on Ansible server/node.  </p>
+</li>
+<li>
+<p>Then click on <strong>Go to runners page</strong>.  If <code>Leave site?</code> prompt is displayed, then click <strong><code>Leave</code></strong> to proceed.</p>
+</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1379,7 +1384,7 @@ git push origin main
 </div>
 <p><img alt="" src="../pic/5-5-1c.png" /></p>
 <ul>
-<li>As shown in below screenshot, under <strong>Shared runners</strong>, click the toggle switch named <strong><code>Enable shared runners for this project"</code></strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
+<li>As shown in below screenshot, under <strong><code>Shared runners</code></strong>, click on the toggle switch named <strong>Enable shared runners for this project</strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
 </ul>
 <p><img alt="" src="../pic/5-5-2.png" /></p>
 <ul>
@@ -1387,7 +1392,7 @@ git push origin main
 <p>Next switch to Ansible node (in <strong>MTputty</strong> SSH session) to register the GitLab runner by issuing the below command.  As part of this registration process, below settings are configured:</p>
 <ul>
 <li><code>GitLab URL</code> pointing to the GitLab running as SaaS. </li>
-<li><code>Registration Token</code> for (authentication) of runner to Gitlab.</li>
+<li><code>Registration Token</code> for (authentication) of runner to Gitlab project.</li>
 <li><code>Tags</code> - When a CI/CD job runs, it knows which runner to use by looking at the assigned tags.  It allows to filter a runner from a list of available runners for a job.  In this lab only a single runner is used.</li>
 <li><code>Executor</code>: It determines the environment where the job runs in.  In this case Ansible playbooks are executed on a <code>shell</code> enviornment.</li>
 </ul>
@@ -1398,16 +1403,16 @@ git push origin main
 <p>When prompted provide the runner registration info as shown below:</p>
 <ul>
 <li>
-<p><strong>Enter the GitLab instance URL:</strong>  <code>https://gitlab.com/</code></p>
+<p><strong><code>Enter the GitLab instance URL:</code></strong>  <strong>https://gitlab.com/</strong></p>
 </li>
 <li>
-<p><strong>Enter the registration token:</strong>  Copy/paste the registration token generated on GitHub and copied in previous step</p>
+<p><strong><code>Enter the registration token:</code></strong>  Paste the <strong><code>runner token</code></strong> value generated and copied on GitHub (previous step)</p>
 </li>
 <li>
-<p><strong>Enter a name for the runner:</strong> <code>EVPN</code></p>
+<p><strong><code>Enter a name for the runner:</code></strong> <strong>EVPN</strong></p>
 </li>
 <li>
-<p><strong>Enter an executor:</strong> <code>shell</code></p>
+<p><strong><code>Enter an executor:</code></strong> <strong>shell</strong></p>
 </li>
 </ul>
 <p>After entering <code>shell</code>, wait few seconds for the registration of the runner.  Below screenshot shows the outputs of the commands:</p>
