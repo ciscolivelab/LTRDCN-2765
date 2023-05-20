@@ -1297,13 +1297,13 @@ git push origin main
 <ul>
 <li>
 <p>Next switch to Ansible node (in <strong>MTputty</strong> SSH session) to register the GitLab runner by issuing the below command.  As part of this registration process, below settings are configured:</p>
-</li>
-<li>
-<p><code>GitLab URL</code> pointing to the GitLab running as SaaS. </p>
-</li>
+<ul>
+<li><code>GitLab URL</code> pointing to the GitLab running as SaaS. </li>
 <li><code>Registration Token</code> for (authentication) of runner to Gitlab project.</li>
 <li><code>Tags</code> - When a CI/CD job runs, it knows which runner to use by looking at the assigned tags.  It allows to filter a runner from a list of available runners for a job.  In this lab only a single runner is used.</li>
 <li><code>Executor</code>: It determines the environment where the job runs in.  In this case Ansible playbooks are executed on a <code>shell</code> enviornment.</li>
+</ul>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code>gitlab-runner register
 </code></pre></div>
