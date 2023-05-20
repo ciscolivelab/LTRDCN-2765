@@ -494,10 +494,10 @@ root@ubuntu:~/EVPN-Ansible# more hosts
 <ul>
 <li>
 <p>On the MTputty, go back to Ansible Server node (198.18.134.150), switch to ‘<strong>roles</strong>’ directory; <strong>create</strong> ‘jinja2_spine’ and ‘jinja2_leaf’ roles using ansible-galaxy using below commands:</p>
-<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/
+<div class="highlight"><pre><span></span><code>root@ubuntu:~# cd ~/EVPN-Ansible/
 root@ubuntu:~/EVPN-Ansible# cd roles/
 root@ubuntu:~/EVPN-Ansible/roles# ansible-galaxy init jinja2_spine&amp;&amp;ansible-galaxy init jinja2_leaf
-</code></pre>
+</code></pre></div>
 </li>
 <li>
 <p>Below screenshot shows the output of above command:</p>
@@ -508,9 +508,9 @@ root@ubuntu:~/EVPN-Ansible/roles# ansible-galaxy init jinja2_spine&amp;&amp;ansi
 <ul>
 <li>
 <p><strong>change directory</strong> path to EVPN-Ansible/roles/jinja2_spine and check the content of local directory (<code>ls</code>) as per below commands:</p>
-<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/roles/jinja2_spine/
+<div class="highlight"><pre><span></span><code>root@ubuntu:~# cd ~/EVPN-Ansible/roles/jinja2_spine/
 root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine# ls
-</code></pre>
+</code></pre></div>
 </li>
 <li>
 <p>Below screenshot shows the output of above file.  Note that various directories including tasks, templates, vars exists.  We will use these in later steps.</p>
@@ -521,10 +521,10 @@ root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine# ls
 <ul>
 <li>
 <p><strong>Create</strong> empty jinja2 template files for spine and leaf under templates folder for each role by running below commands:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible/roles# cd ~/EVPN-Ansible/roles
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible/roles# cd ~/EVPN-Ansible/roles
 root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_spine/templates/spine.j2
 root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
-</code></pre>
+</code></pre></div>
 </li>
 <li>
 <p>Switch to “<strong>Atom</strong>” and sync the new created folders between Ansible node and Remote desktop by pressing <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code>, then open <code>Remote Sync</code> select <code>Download Folder</code> as shown below:</p>
@@ -588,18 +588,18 @@ root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
 <ol>
 <li>
 <p>On Ansible server (198.18.134.150) using your SSH session, change Directory to folder EVPN-Ansible using below command:</p>
-<pre><code>root@ubuntu:~# cd ~/EVPN-Ansible/
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@ubuntu:~# cd ~/EVPN-Ansible/
+</code></pre></div>
 </li>
 <li>
 <p>further, change Directory (cd) to folder roles/jinja2_spine/templates using below command:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# cd roles/jinja2_spine/templates/
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible# cd roles/jinja2_spine/templates/
+</code></pre></div>
 </li>
 <li>
 <p>Type <code>touch spine.j2</code> as shown below:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# touch spine.j2
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# touch spine.j2
+</code></pre></div>
 </li>
 <li>
 <p>After entering the command, go back to ATOM,  <strong>right click</strong> on folder <code>EVPN-Ansible</code>, scroll to choose option <code>Remote Sync</code> option and choose <code>Download Folder</code> as shown below:</p>
@@ -614,8 +614,8 @@ root@ubuntu:~/EVPN-Ansible/roles# touch jinja2_leaf/templates/leaf.j2
 </li>
 </ul>
 <p>and paste the file in the projects folder</p>
-<pre><code>`TFTP_Data (\\AD1) (X:)` --&gt;  `EVPN-Ansible` --&gt; `roles` --&gt; `jinja2_spine` --&gt; `templates`
-</code></pre>
+<div class="highlight"><pre><span></span><code>`TFTP_Data (\\AD1) (X:)` --&gt;  `EVPN-Ansible` --&gt; `roles` --&gt; `jinja2_spine` --&gt; `templates`
+</code></pre></div>
 <p>as shown below:</p>
 <p><img alt="" src="../pic/3-5-3.png" /></p>
 <ul>
@@ -673,9 +673,9 @@ root@ubuntu:~/EVPN-Ansible/roles/jinja2_spine/templates# more spine.j2
 <ul>
 <li>
 <p>Run the ansible playbook by going to folder EVPN-Ansible and executing the below commands:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible/roles# cd ~/EVPN-Ansible/
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible/roles# cd ~/EVPN-Ansible/
 root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
-</code></pre>
+</code></pre></div>
 <p><strong>Note: It will take few minutes to push configuration</strong></p>
 <p>Below screenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/3-7-1.png" /></p>
@@ -785,8 +785,8 @@ root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
 </li>
 </ul>
 <p>and paste the file in the projects folder</p>
-<pre><code>`TFTP_Data (\\AD1) (X:)` --&gt;  `EVPN-Ansible` --&gt; `roles` --&gt; `jinja2_leaf` --&gt; `templates`
-</code></pre>
+<div class="highlight"><pre><span></span><code>`TFTP_Data (\\AD1) (X:)` --&gt;  `EVPN-Ansible` --&gt; `roles` --&gt; `jinja2_leaf` --&gt; `templates`
+</code></pre></div>
 <p>as shown below:</p>
 <p><img alt="" src="../pic/3-10-2.png" /></p>
 <ul>
@@ -833,15 +833,15 @@ root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
 <ul>
 <li>
 <p>On the Ansible node (in MTputty SSH session), run the command (<code>ansible-playbook jinja2_fabric.yml</code>) to execute the playbook as shown below:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook jinja2_fabric.yml
+</code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-12-1.png" /></p>
 </li>
 <li>
 <p>After the configuration push is successful, <strong>login</strong> (on MTputty SSH session) to <strong>leaf-4</strong> switch to verify configuration has been pushed by running below command:</p>
-<pre><code>show running-config bgp
-</code></pre>
+<div class="highlight"><pre><span></span><code>show running-config bgp
+</code></pre></div>
 <p>The output of above command is shown below:</p>
 <p><img alt="" src="../pic/3-12-2.png" /></p>
 </li>

@@ -407,21 +407,21 @@
 <hr />
 <h3 id="step-2-install-ansible-pre-reqs">Step 2: Install Ansible pre-reqs</h3>
 <ul>
-<li>Switch to <strong>MTPuTTY</strong> install prerequisites packages on <strong>Ansible node</strong> by using below <code>pip install ...</code> commands (<strong>Note</strong>: the bold commands need to be executed):<pre><code>[root@rhel7-tools LTRDCN-1572]# pip install f5-sdk
+<li>Switch to <strong>MTPuTTY</strong> install prerequisites packages on <strong>Ansible node</strong> by using below <code>pip install ...</code> commands (<strong>Note</strong>: the bold commands need to be executed):<div class="highlight"><pre><span></span><code>[root@rhel7-tools LTRDCN-1572]# pip install f5-sdk
 [root@rhel7-tools LTRDCN-1572]# pip install setuptools --upgrade
 [root@rhel7-tools LTRDCN-1572]# pip install bigsuds
 [root@rhel7-tools LTRDCN-1572]# pip install netaddr
-</code></pre>
+</code></pre></div>
 </li>
 </ul>
 <hr />
 <h3 id="step-3-check-virtual-ip-using-curl">Step 3: Check Virtual IP using curl</h3>
 <ul>
 <li>Switch to <strong>‘MTPuTTY’</strong> and ssh into server-4.  Then send http request to Virtual IP (VIP) 172.21.140.100 from server-4 using <code>curl http://172.21.140.100</code> command  </li>
-<li>Below output shows the execution of above command i.e., HTTP request to VIP should fail:<pre><code>[root@server-4 ~]# curl http://172.21.140.100
-curl: (7) couldn't connect to host`
+<li>Below output shows the execution of above command i.e., HTTP request to VIP should fail:<div class="highlight"><pre><span></span><code>[root@server-4 ~]# curl http://172.21.140.100
+curl: (7) couldn&#39;t connect to host`
 [root@server-4 ~]#
-</code></pre>
+</code></pre></div>
 </li>
 </ul>
 <hr />

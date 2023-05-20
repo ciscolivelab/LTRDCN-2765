@@ -403,10 +403,10 @@
 <ul>
 <li>
 <p>On the Ansible node (using MTputty via SSH), run <strong>“get_config.yml”</strong> playbook and verify the backup configurations in <strong>“backup”</strong> folder by using below commands:</p>
-<pre><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook get_config.yml
+<div class="highlight"><pre><span></span><code>[root@rhel7-tools EVPN-Ansible]# ansible-playbook get_config.yml
 [root@rhel7-tools EVPN-Ansible]# ls -lrt
 [root@rhel7-tools EVPN-Ansible]# ls backup
-</code></pre>
+</code></pre></div>
 <p>You may further view the contents of the files under backup folder by using cat, less or more commands.  Below screenshot shows the output of above commands</p>
 <p><img alt="" src="../pic/5-1-1.png" /></p>
 </li>
@@ -415,17 +415,17 @@
 <h3 id="step-2-verify-underlay-and-overlay">Step 2: Verify underlay and overlay</h3>
 <p>In this step, you will verify underlay and overlay operation using ansible playbook. The playbook will be applied to all leaf switches to verify the below commands:</p>
 <p><strong><em>Underlay</em></strong></p>
-<pre><code>-   show ip ospf neighbor
+<div class="highlight"><pre><span></span><code>-   show ip ospf neighbor
 -   show ip bgp sum
 -   show ip pim neighbor
-</code></pre>
+</code></pre></div>
 <p><strong><em>Overlay</em></strong></p>
-<pre><code>-   show nve vni
+<div class="highlight"><pre><span></span><code>-   show nve vni
 -   show nve peer
 -   show ip route vrf Tenant-1
 -   show bgp l2vpn evpn
 -   show l2route evpn mac-ip all
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Switch to “Atom”, <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>. Enter this file name and hit enter.</li>
 </ul>

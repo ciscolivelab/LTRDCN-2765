@@ -428,17 +428,17 @@
 <h3 id="step-1-playbook-to-verify-underlay-and-overlay">Step 1: Playbook to verify underlay and overlay</h3>
 <p>In this step, you will create the playbook to verify underlay and overlay operation. The playbook will be applied to all leaf switches to verify the below commands:</p>
 <p><strong><em>Underlay</em></strong></p>
-<pre><code>-   show ip ospf neighbor
+<div class="highlight"><pre><span></span><code>-   show ip ospf neighbor
 -   show ip bgp sum
 -   show ip pim neighbor
-</code></pre>
+</code></pre></div>
 <p><strong><em>Overlay</em></strong></p>
-<pre><code>-   show nve vni
+<div class="highlight"><pre><span></span><code>-   show nve vni
 -   show nve peer
 -   show ip route vrf Tenant-1
 -   show bgp l2vpn evpn
 -   show l2route evpn mac-ip all
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Switch to <strong>Atom</strong>.  On the left page <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>.   Enter this file name and hit <strong>enter</strong>.  Then <strong>Copy</strong> and <strong>Paste</strong> the below content to this newly created file:</li>
 </ul>
