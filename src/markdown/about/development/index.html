@@ -1,0 +1,886 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+    
+    
+      
+        <title>Development - Cisco Live 2023 LTRDCN-2765</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#development" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco Live 2023 LTRDCN-2765
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Development
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ciscolivelab/LTRDCN-2765" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../intro/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../Task1-ansible-node0/" class="md-tabs__link">
+        Lab Guide
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Cisco Live 2023 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cisco Live 2023 LTRDCN-2765
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ciscolivelab/LTRDCN-2765" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Task1-ansible-node0/" class="md-nav__link">
+        Task 1 - Prepare Ansible node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task2-first-ansible/" class="md-nav__link">
+        Task 2 - First Simple Ansible Playbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task3-vxlan-jinja2-new/" class="md-nav__link">
+        Task 3 - Use of Jinja2 templates with Ansible Playbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task4-vxlan-nxos/" class="md-nav__link">
+        Task 4 - Config switches using Ansible NXOS modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task5-day2-pipeline0/" class="md-nav__link">
+        Task 5 - Day 2 Opertions with CI Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-layout" class="md-nav__link">
+    Project Layout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-standards" class="md-nav__link">
+    Coding Standards
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-editing-documents" class="md-nav__link">
+    Building and Editing Documents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-document-theme" class="md-nav__link">
+    Editing Document Theme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spell-checking-documents" class="md-nav__link">
+    Spell Checking Documents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-tests" class="md-nav__link">
+    Validation Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targeted" class="md-nav__link">
+    Targeted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-validation-with-tox" class="md-nav__link">
+    Running Validation With Tox
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-coverage" class="md-nav__link">
+    Code Coverage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-emoji-indexes" class="md-nav__link">
+    Generating Emoji Indexes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="development">Development<a class="headerlink" href="#development" title="Permanent link"></a></h1>
+<h2 id="project-layout">Project Layout<a class="headerlink" href="#project-layout" title="Permanent link"></a></h2>
+<p>There are a number of files for build, test, and continuous integration in the root of the project, but in general, the
+project is broken up like so.</p>
+<div class="highlight"><pre><span></span><code>├── docs
+├── pymdownx
+├── requirements
+├── tests
+└── tools
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs</code></td>
+<td>This contains the source files for the documentation.</td>
+</tr>
+<tr>
+<td><code>pymdownx</code></td>
+<td>This contains the source code for all the extensions.</td>
+</tr>
+<tr>
+<td><code>requirements</code></td>
+<td>This contains files with lists of dependencies required dependencies for continuous integration.</td>
+</tr>
+<tr>
+<td><code>tests</code></td>
+<td>This contains the various tests that are run in order to ensure code health.</td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td>This contains various tools that are necessary during development.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="coding-standards">Coding Standards<a class="headerlink" href="#coding-standards" title="Permanent link"></a></h2>
+<p>When writing code, the code should roughly conform to PEP8 and PEP257 suggestions.  The PyMdown Extensions project
+utilizes the Flake8 linter (with some additional plugins) to ensure code conforms (give or take some of the rules).
+When in doubt follow the formatting hints of existing code when adding or modifying files. existing files.  Listed below
+are the modules used:</p>
+<ul>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/PyCQA/flake8" title="GitHub Repository: PyCQA/flake8">PyCQA/flake8</a></li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/PyCQA/flake8-docstrings" title="GitHub Repository: PyCQA/flake8-docstrings">PyCQA/flake8-docstrings</a></li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/PyCQA/pep8-naming" title="GitHub Repository: PyCQA/pep8-naming">PyCQA/pep8-naming</a></li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/ebeweber/flake8-mutable" title="GitHub Repository: ebeweber/flake8-mutable">ebeweber/flake8-mutable</a></li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/gforcada/flake8-builtins" title="GitHub Repository: gforcada/flake8-builtins">gforcada/flake8-builtins</a></li>
+</ul>
+<p>Flake8 can be run directly via the command line from the root of the project.</p>
+<div class="highlight"><pre><span></span><code>flake8
+</code></pre></div>
+<h2 id="building-and-editing-documents">Building and Editing Documents<a class="headerlink" href="#building-and-editing-documents" title="Permanent link"></a></h2>
+<p>Documents are in Markdown (with some additional syntax) and converted to HTML via Python Markdown and this
+extension bundle. If you would like to build and preview the documentation, you must have these packages installed:</p>
+<ul>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/Python-Markdown/markdown" title="GitHub Repository: Python-Markdown/markdown">Python-Markdown/markdown</a>: the Markdown parser.</li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/mkdocs/mkdocs" title="GitHub Repository: mkdocs/mkdocs">mkdocs/mkdocs</a>: the document site generator.</li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/squidfunk/mkdocs-material" title="GitHub Repository: squidfunk/mkdocs-material">squidfunk/mkdocs-material</a>: a material theme for MkDocs.</li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/timvink/mkdocs-git-revision-date-localized-plugin" title="GitHub Repository: timvink/mkdocs-git-revision-date-localized-plugin">timvink/mkdocs-git-revision-date-localized-plugin</a>: inserts date a page was last updated.</li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/facelessuser/pymdown-extensions" title="GitHub Repository: facelessuser/pymdown-extensions">facelessuser/pymdown-extensions</a>: this Python Markdown extension bundle.</li>
+</ul>
+<p>These can be installed via:</p>
+<div class="highlight"><pre><span></span><code>pip install -r requirements/docs.txt
+</code></pre></div>
+<p>In order to build and preview the documents, just run the command below from the root of the project and you should be
+able to view the documents at <code>localhost:8000</code> in your browser. After that, you should be able to update the documents
+and have your browser preview update live.</p>
+<div class="highlight"><pre><span></span><code>mkdocs serve
+</code></pre></div>
+<h2 id="editing-document-theme">Editing Document Theme<a class="headerlink" href="#editing-document-theme" title="Permanent link"></a></h2>
+<p>It isn't expected that people will need to mess with the theme, but if it is needed, a little additional work is
+required. The documents use the <a href="https://github.com/squidfunk/mkdocs-material">Material</a> theme for <a href="https://github.com/mkdocs/mkdocs">MkDocs</a> with some additional local tweaks
+and additions.  JavaScript additions are provided in <code>docs/src/js</code> and are in es2020 syntax and are converted to es5.
+Stylesheets are located at <code>docs/src/scss</code> and are written in SCSS, and are converted to CSS.  All conversions are done
+in a <code>Node.js</code> environment.  In order to get up and running, ensure you have a <a href="https://nodejs.org/en/"><code>Node.js</code></a>
+version &gt;= 10. Then install the required modules with:</p>
+<div class="highlight"><pre><span></span><code>npm install
+</code></pre></div>
+<p>After that you can begin making changes. When ready, you can run the following commands to get a live preview while you
+make edits, lint your changes, or build the final output.</p>
+<table>
+<thead>
+<tr>
+<th>Commands</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm run serve</code></td>
+<td>Create a live preview at <code>localhost:8000</code> that will pick up your changes as you make them.</td>
+</tr>
+<tr>
+<td><code>npm run build</code></td>
+<td>Build the final output which will package, minimize, and revision the scripts and stylesheets.  It will also update the <code>mkdocs.yml</code> file to point to the new revisioned files.</td>
+</tr>
+<tr>
+<td><code>npm run lint</code></td>
+<td>Run just lint on the files.</td>
+</tr>
+<tr>
+<td><code>npm run clean_all</code></td>
+<td>This will clean out the generated CSS and JavaScript files. It will also cleanup the generated MkDocs' site.</td>
+</tr>
+</tbody>
+</table>
+<p>If you need to make changes to the <code>mkdocs.yml</code> file, do not update the one in project root directly, but update the one
+in <code>docs/src</code>. The build environment copies the one in <code>docs/src</code> to the project root and injects the revisioned script
+name(s) and stylesheet name(s).</p>
+<p>When serving via <code>npm</code>, if you want to make sure that the local version of <code>pymdown-extensions</code> is used, you need to
+configure <code>npm run serve</code> to call with Python instead of calling the MkDocs binary:
+<code>npm run serve --mkdocs="python3 -m mkdocs"</code>.  This is because if you are calling Python, it will look in the current
+working directory first for a given module when importing, but if you call the MkDocs binary, it will instead import the
+installed <code>pymdown-extensions</code>. Configuring the <code>--mkdocs</code> option is also useful if <code>mkdocs</code> is not in your path, or you
+want to call with a specific version of Python.</p>
+<h2 id="spell-checking-documents">Spell Checking Documents<a class="headerlink" href="#spell-checking-documents" title="Permanent link"></a></h2>
+<p>During validation, we build the docs and run a spell checker on them.  The spell checker uses <a class="magiclink magiclink-github magiclink-repository" href="https://github.com/facelessuser/pyspelling" title="GitHub Repository: facelessuser/pyspelling">facelessuser/pyspelling</a>
+and <a href="http://aspell.net/">Aspell</a>. As it can be trickier to run Aspell under Windows, it is not expected that everyone will install
+and run the spell checker locally.  In order to perform the spell check, it is expected you are setup to build the
+documents, and that you have Aspell installed in the your system path.</p>
+<p>If you wish to run the spell checker locally, the recommended way is with Tox, which is covered in <a href="#running-validation-with-tox">"Running Validation
+With Tox"</a>.</p>
+<p>You can also run the spell checker by first installing the requirements (assuming a Linux system):</p>
+<div class="highlight"><pre><span></span><code>pip install -r requirements/docs.txt
+sudo apt-get install aspell aspell-en
+</code></pre></div>
+<p>Then build the docs:</p>
+<div class="highlight"><pre><span></span><code>mkdocs build --clean
+</code></pre></div>
+<p>And then run the spell checker:</p>
+<div class="highlight"><pre><span></span><code>pyspelling
+</code></pre></div>
+<p>It should print out the files with the misspelled words if any are found.  If you find it prints words that are not
+misspelled, you can add them in the dictionary which is found in <code>docs/src/dictionary</code>.</p>
+<h2 id="validation-tests">Validation Tests<a class="headerlink" href="#validation-tests" title="Permanent link"></a></h2>
+<p>In order to preserve good code health, a test suite has been put together with pytest (<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/pytest-dev/pytest" title="GitHub Repository: pytest-dev/pytest">pytest-dev/pytest</a>). There are
+currently two kinds of tests: syntax and targeted.  To run these tests, you can use the following command:</p>
+<p>If you wish to run the tests locally, the recommended way is with Tox, which is covered in <a href="#running-validation-with-tox">"Running Validation With
+Tox"</a>.</p>
+<p>You can also run the tests by first installing the requirements:</p>
+<div class="highlight"><pre><span></span><code>pip install -r requirements/project.txt
+pip install -r requirements/extra.txt
+pip install -r requirements/test.txt
+</code></pre></div>
+<p>And then run the tests with:</p>
+<div class="highlight"><pre><span></span><code>python run_tests.py
+</code></pre></div>
+<h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link"></a></h3>
+<p>Syntax tests are essentially text files containing Markdown. They are found under <code>tests/extensions</code>.  <code>test_syntax.py</code>
+scans all the files and converts the files to HTML with the extensions and options defined in
+<code>tests/extensions/tests.yml</code>.  They are then compared to the current stored HTML output.  If the two differ, the test
+fails.</p>
+<p>To run <strong>only</strong> these tests, from the root of the project run the following command:</p>
+<div class="highlight"><pre><span></span><code>python run_tests.py --test-target syntax
+</code></pre></div>
+<p>You could also run them directly with:</p>
+<div class="highlight"><pre><span></span><code>py.test tests/test_syntax.py
+</code></pre></div>
+<p>To run a specific syntax test:</p>
+<div class="highlight"><pre><span></span><code>python run_tests.py --test-target syntax --file tests/extensions/arithmatex.txt
+</code></pre></div>
+<p>To accept the differences in tests due to a change(s) you made, you can run the following command:</p>
+<div class="highlight"><pre><span></span><code>python run_tests.py --update
+</code></pre></div>
+<p>To update and accept the differences in a single test:</p>
+<div class="highlight"><pre><span></span><code>python run_tests.py --update --file tests/extensions/arithmatex.txt
+</code></pre></div>
+<h3 id="targeted">Targeted<a class="headerlink" href="#targeted" title="Permanent link"></a></h3>
+<p>Targeted tests are unit tests that target specific areas in the code and exercises them to ensure proper functionality.
+These tests are found in <code>test_targeted.py</code>.</p>
+<p>You can run <strong>only</strong> these tests from the root of the project with:</p>
+<div class="highlight"><pre><span></span><code>python run_tests.py --test-target targeted
+</code></pre></div>
+<p>You could also run them directly with:</p>
+<div class="highlight"><pre><span></span><code>py.test tests/test_targeted.py
+</code></pre></div>
+<h3 id="running-validation-with-tox">Running Validation With Tox<a class="headerlink" href="#running-validation-with-tox" title="Permanent link"></a></h3>
+<p>Tox (<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/tox-dev/tox" title="GitHub Repository: tox-dev/tox">tox-dev/tox</a>) is a great way to run the validation tests, spelling checks, and linting in virtual environments so
+as not to mess with your current working environment. Tox will use the specified Python version for the given
+environment and create a virtual environment and install all the needed requirements (minus Aspell).  You could also
+setup your own virtual environments with the Virtualenv module without Tox, and manually do the same.</p>
+<p>First, you need to have Tox installed:</p>
+<div class="highlight"><pre><span></span><code>pip install tox
+</code></pre></div>
+<p>By running Tox, it will walk through all the environments and create them (assuming you have all the python versions on
+your machine) and run the related tests.  See <code>tox.ini</code> to learn more.</p>
+<div class="highlight"><pre><span></span><code>tox
+</code></pre></div>
+<p>If you don't have all the Python versions needed to test all the environments, those entries will fail.  You can ignore
+those.  Spelling will also fail if you don't have the correct version of Aspell.</p>
+<p>To target a specific environment to test, you use the <code>-e</code> option to select the environment of interest.  To select
+lint:</p>
+<div class="highlight"><pre><span></span><code>tox -e lint
+</code></pre></div>
+<p>To select Python 3.7 unit tests (or other versions &ndash; change accordingly):</p>
+<div class="highlight"><pre><span></span><code>tox -e py37
+</code></pre></div>
+<p>To select spelling and document building:</p>
+<div class="highlight"><pre><span></span><code>tox -e documents
+</code></pre></div>
+<h2 id="code-coverage">Code Coverage<a class="headerlink" href="#code-coverage" title="Permanent link"></a></h2>
+<p>When running the validation tests through Tox, it is setup to track code coverage via the Coverage
+(<a class="magiclink magiclink-bitbucket magiclink-repository" href="https://bitbucket.org/ned/coveragepy" title="Bitbucket Repository: ned/coveragepy">ned/coveragepy</a>) module.  Coverage is run on each <code>pyxx</code> environment.  If you've made changes to
+the code, you can clear the old coverage data:</p>
+<div class="highlight"><pre><span></span><code>coverage erase
+</code></pre></div>
+<p>Then run each unit test environment to and coverage will be calculated. All the data from each run is merged together.
+HTML is output for each file in <code>.tox/pyXX-unittests/tmp</code>.  You can use these to see areas that are not
+covered/exercised yet with testing.</p>
+<p>You can checkout <code>tox.ini</code> to see how this is accomplished.</p>
+<h2 id="generating-emoji-indexes">Generating Emoji Indexes<a class="headerlink" href="#generating-emoji-indexes" title="Permanent link"></a></h2>
+<p>The Emoji extension has emoji indexes generated from the source of Gemoji, EmojiOne, and Twemoji.  Below is the process
+for auto-generating these indexes.  In the case of Twemoji, it will also reference EmojiOne's short name index, so you
+may need to do both EmojiOne and Twemoji if the support is not satisfactory.</p>
+<ol>
+<li>Ensure you have Requests (<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/requests/requests" title="GitHub Repository: requests/requests">requests/requests</a>) installed: <code>pip install requests</code>.</li>
+<li>Fork the repository and checkout to your machine.</li>
+<li>Navigate to the root of the project.</li>
+<li>Call the generator script: <code>python tools/gen_emoji.py --gemoji</code>, <code>python tools/gen_emoji.py --emojione</code>, or
+  <code>python tools/gen_emoji.py --twemoji</code>. If you already have the latest tag locally, you can specify <code>--no-download</code>. It
+  will prompt you to select a tag to download and/or use.  Please pull the latest <strong>official</strong> tag.  Please don't pull
+  experimental tags.  This should update the indexes.</li>
+<li>Then you want to update the tests.</li>
+<li>Force the tests to update via <code>python run_tests.py --update</code>.  Make sure only the emoji tests get updated.</li>
+</ol>
+<p>Nothing is fool proof.  If they make a breaking change to the files that the script parses, or the location of the files
+change, the auto-update tool may need to be updated itself (hopefully this would be a rare occurrence).  If such a
+change does occur, and you are feeling brave, a pull request would be appreciated, but in time, they will be resolved
+regardless.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+    
+  </body>
+</html>

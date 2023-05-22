@@ -73,9 +73,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
@@ -119,6 +117,10 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -155,8 +157,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -166,11 +174,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -178,47 +190,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../intro/" class="md-tabs__link">
-      Lab Overview
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../Task1-ansible-node0/" class="md-tabs__link">
-      Task 1 - Prepare Ansible node
-    </a>
-  </li>
-
-      
-        
   
+    <li class="md-tabs__item">
+      <a href="../intro/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task2-first-ansible/" class="md-tabs__link">
-      Task 2 - First Simple Ansible Playbook
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../task3-vxlan-jinja2-new/" class="md-tabs__link">
-      Task 3 - Use of Jinja2 templates with Ansible Playbook
-    </a>
-  </li>
 
       
         
@@ -228,35 +208,21 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Task 4 - Config switches using Ansible NXOS modules
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task5-day2-pipeline0/" class="md-tabs__link">
-      Task 5 - Day 2 Opertions with CI Pipeline
-    </a>
-  </li>
+  
+    <li class="md-tabs__item">
+      <a href="../Task1-ansible-node0/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
+  
 
       
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -304,10 +270,40 @@
   
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Home
-      </a>
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -316,13 +312,51 @@
       
       
 
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
     <li class="md-nav__item">
       <a href="../intro/" class="md-nav__link">
-        Lab Overview
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -331,6 +365,47 @@
       
       
 
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
@@ -341,11 +416,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -356,11 +430,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -371,11 +444,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
     
@@ -417,35 +489,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-create-spine-leaf-roles" class="md-nav__link">
+  <a href="#step-2-create-spine--leaf-roles" class="md-nav__link">
     Step 2: Create Spine &amp; Leaf roles
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-spine-role-tasks" class="md-nav__link">
+  <a href="#step-3-spine-role---tasks" class="md-nav__link">
     Step 3: Spine role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-spine-role-vars" class="md-nav__link">
+  <a href="#step-4-spine-role---vars" class="md-nav__link">
     Step 4: Spine role - vars
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-leaf-role-tasks" class="md-nav__link">
+  <a href="#step-5--leaf-role---tasks" class="md-nav__link">
     Step 5:  Leaf role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-leaf-role-vars" class="md-nav__link">
+  <a href="#step-6-leaf-role---vars" class="md-nav__link">
     Step 6: Leaf role - vars
   </a>
   
@@ -623,11 +695,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -635,6 +706,13 @@
       <a href="../task5-day2-pipeline0/" class="md-nav__link">
         Task 5 - Day 2 Opertions with CI Pipeline
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -671,35 +749,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-create-spine-leaf-roles" class="md-nav__link">
+  <a href="#step-2-create-spine--leaf-roles" class="md-nav__link">
     Step 2: Create Spine &amp; Leaf roles
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-spine-role-tasks" class="md-nav__link">
+  <a href="#step-3-spine-role---tasks" class="md-nav__link">
     Step 3: Spine role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-spine-role-vars" class="md-nav__link">
+  <a href="#step-4-spine-role---vars" class="md-nav__link">
     Step 4: Spine role - vars
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-leaf-role-tasks" class="md-nav__link">
+  <a href="#step-5--leaf-role---tasks" class="md-nav__link">
     Step 5:  Leaf role - tasks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-leaf-role-vars" class="md-nav__link">
+  <a href="#step-6-leaf-role---vars" class="md-nav__link">
     Step 6: Leaf role - vars
   </a>
   
@@ -922,7 +1000,7 @@
 <p><img alt="" src="../pic/4-0-1-new.png" /></p>
 <p>After each step, you can login the switches to verify configuration changes.</p>
 <hr />
-<h3 id="step-1-create-new-playbook">Step 1: Create new playbook</h3>
+<h3 id="step-1-create-new-playbook">Step 1: Create new playbook<a class="headerlink" href="#step-1-create-new-playbook" title="Permanent link"></a></h3>
 <p>Again we will use roles structure to make the playbook more modular.  The roles included in the new playbook are “<strong>spine</strong>” and “<strong>leaf</strong>”.  </p>
 <ul>
 <li>
@@ -950,7 +1028,7 @@
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-2-create-spine-leaf-roles">Step 2: Create Spine &amp; Leaf roles</h3>
+<h3 id="step-2-create-spine--leaf-roles">Step 2: Create Spine &amp; Leaf roles<a class="headerlink" href="#step-2-create-spine--leaf-roles" title="Permanent link"></a></h3>
 <ul>
 <li>On the <strong>MTpuTTy</strong>, go back (or initiate a new <strong>login/SSH</strong>) to <strong>Ansible Server</strong> node (198.18.134.150).  Switch to ‘<strong>roles</strong>’ directory; then <strong>create</strong> ‘spine’ and ‘leaf’ roles using ansible-galaxy as per below commands:</li>
 </ul>
@@ -964,7 +1042,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 </ul>
 <p><img alt="" src="../pic/4-2-2.png" /></p>
 <hr />
-<h3 id="step-3-spine-role-tasks">Step 3: Spine role - tasks</h3>
+<h3 id="step-3-spine-role---tasks">Step 3: Spine role - tasks<a class="headerlink" href="#step-3-spine-role---tasks" title="Permanent link"></a></h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>tasks</strong>” folder.  We are going to use “<strong>Atom</strong>” to edit the <strong>main.yml</strong> file.</p>
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/spine/tasks/</code> to include following:</li>
@@ -1030,7 +1108,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 </li>
 </ul>
 <hr />
-<h3 id="step-4-spine-role-vars">Step 4: Spine role - vars</h3>
+<h3 id="step-4-spine-role---vars">Step 4: Spine role - vars<a class="headerlink" href="#step-4-spine-role---vars" title="Permanent link"></a></h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
 <ul>
 <li>Switch to <strong>Atom</strong>, then open up the project folder <code>EVPN-Ansible</code> from the left pane and <strong>open</strong> <code>main.yml</code> file under “<strong>roles/spine/vars/</strong>” and enter below content:</li>
@@ -1048,7 +1126,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-5-leaf-role-tasks">Step 5:  Leaf role - tasks</h3>
+<h3 id="step-5--leaf-role---tasks">Step 5:  Leaf role - tasks<a class="headerlink" href="#step-5--leaf-role---tasks" title="Permanent link"></a></h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>tasks</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/leaf/tasks/</code> to include following:</li>
@@ -1095,7 +1173,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-6-leaf-role-vars">Step 6: Leaf role - vars</h3>
+<h3 id="step-6-leaf-role---vars">Step 6: Leaf role - vars<a class="headerlink" href="#step-6-leaf-role---vars" title="Permanent link"></a></h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit the main.yml file</p>
 <ul>
 <li>Switch to <strong>ATOM</strong>, then open up the project folder <code>EVPN-Ansible</code> from the left pane and <strong>open</strong> <code>main.yml</code> file under “<strong>roles/leaf/vars/</strong>” and enter below content:</li>
@@ -1112,7 +1190,7 @@ ansible-galaxy init spine &amp;&amp; ansible-galaxy init leaf
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-7-execute-playbook">Step 7: Execute playbook</h3>
+<h3 id="step-7-execute-playbook">Step 7: Execute playbook<a class="headerlink" href="#step-7-execute-playbook" title="Permanent link"></a></h3>
 <ul>
 <li>On the Ansible node (in MTputty SSH session), run the command (<code>ansible-playbook nxos_fabric.yml --tags "bgp"</code>) to execute the playbook as shown below:</li>
 </ul>
@@ -1131,7 +1209,7 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 <p><img alt="" src="../pic/4-3-3.png" /></p>
 <p><img alt="" src="../pic/4-3-4.png" /></p>
 <hr />
-<h3 id="step-8-multicast-config-with-ansible-nxos-modules">Step 8: Multicast config with Ansible NXOS modules</h3>
+<h3 id="step-8-multicast-config-with-ansible-nxos-modules">Step 8: Multicast config with Ansible NXOS modules<a class="headerlink" href="#step-8-multicast-config-with-ansible-nxos-modules" title="Permanent link"></a></h3>
 <p>In this section, we will be configuring underlay multicast to support BUM traffic in the VXLAN fabric. The NXOS modules we will be using in this section are
 nxos_feature    Manage fatures on Nexus switchs
 nxos_pim_interface  Manage PIM interface configuration</p>
@@ -1169,7 +1247,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </tr>
 </tbody>
 </table>
-<h5 id="edit-playbook-for-spine-role">Edit playbook for spine role</h5>
+<h5 id="edit-playbook-for-spine-role">Edit playbook for spine role<a class="headerlink" href="#edit-playbook-for-spine-role" title="Permanent link"></a></h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and open <code>“main.yml”</code> file under <code>“roles/spine/tasks/”</code> and save the below tasks at the end the file.</li>
 </ul>
@@ -1227,7 +1305,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="edit-variable-file-for-spine-role">Edit variable file for Spine role</h5>
+<h5 id="edit-variable-file-for-spine-role">Edit variable file for Spine role<a class="headerlink" href="#edit-variable-file-for-spine-role" title="Permanent link"></a></h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the variables file for Spine i.e. <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and add the below content at the end of <code>“main.yml”</code> file under <code>“roles/spine/vars/”</code></li>
 </ul>
@@ -1248,7 +1326,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="edit-playbook-for-leaf-role">Edit playbook for leaf role</h5>
+<h5 id="edit-playbook-for-leaf-role">Edit playbook for leaf role<a class="headerlink" href="#edit-playbook-for-leaf-role" title="Permanent link"></a></h5>
 <ul>
 <li>use <strong>“Atom”</strong> to edit the <code>“main.yml”</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and add below content at the end of <code>“main.yml”</code> file under <code>“roles/leaf/tasks/”</code>.</li>
 </ul>
@@ -1279,7 +1357,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="edit-variable-file-for-leaf-role">Edit variable file for leaf role</h5>
+<h5 id="edit-variable-file-for-leaf-role">Edit variable file for leaf role<a class="headerlink" href="#edit-variable-file-for-leaf-role" title="Permanent link"></a></h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the main.yml file. Open up the project folder <strong>“EVPN-Ansible”</strong> and add below content at the end of <strong>“main.yml”</strong> file under <strong>“roles/leaf/vars/”</strong>.  On Atom, Make sure to click <strong>File-&gt;Save</strong> after entering the below data in this file so it is pushed to Ansible server:</li>
 </ul>
@@ -1293,7 +1371,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="run-the-playbook-and-verify-configuration-changes">Run the playbook and verify configuration changes</h5>
+<h5 id="run-the-playbook-and-verify-configuration-changes">Run the playbook and verify configuration changes<a class="headerlink" href="#run-the-playbook-and-verify-configuration-changes" title="Permanent link"></a></h5>
 <ul>
 <li>Execute the playbook by running <code>ansible-playbook nxos_fabric.yml --tags "multicast"</code> command on Ansible server as shown below :</li>
 </ul>
@@ -1315,7 +1393,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <p><img alt="" src="../pic/4-4-3.png" /></p>
 <p>This confirms Multicast has been enabled using Ansible modules</p>
 <hr />
-<h3 id="step-9-vxlan-config-with-ansible-nxos-modules">Step 9: VXLAN config with Ansible NXOS modules</h3>
+<h3 id="step-9-vxlan-config-with-ansible-nxos-modules">Step 9: VXLAN config with Ansible NXOS modules<a class="headerlink" href="#step-9-vxlan-config-with-ansible-nxos-modules" title="Permanent link"></a></h3>
 <p>In this section, we will be configuring VXLAN on leaf and spine switches. The NXOS modules we will be using in this section are</p>
 <table>
 <thead>
@@ -1359,7 +1437,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </tr>
 </tbody>
 </table>
-<h5 id="edit-playbook-for-spine-role_1">Edit playbook for spine role</h5>
+<h5 id="edit-playbook-for-spine-role_1">Edit playbook for spine role<a class="headerlink" href="#edit-playbook-for-spine-role_1" title="Permanent link"></a></h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the “<strong>main.yml</strong>” file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/spine/tasks/”</strong> and enter the below content (you may copy &amp; paste with correct spaces) at the end of the file</li>
 </ul>
@@ -1385,9 +1463,9 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="edit-variable-file-for-spine-role_1">Edit variable file for Spine role</h5>
+<h5 id="edit-variable-file-for-spine-role_1">Edit variable file for Spine role<a class="headerlink" href="#edit-variable-file-for-spine-role_1" title="Permanent link"></a></h5>
 <p>No new variable required for Spine</p>
-<h5 id="edit-playbook-for-leaf-role_1">Edit playbook for leaf role</h5>
+<h5 id="edit-playbook-for-leaf-role_1">Edit playbook for leaf role<a class="headerlink" href="#edit-playbook-for-leaf-role_1" title="Permanent link"></a></h5>
 <ul>
 <li>use <strong>“Atom”</strong> to edit the <strong>main.yml</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/leaf/tasks/”</strong>.  Add the below content in the file at the end of the file (i.e., in addition to existing content), and then make sure to click <strong>“File”-&gt;“Save”</strong> on Atom, so that the updated file is pushed to Ansible server.</li>
 </ul>
@@ -1500,7 +1578,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="edit-variable-file-for-leaf-role_1">Edit variable file for leaf role</h5>
+<h5 id="edit-variable-file-for-leaf-role_1">Edit variable file for leaf role<a class="headerlink" href="#edit-variable-file-for-leaf-role_1" title="Permanent link"></a></h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>EVPN-Ansible</code> and open <code>main.yml</code> file under <code>roles/leaf/vars/</code>.  Add the below content in the file at <strong>the end of the file</strong> and then make sure to <strong>click</strong> <code>“File” -&gt; “Save”</code> on Atom, so that the updated file is pushed to Ansible server</li>
 </ul>
@@ -1517,7 +1595,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="run-the-playbook-and-verify-configuration-changes_1">Run the playbook and verify configuration changes</h5>
+<h5 id="run-the-playbook-and-verify-configuration-changes_1">Run the playbook and verify configuration changes<a class="headerlink" href="#run-the-playbook-and-verify-configuration-changes_1" title="Permanent link"></a></h5>
 <ul>
 <li>On Ansible server (via SSH connection on MTputty), run the below command:</li>
 </ul>
@@ -1538,7 +1616,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <p>Below screenshot shows the output of above command from Leaf-3:</p>
 <p><img alt="" src="../pic/4-5-2.png" /></p>
 <hr />
-<h3 id="step-10-evpn-config-with-ansible-nxos-modules">Step 10: EVPN config with Ansible NXOS modules</h3>
+<h3 id="step-10-evpn-config-with-ansible-nxos-modules">Step 10: EVPN config with Ansible NXOS modules<a class="headerlink" href="#step-10-evpn-config-with-ansible-nxos-modules" title="Permanent link"></a></h3>
 <p>In this section, we will be configuring BGP EVPN on leaf and spine switches. The NXOS modules we will be using in this section are:</p>
 <table>
 <thead>
@@ -1562,7 +1640,7 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 </tr>
 </tbody>
 </table>
-<h5 id="edit-playbook-for-spine-role_2">Edit playbook for spine role</h5>
+<h5 id="edit-playbook-for-spine-role_2">Edit playbook for spine role<a class="headerlink" href="#edit-playbook-for-spine-role_2" title="Permanent link"></a></h5>
 <ul>
 <li>Use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>“EVPN-Ansible”</code> and open <code>main.yml</code> file under <code>“roles/spine/tasks/”</code>.  Add the below content in the file in addition to existing content.</li>
 <li>Then make sure to click <code>“File”-&gt;“Save”</code> on Atom, so that the updated file is pushed to Ansible server.</li>
@@ -1585,9 +1663,9 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <span class="w">        </span><span class="nt">with_items</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">bgp_neighbors</span><span class="nv"> </span><span class="s">}}&quot;</span>
 <span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evpn</span>
 </code></pre></div>
-<h5 id="edit-variable-file-for-spine-role_2">Edit variable file for Spine role</h5>
+<h5 id="edit-variable-file-for-spine-role_2">Edit variable file for Spine role<a class="headerlink" href="#edit-variable-file-for-spine-role_2" title="Permanent link"></a></h5>
 <p>No new variables required for Spine</p>
-<h5 id="edit-playbook-for-leaf-role_2">Edit playbook for leaf role</h5>
+<h5 id="edit-playbook-for-leaf-role_2">Edit playbook for leaf role<a class="headerlink" href="#edit-playbook-for-leaf-role_2" title="Permanent link"></a></h5>
 <ul>
 <li>use <strong>“Atom”</strong> to edit the <code>main.yml</code> file. Open up the project folder <code>EVPN-Ansible</code> and open <code>main.yml</code> file under <code>“roles/leaf/tasks/”</code>.  Add the below content in the file in addition to existing content.</li>
 <li>Then make sure to click <code>“File”-&gt;“Save”</code> on Atom, so that the updated file is pushed to Ansible server.</li>
@@ -1619,9 +1697,9 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> . This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
-<h5 id="edit-variable-file-for-leaf-role_2">Edit variable file for leaf role</h5>
+<h5 id="edit-variable-file-for-leaf-role_2">Edit variable file for leaf role<a class="headerlink" href="#edit-variable-file-for-leaf-role_2" title="Permanent link"></a></h5>
 <p>No new variables required for Leaf</p>
-<h5 id="run-the-playbook-and-verify-configuration-changes_2">Run the playbook and verify configuration changes</h5>
+<h5 id="run-the-playbook-and-verify-configuration-changes_2">Run the playbook and verify configuration changes<a class="headerlink" href="#run-the-playbook-and-verify-configuration-changes_2" title="Permanent link"></a></h5>
 <ul>
 <li>On the Ansible server (using MTPutty) run this playbook by running the command <code>ansible-playbook nxos_fabric.yml --tags "evpn"</code> as shown below:</li>
 </ul>
@@ -1637,14 +1715,14 @@ nxos_pim_interface  Manage PIM interface configuration</p>
 <p>Below screenshot shows the output of above command from leaf-3 switch.  As expected it shows the spine-1 and spine-2 as neighbors:</p>
 <p><img alt="" src="../pic/4-6-2.png" /></p>
 <hr />
-<h3 id="step-11-run-nxos_fabric-playbook">Step 11: Run nxos_fabric playbook</h3>
+<h3 id="step-11-run-nxos_fabric-playbook">Step 11: Run nxos_fabric playbook<a class="headerlink" href="#step-11-run-nxos_fabric-playbook" title="Permanent link"></a></h3>
 <ul>
 <li>Up to this point, you have run the playbook for each step separately (using tags).  You could re-run the whole playbook without giving any tags, but no new changes should be maded to the switches.</li>
 </ul>
 <div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml
 </code></pre></div>
 <hr />
-<h3 id="step-12-verify-end-to-end-ip-connectivity">Step 12: Verify end-to-end IP connectivity</h3>
+<h3 id="step-12-verify-end-to-end-ip-connectivity">Step 12: Verify end-to-end IP connectivity<a class="headerlink" href="#step-12-verify-end-to-end-ip-connectivity" title="Permanent link"></a></h3>
 <p>Now Let’s verify the VXLAN bridging and VXLAN routing from servers that are pre-configured in following VLANs and IPs</p>
 <table>
 <thead>
@@ -1721,6 +1799,8 @@ PING 172.21.141.11 (172.21.141.11) 56(84) bytes of data.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
@@ -1753,7 +1833,7 @@ PING 172.21.141.11 (172.21.141.11) 56(84) bytes of data.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>

@@ -71,9 +71,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
@@ -117,6 +115,10 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -153,8 +155,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -164,11 +172,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -176,59 +188,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../intro/" class="md-tabs__link">
-      Lab Overview
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../Task1-ansible-node0/" class="md-tabs__link">
-      Task 1 - Prepare Ansible node
-    </a>
-  </li>
-
-      
-        
   
+    <li class="md-tabs__item">
+      <a href="../intro/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task2-first-ansible/" class="md-tabs__link">
-      Task 2 - First Simple Ansible Playbook
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../task3-vxlan-jinja2-new/" class="md-tabs__link">
-      Task 3 - Use of Jinja2 templates with Ansible Playbook
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../task4-vxlan-nxos/" class="md-tabs__link">
-      Task 4 - Config switches using Ansible NXOS modules
-    </a>
-  </li>
 
       
         
@@ -238,23 +206,21 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Task 5 - Day 2 Opertions with CI Pipeline
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Task1-ansible-node0/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
+  
 
       
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -302,10 +268,40 @@
   
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Home
-      </a>
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -314,13 +310,51 @@
       
       
 
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
     <li class="md-nav__item">
       <a href="../intro/" class="md-nav__link">
-        Lab Overview
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -329,6 +363,47 @@
       
       
 
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
@@ -339,11 +414,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -354,11 +428,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -369,11 +442,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -384,11 +456,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
     
@@ -499,6 +570,13 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -616,7 +694,7 @@
   
 
 
-<h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline</h1>
+<h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline<a class="headerlink" href="#task-5-day-2-operation-using-ci-pipeline" title="Permanent link"></a></h1>
 <p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose</p>
 <ul>
 <li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system. </li>
@@ -642,7 +720,7 @@
 <li>Commit the merger and verify CI Pipeline in production stage</li>
 </ul>
 <hr />
-<h3 id="step-1-playbook-to-verify-underlay-and-overlay">Step 1: Playbook to verify underlay and overlay</h3>
+<h3 id="step-1-playbook-to-verify-underlay-and-overlay">Step 1: Playbook to verify underlay and overlay<a class="headerlink" href="#step-1-playbook-to-verify-underlay-and-overlay" title="Permanent link"></a></h3>
 <p>In this step, you will create the playbook to verify underlay and overlay operation. The playbook will be applied to all leaf switches to verify the below commands:</p>
 <p><strong><em>Underlay</em></strong></p>
 <div class="highlight"><pre><span></span><code>-   show ip ospf neighbor
@@ -1152,7 +1230,7 @@ PLAY RECAP *********************************************************************
 root@ubuntu:~/EVPN-Ansible#
 </code></pre></div>
 <hr />
-<h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and gitlab runner</h3>
+<h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and gitlab runner<a class="headerlink" href="#step-2-install-git-and-gitlab-runner" title="Permanent link"></a></h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
 <li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below package installation command to install git:</li>
@@ -1176,7 +1254,7 @@ apt-get install git
 </code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-3-3.png" /></p>
-<h3 id="step-3-version-control-playbooks">Step 3: Version control playbooks</h3>
+<h3 id="step-3-version-control-playbooks">Step 3: Version control playbooks<a class="headerlink" href="#step-3-version-control-playbooks" title="Permanent link"></a></h3>
 <p>In this step, you will use Gitlab to set version control for the playbooks.</p>
 <ul>
 <li>
@@ -1211,7 +1289,7 @@ apt-get install git
 </ul>
 <p>A new project for your respective Pod is now created on GitLab.</p>
 <ul>
-<li>On the project page, copy the project url by clicking on <strong>Clone</strong> button, and then click <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.</li>
+<li>On the project page, copy the project url by clicking on <strong>Clone</strong> button, and then click <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong><a class="magiclink magiclink-gitlab magiclink-repository" href="https://gitlab.com/lab.ciscolive/pod_{ID}.git" title="GitLab Repository: lab.ciscolive/pod_{ID}.git">lab.ciscolive/pod_{ID}.git</a></strong>.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1268,7 +1346,7 @@ git commit -m &quot;initial commit&quot;
 </code></pre></div>
 <p>Below screenshot shows output of the above command:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
-<h3 id="step-4-add-cicd-pipeline-file">Step 4: Add CI/CD pipeline file</h3>
+<h3 id="step-4-add-cicd-pipeline-file">Step 4: Add CI/CD pipeline file<a class="headerlink" href="#step-4-add-cicd-pipeline-file" title="Permanent link"></a></h3>
 <p>In this step, you will create CI/CD pipeline file. Gitlab uses a special file named <strong><code>.gitlab-ci.yml</code></strong> for CI/CD configuration.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1356,7 +1434,7 @@ git push origin main
 </code></pre></div>
 <p>Below screenshot shows the outputs of the commands for Pod_1 (note your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
-<h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
+<h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner<a class="headerlink" href="#step-5-register-local-gitlab-runner" title="Permanent link"></a></h3>
 <p>In this task, you will create local gitlab runner on Ansible server and register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project on GitLab.</p>
 <ul>
 <li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left sidebar, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong><code>Runners</code></strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
@@ -1407,7 +1485,7 @@ git push origin main
 <p>When prompted provide the runner registration info as shown below:</p>
 <ul>
 <li>
-<p><strong><code>Enter the GitLab instance URL:</code></strong>  <strong>https://gitlab.com/</strong></p>
+<p><strong><code>Enter the GitLab instance URL:</code></strong>  <strong><a href="https://gitlab.com/">https://gitlab.com/</a></strong></p>
 </li>
 <li>
 <p><strong><code>Enter the registration token:</code></strong>  Paste the <strong><code>runner token</code></strong> value generated and copied on GitHub (previous step)</p>
@@ -1429,7 +1507,7 @@ gitlab-runner list
 </code></pre></div>
 <p>Below screenshots shown the output of above commands</p>
 <p><img alt="" src="../pic/5-5-4.png" /></p>
-<h3 id="step-6-add-new-vnis-in-staging-and-trigger-pipeline">Step 6: Add new VNIs in Staging and trigger pipeline</h3>
+<h3 id="step-6-add-new-vnis-in-staging-and-trigger-pipeline">Step 6: Add new VNIs in Staging and trigger pipeline<a class="headerlink" href="#step-6-add-new-vnis-in-staging-and-trigger-pipeline" title="Permanent link"></a></h3>
 <p>In this task, you will modify the variable files to add new networks on the EVPN fabric.  Instead of applying the changes (new VNIs) directly to <code>main</code> repository, you will create a new repository named <code>newvni</code> on gitlab to validate and test it on a staging environment.  Once the changes (new VNIs) are pushed to <code>newvni</code> branch on the GitLab repository, it will automatically trigger execution of scripts, by gitlab runner, as per configuration of pipleline file (.gitlab-ci.yml).  Keep in mind that we only have one physical environment i.e., same set of switches are used for both staging and production.</p>
 <ul>
 <li>Switch to <strong>"Atom"</strong>.  Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.  Enter the new VNI details in this file below the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
@@ -1480,7 +1558,7 @@ git push -f origin newvni
 </code></pre></div>
 <p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>#####</code> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
-<h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
+<h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results<a class="headerlink" href="#step-7-review-pipeline-testing-and-staging-results" title="Permanent link"></a></h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
 <ul>
 <li>Switch to Chrome brower with GitLab project page.  On the navigation menu on left side, select <strong>CI/CD &gt; Pipelines</strong>  as shown below:</li>
@@ -1555,7 +1633,7 @@ git push -f origin newvni
 
 [output omitted]
 </code></pre></div>
-<h3 id="step-8-merge-code-to-main-branch">Step 8: Merge code to main branch</h3>
+<h3 id="step-8-merge-code-to-main-branch">Step 8: Merge code to main branch<a class="headerlink" href="#step-8-merge-code-to-main-branch" title="Permanent link"></a></h3>
 <p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment.</p>
 <p>Typically in real world there will (should!) be separate environments for staging and production.  In this lab, we are using same inventory for staging and production environments for simplicity purposes.  So once the merge is done then the changes can be rolled out to production (by applying ansible playbooks).</p>
 <ul>
@@ -1597,7 +1675,7 @@ git push -f origin newvni
 </ul>
 <p><img alt="" src="../pic/5-8-3a.png" /></p>
 <p>Wait for the <code>Merged by lab.ciscolive</code> message and for <code>Merge details</code> to appear on this page.</p>
-<h6 id="so-what-is-happening">So what is happening?</h6>
+<h6 id="so-what-is-happening">So what is happening?<a class="headerlink" href="#so-what-is-happening" title="Permanent link"></a></h6>
 <p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
 <ul>
 <li>
@@ -1617,7 +1695,7 @@ git push -f origin newvni
 </div>
 <p>Below screenshot shows the successful execution of this deploy stage: </p>
 <p><img alt="" src="../pic/5-8-5.png" /></p>
-<h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>
+<h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.<a class="headerlink" href="#congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab" title="Permanent link"></a></h1>
 
 
 
@@ -1628,6 +1706,8 @@ git push -f origin newvni
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
@@ -1660,7 +1740,7 @@ git push -f origin newvni
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>

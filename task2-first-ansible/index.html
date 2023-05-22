@@ -73,9 +73,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
@@ -119,6 +117,10 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -155,8 +157,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -166,11 +174,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -178,23 +190,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../intro/" class="md-tabs__link">
-      Lab Overview
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../Task1-ansible-node0/" class="md-tabs__link">
-      Task 1 - Prepare Ansible node
-    </a>
-  </li>
+  
+    <li class="md-tabs__item">
+      <a href="../intro/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
+  
 
       
         
@@ -204,59 +208,21 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Task 2 - First Simple Ansible Playbook
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task3-vxlan-jinja2-new/" class="md-tabs__link">
-      Task 3 - Use of Jinja2 templates with Ansible Playbook
-    </a>
-  </li>
-
-      
-        
   
+    <li class="md-tabs__item">
+      <a href="../Task1-ansible-node0/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task4-vxlan-nxos/" class="md-tabs__link">
-      Task 4 - Config switches using Ansible NXOS modules
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../task5-day2-pipeline0/" class="md-tabs__link">
-      Task 5 - Day 2 Opertions with CI Pipeline
-    </a>
-  </li>
 
       
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -304,10 +270,40 @@
   
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Home
-      </a>
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -316,13 +312,51 @@
       
       
 
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
     <li class="md-nav__item">
       <a href="../intro/" class="md-nav__link">
-        Lab Overview
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -331,6 +365,47 @@
       
       
 
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
@@ -341,11 +416,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
     
@@ -435,11 +509,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -450,11 +523,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -465,11 +537,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -477,6 +548,13 @@
       <a href="../task5-day2-pipeline0/" class="md-nav__link">
         Task 5 - Day 2 Opertions with CI Pipeline
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -581,7 +659,7 @@
 <li>logic of using “<strong>when</strong>” and “<strong>tags</strong>” to isolate tasks from whole playbook</li>
 </ul>
 <hr />
-<h3 id="step-1-using-atom-text-editor">Step 1: Using "Atom" text Editor</h3>
+<h3 id="step-1-using-atom-text-editor">Step 1: Using "Atom" text Editor<a class="headerlink" href="#step-1-using-atom-text-editor" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p>Open <strong>“Atom”</strong> text editor by double click the icon on desktop.  Atom is the recommended text editor for this lab:</p>
@@ -593,7 +671,7 @@
 </li>
 </ul>
 <hr />
-<h3 id="step-2-lab-folder-on-atom">Step 2: Lab folder on Atom</h3>
+<h3 id="step-2-lab-folder-on-atom">Step 2: Lab folder on Atom<a class="headerlink" href="#step-2-lab-folder-on-atom" title="Permanent link"></a></h3>
 <p><strong>Atom</strong> provides a <em>Remote sync</em> package that allows to read and push contents to a remote server.  In this case, Atom has been preconfigured to integrate with Ansible node.  As per this integration, Atom Secure copy (SCP) any new files or changes to the Ansible node upon saving.  And Atom also downloads the content from Ansible node as per instructions in this lab.  Atom displays the <strong>EVPN-Ansible</strong> folder that has been downloaded from the ansible server.</p>
 <ul>
 <li>
@@ -613,7 +691,7 @@
 </li>
 </ul>
 <hr />
-<h3 id="step-3-define-variables-tasks-for-playbook">Step 3: Define variables, tasks for playbook</h3>
+<h3 id="step-3-define-variables-tasks-for-playbook">Step 3: Define variables, tasks for playbook<a class="headerlink" href="#step-3-define-variables-tasks-for-playbook" title="Permanent link"></a></h3>
 <p>In this step, we are going to create a playbook and define the variable &amp; tasks in the playbook</p>
 <ul>
 <li>In the <strong>Atom</strong> application, under the <code>vlan_provision.yml</code> file, enter the below content:</li>
@@ -639,7 +717,7 @@
 </ul>
 </div>
 <hr />
-<h3 id="step-4-vlan-tasks-in-playbook">Step 4: VLAN tasks in playbook</h3>
+<h3 id="step-4-vlan-tasks-in-playbook">Step 4: VLAN tasks in playbook<a class="headerlink" href="#step-4-vlan-tasks-in-playbook" title="Permanent link"></a></h3>
 <ul>
 <li>In the <strong>Atom</strong>, in the same <code>vlan_provision.yml</code> add below tasks below the previously added content:</li>
 </ul>
@@ -647,16 +725,16 @@
 <p class="admonition-title">Note</p>
 <p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">tasks</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provision VLAN</span>
-<span class="w">        </span><span class="nt">cisco.nxos.nxos_vlans</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{item}}&quot;</span>
-<span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span>
-<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
-<span class="w">         </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">140</span>
-<span class="w">         </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">141</span>
-<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add vlans</span>
+<div class="highlight"><pre><span></span><code><span class="err">	</span><span class="nt">tasks</span><span class="p">:</span>
+<span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provision VLAN</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_vlans</span><span class="p">:</span>
+<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{item}}&quot;</span>
+<span class="err">	</span><span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="err">	</span><span class="w">     </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">140</span>
+<span class="err">	</span><span class="w">     </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">141</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add vlans</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -687,7 +765,7 @@
 <p>Once the Save button is pressed, then at the lower part of ATOM app, you will see message about connecting to Ansible host (198.18.134.150) and saving the vlan_provision.yml file.</p>
 </div>
 <hr />
-<h3 id="step-5-execute-playbook">Step 5: Execute playbook</h3>
+<h3 id="step-5-execute-playbook">Step 5: Execute playbook<a class="headerlink" href="#step-5-execute-playbook" title="Permanent link"></a></h3>
 <p>After creating the playbook, it is now time to execute the playbook.  Before executing the playbook, we will verify the leaf switch that desired vlan configurations are not present</p>
 <ul>
 <li>Using the <strong>MTPuTTy</strong> client, <strong>Login</strong> (SSH) to <code>leaf-3</code> switch (or any leaf switch as per <strong>hosts:</strong> variable in the <code>vlan_provision.yml</code> file).  Then execute below command:</li>
@@ -723,7 +801,7 @@ The below screenshot shows the execution of the playbook:</p>
 <p>Below screenshot shows the execution of above command in the switch:</p>
 <p><img alt="" src="../pic/2-5-3.png" /></p>
 <hr />
-<h3 id="step-6-server-port-vlan-tasks-in-playbook">Step 6: Server port VLAN tasks in playbook</h3>
+<h3 id="step-6-server-port-vlan-tasks-in-playbook">Step 6: Server port VLAN tasks in playbook<a class="headerlink" href="#step-6-server-port-vlan-tasks-in-playbook" title="Permanent link"></a></h3>
 <p>We have just tested our first playbook with basic configuration (i.e, by adding 2 VLANs).  Now we are going to add more tasks in the same/existing playbook <strong><code>vlan_provision.yml</code></strong> in this step:</p>
 <ul>
 <li>
@@ -737,35 +815,35 @@ The below screenshot shows the execution of the playbook:</p>
 <p class="admonition-title">Note</p>
 <p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure server facing port to L2</span>
-<span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
-<span class="w">              </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">layer2</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
-<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;101&quot; in inventory_hostname) or (&quot;103&quot; in inventory_hostname)</span>
-<span class="w">        </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
-<span class="w">              </span><span class="nt">access</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
-<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
-<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;102&quot; in inventory_hostname) or (&quot;104&quot; in inventory_hostname)</span>
-<span class="w">        </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
-<span class="w">              </span><span class="nt">access</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span>
-<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
+<div class="highlight"><pre><span></span><code><span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure server facing port to L2</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
+<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
+<span class="err">	</span><span class="w">          </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">layer2</span>
+<span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;101&quot; in inventory_hostname) or (&quot;103&quot; in inventory_hostname)</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
+<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
+<span class="err">	</span><span class="w">          </span><span class="nt">access</span><span class="p">:</span>
+<span class="err">	</span><span class="w">            </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
+<span class="err">	</span><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
+<span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;102&quot; in inventory_hostname) or (&quot;104&quot; in inventory_hostname)</span>
+<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
+<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
+<span class="err">	</span><span class="w">          </span><span class="nt">access</span><span class="p">:</span>
+<span class="err">	</span><span class="w">            </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span>
+<span class="err">	</span><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
 </code></pre></div>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on ATOM.  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
 <p>In this new play, we used nxos module “<strong>cisco.nxos.nxos_interfaces</strong>” and “<strong>cisco.nxos.nxos_l2_interfaces</strong>”:</p>
 <ul>
-<li>“<strong>cisco.nxos.nxos_interfaces</strong>” provides the capability to manage the physical attributes of an interface.  In this example, it is used to configure “layer 2” on interface Ethernet 1/3</li>
-<li>“<strong>cisco.nxos.nxos_l2_interfaces</strong>” provides the capability to manage the Layer 2 switchport attributes.  In this example, it is used to configure access mode on Ethernet ports 1/3</li>
+<li>“<strong>cisco.nxos.nxos_interfaces</strong>” provides the capability to manage the physical attributes of an interface.  In this example, it is used to configure “layer 2” on interface Ethernet &#8531;</li>
+<li>“<strong>cisco.nxos.nxos_l2_interfaces</strong>” provides the capability to manage the Layer 2 switchport attributes.  In this example, it is used to configure access mode on Ethernet ports &#8531;</li>
 <li>We used “<strong>when</strong>” argument to provide little logic of looking at the IP addresses (as per <strong>hosts</strong> i.e., inventory file) to the play and then appropriately assign VLANs to those hosts.  In our example, the playbook assigned:<ul>
 <li>VLAN 140 on leaf-1 and leaf-3 switches (by matching <code>101</code> and <code>103</code> in the <code>hosts</code> file)</li>
 <li>VLAN 141 on leaf-4 switch (by matching <code>104</code> in the <code>hosts</code> file)</li>
@@ -773,10 +851,10 @@ The below screenshot shows the execution of the playbook:</p>
 </li>
 </ul>
 <hr />
-<h3 id="step-7-execute-playbook">Step 7: Execute playbook</h3>
+<h3 id="step-7-execute-playbook">Step 7: Execute playbook<a class="headerlink" href="#step-7-execute-playbook" title="Permanent link"></a></h3>
 <p>Now, we are going to execute this playbook:</p>
 <ul>
-<li>Before executing the ansible playbook, log into switch (<strong>leaf1</strong>, <strong>leaf3</strong> or <strong>leaf4</strong>) using <strong>MTPuTTy</strong> client.  And check the existing configuration by executing the below command.  In this lab, the default configuration of Leaf-1 and Leaf-3 Ethernet 1/3 ports are configured as trunks.  While Ethernet 1/3 port of Leaf-4 has "no switchport" configured.</li>
+<li>Before executing the ansible playbook, log into switch (<strong>leaf1</strong>, <strong>leaf3</strong> or <strong>leaf4</strong>) using <strong>MTPuTTy</strong> client.  And check the existing configuration by executing the below command.  In this lab, the default configuration of Leaf-1 and Leaf-3 Ethernet &#8531; ports are configured as trunks.  While Ethernet &#8531; port of Leaf-4 has "no switchport" configured.</li>
 </ul>
 <div class="highlight"><pre><span></span><code>show run interface ethernet1/3
 </code></pre></div>
@@ -816,6 +894,8 @@ ansible-playbook vlan_provision.yml
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
@@ -848,7 +928,7 @@ ansible-playbook vlan_provision.yml
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>

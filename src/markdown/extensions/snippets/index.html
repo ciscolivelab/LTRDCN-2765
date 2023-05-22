@@ -1,0 +1,915 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+    
+    
+      
+        <title>Snippets - Cisco Live 2023 LTRDCN-2765</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#snippets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco Live 2023 LTRDCN-2765
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Snippets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ciscolivelab/LTRDCN-2765" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../intro/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../Task1-ansible-node0/" class="md-tabs__link">
+        Lab Guide
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Cisco Live 2023 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cisco Live 2023 LTRDCN-2765
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ciscolivelab/LTRDCN-2765" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../intro/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Task1-ansible-node0/" class="md-nav__link">
+        Task 1 - Prepare Ansible node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task2-first-ansible/" class="md-nav__link">
+        Task 2 - First Simple Ansible Playbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task3-vxlan-jinja2-new/" class="md-nav__link">
+        Task 3 - Use of Jinja2 templates with Ansible Playbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task4-vxlan-nxos/" class="md-nav__link">
+        Task 4 - Config switches using Ansible NXOS modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../task5-day2-pipeline0/" class="md-nav__link">
+        Task 5 - Day 2 Opertions with CI Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snippets-notation" class="md-nav__link">
+    Snippets Notation
+  </a>
+  
+    <nav class="md-nav" aria-label="Snippets Notation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-line-format" class="md-nav__link">
+    Single Line Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-format" class="md-nav__link">
+    Block Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snippet-lines" class="md-nav__link">
+    Snippet Lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snippet-sections" class="md-nav__link">
+    Snippet Sections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escaping-snippets-notation" class="md-nav__link">
+    Escaping Snippets Notation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-snippet-locations" class="md-nav__link">
+    Specifying Snippet Locations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-snippets" class="md-nav__link">
+    URL Snippets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dedent-subsections" class="md-nav__link">
+    Dedent Subsections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-append-snippets" class="md-nav__link">
+    Auto-Append Snippets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><a class="source-link" href="https://github.com/facelessuser/pymdown-extensions/blob/master/pymdownx/snippets.py" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0Zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5Z"/><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04Zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45Z"/></svg></span></a></p>
+<h1 id="snippets">Snippets<a class="headerlink" href="#snippets" title="Permanent link"></a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Not Meant for User Facing Sites</p>
+<p>Snippets is meant to make including snippets in documentation easier, but it should not be used for user facing sites
+that take and parse user content dynamically.</p>
+</div>
+<p>Snippets is an extension to insert markdown or HTML snippets into another markdown file.  Snippets is great for
+situations where you have content you need to insert into multiple documents.  For instance, this document keeps all its
+hyperlinks in a separate file and then includes those hyperlinks at the bottom of a document via Snippets. If a link
+needs to be updated, it can be updated in one location instead of updating them in multiple files.</p>
+<p>Snippets is run as a preprocessor, so if a snippet is found in a fenced code block etc., it will still get processed.</p>
+<p>If a snippet declaration is processed, and the specified file cannot be found, then the markup will be removed.</p>
+<p>Snippets can handle recursive file inclusion. And if Snippets encounters the same file in the current stack, it will
+avoid re-processing it in order to avoid an infinite loop (or crash on hitting max recursion depth).</p>
+<p>This is meant for simple file inclusion, it has no intention to implement features from complex template systems. If you
+need something more complex, you may consider using a template environment to process your files <strong>before</strong> feeding them
+through Python Markdown.  If you are using a document generation system, this can likely be performed via a plugin for
+that document system (assuming a plugin environment is available).</p>
+<p>The Snippets extension can be included in Python Markdown by using the following:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">markdown</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">markdown</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pymdownx.snippets&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="snippets-notation">Snippets Notation<a class="headerlink" href="#snippets-notation" title="Permanent link"></a></h2>
+<p>There are two modes of inserting snippets: single line and block. Single line mode accepts a single file name, and block
+accepts multiple files. Snippets does not require a specific extension, and as long as a valid file name is specified,
+it will attempt to process it.</p>
+<p>Snippets paths are relative to base location, by default the current working directory. You can specify a new base
+location by setting the <code>base_path</code>. You can even allow downloading snippets from external locations. To learn more,
+check out <a href="#specifying-snippet-locations">"Specifying Snippet Locations"</a> and <a href="#url-snippets">"URL Snippets"</a>.</p>
+<h3 id="single-line-format">Single Line Format<a class="headerlink" href="#single-line-format" title="Permanent link"></a></h3>
+<p>Single line format is done by placing the following markup for the single line notation:</p>
+<div class="highlight"><pre><span></span><code>--8&lt;-- &quot;filename.ext&quot;
+</code></pre></div>
+<p>As you can see, the notation is ASCII scissors cutting a line followed by the file name.  In the case of the single line
+variant, the file name follows directly after the scissors and is quoted.  In the case of the block format, the file
+names follow on separate lines and an additional scissor is added afterwards to signal the end of the block.</p>
+<p>The dashes can be as few as 1 (<code>-8&lt;-</code>) or longer if desired (<code>---8&lt;---------</code>); whatever your preference is.  The
+important thing is that the notation must reside on a line(s) by itself, and the path, must be quoted in the case of the
+single line notation.  If the file name is indented, the content will be indented to that level as well.</p>
+<p>You can temporarily disable the snippet by placing a <code>;</code> before the file name:</p>
+<div class="highlight"><pre><span></span><code>--8&lt;-- &quot;; skip.md&quot;
+</code></pre></div>
+<h3 id="block-format">Block Format<a class="headerlink" href="#block-format" title="Permanent link"></a></h3>
+<p>The second approach is known as the block format. Block format allows you to insert multiple files.</p>
+<p><div class="highlight"><pre><span></span><code>--8&lt;--
+filename.md
+filename.log
+--8&lt;--
+</code></pre></div>
+The block format differs from the single format by requiring the the content to be fenced between two <code>--8&lt;--</code>. The
+start and end <code>--8&lt;--</code> must be on a line by themselves.</p>
+<p>When using the block format empty lines are also preserved within the block. Consider the example below.</p>
+<div class="highlight"><pre><span></span><code>--8&lt;--
+fileA.md
+
+fileB.md
+--8&lt;--
+</code></pre></div>
+<p>This would yield:</p>
+<div class="highlight"><pre><span></span><code>Content of file A.
+
+Content of file B.
+</code></pre></div>
+<p>If you have a file you want to temporarily ignore, you can comment it out by placing a <code>;</code> at the start of the line.</p>
+<div class="highlight"><pre><span></span><code>--8&lt;--
+include.md
+; skip.md
+--8&lt;--
+</code></pre></div>
+<h3 id="snippet-lines">Snippet Lines<a class="headerlink" href="#snippet-lines" title="Permanent link"></a></h3>
+<div class="admonition new">
+<p class="admonition-title">New 9.6</p>
+</div>
+<p>When specifying a snippet, you can specify which lines of the Snippet file that you wish to include. To specify line
+numbers, simply append the start and/or end to the end of the file name with each number separated with <code>:</code>.</p>
+<ul>
+<li>To specify extraction of content to start at a specific line number, simply use <code>file.md:3</code>.</li>
+<li>To extract all content up to a specific line, use <code>file.md::3</code>. This will extract lines 1 - 3.</li>
+<li>To extract all content starting at a specific line up to another line, use <code>file.md:4:6</code>. This will extract lines
+  4 - 6.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>--8&lt;-- &quot;file.md:4:6&quot;
+
+--8&lt;--
+include.md::3
+--8&lt;--
+</code></pre></div>
+<h3 id="snippet-sections">Snippet Sections<a class="headerlink" href="#snippet-sections" title="Permanent link"></a></h3>
+<div class="admonition new">
+<p class="admonition-title">New 9.7</p>
+</div>
+<p>Specifying snippet lines may not always be ideal. The source could change by moving, adding, and/or removing lines. A way
+around this is to partition a snippet into named sections and then targeting a specific section to be included instead
+of specific line numbers.</p>
+<p>Snippet sections can be specified by surrounding a block of text with <code>--8&lt;-- [start:name]</code> and <code>--8&lt;-- [end:name]</code>.
+Then a file can simply specify the snippet using the name instead of line numbers.</p>
+<div class="highlight"><pre><span></span><code>--8&lt;-- &quot;include.md:name&quot;
+
+--8&lt;--
+include.md:name
+--8&lt;--
+</code></pre></div>
+<p>Unlike other snippet syntax, the section start and end syntax do not have to be on a line by themselves. This allows
+you to embed them in comments depending on the file type. When a section is included, the line with the start and end
+are always omitted.</p>
+<p>If we wanted to include a function from a Python source, we could specify the snippet as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># --8&lt;-- [start:func]</span>
+<span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="c1"># --8&lt;-- [end:func]</span>
+</code></pre></div>
+<p>And then just include it in our document:</p>
+<div class="highlight"><pre><span></span><code>--8&lt;-- &quot;example.py:func&quot;
+</code></pre></div>
+<h3 id="escaping-snippets-notation">Escaping Snippets Notation<a class="headerlink" href="#escaping-snippets-notation" title="Permanent link"></a></h3>
+<div class="admonition new">
+<p class="admonition-title">New 9.6</p>
+</div>
+<p>If it is necessary to demonstrate the snippet syntax, an escaping method is required. If you need to escape snippets,
+just place a <code>;</code> right before <code>-8&lt;-</code>. This will work for both single line and block format. An escaped snippet
+notation will be passed through the Markdown parser with the first <code>;</code> removed.</p>
+<div class="highlight"><span class="filename">Escaped Snippets</span><pre><span></span><code>```
+;--8&lt;-- &quot;escaped.md&quot;
+;;--8&lt;-- &quot;escaped.md&quot;
+```
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>--8&lt;-- &quot;escaped.md&quot;
+;--8&lt;-- &quot;escaped.md&quot;
+</code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Legacy Escaping</p>
+<p>The legacy escape method required placing a space at the end of the line with <code>-8&lt;-</code>, while this should still
+work, this behavior will be removed at sometime in the future and is discouraged.</p>
+</div>
+<h2 id="specifying-snippet-locations">Specifying Snippet Locations<a class="headerlink" href="#specifying-snippet-locations" title="Permanent link"></a></h2>
+<p>All snippets are specified relative to the base path(s) specified in the <code>base_path</code> option. <code>base_path</code> is a list of
+paths (though it will take a single string for legacy purposes).</p>
+<p>When evaluating paths, they are done in the order specified. The specified snippet will be evaluated against each base
+path and the first base path that yields a valid snippet will be returned.</p>
+<p>If a base path is a file, the specified snippet will be compared against the base name of that file. For instance, if
+we specified a snippet of <code>test.md</code> and we had a <code>base_path</code> of <code class="highlight"><span class="p">[</span><span class="s2">&quot;some/location/test.md&quot;</span><span class="p">]</span></code>, this would match.
+A specified snippet of <code>location/test.md</code> would not match. This is great if you have a one off file outside of your
+base directory, but you'd like to directly include it.</p>
+<h2 id="url-snippets">URL Snippets<a class="headerlink" href="#url-snippets" title="Permanent link"></a></h2>
+<p>URLs, if <code>url_download</code> is enabled, can also be used as snippets. Instead of using a file, simply specify a URL in
+its place. By default, a max size for content is specified with <code>url_max_size</code> and a default timeout via <code>url_timeout</code>.
+If either of these is set to zero, the limits will be ignored.</p>
+<p>To pass arbitrary HTTP headers in every HTTP request use <code>url_request_headers</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Nested Snippets</p>
+<p>One thing to note though, if a snippet is included via a URL, all nested snippets within it must also be URLs. URL
+snippets are not allowed to reference local snippet files.</p>
+</div>
+<div class="admonition new">
+<p class="admonition-title">New 9.5</p>
+<p>URL snippet support was introduced in 9.5.</p>
+</div>
+<h2 id="dedent-subsections">Dedent Subsections<a class="headerlink" href="#dedent-subsections" title="Permanent link"></a></h2>
+<div class="admonition new">
+<p class="admonition-title">New 9.10</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Experimental</p>
+</div>
+<p>By default, when a subsection is extracted from a file via the <a href="#snippet-sections">section notation</a> or the
+<a href="#snippet-lines">lines notation</a>, the content is inserted exactly how it is extracted. Unfortunately, sometimes you are
+extracting an indented chunk, and you do not intend for that chunk to be indented.</p>
+<p><code>dedent_subsections</code> is a recent option that has been added to see if it alleviates the issue. When specifying a
+subsection of a file to insert as a snippet, via "sections" or "lines", that content will have all common leading
+whitespace removed from every line in text.</p>
+<p>Depending on how the feature is received, it may be made the default in the future.</p>
+<h2 id="auto-append-snippets">Auto-Append Snippets<a class="headerlink" href="#auto-append-snippets" title="Permanent link"></a></h2>
+<p>Snippets is designed as a general way to target a file and inject it into a given Markdown file, but some times,
+especially when building documentation via a library like <a href="https://github.com/mkdocs/mkdocs">MkDocs</a>, it may make sense to provide a way to append
+a given file to <em>every</em> Markdown document without having to manually include them via Snippet syntax in each page. This
+is especially useful for including a page of reference links or abbreviations on every page.</p>
+<p>Snippets provides an <code>auto_append</code> option that allows a user to specify a list of files that will be automatically
+appended to every to Markdown content. Each entry in the list searched for relative to the <code>base_path</code> entries.</p>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link"></a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>base_path</code></td>
+<td>[string]</td>
+<td><code class="highlight"><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">]</span></code></td>
+<td>A list of strings indicating base paths to be used resolve snippet locations. For legacy purposes, a single string will also be accepted as well. Base paths will be resolved in the order they are specified. When resolving a file name, the first match wins. If a file name is specified, the base name will be matched.</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>string</td>
+<td><code class="highlight"><span class="s1">&#39;utf-8&#39;</span></code></td>
+<td>Encoding to use when reading in the snippets.</td>
+</tr>
+<tr>
+<td><code>check_paths</code></td>
+<td>bool</td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td>Make the build fail if a snippet can't be found.</td>
+</tr>
+<tr>
+<td><code>auto_append</code></td>
+<td>[string]</td>
+<td><code class="highlight"><span class="p">[]</span></code></td>
+<td>A list of snippets (relative to the <code>base_path</code>) to auto append to the Markdown content.</td>
+</tr>
+<tr>
+<td><code>url_download</code></td>
+<td>bool</td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td>Allows URLs to be specified as file snippets. URLs will be downloaded and inserted accordingly.</td>
+</tr>
+<tr>
+<td><code>url_max_size</code></td>
+<td>int</td>
+<td><code class="highlight"><span class="mi">33554432</span></code></td>
+<td>Sets an arbitrary max content size. If content length is reported to be larger, and exception will be thrown. Default is ~32 MiB.</td>
+</tr>
+<tr>
+<td><code>url_timeout</code></td>
+<td>float</td>
+<td><code class="highlight"><span class="mf">10.0</span></code></td>
+<td>Passes an arbitrary timeout in seconds to URL requestor. By default this is set to 10 seconds.</td>
+</tr>
+<tr>
+<td><code>url_request_headers</code></td>
+<td>{string:string}</td>
+<td><code class="highlight"><span class="p">{}</span></code></td>
+<td>Passes arbitrary headers to URL requestor. By default this is set to empty map.</td>
+</tr>
+<tr>
+<td><code>dedent_subsections</code></td>
+<td>bool</td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td>Remove any common leading whitespace from every line in text of a subsection that is inserted via "sections" or by "lines".</td>
+</tr>
+<tr>
+<td><code>restrict_base_path</code></td>
+<td>bool</td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td>Ensure that the specified snippets are children of the specified base path(s). This prevents a path relative to the base path, but not explicitly a child of the base path.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+    
+  </body>
+</html>

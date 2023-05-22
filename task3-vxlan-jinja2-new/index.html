@@ -73,9 +73,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
@@ -119,6 +117,10 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -155,8 +157,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -166,11 +174,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
 
       
         
@@ -178,35 +190,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="../intro/" class="md-tabs__link">
-      Lab Overview
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../Task1-ansible-node0/" class="md-tabs__link">
-      Task 1 - Prepare Ansible node
-    </a>
-  </li>
-
-      
-        
   
+    <li class="md-tabs__item">
+      <a href="../intro/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task2-first-ansible/" class="md-tabs__link">
-      Task 2 - First Simple Ansible Playbook
-    </a>
-  </li>
 
       
         
@@ -216,47 +208,21 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Task 3 - Use of Jinja2 templates with Ansible Playbook
-    </a>
-  </li>
-
-      
-        
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task4-vxlan-nxos/" class="md-tabs__link">
-      Task 4 - Config switches using Ansible NXOS modules
-    </a>
-  </li>
-
-      
-        
   
+    <li class="md-tabs__item">
+      <a href="../Task1-ansible-node0/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
   
-
-
-  <li class="md-tabs__item">
-    <a href="../task5-day2-pipeline0/" class="md-tabs__link">
-      Task 5 - Day 2 Opertions with CI Pipeline
-    </a>
-  </li>
 
       
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -304,10 +270,40 @@
   
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Home
-      </a>
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -316,13 +312,51 @@
       
       
 
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
     <li class="md-nav__item">
       <a href="../intro/" class="md-nav__link">
-        Lab Overview
+        Overview
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -331,6 +365,47 @@
       
       
 
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
@@ -341,11 +416,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -356,11 +430,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
     
@@ -485,11 +558,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -500,11 +572,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -512,6 +583,13 @@
       <a href="../task5-day2-pipeline0/" class="md-nav__link">
         Task 5 - Day 2 Opertions with CI Pipeline
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -648,7 +726,7 @@
 <p>In this task, you will configure VXLAN fabric using this Jinja2 templates for one leaf (leaf-4) and one Spine (spine2) switch.</p>
 <p><img alt="" src="../pic/3-0-1-new.png" /></p>
 <hr />
-<h3 id="step-1-install-jinja2">Step 1: Install jinja2</h3>
+<h3 id="step-1-install-jinja2">Step 1: Install jinja2<a class="headerlink" href="#step-1-install-jinja2" title="Permanent link"></a></h3>
 <ul>
 <li>On the Ansible node, install jinja2 using <code>pip install jinja2</code> command below.  If it is already installed, we will get the message “requirement is satisfied”:</li>
 </ul>
@@ -657,7 +735,7 @@
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-1-1-new.png" /></p>
 <hr />
-<h3 id="step-2-playbook-for-jinja2-spine">Step 2: Playbook for jinja2 Spine</h3>
+<h3 id="step-2-playbook-for-jinja2-spine">Step 2: Playbook for jinja2 Spine<a class="headerlink" href="#step-2-playbook-for-jinja2-spine" title="Permanent link"></a></h3>
 <p>In this step, we will use Jina2 template and Ansible to provision the VXLAN Fabric.</p>
 <ul>
 <li>
@@ -702,7 +780,7 @@ more hosts
 <p>Below screenshot confirms the ouptut and appropriate IP addresses of above command:</p>
 <p><img alt="" src="../pic/3-2-3.png" /></p>
 <hr />
-<h3 id="step-3-create-new-roles-and-vars">Step 3: Create new roles and vars</h3>
+<h3 id="step-3-create-new-roles-and-vars">Step 3: Create new roles and vars<a class="headerlink" href="#step-3-create-new-roles-and-vars" title="Permanent link"></a></h3>
 <p>In this section, we will create two new roles for provisioning Fabric with Jina2 template.</p>
 <ul>
 <li>On the <strong>MTPuTTy</strong>, go back to Ansible Server node (198.18.134.150).  Switch to ‘<strong>roles</strong>’ directory and then <strong>create</strong> <code>‘jinja2_spine’</code> and <code>‘jinja2_leaf’</code> roles using <code>ansible-galaxy init</code> as per below commands:</li>
@@ -749,7 +827,7 @@ touch jinja2_leaf/templates/leaf.j2
 <li>Once the download is complete, you should see the new folder (such as <code>roles</code>) and all files appear on <strong>Atom</strong> as well.</li>
 </ul>
 <hr />
-<h3 id="step-4-create-variable-file-for-jina2_spine-role">Step 4: Create variable file for “jina2_spine” role</h3>
+<h3 id="step-4-create-variable-file-for-jina2_spine-role">Step 4: Create variable file for “jina2_spine” role<a class="headerlink" href="#step-4-create-variable-file-for-jina2_spine-role" title="Permanent link"></a></h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit this <code>main.yml</code> file to include the variables that will be used in jinja2 template.</p>
 <ul>
 <li>
@@ -797,7 +875,7 @@ touch jinja2_leaf/templates/leaf.j2
 </li>
 </ul>
 <hr />
-<h3 id="step-5-create-jinja2-template-for-spine-role">Step 5: Create Jinja2 template for spine role</h3>
+<h3 id="step-5-create-jinja2-template-for-spine-role">Step 5: Create Jinja2 template for spine role<a class="headerlink" href="#step-5-create-jinja2-template-for-spine-role" title="Permanent link"></a></h3>
 <ul>
 <li>On <strong>Atom</strong>, <strong>Select</strong> the project folder <code>EVPN-Ansible</code> from the left pane.  Then under “<strong>roles/jinja2_spine/templates</strong>”,  <strong>Open</strong> <code>spine.j2</code> file as shown in below screenshot:</li>
 </ul>
@@ -869,7 +947,7 @@ more spine.j2
 <p>Partial output of above command is shown in below screenshot confirming the content:</p>
 <p><img alt="" src="../pic/3-5-6.png" /></p>
 <hr />
-<h3 id="step-6-create-playbook-for-jinja2_spine-role">Step 6: Create playbook for jinja2_spine role</h3>
+<h3 id="step-6-create-playbook-for-jinja2_spine-role">Step 6: Create playbook for jinja2_spine role<a class="headerlink" href="#step-6-create-playbook-for-jinja2_spine-role" title="Permanent link"></a></h3>
 <p>The playbook for <code>jinja2_spine</code> roles has two tasks.</p>
 <ul>
 <li>First play in the task uses ansible "<strong>template</strong>" module to generate configuration file based on jinja2 template created in last step.  The configuration file is saved in “<strong>file</strong>” folder.</li>
@@ -902,7 +980,7 @@ more spine.j2
 <li>Since “<strong><em>match</em></strong>” option is set to <em>none</em>, hence the module will not attempt to compare the source configuration with the running configuration on the remote device.</li>
 </ul>
 <hr />
-<h3 id="step-7-run-jinja2_fabric-playbook">Step 7: Run Jinja2_fabric playbook</h3>
+<h3 id="step-7-run-jinja2_fabric-playbook">Step 7: Run Jinja2_fabric playbook<a class="headerlink" href="#step-7-run-jinja2_fabric-playbook" title="Permanent link"></a></h3>
 <p>In this section you will run the playbook created in step 2 (in this task 3).  The execution of this playbook will generate configuration file for Spine-2 switch from the template.  Further, The playbook will also push the configuration file to Spine-2 switches.</p>
 <ul>
 <li>Run the ansible playbook by going to folder EVPN-Ansible and executing the below commands:</li>
@@ -932,7 +1010,7 @@ ansible-playbook jinja2_fabric.yml
 <p>The execution of this command is captured in below screenshot:</p>
 <p><img alt="" src="../pic/3-7-2-new.png" /></p>
 <hr />
-<h3 id="step-8-modify-playbook-for-leaf">Step 8: Modify playbook for Leaf</h3>
+<h3 id="step-8-modify-playbook-for-leaf">Step 8: Modify playbook for Leaf<a class="headerlink" href="#step-8-modify-playbook-for-leaf" title="Permanent link"></a></h3>
 <p>In this section, we will use Jina2 template and Ansible to provision the VXLAN Fabric on leaf-4.   We are going to add jinja2_leaf this time in the hosts list to the already created playbook in step 2.</p>
 <ul>
 <li>
@@ -957,7 +1035,7 @@ ansible-playbook jinja2_fabric.yml
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
 <hr />
-<h3 id="step-9-variable-file-for-jinja2_leaf-role">Step 9: Variable file for jinja2_leaf role</h3>
+<h3 id="step-9-variable-file-for-jinja2_leaf-role">Step 9: Variable file for jinja2_leaf role<a class="headerlink" href="#step-9-variable-file-for-jinja2_leaf-role" title="Permanent link"></a></h3>
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/jinja2_leaf/vars/</code> to include following:</li>
 </ul>
@@ -1001,7 +1079,7 @@ ansible-playbook jinja2_fabric.yml
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-10-jinja2-template-for-leaf-role">Step 10: Jinja2 template for leaf role</h3>
+<h3 id="step-10-jinja2-template-for-leaf-role">Step 10: Jinja2 template for leaf role<a class="headerlink" href="#step-10-jinja2-template-for-leaf-role" title="Permanent link"></a></h3>
 <ul>
 <li>On <strong>Atom</strong>, you can <strong>Select</strong> the project folder <code>EVPN-Ansible</code> and <strong>open</strong> <code>leaf.j2</code> file under <code>roles/jinja2_leaf/templates/</code></li>
 </ul>
@@ -1107,7 +1185,7 @@ ansible-playbook jinja2_fabric.yml
 <li>Next on <strong>Atom</strong>, you can <strong>Select</strong> <code>File</code> and <code>Save</code> to push template file to Ansible node.</li>
 </ul>
 <hr />
-<h3 id="step-11-create-playbook-for-jinja2_leaf-role">Step 11: Create playbook for jinja2_leaf role</h3>
+<h3 id="step-11-create-playbook-for-jinja2_leaf-role">Step 11: Create playbook for jinja2_leaf role<a class="headerlink" href="#step-11-create-playbook-for-jinja2_leaf-role" title="Permanent link"></a></h3>
 <p>The playbook for jinja2_leaf roles has two tasks:</p>
 <ol>
 <li>First task uses ansible "<strong>template</strong>" module to generate configuration file based on jinja2 template created in last step. The configuration file is saved in <code>files</code> directory.</li>
@@ -1129,7 +1207,7 @@ ansible-playbook jinja2_fabric.yml
 <p>Below screenshot shows how the contents of <code>jinja2_leaf/taks/main.yml</code> file looks like in Atom:</p>
 <p><img alt="" src="../pic/3-11-1.png" /></p>
 <hr />
-<h3 id="step-12-run-jinja2_fabric-playbook">Step 12: Run Jinja2_fabric playbook</h3>
+<h3 id="step-12-run-jinja2_fabric-playbook">Step 12: Run Jinja2_fabric playbook<a class="headerlink" href="#step-12-run-jinja2_fabric-playbook" title="Permanent link"></a></h3>
 <p>In this section you will run the playbook created in step 8, this will generate configuration file for Spine-2 and Leaf-4 switches. It will also push the configuration file to both switches.</p>
 <ul>
 <li>Before running the ansible-playbook, on the <strong>MTPuTTy</strong> you can <strong>login/SSH</strong> into the <strong>leaf-4</strong>, and verify that no bgp configurations exist by running below command:</li>
@@ -1170,6 +1248,8 @@ ansible-playbook jinja2_fabric.yml
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
@@ -1202,7 +1282,7 @@ ansible-playbook jinja2_fabric.yml
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
