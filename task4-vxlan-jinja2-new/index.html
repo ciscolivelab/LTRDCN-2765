@@ -785,7 +785,7 @@
   <h1>Task 3 - Use Jinja2 templates with Ansible</h1>
 
 <p>In this task, you will use Jinja2 templates and Ansible roles &amp; modules to configure one leaf (hostname: leaf-4) switch and one Spine (hostname: spine2) switch.</p>
-<p>Jinja2 templating engine allows to create templates for spine and leaf switches.  Use of Jinja template provide flexibility and agility.  Jinja2 template will appear similar to the NXOS CLI configurations.  We abstract the variables out of the configuration and use simple <code>for</code> loop to feed variables into the template.  Ansible module (named "template") will generate the NXOS configuration files of a spine and a leaf switch using the jinja2.  The NXOS CLI configuration files will then be pushed into respective switches by using Ansible modules (named "cisco.nxos.nxos_config").</p>
+<p>Jinja2 templating engine allows to create templates for spine and leaf switches.  Use of Jinja template provides flexibility and agility.  Jinja2 template will appear similar to the NXOS CLI configurations.  We abstract the variables out of the configuration and use <code>variables</code> and <code>for</code> loop to feed variables into the template.  Ansible module (named <code>template</code>) is used to generate the NXOS configuration files of a spine and a leaf switch using the jinja2.  The NXOS CLI configuration files will then be pushed into respective switches by using Ansible modules (named <code>cisco.nxos.nxos_config</code>).</p>
 <p><img alt="" src="../pic/3-0-1-new.png" /></p>
 <hr />
 <h3 id="step-1-install-jinja2">Step 1: Install jinja2<a class="headerlink" href="#step-1-install-jinja2" title="Permanent link"></a></h3>
