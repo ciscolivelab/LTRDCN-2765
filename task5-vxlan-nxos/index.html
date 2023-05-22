@@ -9,13 +9,17 @@
       
       
       
+        <link rel="prev" href="../task4-vxlan-jinja2-new/">
+      
+      
+        <link rel="next" href="../task5-day2-pipeline0/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>Task4 vxlan nxos - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Task 5 - Config switches using Ansible NXOS modules - Cisco Live 2023 LTRDCN-2765</title>
       
     
     
@@ -90,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task4 vxlan nxos
+              Task 5 - Config switches using Ansible NXOS modules
             
           </span>
         </div>
@@ -200,13 +204,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../task1-VPN/" class="md-tabs__link">
+      <a href="../task1-VPN/" class="md-tabs__link md-tabs__link--active">
         Lab Guide
       </a>
     </li>
@@ -393,14 +399,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
         
@@ -423,7 +431,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Lab Guide
@@ -490,11 +498,248 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../task5-vxlan-nxos/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 5 - Config switches using Ansible NXOS modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Task 5 - Config switches using Ansible NXOS modules
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-new-playbook" class="md-nav__link">
+    Step 1: Create new playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-spine--leaf-roles" class="md-nav__link">
+    Step 2: Create Spine &amp; Leaf roles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-spine-role---tasks" class="md-nav__link">
+    Step 3: Spine role - tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-spine-role---vars" class="md-nav__link">
+    Step 4: Spine role - vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5--leaf-role---tasks" class="md-nav__link">
+    Step 5:  Leaf role - tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-leaf-role---vars" class="md-nav__link">
+    Step 6: Leaf role - vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-execute-playbook" class="md-nav__link">
+    Step 7: Execute playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-multicast-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 8: Multicast config with Ansible NXOS modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Multicast config with Ansible NXOS modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-vxlan-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 9: VXLAN config with Ansible NXOS modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 9: VXLAN config with Ansible NXOS modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role_1" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role_1" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role_1" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role_1" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes_1" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-evpn-config-with-ansible-nxos-modules" class="md-nav__link">
+    Step 10: EVPN config with Ansible NXOS modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 10: EVPN config with Ansible NXOS modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-spine-role_2" class="md-nav__link">
+    Edit playbook for spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-spine-role_2" class="md-nav__link">
+    Edit variable file for Spine role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-playbook-for-leaf-role_2" class="md-nav__link">
+    Edit playbook for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-variable-file-for-leaf-role_2" class="md-nav__link">
+    Edit variable file for leaf role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-playbook-and-verify-configuration-changes_2" class="md-nav__link">
+    Run the playbook and verify configuration changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-run-nxos_fabric-playbook" class="md-nav__link">
+    Step 11: Run nxos_fabric playbook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-verify-end-to-end-ip-connectivity" class="md-nav__link">
+    Step 12: Verify end-to-end IP connectivity
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -769,7 +1014,7 @@
   
 
 
-  <h1>Task4 vxlan nxos</h1>
+  <h1>Task 5 - Config switches using Ansible NXOS modules</h1>
 
 <p>In this section, you will build remaining VXLAN fabric using Ansible NXOS modules.  These modules will be used to configure leaf-1, leaf-3 and spine-1 switches within the VXLAN Fabric.  We will configure BGP neighbors between spine and leaf switching by using Ansible NXOS modules.  The following NXOS ansible modules are used:</p>
 <table>
@@ -1615,6 +1860,42 @@ PING 172.21.141.11 (172.21.141.11) 56(84) bytes of data.
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../task4-vxlan-jinja2-new/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 4 - Use Jinja2 templates with Ansible" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Task 4 - Use Jinja2 templates with Ansible
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../task5-day2-pipeline0/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 6 - Day 2 Opertions with CI Pipeline" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Task 6 - Day 2 Opertions with CI Pipeline
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
