@@ -9,13 +9,17 @@
       
       
       
+        <link rel="prev" href="../task1-VPN/">
+      
+      
+        <link rel="next" href="../task2-first-ansible/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>Task1 ansible node0 - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Task 2 - Ansible installation - Cisco Live 2023 LTRDCN-2765</title>
       
     
     
@@ -57,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-skip">
+        <a href="#step-1-ssh-client---mtputty" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task1 ansible node0
+              Task 2 - Ansible installation
             
           </span>
         </div>
@@ -200,13 +204,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../task1-VPN/" class="md-tabs__link">
+      <a href="../task1-VPN/" class="md-tabs__link md-tabs__link--active">
         Lab Guide
       </a>
     </li>
@@ -393,14 +399,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
         
@@ -423,7 +431,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Lab Guide
@@ -448,11 +456,90 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../task2-ansible-node/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 2 - Ansible installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Task 2 - Ansible installation
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-ssh-client---mtputty" class="md-nav__link">
+    Step 1: SSH client - MTputty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-ssh-into-ansible-node" class="md-nav__link">
+    Step 1: SSH into Ansible node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-verify-python" class="md-nav__link">
+    Step 2: Verify Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
+    Step 3: Update Ubuntu package tool and install PIP &amp; Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-ansible-installation" class="md-nav__link">
+    Step 4: Ansible Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-create-ansible-settings-inventory-and-variables" class="md-nav__link">
+    Step 5: Create Ansible Settings, Inventory and variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-ansible-role-structure" class="md-nav__link">
+    Step 6: Ansible role structure
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -545,71 +632,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-nav__link">
-    Step 1: Connect to lab using anyconnect VPN
+  <a href="#step-1-ssh-client---mtputty" class="md-nav__link">
+    Step 1: SSH client - MTputty
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-enter-vpn-credentials" class="md-nav__link">
-    Step 2: Enter VPN credentials
+  <a href="#step-1-ssh-into-ansible-node" class="md-nav__link">
+    Step 1: SSH into Ansible node
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-rdp-to-workstation" class="md-nav__link">
-    Step 3: RDP to workstation
+  <a href="#step-2-verify-python" class="md-nav__link">
+    Step 2: Verify Python
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-ssh-client---mtputty" class="md-nav__link">
-    Step 4: SSH client - MTputty
+  <a href="#step-3-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
+    Step 3: Update Ubuntu package tool and install PIP &amp; Packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-ssh-into-ansible-node" class="md-nav__link">
-    Step 5: SSH into Ansible node
+  <a href="#step-4-ansible-installation" class="md-nav__link">
+    Step 4: Ansible Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-verify-python" class="md-nav__link">
-    Step 6: Verify Python
+  <a href="#step-5-create-ansible-settings-inventory-and-variables" class="md-nav__link">
+    Step 5: Create Ansible Settings, Inventory and variables
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
-    Step 7: Update Ubuntu package tool and install PIP &amp; Packages
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-8-ansible-installation" class="md-nav__link">
-    Step 8: Ansible Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-9-create-ansible-settings-inventory-and-variables" class="md-nav__link">
-    Step 9: Create Ansible Settings, Inventory and variables
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-10-ansible-role-structure" class="md-nav__link">
-    Step 10: Ansible role structure
+  <a href="#step-6-ansible-role-structure" class="md-nav__link">
+    Step 6: Ansible role structure
   </a>
   
 </li>
@@ -632,191 +698,26 @@
   
 
 
-  <h1>Task1 ansible node0</h1>
+  <h1>Task 2 - Ansible installation</h1>
 
 <p>Your first task will be to build an Ansible node on a server running redhat CentOS operating system.  At the end of this task, you will have a fully operational Ansible node.</p>
-<h4 id="step-1-connect-to-lab-using-anyconnect-vpn">Step 1: Connect to lab using anyconnect VPN<a class="headerlink" href="#step-1-connect-to-lab-using-anyconnect-vpn" title="Permanent link"></a></h4>
-<p>You will connect to <strong>Anyconnect url</strong> using Cisco VPN AnyConnect client and with the username &amp; password as documented in below table.  Below screenshot shows an example of that VPN connection.</p>
-<table>
-<thead>
-<tr>
-<th>Pod ID</th>
-<th>Attendee Name</th>
-<th>Anyconnect url</th>
-<th>Anyconnect Username</th>
-<th>Anyconnect Password</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>POD  1</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  2</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  3</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  4</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  5</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  6</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  7</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  8</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  9</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  10</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  11</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  12</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  13</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  14</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  15</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  16</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  17</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>POD  18</td>
-<td></td>
-<td>dcloud-lon-anyconnect.cisco.com</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>lab admin will furnish the credentials information to the participant.  If you don't have this information please ask the lab speakers.</p>
-</div>
-<p><img alt="" src="../pic/1-1-1-lon.png" /></p>
-<h4 id="step-2-enter-vpn-credentials">Step 2: Enter VPN credentials<a class="headerlink" href="#step-2-enter-vpn-credentials" title="Permanent link"></a></h4>
-<p>After prompted for credentials, use the credentials documented in above table or provided by the lab admin.</p>
-<ul>
-<li>Below is an example of user logging into a reference POD:</li>
-</ul>
-<p><img alt="" src="../pic/1-2-vpn-credentials.png" /></p>
-<ul>
-<li>Hit accept when the prompt appears to accept the VPN connection login</li>
-</ul>
-<p><img alt="" src="../pic/1-2-vpn-accept.png" /></p>
-<h4 id="step-3-rdp-to-workstation">Step 3: RDP to workstation<a class="headerlink" href="#step-3-rdp-to-workstation" title="Permanent link"></a></h4>
-<p>In this step, you will connect to the workstation with Remote Desktop (RDP) client on your machines.  Use below details for this RDP session:</p>
-<ul>
-<li>Workstation: <strong>198.18.133.36</strong></li>
-<li>Username: <strong>dclouddemouser</strong></li>
-<li>Password: <strong>C1sco12345</strong></li>
-</ul>
-<p>Below screenshot is only an example for this RDP connection:</p>
-<p><img alt="" src="../pic/1-3-RDP.png" /></p>
-<h4 id="step-4-ssh-client---mtputty">Step 4: SSH client - MTputty<a class="headerlink" href="#step-4-ssh-client---mtputty" title="Permanent link"></a></h4>
+<h4 id="step-1-ssh-client---mtputty">Step 1: SSH client - MTputty<a class="headerlink" href="#step-1-ssh-client---mtputty" title="Permanent link"></a></h4>
 <p>Once you have the RDP session to the remote workstation, then you will use MTPutty client to connect to all devices (Nexus and Ansible server/node) in this lab.</p>
 <p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by <strong>clicking</strong> the <strong>MTPutty</strong> icon on the desktop:</p>
 <p><img alt="" src="../pic/1-4-mtputty.png" /></p>
-<h4 id="step-5-ssh-into-ansible-node">Step 5: SSH into Ansible node<a class="headerlink" href="#step-5-ssh-into-ansible-node" title="Permanent link"></a></h4>
-<p>In the MTPutty client, SSH to Ansible node (198.18.134.150) by double <strong>clicking</strong> the <strong>Ansible</strong> icon on the left pane.</p>
+<h4 id="step-1-ssh-into-ansible-node">Step 1: SSH into Ansible node<a class="headerlink" href="#step-1-ssh-into-ansible-node" title="Permanent link"></a></h4>
+<p>In the RDP session, launch the MTPutty client.  Then SSH to Ansible node (198.18.134.150) by double <strong>clicking</strong> the <strong>Ansible</strong> icon on the left pane.</p>
 <p>The passwords are pre-configured however if prompted then use credentials of username <strong>root</strong> and password <strong>C1sco12345</strong> for SSH access</p>
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
 <p>On this Ansible node various software packages will be installed from public repositories on the Internet.</p>
-<h4 id="step-6-verify-python">Step 6: Verify Python<a class="headerlink" href="#step-6-verify-python" title="Permanent link"></a></h4>
+<h4 id="step-2-verify-python">Step 2: Verify Python<a class="headerlink" href="#step-2-verify-python" title="Permanent link"></a></h4>
 <p>Ansible can on any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansible.</p>
 <p>Hence, once successfully SSH into the ansible node, verify that python version 2.7 is pre-installed by running below command:</p>
 <div class="highlight"><pre><span></span><code>python --version
 </code></pre></div>
 <p>The output of above command confirms python version installed on Ansible node.</p>
 <p><img alt="" src="../pic/1-6-python.png" /></p>
-<h4 id="step-7-update-ubuntu-package-tool-and-install-pip--packages">Step 7: Update Ubuntu package tool and install PIP &amp; Packages<a class="headerlink" href="#step-7-update-ubuntu-package-tool-and-install-pip--packages" title="Permanent link"></a></h4>
+<h4 id="step-3-update-ubuntu-package-tool-and-install-pip--packages">Step 3: Update Ubuntu package tool and install PIP &amp; Packages<a class="headerlink" href="#step-3-update-ubuntu-package-tool-and-install-pip--packages" title="Permanent link"></a></h4>
 <ul>
 <li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) </li>
 </ul>
@@ -866,7 +767,7 @@
 </code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-4-python-new2-pip.png" /></p>
-<h4 id="step-8-ansible-installation">Step 8: Ansible Installation<a class="headerlink" href="#step-8-ansible-installation" title="Permanent link"></a></h4>
+<h4 id="step-4-ansible-installation">Step 4: Ansible Installation<a class="headerlink" href="#step-4-ansible-installation" title="Permanent link"></a></h4>
 <p>In this step, Ansible and the required modules for this lab are going to be installed on this node/server (running Ubuntu).</p>
 <ul>
 <li>Initiate the installation of ansible using below command:</li>
@@ -897,7 +798,7 @@
 </code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-7-4-collection.png" /></p>
-<h4 id="step-9-create-ansible-settings-inventory-and-variables">Step 9: Create Ansible Settings, Inventory and variables<a class="headerlink" href="#step-9-create-ansible-settings-inventory-and-variables" title="Permanent link"></a></h4>
+<h4 id="step-5-create-ansible-settings-inventory-and-variables">Step 5: Create Ansible Settings, Inventory and variables<a class="headerlink" href="#step-5-create-ansible-settings-inventory-and-variables" title="Permanent link"></a></h4>
 <p>Ansible server uses host inventory to communicate with target devices (called as hosts). Like other programming languages, ansible uses variables to represent variations among different target devices.   This is important as Ansible works against multiple systems by selecting portions of systems listed in Ansible inventory.  Additionally, Ansible settings such as how SSH keys verification is done, name/location of inventory file to be used etc are adjustable via a configuration file named <code>ansible.cfg</code>.  It is an INI based file.</p>
 <ul>
 <li>Create folder named EVPN-Ansible as working environment and verify that it’s empty by issuing below commands:</li>
@@ -1099,7 +1000,7 @@ EOF
 </code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-202.png" /></p>
-<h4 id="step-10-ansible-role-structure">Step 10: Ansible role structure<a class="headerlink" href="#step-10-ansible-role-structure" title="Permanent link"></a></h4>
+<h4 id="step-6-ansible-role-structure">Step 6: Ansible role structure<a class="headerlink" href="#step-6-ansible-role-structure" title="Permanent link"></a></h4>
 <p>Role is very useful technique to manage a set of playbooks in Ansible.
 In this lab, we will use two different playbooks to manage configuration for Spine and Leaf switches.</p>
 <p>A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.  Here are few folders:</p>
@@ -1141,6 +1042,42 @@ mkdir roles
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../task1-VPN/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 1 - VPN connection" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Task 1 - VPN connection
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../task2-first-ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 2 - First Simple Ansible Playbook" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Task 2 - First Simple Ansible Playbook
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

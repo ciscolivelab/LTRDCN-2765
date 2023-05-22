@@ -9,19 +9,21 @@
       
       
       
+        <link rel="prev" href="../Guide-lab_access/">
       
-        <link rel="next" href="intro/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+        <link rel="next" href="../task2-ansible-node/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
-        <title>Speakers - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Task 1 - VPN connection - Cisco Live 2023 LTRDCN-2765</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
       
       
 
@@ -37,7 +39,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ltrdcn-2765" class="md-skip">
+        <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-skip">
           Skip to content
         </a>
       
@@ -73,7 +75,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+    <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -92,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Speakers
+              Task 1 - VPN connection
             
           </span>
         </div>
@@ -170,15 +172,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="." class="md-tabs__link md-tabs__link--active">
+      <a href=".." class="md-tabs__link">
         Home
       </a>
     </li>
@@ -194,7 +194,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="intro/" class="md-tabs__link">
+      <a href="../intro/" class="md-tabs__link">
         Lab Overview
       </a>
     </li>
@@ -204,13 +204,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="task1-VPN/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Lab Guide
       </a>
     </li>
@@ -238,7 +240,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Cisco Live 2023 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+    <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -267,16 +269,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
       
       
         
@@ -288,12 +288,12 @@
       
         
         
-        <div class="md-nav__link md-nav__link--index md-nav__link--active">
-          <a href=".">Home</a>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="..">Home</a>
           
         </div>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           Home
@@ -351,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -365,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Guide-lab_topology/" class="md-nav__link">
+      <a href="../Guide-lab_topology/" class="md-nav__link">
         Lab Topology
       </a>
     </li>
@@ -379,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Guide-lab_access/" class="md-nav__link">
+      <a href="../Guide-lab_access/" class="md-nav__link">
         Lab Devices Access
       </a>
     </li>
@@ -399,14 +399,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
         
@@ -429,7 +431,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Lab Guide
@@ -440,11 +442,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="task1-VPN/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 1 - VPN connection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Task 1 - VPN connection
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-nav__link">
+    Step 1: Connect to lab using anyconnect VPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-enter-vpn-credentials" class="md-nav__link">
+    Step 2: Enter VPN credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-rdp-to-workstation" class="md-nav__link">
+    Step 3: RDP to workstation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-ssh-client---mtputty" class="md-nav__link">
+    Step 4: SSH client - MTputty
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -456,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task2-ansible-node/" class="md-nav__link">
+      <a href="../task2-ansible-node/" class="md-nav__link">
         Task 2 - Ansible installation
       </a>
     </li>
@@ -470,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task2-first-ansible/" class="md-nav__link">
+      <a href="../task2-first-ansible/" class="md-nav__link">
         Task 2 - First Simple Ansible Playbook
       </a>
     </li>
@@ -484,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task3-vxlan-jinja2-new/" class="md-nav__link">
+      <a href="../task3-vxlan-jinja2-new/" class="md-nav__link">
         Task 3 - Use of Jinja2 templates with Ansible Playbook
       </a>
     </li>
@@ -498,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task4-vxlan-nxos/" class="md-nav__link">
+      <a href="../task4-vxlan-nxos/" class="md-nav__link">
         Task 4 - Config switches using Ansible NXOS modules
       </a>
     </li>
@@ -512,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="task5-day2-pipeline0/" class="md-nav__link">
+      <a href="../task5-day2-pipeline0/" class="md-nav__link">
         Task 5 - Day 2 Opertions with CI Pipeline
       </a>
     </li>
@@ -543,8 +603,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -553,8 +611,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#speakers" class="md-nav__link">
-    Speakers
+  <a href="#step-1-connect-to-lab-using-anyconnect-vpn" class="md-nav__link">
+    Step 1: Connect to lab using anyconnect VPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-enter-vpn-credentials" class="md-nav__link">
+    Step 2: Enter VPN credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-rdp-to-workstation" class="md-nav__link">
+    Step 3: RDP to workstation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-ssh-client---mtputty" class="md-nav__link">
+    Step 4: SSH client - MTputty
   </a>
   
 </li>
@@ -577,14 +656,178 @@
   
 
 
-<h1 id="ltrdcn-2765">LTRDCN-2765<a class="headerlink" href="#ltrdcn-2765" title="Permanent link"></a></h1>
-<p>Welcome to Cisco Live LTRDCN-2765: VXLAN EVPN Fabric and NetDevOps/automation using Ansible.</p>
-<p>For full documentation visit <a href="https://www.ciscolive.com">Cisco Live</a>.</p>
-<h2 id="speakers">Speakers<a class="headerlink" href="#speakers" title="Permanent link"></a></h2>
+  <h1>Task 1 - VPN connection</h1>
+
+<p>You will initiate VPN connection to the network setup used in this lab.  All the devices in this lab are running as Virtual Machines using VMware as Hypervisor.  At the end of this task, you will have VPN connection to this remote setup</p>
+<h4 id="step-1-connect-to-lab-using-anyconnect-vpn">Step 1: Connect to lab using anyconnect VPN<a class="headerlink" href="#step-1-connect-to-lab-using-anyconnect-vpn" title="Permanent link"></a></h4>
+<p>You will connect to <strong>Anyconnect url</strong> using Cisco VPN AnyConnect client and with the username &amp; password as documented in below table.  Below screenshot shows an example of that VPN connection.</p>
+<table>
+<thead>
+<tr>
+<th>Pod ID</th>
+<th>Attendee Name</th>
+<th>Anyconnect url</th>
+<th>Anyconnect Username</th>
+<th>Anyconnect Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POD  1</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  2</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  3</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  4</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  5</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  6</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  7</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  8</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  9</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  10</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  11</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  12</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  13</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  14</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  15</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  16</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  17</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>POD  18</td>
+<td></td>
+<td>dcloud-lon-anyconnect.cisco.com</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>lab admin will furnish the credentials information to the participant.  If you don't have this information please ask the lab speakers.</p>
+</div>
+<p><img alt="" src="../pic/1-1-1-lon.png" /></p>
+<h4 id="step-2-enter-vpn-credentials">Step 2: Enter VPN credentials<a class="headerlink" href="#step-2-enter-vpn-credentials" title="Permanent link"></a></h4>
+<p>After prompted for credentials, use the credentials documented in above table or provided by the lab admin.</p>
 <ul>
-<li>Faisal Chaudhry <code>Principal Architect, Cisco CX</code></li>
-<li>Lei Tian <code>Solutions Architect, Cisco CX</code></li>
+<li>Below is an example of user logging into a reference POD:</li>
 </ul>
+<p><img alt="" src="../pic/1-2-vpn-credentials.png" /></p>
+<ul>
+<li>Hit accept when the prompt appears to accept the VPN connection login</li>
+</ul>
+<p><img alt="" src="../pic/1-2-vpn-accept.png" /></p>
+<h4 id="step-3-rdp-to-workstation">Step 3: RDP to workstation<a class="headerlink" href="#step-3-rdp-to-workstation" title="Permanent link"></a></h4>
+<p>In this step, you will connect to the workstation with Remote Desktop (RDP) client on your machines.  Use below details for this RDP session:</p>
+<ul>
+<li>Workstation: <strong>198.18.133.36</strong></li>
+<li>Username: <strong>dclouddemouser</strong></li>
+<li>Password: <strong>C1sco12345</strong></li>
+</ul>
+<p>Below screenshot is only an example for this RDP connection:</p>
+<p><img alt="" src="../pic/1-3-RDP.png" /></p>
+<h4 id="step-4-ssh-client---mtputty">Step 4: SSH client - MTputty<a class="headerlink" href="#step-4-ssh-client---mtputty" title="Permanent link"></a></h4>
+<p>Once you have the RDP session to the remote workstation, then you will use MTPutty client to connect to all devices (Nexus and Ansible server/node) in this lab.</p>
+<p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by <strong>clicking</strong> the <strong>MTPutty</strong> icon on the desktop:</p>
+<p><img alt="" src="../pic/1-4-mtputty.png" /></p>
 
 
 
@@ -612,15 +855,30 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../Guide-lab_access/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab Devices Access" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab Devices Access
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <a href="../task2-ansible-node/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 2 - Ansible installation" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Task 2 - Ansible installation
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -652,10 +910,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.footer", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.footer", "toc.follow", "content.tabs.link", "search.share", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotations"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
       
     
   </body>
