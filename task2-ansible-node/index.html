@@ -495,36 +495,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-ssh-into-ansible-node" class="md-nav__link">
-    Step 1: SSH into Ansible node
+  <a href="#step-2-ssh-into-ansible-node" class="md-nav__link">
+    Step 2: SSH into Ansible node
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-verify-python" class="md-nav__link">
-    Step 2: Verify Python
+  <a href="#step-3-verify-python" class="md-nav__link">
+    Step 3: Verify Python
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
-    Step 3: Update Ubuntu package tool and install PIP &amp; Packages
+  <a href="#step-4-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
+    Step 4: Update Ubuntu package tool and install PIP &amp; Packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-ansible-installation" class="md-nav__link">
-    Step 4: Ansible Installation
+  <a href="#step-5-ansible-installation" class="md-nav__link">
+    Step 5: Ansible Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-create-ansible-settings-inventory-and-variables" class="md-nav__link">
-    Step 5: Create Ansible Settings, Inventory and variables
+  <a href="#step-6-create-ansible-settings-inventory-and-variables" class="md-nav__link">
+    Step 6: Create Ansible Settings, Inventory and variables
   </a>
   
 </li>
@@ -632,36 +632,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-ssh-into-ansible-node" class="md-nav__link">
-    Step 1: SSH into Ansible node
+  <a href="#step-2-ssh-into-ansible-node" class="md-nav__link">
+    Step 2: SSH into Ansible node
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-verify-python" class="md-nav__link">
-    Step 2: Verify Python
+  <a href="#step-3-verify-python" class="md-nav__link">
+    Step 3: Verify Python
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
-    Step 3: Update Ubuntu package tool and install PIP &amp; Packages
+  <a href="#step-4-update-ubuntu-package-tool-and-install-pip--packages" class="md-nav__link">
+    Step 4: Update Ubuntu package tool and install PIP &amp; Packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-ansible-installation" class="md-nav__link">
-    Step 4: Ansible Installation
+  <a href="#step-5-ansible-installation" class="md-nav__link">
+    Step 5: Ansible Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-create-ansible-settings-inventory-and-variables" class="md-nav__link">
-    Step 5: Create Ansible Settings, Inventory and variables
+  <a href="#step-6-create-ansible-settings-inventory-and-variables" class="md-nav__link">
+    Step 6: Create Ansible Settings, Inventory and variables
   </a>
   
 </li>
@@ -691,19 +691,19 @@
 <p>Once you have the RDP session to the remote workstation, then you will use MTPutty client to connect to all devices (Nexus and Ansible server/node) in this lab.</p>
 <p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by <strong>clicking</strong> the <strong>MTPutty</strong> icon on the desktop:</p>
 <p><img alt="" src="../pic/1-4-mtputty.png" /></p>
-<h4 id="step-1-ssh-into-ansible-node">Step 1: SSH into Ansible node<a class="headerlink" href="#step-1-ssh-into-ansible-node" title="Permanent link"></a></h4>
+<h4 id="step-2-ssh-into-ansible-node">Step 2: SSH into Ansible node<a class="headerlink" href="#step-2-ssh-into-ansible-node" title="Permanent link"></a></h4>
 <p>In the RDP session, launch the MTPutty client.  Then SSH to Ansible node (198.18.134.150) by double <strong>clicking</strong> the <strong>Ansible</strong> icon on the left pane.</p>
 <p>The passwords are pre-configured however if prompted then use credentials of username <strong>root</strong> and password <strong>C1sco12345</strong> for SSH access</p>
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
 <p>On this Ansible node various software packages will be installed from public repositories on the Internet.</p>
-<h4 id="step-2-verify-python">Step 2: Verify Python<a class="headerlink" href="#step-2-verify-python" title="Permanent link"></a></h4>
-<p>Ansible can on any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansible.</p>
+<h4 id="step-3-verify-python">Step 3: Verify Python<a class="headerlink" href="#step-3-verify-python" title="Permanent link"></a></h4>
+<p>Ansible can run on any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansible.</p>
 <p>Hence, once successfully SSH into the ansible node, verify that python version 2.7 is pre-installed by running below command:</p>
 <div class="highlight"><pre><span></span><code>python --version
 </code></pre></div>
 <p>The output of above command confirms python version installed on Ansible node.</p>
 <p><img alt="" src="../pic/1-6-python.png" /></p>
-<h4 id="step-3-update-ubuntu-package-tool-and-install-pip--packages">Step 3: Update Ubuntu package tool and install PIP &amp; Packages<a class="headerlink" href="#step-3-update-ubuntu-package-tool-and-install-pip--packages" title="Permanent link"></a></h4>
+<h4 id="step-4-update-ubuntu-package-tool-and-install-pip--packages">Step 4: Update Ubuntu package tool and install PIP &amp; Packages<a class="headerlink" href="#step-4-update-ubuntu-package-tool-and-install-pip--packages" title="Permanent link"></a></h4>
 <ul>
 <li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) </li>
 </ul>
@@ -753,7 +753,7 @@
 </code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-6-4-python-new2-pip.png" /></p>
-<h4 id="step-4-ansible-installation">Step 4: Ansible Installation<a class="headerlink" href="#step-4-ansible-installation" title="Permanent link"></a></h4>
+<h4 id="step-5-ansible-installation">Step 5: Ansible Installation<a class="headerlink" href="#step-5-ansible-installation" title="Permanent link"></a></h4>
 <p>In this step, Ansible and the required modules for this lab are going to be installed on this node/server (running Ubuntu).</p>
 <ul>
 <li>Initiate the installation of ansible using below command:</li>
@@ -784,7 +784,7 @@
 </code></pre></div>
 <p>Below screenshot shows the execution of above command:</p>
 <p><img alt="" src="../pic/1-7-4-collection.png" /></p>
-<h4 id="step-5-create-ansible-settings-inventory-and-variables">Step 5: Create Ansible Settings, Inventory and variables<a class="headerlink" href="#step-5-create-ansible-settings-inventory-and-variables" title="Permanent link"></a></h4>
+<h4 id="step-6-create-ansible-settings-inventory-and-variables">Step 6: Create Ansible Settings, Inventory and variables<a class="headerlink" href="#step-6-create-ansible-settings-inventory-and-variables" title="Permanent link"></a></h4>
 <p>Ansible server uses host inventory to communicate with target devices (called as hosts). Like other programming languages, ansible uses variables to represent variations among different target devices.   This is important as Ansible works against multiple systems by selecting portions of systems listed in Ansible inventory.  Additionally, Ansible settings such as how SSH keys verification is done, name/location of inventory file to be used etc are adjustable via a configuration file named <code>ansible.cfg</code>.  It is an INI based file.</p>
 <ul>
 <li>Create folder named EVPN-Ansible as working environment and verify that it’s empty by issuing below commands:</li>
