@@ -1017,7 +1017,7 @@
   <h1>Task 5 - Config switches using Ansible NXOS modules</h1>
 
 <p>In this section, you will build remaining VXLAN fabric using Ansible NXOS modules.  These modules will be used to configure leaf-1, leaf-3 and spine-1 switches within the VXLAN Fabric.  In comparison to Jinja2, NXOS modules are more abstract from NXOS CLI based configuration. There is no need to have knowledge of NXOS CLI syntax to use NXOS modules.  </p>
-<p>You will follow the steps to configure feature such as BGP, Multicast, VXLAN and EVPN.  In each step, you will various Ansible NXOS modules to configure these features.  For example, to configuration of BGP neighbors between spine and leaf switches is performed by using following NXOS BGP Ansible modules:</p>
+<p>You will follow the steps to configure feature such as BGP, Multicast, VXLAN and EVPN.  In each step, you will use various Ansible NXOS modules to configure these features.  For example, configuration of BGP neighbors between spine and leaf switches is performed by using following NXOS BGP Ansible modules:</p>
 <table>
 <thead>
 <tr>
@@ -1046,7 +1046,7 @@
 </table>
 <p></n></p>
 <p><img alt="" src="../pic/4-0-1-new.png" /></p>
-<p>After each step, you can login the switches to verify configuration changes.</p>
+<p>After each step, you can login into the respective switches to verify configuration changes.</p>
 <hr />
 <h3 id="step-1-create-new-playbook">Step 1: Create new playbook<a class="headerlink" href="#step-1-create-new-playbook" title="Permanent link"></a></h3>
 <p>Again we will use roles structure to make the playbook more modular.  The roles included in the new playbook are “<strong>spine</strong>” and “<strong>leaf</strong>”.  </p>
