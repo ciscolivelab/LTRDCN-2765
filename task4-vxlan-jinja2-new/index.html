@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../task2-first-ansible/">
+        <link rel="prev" href="../task3-first-ansible/">
       
       
         <link rel="next" href="../task4-vxlan-nxos/">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Task 3 - Use of Jinja2 templates with Ansible Playbook - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Task 3 - Use Jinja2 templates with Ansible - Cisco Live 2023 LTRDCN-2765</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task 3 - Use of Jinja2 templates with Ansible Playbook
+              Task 3 - Use Jinja2 templates with Ansible
             
           </span>
         </div>
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task2-first-ansible/" class="md-nav__link">
+      <a href="../task3-first-ansible/" class="md-nav__link">
         Task 2 - First Simple Ansible Playbook
       </a>
     </li>
@@ -494,12 +494,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Task 3 - Use of Jinja2 templates with Ansible Playbook
+          Task 3 - Use Jinja2 templates with Ansible
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Task 3 - Use of Jinja2 templates with Ansible Playbook
+        Task 3 - Use Jinja2 templates with Ansible
       </a>
       
         
@@ -523,78 +523,91 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-playbook-for-jinja2-spine" class="md-nav__link">
-    Step 2: Playbook for jinja2 Spine
+  <a href="#step-2-playbook-for-jinja2_spine-host" class="md-nav__link">
+    Step 2: Playbook for "jinja2_spine" host
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Playbook for "jinja2_spine" host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-ansible-role-structure" class="md-nav__link">
+    Step 3: Ansible role structure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-initialize-two-ansible-roles-jinja2_spine--jinja2_leaf" class="md-nav__link">
+    Step 4: Initialize two Ansible roles (jinja2_spine &amp; jinja2_leaf)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-create-new-roles-and-vars" class="md-nav__link">
-    Step 3: Create new roles and vars
+  <a href="#step-5-variables-for-jina2_spine-role" class="md-nav__link">
+    Step 5: Variables for “jina2_spine” role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-create-variable-file-for-jina2_spine-role" class="md-nav__link">
-    Step 4: Create variable file for “jina2_spine” role
+  <a href="#step-6-jinja2-template-for-jinja2_spine-role" class="md-nav__link">
+    Step 6: Jinja2 template for "jinja2_spine" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-create-jinja2-template-for-spine-role" class="md-nav__link">
-    Step 5: Create Jinja2 template for spine role
+  <a href="#step-7-tasks-for-jinja2_spine-role" class="md-nav__link">
+    Step 7: Tasks for "jinja2_spine" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-create-playbook-for-jinja2_spine-role" class="md-nav__link">
-    Step 6: Create playbook for jinja2_spine role
+  <a href="#step-8-run-jinja2_fabricyml-playbook-for-spine" class="md-nav__link">
+    Step 8: Run "Jinja2_fabric.yml" playbook for spine
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-run-jinja2_fabric-playbook" class="md-nav__link">
-    Step 7: Run Jinja2_fabric playbook
+  <a href="#step-9-tasks-for-jinja2_leaf-role" class="md-nav__link">
+    Step 9: Tasks for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-modify-playbook-for-leaf" class="md-nav__link">
-    Step 8: Modify playbook for Leaf
+  <a href="#step-10-variables-for-jinja2_leaf-role" class="md-nav__link">
+    Step 10: Variables for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-variable-file-for-jinja2_leaf-role" class="md-nav__link">
-    Step 9: Variable file for jinja2_leaf role
+  <a href="#step-11-jinja2-template-for-jinja2_leaf-role" class="md-nav__link">
+    Step 11: Jinja2 template for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-10-jinja2-template-for-leaf-role" class="md-nav__link">
-    Step 10: Jinja2 template for leaf role
+  <a href="#step-12-tasks-for-jinja2_leaf-role" class="md-nav__link">
+    Step 12: Tasks for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-11-create-playbook-for-jinja2_leaf-role" class="md-nav__link">
-    Step 11: Create playbook for jinja2_leaf role
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-12-run-jinja2_fabric-playbook" class="md-nav__link">
-    Step 12: Run Jinja2_fabric playbook
+  <a href="#step-13-run-jinja2_fabricyml-playbook-for-leaf" class="md-nav__link">
+    Step 13: Run "Jinja2_fabric.yml" playbook for leaf
   </a>
   
 </li>
@@ -674,78 +687,91 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-playbook-for-jinja2-spine" class="md-nav__link">
-    Step 2: Playbook for jinja2 Spine
+  <a href="#step-2-playbook-for-jinja2_spine-host" class="md-nav__link">
+    Step 2: Playbook for "jinja2_spine" host
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Playbook for "jinja2_spine" host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-ansible-role-structure" class="md-nav__link">
+    Step 3: Ansible role structure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-initialize-two-ansible-roles-jinja2_spine--jinja2_leaf" class="md-nav__link">
+    Step 4: Initialize two Ansible roles (jinja2_spine &amp; jinja2_leaf)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-create-new-roles-and-vars" class="md-nav__link">
-    Step 3: Create new roles and vars
+  <a href="#step-5-variables-for-jina2_spine-role" class="md-nav__link">
+    Step 5: Variables for “jina2_spine” role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-create-variable-file-for-jina2_spine-role" class="md-nav__link">
-    Step 4: Create variable file for “jina2_spine” role
+  <a href="#step-6-jinja2-template-for-jinja2_spine-role" class="md-nav__link">
+    Step 6: Jinja2 template for "jinja2_spine" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-create-jinja2-template-for-spine-role" class="md-nav__link">
-    Step 5: Create Jinja2 template for spine role
+  <a href="#step-7-tasks-for-jinja2_spine-role" class="md-nav__link">
+    Step 7: Tasks for "jinja2_spine" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-create-playbook-for-jinja2_spine-role" class="md-nav__link">
-    Step 6: Create playbook for jinja2_spine role
+  <a href="#step-8-run-jinja2_fabricyml-playbook-for-spine" class="md-nav__link">
+    Step 8: Run "Jinja2_fabric.yml" playbook for spine
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-run-jinja2_fabric-playbook" class="md-nav__link">
-    Step 7: Run Jinja2_fabric playbook
+  <a href="#step-9-tasks-for-jinja2_leaf-role" class="md-nav__link">
+    Step 9: Tasks for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-modify-playbook-for-leaf" class="md-nav__link">
-    Step 8: Modify playbook for Leaf
+  <a href="#step-10-variables-for-jinja2_leaf-role" class="md-nav__link">
+    Step 10: Variables for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-variable-file-for-jinja2_leaf-role" class="md-nav__link">
-    Step 9: Variable file for jinja2_leaf role
+  <a href="#step-11-jinja2-template-for-jinja2_leaf-role" class="md-nav__link">
+    Step 11: Jinja2 template for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-10-jinja2-template-for-leaf-role" class="md-nav__link">
-    Step 10: Jinja2 template for leaf role
+  <a href="#step-12-tasks-for-jinja2_leaf-role" class="md-nav__link">
+    Step 12: Tasks for "jinja2_leaf" role
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-11-create-playbook-for-jinja2_leaf-role" class="md-nav__link">
-    Step 11: Create playbook for jinja2_leaf role
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-12-run-jinja2_fabric-playbook" class="md-nav__link">
-    Step 12: Run Jinja2_fabric playbook
+  <a href="#step-13-run-jinja2_fabricyml-playbook-for-leaf" class="md-nav__link">
+    Step 13: Run "Jinja2_fabric.yml" playbook for leaf
   </a>
   
 </li>
@@ -768,9 +794,9 @@
   
 
 
-  <h1>Task 3 - Use of Jinja2 templates with Ansible Playbook</h1>
+  <h1>Task 3 - Use Jinja2 templates with Ansible</h1>
 
-<p>In this section, we will use Jinja2 templating engine to create templates for spine and leaf switches.  Use of Jinja template provide flexibility and agility.  Jinja2 template will appear similar to the NXOS configurations. We abstract the variables out of the configuration and use simple <code>for</code> loop to feed variables into the template.  This shows the power of using Jinja2 templating engine.</p>
+<p>In this section, we will use Ansible roles and Jinja2 templating engine to create templates for spine and leaf switches.  Use of Jinja template provide flexibility and agility.  Jinja2 template will appear similar to the NXOS configurations. We abstract the variables out of the configuration and use simple <code>for</code> loop to feed variables into the template.  This shows the power of using Jinja2 templating engine.</p>
 <p>In this task, you will configure VXLAN fabric using this Jinja2 templates for one leaf (leaf-4) and one Spine (spine2) switch.</p>
 <p><img alt="" src="../pic/3-0-1-new.png" /></p>
 <hr />
@@ -783,8 +809,8 @@
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/3-1-1-new.png" /></p>
 <hr />
-<h3 id="step-2-playbook-for-jinja2-spine">Step 2: Playbook for jinja2 Spine<a class="headerlink" href="#step-2-playbook-for-jinja2-spine" title="Permanent link"></a></h3>
-<p>In this step, we will use Jina2 template and Ansible to provision the VXLAN Fabric.</p>
+<h3 id="step-2-playbook-for-jinja2_spine-host">Step 2: Playbook for "jinja2_spine" host<a class="headerlink" href="#step-2-playbook-for-jinja2_spine-host" title="Permanent link"></a></h3>
+<p>In this step, we will create a new playbook (named: <strong>jinja2_fabric.yml</strong>) for the host named "jinja2_spine".  This playbook will execute tasks by using Ansible role named <code>jinja2_spine</code>.  This role uses Jina2 template and Ansible to provision the VXLAN Fabric and will be configured in subsequent steps of this task.</p>
 <ul>
 <li>
 <p>Switch to <strong>Atom</strong>, then <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code> and <strong>Click</strong> <code>New File</code> to create a new playbook named <code>jinja2_fabric.yml</code> as shown below</p>
@@ -828,10 +854,29 @@ more hosts
 <p>Below screenshot confirms the ouptut and appropriate IP addresses of above command:</p>
 <p><img alt="" src="../pic/3-2-3.png" /></p>
 <hr />
-<h3 id="step-3-create-new-roles-and-vars">Step 3: Create new roles and vars<a class="headerlink" href="#step-3-create-new-roles-and-vars" title="Permanent link"></a></h3>
+<h4 id="step-3-ansible-role-structure">Step 3: Ansible role structure<a class="headerlink" href="#step-3-ansible-role-structure" title="Permanent link"></a></h4>
+<p>Role is very useful technique to manage a set of playbooks in Ansible.  In this lab, we will use two roles to manage configuration for Spine and Leaf switches.</p>
+<p>A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.  Here are few folders:</p>
+<ul>
+<li><code>main.yml</code> file in <code>/vars</code>  folder contains variables for a role</li>
+<li><code>main.yml</code> file in <code>/tasks</code> folder contains Ansible playbook for a role</li>
+<li><code>templates</code> folder may contain Jinja2 files, if these are used for a role </li>
+</ul>
+<p>To proceed further with roles in subsequent Tasks:</p>
+<ul>
+<li>Create roles directory in folder EVPN-Ansible by issuing below commands:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible
+mkdir roles
+</code></pre></div>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-10-1.png" /></p>
+<p>This will be used in the subsequent tasks in this lab.</p>
+<hr />
+<h3 id="step-4-initialize-two-ansible-roles-jinja2_spine--jinja2_leaf">Step 4: Initialize two Ansible roles (jinja2_spine &amp; jinja2_leaf)<a class="headerlink" href="#step-4-initialize-two-ansible-roles-jinja2_spine--jinja2_leaf" title="Permanent link"></a></h3>
 <p>In this section, we will create two new roles for provisioning Fabric with Jina2 template.</p>
 <ul>
-<li>On the <strong>MTPuTTy</strong>, go back to Ansible Server node (198.18.134.150).  Switch to ‘<strong>roles</strong>’ directory and then <strong>create</strong> <code>‘jinja2_spine’</code> and <code>‘jinja2_leaf’</code> roles using <code>ansible-galaxy init</code> as per below commands:</li>
+<li>On the <strong>MTPuTTy</strong>, go back to Ansible Server node (198.18.134.150).  Switch to ‘<strong>roles</strong>’ directory and then <strong>create</strong> <code>‘jinja2_spine’</code> and <code>‘jinja2_leaf’</code> roles using <code>ansible-galaxy init ...</code> as per below commands:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible/
 cd roles/
@@ -875,7 +920,7 @@ touch jinja2_leaf/templates/leaf.j2
 <li>Once the download is complete, you should see the new folder (such as <code>roles</code>) and all files appear on <strong>Atom</strong> as well.</li>
 </ul>
 <hr />
-<h3 id="step-4-create-variable-file-for-jina2_spine-role">Step 4: Create variable file for “jina2_spine” role<a class="headerlink" href="#step-4-create-variable-file-for-jina2_spine-role" title="Permanent link"></a></h3>
+<h3 id="step-5-variables-for-jina2_spine-role">Step 5: Variables for “jina2_spine” role<a class="headerlink" href="#step-5-variables-for-jina2_spine-role" title="Permanent link"></a></h3>
 <p>“<strong>ansible-galaxy</strong>” automatically creates empty “<strong>main.yml</strong>” file under “<strong>vars</strong>” folder. We can use “<strong>Atom</strong>” to edit this <code>main.yml</code> file to include the variables that will be used in jinja2 template.</p>
 <ul>
 <li>
@@ -923,7 +968,7 @@ touch jinja2_leaf/templates/leaf.j2
 </li>
 </ul>
 <hr />
-<h3 id="step-5-create-jinja2-template-for-spine-role">Step 5: Create Jinja2 template for spine role<a class="headerlink" href="#step-5-create-jinja2-template-for-spine-role" title="Permanent link"></a></h3>
+<h3 id="step-6-jinja2-template-for-jinja2_spine-role">Step 6: Jinja2 template for "jinja2_spine" role<a class="headerlink" href="#step-6-jinja2-template-for-jinja2_spine-role" title="Permanent link"></a></h3>
 <ul>
 <li>On <strong>Atom</strong>, <strong>Select</strong> the project folder <code>EVPN-Ansible</code> from the left pane.  Then under “<strong>roles/jinja2_spine/templates</strong>”,  <strong>Open</strong> <code>spine.j2</code> file as shown in below screenshot:</li>
 </ul>
@@ -995,7 +1040,7 @@ more spine.j2
 <p>Partial output of above command is shown in below screenshot confirming the content:</p>
 <p><img alt="" src="../pic/3-5-6.png" /></p>
 <hr />
-<h3 id="step-6-create-playbook-for-jinja2_spine-role">Step 6: Create playbook for jinja2_spine role<a class="headerlink" href="#step-6-create-playbook-for-jinja2_spine-role" title="Permanent link"></a></h3>
+<h3 id="step-7-tasks-for-jinja2_spine-role">Step 7: Tasks for "jinja2_spine" role<a class="headerlink" href="#step-7-tasks-for-jinja2_spine-role" title="Permanent link"></a></h3>
 <p>The playbook for <code>jinja2_spine</code> roles has two tasks.</p>
 <ul>
 <li>First play in the task uses ansible "<strong>template</strong>" module to generate configuration file based on jinja2 template created in last step.  The configuration file is saved in “<strong>file</strong>” folder.</li>
@@ -1028,8 +1073,8 @@ more spine.j2
 <li>Since “<strong><em>match</em></strong>” option is set to <em>none</em>, hence the module will not attempt to compare the source configuration with the running configuration on the remote device.</li>
 </ul>
 <hr />
-<h3 id="step-7-run-jinja2_fabric-playbook">Step 7: Run Jinja2_fabric playbook<a class="headerlink" href="#step-7-run-jinja2_fabric-playbook" title="Permanent link"></a></h3>
-<p>In this section you will run the playbook created in step 2 (in this task 3).  The execution of this playbook will generate configuration file for Spine-2 switch from the template.  Further, The playbook will also push the configuration file to Spine-2 switches.</p>
+<h3 id="step-8-run-jinja2_fabricyml-playbook-for-spine">Step 8: Run "Jinja2_fabric.yml" playbook for spine<a class="headerlink" href="#step-8-run-jinja2_fabricyml-playbook-for-spine" title="Permanent link"></a></h3>
+<p>In this section you will run the playbook created earlier in step 2.  The execution of this playbook will generate configuration file for Spine-2 switch from the template.  Further, The playbook will also push the configuration file to Spine-2 switches.</p>
 <ul>
 <li>Run the ansible playbook by going to folder EVPN-Ansible and executing the below commands:</li>
 </ul>
@@ -1058,8 +1103,8 @@ ansible-playbook jinja2_fabric.yml
 <p>The execution of this command is captured in below screenshot:</p>
 <p><img alt="" src="../pic/3-7-2-new.png" /></p>
 <hr />
-<h3 id="step-8-modify-playbook-for-leaf">Step 8: Modify playbook for Leaf<a class="headerlink" href="#step-8-modify-playbook-for-leaf" title="Permanent link"></a></h3>
-<p>In this section, we will use Jina2 template and Ansible to provision the VXLAN Fabric on leaf-4.   We are going to add jinja2_leaf this time in the hosts list to the already created playbook in step 2.</p>
+<h3 id="step-9-tasks-for-jinja2_leaf-role">Step 9: Tasks for "jinja2_leaf" role<a class="headerlink" href="#step-9-tasks-for-jinja2_leaf-role" title="Permanent link"></a></h3>
+<p>In this section, we will use Jina2 template and Ansible to provision the VXLAN Fabric on one of the leaf (leaf-4).   We are going to add jinja2_leaf this time in the hosts list to the already created playbook in step 2.</p>
 <ul>
 <li>
 <p>Switch to “<strong>Atom</strong>”, then <strong>click</strong> on the folder <code>EVPN-Ansible</code>, select the existing playbook <code>jinja2_fabric.yml</code> file for a role for leaf (named jinja2_leaf)</p>
@@ -1083,7 +1128,7 @@ ansible-playbook jinja2_fabric.yml
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
 </ul>
 <hr />
-<h3 id="step-9-variable-file-for-jinja2_leaf-role">Step 9: Variable file for jinja2_leaf role<a class="headerlink" href="#step-9-variable-file-for-jinja2_leaf-role" title="Permanent link"></a></h3>
+<h3 id="step-10-variables-for-jinja2_leaf-role">Step 10: Variables for "jinja2_leaf" role<a class="headerlink" href="#step-10-variables-for-jinja2_leaf-role" title="Permanent link"></a></h3>
 <ul>
 <li>On <strong>Atom</strong>, open up the project folder <code>EVPN-Ansible</code> and edit <code>main.yml</code> file under <code>roles/jinja2_leaf/vars/</code> to include following:</li>
 </ul>
@@ -1127,7 +1172,7 @@ ansible-playbook jinja2_fabric.yml
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</li>
 </ul>
 <hr />
-<h3 id="step-10-jinja2-template-for-leaf-role">Step 10: Jinja2 template for leaf role<a class="headerlink" href="#step-10-jinja2-template-for-leaf-role" title="Permanent link"></a></h3>
+<h3 id="step-11-jinja2-template-for-jinja2_leaf-role">Step 11: Jinja2 template for "jinja2_leaf" role<a class="headerlink" href="#step-11-jinja2-template-for-jinja2_leaf-role" title="Permanent link"></a></h3>
 <ul>
 <li>On <strong>Atom</strong>, you can <strong>Select</strong> the project folder <code>EVPN-Ansible</code> and <strong>open</strong> <code>leaf.j2</code> file under <code>roles/jinja2_leaf/templates/</code></li>
 </ul>
@@ -1233,7 +1278,7 @@ ansible-playbook jinja2_fabric.yml
 <li>Next on <strong>Atom</strong>, you can <strong>Select</strong> <code>File</code> and <code>Save</code> to push template file to Ansible node.</li>
 </ul>
 <hr />
-<h3 id="step-11-create-playbook-for-jinja2_leaf-role">Step 11: Create playbook for jinja2_leaf role<a class="headerlink" href="#step-11-create-playbook-for-jinja2_leaf-role" title="Permanent link"></a></h3>
+<h3 id="step-12-tasks-for-jinja2_leaf-role">Step 12: Tasks for "jinja2_leaf" role<a class="headerlink" href="#step-12-tasks-for-jinja2_leaf-role" title="Permanent link"></a></h3>
 <p>The playbook for jinja2_leaf roles has two tasks:</p>
 <ol>
 <li>First task uses ansible "<strong>template</strong>" module to generate configuration file based on jinja2 template created in last step. The configuration file is saved in <code>files</code> directory.</li>
@@ -1255,8 +1300,8 @@ ansible-playbook jinja2_fabric.yml
 <p>Below screenshot shows how the contents of <code>jinja2_leaf/taks/main.yml</code> file looks like in Atom:</p>
 <p><img alt="" src="../pic/3-11-1.png" /></p>
 <hr />
-<h3 id="step-12-run-jinja2_fabric-playbook">Step 12: Run Jinja2_fabric playbook<a class="headerlink" href="#step-12-run-jinja2_fabric-playbook" title="Permanent link"></a></h3>
-<p>In this section you will run the playbook created in step 8, this will generate configuration file for Spine-2 and Leaf-4 switches. It will also push the configuration file to both switches.</p>
+<h3 id="step-13-run-jinja2_fabricyml-playbook-for-leaf">Step 13: Run "Jinja2_fabric.yml" playbook for leaf<a class="headerlink" href="#step-13-run-jinja2_fabricyml-playbook-for-leaf" title="Permanent link"></a></h3>
+<p>In this section you will run the playbook created in step 8, this will generate configuration file for Leaf-4 switch.  It will also push the configurations to Spine-2 in addition to Leaf-4 switch.</p>
 <ul>
 <li>Before running the ansible-playbook, on the <strong>MTPuTTy</strong> you can <strong>login/SSH</strong> into the <strong>leaf-4</strong>, and verify that no bgp configurations exist by running below command:</li>
 </ul>
@@ -1274,8 +1319,7 @@ ansible-playbook jinja2_fabric.yml
 <p>It might take couple of minutes for the configuration to be pushed to via the Ansible Server. It is working in the background.</p>
 </div>
 <p>Below screenshot shows the execution of above command:</p>
-<p><strong>Note:</strong> You can ignore the <code>[WARNING]</code> messages for <code>ansible-pylibssh</code> and <code>timeout for nxos_facts</code>.
-<strong>Note:</strong> You can ignore the <code>timeout for nxos_facts</code> message.</p>
+<p><strong>Note:</strong> You can ignore the <code>timeout for nxos_facts</code> message.</p>
 <p><img alt="" src="../pic/3-12-1b.png" /></p>
 <ul>
 <li>After the configuration push is successful, <strong>login/SSH</strong> (on <strong>MTpuTT</strong> SSH session) to <strong>leaf-4</strong> switch to verify configuration has been pushed by running below command:</li>
@@ -1314,7 +1358,7 @@ ansible-playbook jinja2_fabric.yml
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../task2-first-ansible/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 2 - First Simple Ansible Playbook" rel="prev">
+          <a href="../task3-first-ansible/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 2 - First Simple Ansible Playbook" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>

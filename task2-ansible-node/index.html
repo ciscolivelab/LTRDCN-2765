@@ -12,7 +12,7 @@
         <link rel="prev" href="../task1-VPN/">
       
       
-        <link rel="next" href="../task2-first-ansible/">
+        <link rel="next" href="../task3-first-ansible/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
@@ -529,13 +529,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#step-6-ansible-role-structure" class="md-nav__link">
-    Step 6: Ansible role structure
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -551,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../task2-first-ansible/" class="md-nav__link">
+      <a href="../task3-first-ansible/" class="md-nav__link">
         Task 2 - First Simple Ansible Playbook
       </a>
     </li>
@@ -565,8 +558,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../task3-vxlan-jinja2-new/" class="md-nav__link">
-        Task 3 - Use of Jinja2 templates with Ansible Playbook
+      <a href="../task4-vxlan-jinja2-new/" class="md-nav__link">
+        Task 3 - Use Jinja2 templates with Ansible
       </a>
     </li>
   
@@ -669,13 +662,6 @@
         <li class="md-nav__item">
   <a href="#step-5-create-ansible-settings-inventory-and-variables" class="md-nav__link">
     Step 5: Create Ansible Settings, Inventory and variables
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-ansible-role-structure" class="md-nav__link">
-    Step 6: Ansible role structure
   </a>
   
 </li>
@@ -1000,25 +986,6 @@ EOF
 </code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-202.png" /></p>
-<h4 id="step-6-ansible-role-structure">Step 6: Ansible role structure<a class="headerlink" href="#step-6-ansible-role-structure" title="Permanent link"></a></h4>
-<p>Role is very useful technique to manage a set of playbooks in Ansible.
-In this lab, we will use two different playbooks to manage configuration for Spine and Leaf switches.</p>
-<p>A role directory structure contains several directories of defaults, vars, files, handlers, meta, tasks and templates.  Here are few folders:</p>
-<ul>
-<li><code>main.yml</code> file in <code>/vars</code>  folder contains variables for a role</li>
-<li><code>main.yml</code> file in <code>/tasks</code> folder contains Ansible playbook for a role</li>
-<li><code>templates</code> folder may contain Jinja2 files, if these are used for a role </li>
-</ul>
-<p>To proceed further with roles in subsequent Tasks:</p>
-<ul>
-<li>Create roles directory in folder EVPN-Ansible by issuing below commands:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible
-mkdir roles
-</code></pre></div>
-<p>Below screenshot shows the execution of above commands:</p>
-<p><img alt="" src="../pic/1-10-1.png" /></p>
-<p>This will be used in the subsequent tasks in this lab.</p>
 
 
 
@@ -1063,7 +1030,7 @@ mkdir roles
         
         
           
-          <a href="../task2-first-ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 2 - First Simple Ansible Playbook" rel="next">
+          <a href="../task3-first-ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 2 - First Simple Ansible Playbook" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
