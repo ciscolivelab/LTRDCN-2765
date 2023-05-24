@@ -565,6 +565,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-7-verify-vm-connectivity-using-ansible-ad-hoc-command" class="md-nav__link">
+    Step 7: Verify VM connectivity using Ansible ad-hoc command
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -702,6 +709,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-7-verify-vm-connectivity-using-ansible-ad-hoc-command" class="md-nav__link">
+    Step 7: Verify VM connectivity using Ansible ad-hoc command
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -733,15 +747,15 @@
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
 <p>On this Ansible node various software packages will be installed from public repositories on the Internet.</p>
 <h4 id="step-3-verify-python">Step 3: Verify Python<a class="headerlink" href="#step-3-verify-python" title="Permanent link"></a></h4>
-<p>Ansible can run on any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansible.</p>
-<p>Hence, once successfully SSH into the ansible node, verify that python version 2.7 is pre-installed by running below command:</p>
+<p>Ansible can run on any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum version of python (3.8 is used in this lab).  It is required for installing additional python packages and features of ansible.</p>
+<p>Hence, after successful SSH into the ansible node, verify that python version 3.8.10 is pre-installed by running below command:</p>
 <div class="highlight"><pre><span></span><code>python --version
 </code></pre></div>
 <p>The output of above command confirms python version installed on Ansible node.</p>
 <p><img alt="" src="../pic/1-6-python.png" /></p>
 <h4 id="step-4-update-ubuntu-package-tool-and-install-pip--packages">Step 4: Update Ubuntu package tool and install PIP &amp; Packages<a class="headerlink" href="#step-4-update-ubuntu-package-tool-and-install-pip--packages" title="Permanent link"></a></h4>
 <ul>
-<li>After verifying we have the minimum version of python installed, we are now going to update Ubuntu package tool (using <code>apt-get update</code>) </li>
+<li>After verifying the minimum version of python, we are now going to update Ubuntu packages on this host/node - by using below <code>apt-get update</code> command:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>apt-get update
 </code></pre></div>
@@ -1022,6 +1036,30 @@ EOF
 </code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-9a-4-202.png" /></p>
+<h4 id="step-7-verify-vm-connectivity-using-ansible-ad-hoc-command">Step 7: Verify VM connectivity using Ansible ad-hoc command<a class="headerlink" href="#step-7-verify-vm-connectivity-using-ansible-ad-hoc-command" title="Permanent link"></a></h4>
+<p>Ansible ad-hoc command uses the /usr/bin/ansible command-line tool to execute one-time task on managed node(s).  In this step, you will use ansible command module to verify reachability to all nodes/devices (Nexus switches) in the inventory file.</p>
+<ul>
+<li>Run the below command to ping all leaf and spine switches in the inventory file</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible/
+ansible all -v -i /root/EVPN-Ansible/hosts -c local -m command -a &quot;ping {{inventory_hostname}} -c 2&quot;
+</code></pre></div>
+<p>Below screenshot shows the execution of above commands:</p>
+<p><img alt="" src="../pic/1-10-1-ping.png" /></p>
+<ul>
+<li>
+<p>If all the devices are reachable, then you have <strong>completed</strong> this Task and can now proceed to <code>Task 3</code>.</p>
+</li>
+<li>
+<p>If one or multiple devices are <strong>not reachable</strong>, then you can check status of the specific Virtual Machine (VM) by launching the VMware vSphere Client (below icon) on the desktop (in your RDP session).  The login credentials (root / C1sco12345) and IP address should be pre-popoluted.  After logging into vSphere client you will note, each Nexus switch is running as VM (NX-OSv) in this lab.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/1-10-1-vsphere.png" /></p>
+<ul>
+<li>Upon launching the vSphere Client, you should validate that all virtual machines (VMs) are operational and running, as depicted in the image below.  In the event a VM did not respond, during the ping test in previous step, you will need to power it off and then power it back on i.e., Right Click on VM name in left sidebar of vSphere Client and then Click <code>Power</code> &gt; <code>Power Off</code>, wait for few seconds for it power off, and then again Right Click <code>Power</code> &gt; <code>Power On</code>.   </li>
+</ul>
+<p><img alt="" src="../pic/1-10-1-vm.png" /></p>
+<p>The boot up (powering on) of NX-OSv takes several minutes.  You can procceed to Task 3 and check the status of respective NX-OSv device(s) again by pinging after 10-15 minutes.</p>
 
 
 
