@@ -1051,12 +1051,17 @@ ansible all -v -i /root/EVPN-Ansible/hosts -c local -m command -a &quot;ping {{i
 <p>If all the devices are reachable, then you have <strong>completed</strong> this Task and can now proceed to <code>Task 3</code>.</p>
 </li>
 <li>
-<p>If one or multiple devices are <strong>not reachable</strong>, then you can check status of the specific Virtual Machine (VM) by launching the VMware vSphere Client (below icon) on the desktop (in your RDP session).  The login credentials (root / C1sco12345) and IP address should be pre-popoluted.  After logging into vSphere client you will note, each Nexus switch is running as VM (NX-OSv) in this lab.</p>
+<p>If one or multiple devices are <strong>not reachable</strong> (<code>Destination Host Unreachable</code> message), then you can check status of the specific Virtual Machine (VM) by launching the VMware vSphere Client (below icon) on the desktop (in your RDP session).  The login credentials (root / C1sco12345) and IP address should be pre-popoluted.  After logging into vSphere client you will note (on the left sidebar) that all Nexus switches are running as VM (NX-OSv) in this lab.</p>
 </li>
 </ul>
 <p><img alt="" src="../pic/1-10-1-vsphere.png" /></p>
 <ul>
-<li>Upon launching the vSphere Client, you should validate that all virtual machines (VMs) are operational and running, as depicted in the image below.  In the event a VM did not respond, during the ping test in previous step, you will need to power it off and then power it back on i.e., Right Click on VM name in left sidebar of vSphere Client and then Click <code>Power</code> &gt; <code>Power Off</code>, wait for few seconds for it power off, and then again Right Click <code>Power</code> &gt; <code>Power On</code>.   </li>
+<li>
+<p>Upon launching the vSphere Client, validate that all virtual machines (VMs) are <code>Powered on</code>, operational and running - as depicted in the image below.  If any of the VM is in power off state, then on the left sidebar Right click on the VM name and Click <code>Power</code> &gt; <code>Power On</code>.</p>
+</li>
+<li>
+<p>In the event a VM failed the ping test in previous step, then you will need to power it off and then power it back on i.e., Right Click on VM name in left sidebar of vSphere Client and Click <code>Power</code> &gt; <code>Power Off</code>, wait for few seconds for it to power off, and then again Right Click <code>Power</code> &gt; <code>Power On</code>.</p>
+</li>
 </ul>
 <p><img alt="" src="../pic/1-10-1-vm.png" /></p>
 <p>The boot up (powering on) of NX-OSv takes several minutes.  You can procceed to Task 3 and check the status of respective NX-OSv device(s) again by pinging after 10-15 minutes.</p>
