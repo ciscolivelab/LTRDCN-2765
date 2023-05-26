@@ -590,14 +590,14 @@
       
         <li class="md-nav__item">
   <a href="#step-2-install-git-and-gitlab-runner" class="md-nav__link">
-    Step 2: Install git and gitlab runner
+    Step 2: Install git and GitLab runner
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-version-control-playbooks" class="md-nav__link">
-    Step 3: Version control playbooks
+  <a href="#step-3-gitlab-repository-setup" class="md-nav__link">
+    Step 3: GitLab repository setup
   </a>
   
 </li>
@@ -700,14 +700,14 @@
       
         <li class="md-nav__item">
   <a href="#step-2-install-git-and-gitlab-runner" class="md-nav__link">
-    Step 2: Install git and gitlab runner
+    Step 2: Install git and GitLab runner
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-version-control-playbooks" class="md-nav__link">
-    Step 3: Version control playbooks
+  <a href="#step-3-gitlab-repository-setup" class="md-nav__link">
+    Step 3: GitLab repository setup
   </a>
   
 </li>
@@ -1314,7 +1314,7 @@ PLAY RECAP *********************************************************************
 root@ubuntu:~/EVPN-Ansible#
 </code></pre></div>
 <hr />
-<h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and gitlab runner<a class="headerlink" href="#step-2-install-git-and-gitlab-runner" title="Permanent link"></a></h3>
+<h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and GitLab runner<a class="headerlink" href="#step-2-install-git-and-gitlab-runner" title="Permanent link"></a></h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
 <li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below package installation command to install git:</li>
@@ -1338,15 +1338,19 @@ apt-get install git
 </code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-3-3.png" /></p>
-<h3 id="step-3-version-control-playbooks">Step 3: Version control playbooks<a class="headerlink" href="#step-3-version-control-playbooks" title="Permanent link"></a></h3>
-<p>In this step, you will use Gitlab to set version control for the playbooks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may see installation of newer version of gitlab-runner.</p>
+</div>
+<h3 id="step-3-gitlab-repository-setup">Step 3: GitLab repository setup<a class="headerlink" href="#step-3-gitlab-repository-setup" title="Permanent link"></a></h3>
+<p>In this step, you will use setup repository for your respective Pod on Gitlab (SaaS) and then push your code (Ansible files) to this repository.  This basically sets up Version Control System on GitLab.  In addition, some additional GitLab settings will be modified as well.</p>
 <ul>
 <li>
 <p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>#####</code> as shown below.</p>
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
-<p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, click <strong>Create a project</strong> from main page as shown below:</p>
+<p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, You may see a main page without any existing projects.  This is shown in below screenshot.  Further, click on <strong>Create a project</strong> from main page (shown below).  <strong><em>Note:</em></strong>, since this is a shared account, so after logging into gitlab, may see list of existing Projects (repositories) that others have created.  If this case, click on <strong>New Project</strong> button on the right pane.  Then you will see below <code>Create new Project</code> page. </p>
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
@@ -1424,24 +1428,28 @@ git status
 git commit -m &quot;initial commit&quot;
 </code></pre></div>
 <ul>
-<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code></li>
+<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository (SaaS) with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code>git push -f origin main
 </code></pre></div>
-<p>Below screenshot shows output of the above command:</p>
+<p>Below screenshot shows output of the above command for pod_1 as an example:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
+<p>Now all your ansible code (playbooks, roles etc files) are pushed to your GitLab repository.  You can check the contents on web browser by going back to URL for your respective pod repository <strong><code>https://gitlab.com/lab.ciscolive/pod_{ID}</code></strong>.  You must replace {ID} with your respective pod number.</p>
 <h3 id="step-4-add-cicd-pipeline-file">Step 4: Add CI/CD pipeline file<a class="headerlink" href="#step-4-add-cicd-pipeline-file" title="Permanent link"></a></h3>
+<p>Now that our repository and all the content is setup properly, we will create a pipeline file to perform specific actions (i.e., run Ansible playbook in our case).  Further, we will also define rules that will trigger (i.e., run) this pipeline based upon certain conditions.</p>
 <p>In this step, you will create CI/CD pipeline file. Gitlab uses a special file named <strong><code>.gitlab-ci.yml</code></strong> for CI/CD configuration.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The file name starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
+<p>The filename starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
 </div>
-<p>This file uses YAML syntax and needs to be placed in root directory of the repository.  In this file, you define your intent for the pipeline using a declarative syntax (in YAML) such as:
-- The stages you want run in the pipeline
-- The scripts you want run in each stage
-- The runner you want use for each script
-- How is the runner triggered for each script</p>
-<p>Pipeline file can be added from GitLab UI using pipeline file editor, or from local and push to GitLab repo using git commands.  We will use Atom to add pipeline file in this lab.</p>
+<p>This file uses YAML syntax and needs to be placed in root directory of the repository.  In this file, you define your intent for the pipeline using a declarative syntax (in YAML) such as:</p>
+<ul>
+<li>The stages you want run in the pipeline</li>
+<li>The scripts you want run in each stage</li>
+<li>The runner you want use for each script</li>
+<li>How is the runner triggered for each script</li>
+</ul>
+<p>Pipeline file can be added from GitLab UI using pipeline file editor, or create it locally and then push to GitLab repo using git commands.  We will use the latter option i.e., create this file locally and then push it GitLab repository.  We will use Atom to create this pipeline file.</p>
 <ul>
 <li>
 <p>Switch to <strong>"Atom"</strong> application on your remote desktop.  Right click on the folder <strong>EVPN-Ansible</strong> and Click <strong>New File</strong> to create a new file named <strong>.gitlab-ci.yml</strong></p>
@@ -1519,7 +1527,7 @@ git push origin main
 <p>Below screenshot shows the outputs of the commands for Pod_1 (note your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner<a class="headerlink" href="#step-5-register-local-gitlab-runner" title="Permanent link"></a></h3>
-<p>In this task, you will create local gitlab runner on Ansible server and register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project on GitLab.</p>
+<p>We are ready to run our pipeline.  However the pipeline is run by a gitlab-runner.  And this runner needs to be registerted to GitLab (SaaS).  In this task, you will create local GitLab runner on Ansible server and then register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project on GitLab.</p>
 <ul>
 <li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left sidebar, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong><code>Runners</code></strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
 </ul>
@@ -1537,17 +1545,15 @@ git push origin main
 </ul>
 <p><img alt="" src="../pic/5-5-1b.png" /></p>
 <ul>
-<li>
-<p>On the next <strong><code>Register runner</code></strong> page, under <strong><code>Step 1</code></strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the gitlab runner that runs on Ansible server/node.  </p>
-</li>
-<li>
-<p>Then click on <strong>Go to runners page</strong>.  If <code>Leave site?</code> prompt is displayed, then click <strong><code>Leave</code></strong> to proceed.</p>
-</li>
+<li>On the next <strong><code>Register runner</code></strong> page, under <strong><code>Step 1</code></strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the gitlab runner that runs on Ansible server/node.  </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Make sure to copy the runner token in this step.</p>
 </div>
+<ul>
+<li>Then click on <strong>Go to runners page</strong> button.  If <code>Leave site?</code> prompt is displayed, then click <strong><code>Leave</code></strong> to proceed.</li>
+</ul>
 <p><img alt="" src="../pic/5-5-1c.png" /></p>
 <ul>
 <li>As shown in below screenshot, under <strong><code>Shared runners</code></strong>, click on the toggle switch named <strong>Enable shared runners for this project</strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
