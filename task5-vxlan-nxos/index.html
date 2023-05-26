@@ -1858,12 +1858,24 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 </ul>
 <div class="highlight"><pre><span></span><code>[root@server-1 ~]# ping 172.21.140.1 -c 5
 PING 172.21.140.1 (172.21.140.1) 56(84) bytes of data.
-64 bytes from 172.21.140.1: icmp_seq=2 ttl=255 time=15.7 ms
-64 bytes from 172.21.140.1: icmp_seq=3 ttl=255 time=4.11 ms
+64 bytes from 172.21.140.1: icmp_seq=1 ttl=255 time=2.40 ms
+64 bytes from 172.21.140.1: icmp_seq=2 ttl=255 time=2.70 ms
+64 bytes from 172.21.140.1: icmp_seq=3 ttl=255 time=3.52 ms
+64 bytes from 172.21.140.1: icmp_seq=4 ttl=255 time=2.46 ms
+64 bytes from 172.21.140.1: icmp_seq=5 ttl=255 time=2.48 ms
+
+--- 172.21.140.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4009ms
+rtt min/avg/max/mdev = 2.407/2.717/3.520/0.414 ms
+[root@server-1 ~]#
 </code></pre></div>
 <ul>
-<li>Next, <strong>Ping</strong> server 3 and server 4 from server-1 (in same VLAN and inter-VLAN respectively) by using <strong><code>ping 172.21.140.11 -c 5</code></strong> and <strong><code>ping 172.21.141.11 -c 5</code></strong> commands as shown below:</li>
+<li>Next, <strong>Ping</strong> server-3 and server-4 from server-1 (in same VLAN and inter-VLAN respectively) by using <strong><code>ping 172.21.140.11 -c 5</code></strong> and <strong><code>ping 172.21.141.11 -c 5</code></strong> commands as shown below:</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Re-run the ping command if inter-VLAN ping to 172.21.141.11 initially fails.</p>
+</div>
 <div class="highlight"><pre><span></span><code>[root@server-1 ~]# ping 172.21.140.11 -c 5
 PING 172.21.140.11 (172.21.140.11) 56(84) bytes of data.
 64 bytes from 172.21.140.11: icmp_seq=1 ttl=64 time=8.51 ms
