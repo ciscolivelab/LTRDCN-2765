@@ -809,16 +809,16 @@
 <p class="admonition-title">Note</p>
 <p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="err">	</span><span class="nt">tasks</span><span class="p">:</span>
-<span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provision VLAN</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_vlans</span><span class="p">:</span>
-<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
-<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{item}}&quot;</span>
-<span class="err">	</span><span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">with_items</span><span class="p">:</span>
-<span class="err">	</span><span class="w">     </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">140</span>
-<span class="err">	</span><span class="w">     </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">141</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add vlans</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provision VLAN</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_vlans</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vlan_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{item}}&quot;</span>
+<span class="w">            </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span>
+<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add vlans</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -899,27 +899,27 @@ The below screenshot shows the execution of the playbook:</p>
 <p class="admonition-title">Note</p>
 <p>YAML is space sensitive. Hence be careful with the spaces in below section.  You may copy and paste the full content (start to finish) from below to make sure that spaces are copied properly.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure server facing port to L2</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
-<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
-<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
-<span class="err">	</span><span class="w">          </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">layer2</span>
-<span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;101&quot; in inventory_hostname) or (&quot;103&quot; in inventory_hostname)</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
-<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
-<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
-<span class="err">	</span><span class="w">          </span><span class="nt">access</span><span class="p">:</span>
-<span class="err">	</span><span class="w">            </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
-<span class="err">	</span><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
-<span class="err">	</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;102&quot; in inventory_hostname) or (&quot;104&quot; in inventory_hostname)</span>
-<span class="err">	</span><span class="w">    </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
-<span class="err">	</span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
-<span class="err">	</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
-<span class="err">	</span><span class="w">          </span><span class="nt">access</span><span class="p">:</span>
-<span class="err">	</span><span class="w">            </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span>
-<span class="err">	</span><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure server facing port to L2</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
+<span class="w">              </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">layer2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
+<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;101&quot; in inventory_hostname) or (&quot;103&quot; in inventory_hostname)</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
+<span class="w">              </span><span class="nt">access</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configure VLAN for server port</span>
+<span class="w">        </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(&quot;102&quot; in inventory_hostname) or (&quot;104&quot; in inventory_hostname)</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_l2_interfaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eth1/3</span>
+<span class="w">              </span><span class="nt">access</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">vlan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141</span>
+<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overridden</span>
 </code></pre></div>
 <ul>
 <li><strong>Click</strong> <code>File</code> and <code>Save</code> on ATOM.  This will save the playbook, and also ftp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package</li>
