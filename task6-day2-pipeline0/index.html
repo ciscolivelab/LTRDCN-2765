@@ -1343,14 +1343,17 @@ apt-get install git
 <p>You may see installation of newer version of gitlab-runner.</p>
 </div>
 <h3 id="step-3-gitlab-repository-setup">Step 3: GitLab repository setup<a class="headerlink" href="#step-3-gitlab-repository-setup" title="Permanent link"></a></h3>
-<p>In this step, you will use setup repository for your respective Pod on Gitlab (SaaS) and then push your code (Ansible files) to this repository.  This basically sets up Version Control System on GitLab.  In addition, some additional GitLab settings will be modified as well.</p>
+<p>In this step, you will use setup repository for your respective Pod on Gitlab (SaaS) and then push your code (Ansible files) to this repository.  This basically uses Version Control System (VCS) capabilities on GitLab.  In addition, some GitLab settings will be modified to allow access rights to the repository.</p>
 <ul>
 <li>
 <p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>#####</code> as shown below.</p>
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
-<p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, You may see a main page without any existing projects.  This is shown in below screenshot.  Further, click on <strong>Create a project</strong> from main page (shown below).  <strong><em>Note:</em></strong>, since this is a shared account, so after logging into gitlab, may see list of existing Projects (repositories) that others have created.  If this case, click on <strong>New Project</strong> button on the right pane.  Then you will see below <code>Create new Project</code> page. </p>
+<p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, You may see a main page without any existing projects - this is shown in below screenshot.  To create a new project click on <strong>Create a project</strong> icon on this main page (shown below).  </p>
+<ul>
+<li><strong><em>However</em></strong> after signing in to gitlab account you may see Projects (repositories).  The reason is that a single account (lab.ciscolive) is shared for all attendees/pods - hence after logging into gitlab, you may also see projects that others have created.  If this case, click on <strong>New Project</strong> button on the right pane.  Then you will see below <code>Create new Project</code> page. </li>
+</ul>
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 </li>
 <li>
