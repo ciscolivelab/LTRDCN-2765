@@ -1690,7 +1690,8 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 <li>
 <p>Below screenshot show partial output of above command:</p>
 <p><img alt="" src="../pic/4-5-1a.png" />
-<img alt="" src="../pic/4-5-1b.png" /></p>
+<img alt="" src="../pic/4-5-1b.png" />
+<img alt="" src="../pic/4-5-1c.png" /></p>
 </li>
 <li>
 <p>After finishing this task: <strong>login</strong> to any <strong>leaf</strong> switch (on MTPutty) to verify VXLAN configuration and the VNI by issuing the command:  </p>
@@ -1874,7 +1875,7 @@ rtt min/avg/max/mdev = 2.407/2.717/3.520/0.414 ms
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Re-run the ping command if inter-VLAN ping to 172.21.141.11 initially fails.</p>
+<p>Re-run the ping command if inter-VLAN ping to 172.21.141.11 initially fails due to ARP discovery.</p>
 </div>
 <div class="highlight"><pre><span></span><code>[root@server-1 ~]# ping 172.21.140.11 -c 5
 PING 172.21.140.11 (172.21.140.11) 56(84) bytes of data.
