@@ -635,19 +635,6 @@
     Step 8: Merge code to main branch
   </a>
   
-    <nav class="md-nav" aria-label="Step 8: Merge code to main branch">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#so-what-is-happening" class="md-nav__link">
-    So what is happening?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -744,19 +731,6 @@
   <a href="#step-8-merge-code-to-main-branch" class="md-nav__link">
     Step 8: Merge code to main branch
   </a>
-  
-    <nav class="md-nav" aria-label="Step 8: Merge code to main branch">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#so-what-is-happening" class="md-nav__link">
-    So what is happening?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1771,7 +1745,7 @@ git push -f origin newvni
 </ul>
 <p><img alt="" src="../pic/5-8-3a.png" /></p>
 <p>Wait for the <code>Merged by lab.ciscolive</code> message and for <code>Merge details</code> to appear on this page.</p>
-<h6 id="so-what-is-happening">So what is happening?<a class="headerlink" href="#so-what-is-happening" title="Permanent link"></a></h6>
+<p><strong><em>So what is happening?</em></strong></p>
 <p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
 <ul>
 <li>
