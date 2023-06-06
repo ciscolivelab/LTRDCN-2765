@@ -15,7 +15,7 @@
     
     
       
-        <title>Task 5: Day 2 operation using CI Pipeline - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Task 6 - Day 2 operation using GitLab CICD Pipeline - Cisco Live 2023 LTRDCN-2765</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#task-5-day-2-operation-using-ci-pipeline" class="md-skip">
+        <a href="#task-6---day-2-operation-using-gitlab-cicd-pipeline" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task 5: Day 2 operation using CI Pipeline
+              Task 6 - Day 2 operation using GitLab CICD Pipeline
             
           </span>
         </div>
@@ -656,7 +656,7 @@
   
 
 
-<h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline<a class="headerlink" href="#task-5-day-2-operation-using-ci-pipeline" title="Permanent link"></a></h1>
+<h1 id="task-6---day-2-operation-using-gitlab-cicd-pipeline">Task 6 - Day 2 operation using GitLab CICD Pipeline<a class="headerlink" href="#task-6---day-2-operation-using-gitlab-cicd-pipeline" title="Permanent link"></a></h1>
 <p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose</p>
 <ul>
 <li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system. </li>
@@ -681,6 +681,8 @@
 <li>Verify CI pipeline in test and staging stages</li>
 <li>Commit the merger and verify CI Pipeline in production stage</li>
 </ul>
+<p>Below picture gives an overview of the overall activities for this task i.e., multiple environments (testing, staging, production), CICD Pipeline using GitLab and Version Control System (VCS) capabilities using GitLab.</p>
+<p><img alt="" src="../pic/5-0-1.png" /></p>
 <hr />
 <h3 id="step-1-playbook-to-verify-underlay-and-overlay">Step 1: Playbook to verify underlay and overlay<a class="headerlink" href="#step-1-playbook-to-verify-underlay-and-overlay" title="Permanent link"></a></h3>
 <p>In this step, you will create the playbook to verify underlay and overlay operation. The playbook will be applied to all leaf switches to verify the below commands:</p>
@@ -1286,7 +1288,7 @@ git init
 <p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
-<li>On the Ansible node, run following commands to add the remote repository as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
+<li>On the Ansible node, run following commands to add the remote repository (previously copied from <code>Clone with HTTPS</code> on GitLab) as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
 git remote -v
@@ -1535,7 +1537,7 @@ git push -f origin newvni
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results<a class="headerlink" href="#step-7-review-pipeline-testing-and-staging-results" title="Permanent link"></a></h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
 <ul>
-<li>Switch to Chrome brower with GitLab project page.  On the navigation menu on left side, select <strong>CI/CD &gt; Pipelines</strong>  as shown below:</li>
+<li>Switch to Chrome brower with GitLab project page.  On the navigation menu on left side, select <strong>Build &gt; Pipelines</strong>  as shown below:</li>
 </ul>
 <p><img alt="" src="../pic/5-7-1.png" /></p>
 <ul>
@@ -1543,7 +1545,7 @@ git push -f origin newvni
 </ul>
 <p><img alt="" src="../pic/5-7-2.png" /></p>
 <ul>
-<li>After both pipeline stages are passed, you can verify the result from the artifacts.  Click on the down arrow on the right most of the <code>pipeline</code> page and select <strong>Download artifacts</strong> to download the <code>staging:artifacts</code> as zip file.</li>
+<li>After both pipeline stages are passed, you can verify the result from the artifacts.  Click on the down arrow on the right most of the <code>pipeline</code> page and select <strong>Download artifacts</strong> to download the <code>staging:archive</code> as zip file.</li>
 </ul>
 <p><img alt="" src="../pic/5-7-3.png" /></p>
 <ul>
@@ -1653,7 +1655,7 @@ git push -f origin newvni
 <p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
 <ul>
 <li>
-<p>Switch to Chrome brower with GitLab project page (your respective <code>Pod_{ID}</code>), select <strong>CI/CD &gt; Pipelines</strong> from navigation menu on the left sidebar.</p>
+<p>Switch to Chrome brower with GitLab project page (your respective <code>Pod_{ID}</code>), select <strong>Build &gt; Pipelines</strong> from navigation menu on the left sidebar.</p>
 </li>
 <li>
 <p>Deploy the changes to production enviroment by selecting on the <code>Play</code> <strong>button</strong> and then click on <strong>deploy</strong> as shown in the screenshot below:</p>
