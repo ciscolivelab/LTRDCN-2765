@@ -15,7 +15,7 @@
     
     
       
-        <title>Task 5: Day 2 operation using CI Pipeline - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Task 6 - Day 2 operation using GitLab CICD Pipeline - Cisco Live 2023 LTRDCN-2765</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#task-5-day-2-operation-using-ci-pipeline" class="md-skip">
+        <a href="#task-6---day-2-operation-using-gitlab-cicd-pipeline" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Task 5: Day 2 operation using CI Pipeline
+              Task 6 - Day 2 operation using GitLab CICD Pipeline
             
           </span>
         </div>
@@ -656,7 +656,7 @@
   
 
 
-<h1 id="task-5-day-2-operation-using-ci-pipeline">Task 5: Day 2 operation using CI Pipeline<a class="headerlink" href="#task-5-day-2-operation-using-ci-pipeline" title="Permanent link"></a></h1>
+<h1 id="task-6---day-2-operation-using-gitlab-cicd-pipeline">Task 6 - Day 2 operation using GitLab CICD Pipeline<a class="headerlink" href="#task-6---day-2-operation-using-gitlab-cicd-pipeline" title="Permanent link"></a></h1>
 <p>We will implement CI/CD pipeline for day 2 operation tasks in this section.  GitLab and GitLab runner will be used for this purpose</p>
 <ul>
 <li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system. </li>
@@ -1226,7 +1226,7 @@ apt-get install git
 <p>In this step, you will use setup repository for your respective Pod on Gitlab (SaaS) and then push your code (Ansible files) to this repository.  This basically uses Version Control System (VCS) capabilities on GitLab.  In addition, some GitLab settings will be modified to allow access rights to the repository.</p>
 <ul>
 <li>
-<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>#####</code> as shown below.</p>
+<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>C1sco12345</code> as shown below.</p>
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
 <li>
@@ -1288,7 +1288,7 @@ git init
 <p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
-<li>On the Ansible node, run following commands to add the remote repository as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
+<li>On the Ansible node, run following commands to add the remote repository (previously copied from <code>Clone with HTTPS</code> on GitLab) as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
 git remote -v
@@ -1314,7 +1314,7 @@ git status
 git commit -m &quot;initial commit&quot;
 </code></pre></div>
 <ul>
-<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository (SaaS) with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code></li>
+<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository (SaaS) with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code>git push -f origin main
 </code></pre></div>
@@ -1404,7 +1404,7 @@ git commit -m &quot;initial commit&quot;
 </ul>
 <p>Now lets push this file to GitLab centralized repository by execution of below steps:</p>
 <ul>
-<li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code>for GitLab access:</li>
+<li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git add .gitlab-ci.yml
 git commit -m &quot;add ci file&quot;
@@ -1427,7 +1427,7 @@ git push origin main
 </ul>
 <p><img alt="" src="../pic/5-5-1a.png" /></p>
 <ul>
-<li>On the next <code>New project runner</code> page, select <strong>Linux</strong> Operating systems under the <strong><code>Platform</code></strong>.  Further, enter a <strong><code>Tags</code></strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Create runner</strong> at the bottom of this page.  This is shown in below screenshot:</li>
+<li>On the next <code>New project runner</code> page, select <strong>Linux</strong> Operating systems under the <strong><code>Platform</code></strong>.  Further, enter a <strong><code>Tags</code></strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
 </ul>
 <p><img alt="" src="../pic/5-5-1b.png" /></p>
 <ul>
@@ -1532,12 +1532,12 @@ git add .
 git commit -m &quot;newvni&quot;
 git push -f origin newvni
 </code></pre></div>
-<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>#####</code> for gitlab access</p>
+<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>C1sco12345</code> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results<a class="headerlink" href="#step-7-review-pipeline-testing-and-staging-results" title="Permanent link"></a></h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
 <ul>
-<li>Switch to Chrome brower with GitLab project page.  On the navigation menu on left side, select <strong>CI/CD &gt; Pipelines</strong>  as shown below:</li>
+<li>Switch to Chrome brower with GitLab project page.  On the navigation menu on left side, select <strong>Build &gt; Pipelines</strong>  as shown below:</li>
 </ul>
 <p><img alt="" src="../pic/5-7-1.png" /></p>
 <ul>
@@ -1545,7 +1545,7 @@ git push -f origin newvni
 </ul>
 <p><img alt="" src="../pic/5-7-2.png" /></p>
 <ul>
-<li>After both pipeline stages are passed, you can verify the result from the artifacts.  Click on the down arrow on the right most of the <code>pipeline</code> page and select <strong>Download artifacts</strong> to download the <code>staging:artifacts</code> as zip file.</li>
+<li>After both pipeline stages are passed, you can verify the result from the artifacts.  Click on the down arrow on the right most of the <code>pipeline</code> page and select <strong>Download artifacts</strong> to download the <code>staging:archive</code> as zip file.</li>
 </ul>
 <p><img alt="" src="../pic/5-7-3.png" /></p>
 <ul>
@@ -1655,7 +1655,7 @@ git push -f origin newvni
 <p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
 <ul>
 <li>
-<p>Switch to Chrome brower with GitLab project page (your respective <code>Pod_{ID}</code>), select <strong>CI/CD &gt; Pipelines</strong> from navigation menu on the left sidebar.</p>
+<p>Switch to Chrome brower with GitLab project page (your respective <code>Pod_{ID}</code>), select <strong>Build &gt; Pipelines</strong> from navigation menu on the left sidebar.</p>
 </li>
 <li>
 <p>Deploy the changes to production enviroment by selecting on the <code>Play</code> <strong>button</strong> and then click on <strong>deploy</strong> as shown in the screenshot below:</p>
