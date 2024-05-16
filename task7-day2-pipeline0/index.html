@@ -687,40 +687,40 @@
 <ul>
 <li>Switch to <strong>Atom</strong>.  On the left page <strong>right click</strong> on the folder <code>EVPN-Ansible</code> and create a new playbook named <code>verify_fabric.yml</code>.   Enter this file name and hit <strong>enter</strong>.  Then <strong>Copy</strong> and <strong>Paste</strong> the below content to this newly created file:</li>
 </ul>
-<pre><code class="language-YAML">---
-  - hosts: leaf, jinja2_leaf
-    connection: local
-    gather_facts: false
-    tasks:
-      - name: verify underlay
-        register: underlay_output
-        cisco.nxos.nxos_command:
-          commands:
-            - show ip ospf neighbors
-            - show ip bgp sum
-            - show ip pim neighbor
-        tags: underlay
-      - debug: var=underlay_output.stdout_lines
-        tags: underlay
-      - set_fact:
-          savefile: &quot;{{underlay_output.stdout_lines | to_nice_yaml}}&quot;
-      - local_action: copy content=&quot;{{savefile}}&quot; dest=./underlay.txt
-      - name: Verify Overlay
-        register: overlay_output
-        cisco.nxos.nxos_command:
-          commands:
-            - show nve vni
-            - show nve peer
-            - show ip route vrf Tenant-1
-            - show bgp l2vpn evpn
-            - show l2route evpn mac-ip all
-        tags: overlay
-      - debug: var=overlay_output.stdout_lines
-        tags: overlay
-      - set_fact:
-          savefile: &quot;{{overlay_output.stdout_lines | to_nice_yaml}}&quot;
-      - local_action: copy content=&quot;{{savefile}}&quot; dest=./overlay.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leaf, jinja2_leaf</span>
+<span class="w">    </span><span class="nt">connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">verify underlay</span>
+<span class="w">        </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay_output</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_command</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip ospf neighbors</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip bgp sum</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip pim neighbor</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var=underlay_output.stdout_lines</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">set_fact</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">savefile</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{underlay_output.stdout_lines</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">to_nice_yaml}}&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">local_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">copy content=&quot;{{savefile}}&quot; dest=./underlay.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Verify Overlay</span>
+<span class="w">        </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay_output</span>
+<span class="w">        </span><span class="nt">cisco.nxos.nxos_command</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show nve vni</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show nve peer</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show ip route vrf Tenant-1</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show bgp l2vpn evpn</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show l2route evpn mac-ip all</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var=overlay_output.stdout_lines</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">set_fact</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">savefile</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{overlay_output.stdout_lines</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">to_nice_yaml}}&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">local_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">copy content=&quot;{{savefile}}&quot; dest=./overlay.txt</span>
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Click</strong> <code>File</code> and <code>Save</code> on <strong>Atom</strong>. This will save the playbook, and also scp the playbook to Ansible server using pre-configured “<strong>remote-sync</strong>” package.</p>
@@ -729,9 +729,9 @@
 <p>On the <strong>Ansible</strong> node (via <strong>MTPuTTy</strong>), run <strong>verify_fabric.yml</strong> playbook and verify the output for <strong>underlay</strong> by executing below command (using respective tag).  This command will show ospf, bgp and pim neighbors for all leaf switches:</p>
 </li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
-</code></pre>
+</code></pre></div>
 <ul>
 <li>
 <p>Below screenshot shows the partial output of above command and shows ospf, bgp and pim neighbors for all leaf switches:</p>
@@ -739,7 +739,7 @@ ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 </li>
 </ul>
 <p>Here is complete log of execution of above playbook/command:</p>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 
 PLAY [leaf, jinja2_leaf] *********************************************************************************************************************************************************************************************
 
@@ -844,14 +844,13 @@ PLAY RECAP *********************************************************************
 198.18.4.101               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 198.18.4.103               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 198.18.4.104               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
-</code></pre>
+</code></pre></div>
 <p><strong>Next:</strong></p>
 <ul>
 <li>On the <strong>Ansible</strong> node (via <strong>MTPutty</strong>), execute the <strong>verify_fabric.yml</strong> playbook by issuing below command.  As per below, this command uses the <code>--tags</code> in the syntax to execute the respective tasks (as per the tag) in the playbook.  As per the output, <strong>verify</strong> the <strong>overlay</strong> outputs (as shown below).  <em>Note:</em> This command will show the nve tunnel peer, host route in BGP EVPN from all leaf switches:</li>
 </ul>
-<pre><code>ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
+</code></pre></div>
 <ul>
 <li>
 <p>Below screenshot of the partial output of above command:</p>
@@ -861,7 +860,7 @@ PLAY RECAP *********************************************************************
 <p>Below shows the complete log output of execution of above playbook command.   Verify the output for <strong>vne vni</strong> status, <strong>vne</strong> dynamic neighbors, mac-ip evpn route update for each L2VNI, l2fib etc. information:</p>
 </li>
 </ul>
-<pre><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
+<div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
 
 PLAY [leaf, jinja2_leaf] *********************************************************************************************************************************************************************************************
 
@@ -892,10 +891,10 @@ ok: [198.18.4.104] =&gt; {
         ],
         [
             &quot;IP Route Table for VRF \&quot;Tenant-1\&quot;&quot;,
-            &quot;'*' denotes best ucast next-hop&quot;,
-            &quot;'**' denotes best mcast next-hop&quot;,
-            &quot;'[x/y]' denotes [preference/metric]&quot;,
-            &quot;'%&lt;string&gt;' in via output denotes VRF &lt;string&gt;&quot;,
+            &quot;&#39;*&#39; denotes best ucast next-hop&quot;,
+            &quot;&#39;**&#39; denotes best mcast next-hop&quot;,
+            &quot;&#39;[x/y]&#39; denotes [preference/metric]&quot;,
+            &quot;&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;&quot;,
             &quot;&quot;,
             &quot;172.21.140.0/24, ubest/mbest: 1/0, attached&quot;,
             &quot;    *via 172.21.140.1, Vlan140, [0/0], 22:39:01, direct&quot;,
@@ -993,10 +992,10 @@ ok: [198.18.4.103] =&gt; {
         ],
         [
             &quot;IP Route Table for VRF \&quot;Tenant-1\&quot;&quot;,
-            &quot;'*' denotes best ucast next-hop&quot;,
-            &quot;'**' denotes best mcast next-hop&quot;,
-            &quot;'[x/y]' denotes [preference/metric]&quot;,
-            &quot;'%&lt;string&gt;' in via output denotes VRF &lt;string&gt;&quot;,
+            &quot;&#39;*&#39; denotes best ucast next-hop&quot;,
+            &quot;&#39;**&#39; denotes best mcast next-hop&quot;,
+            &quot;&#39;[x/y]&#39; denotes [preference/metric]&quot;,
+            &quot;&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;&quot;,
             &quot;&quot;,
             &quot;172.21.140.0/24, ubest/mbest: 1/0, attached&quot;,
             &quot;    *via 172.21.140.1, Vlan140, [0/0], 01:24:28, direct&quot;,
@@ -1093,10 +1092,10 @@ ok: [198.18.4.101] =&gt; {
         ],
         [
             &quot;IP Route Table for VRF \&quot;Tenant-1\&quot;&quot;,
-            &quot;'*' denotes best ucast next-hop&quot;,
-            &quot;'**' denotes best mcast next-hop&quot;,
-            &quot;'[x/y]' denotes [preference/metric]&quot;,
-            &quot;'%&lt;string&gt;' in via output denotes VRF &lt;string&gt;&quot;,
+            &quot;&#39;*&#39; denotes best ucast next-hop&quot;,
+            &quot;&#39;**&#39; denotes best mcast next-hop&quot;,
+            &quot;&#39;[x/y]&#39; denotes [preference/metric]&quot;,
+            &quot;&#39;%&lt;string&gt;&#39; in via output denotes VRF &lt;string&gt;&quot;,
             &quot;&quot;,
             &quot;172.21.140.0/24, ubest/mbest: 1/0, attached&quot;,
             &quot;    *via 172.21.140.1, Vlan140, [0/0], 01:24:29, direct&quot;,
@@ -1179,35 +1178,36 @@ PLAY RECAP *********************************************************************
 198.18.4.104               : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 root@ubuntu:~/EVPN-Ansible#
-</code></pre>
+</code></pre></div>
 <hr />
 <h3 id="step-2-install-git-and-gitlab-runner">Step 2: Install git and GitLab runner</h3>
 <p>In this section you will install git and gitlab runner on Anisble node.</p>
 <ul>
 <li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below package installation command to install git:</li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 apt-get install git
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-1.png" /></p>
 <ul>
 <li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below <code>curl</code> command to download and run a shell script that adds the official GitLab repository required for runner installation:</li>
 </ul>
-<pre><code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
-
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+</code></pre></div>
 <p>Below screenshot shows the execution of the command</p>
 <p><img alt="" src="../pic/5-3-2.png" /></p>
 <ul>
 <li>On the <strong>Ansible node</strong> (in <strong>MTPuTTy</strong> SSH session), run the below command to install <code>gitlab-runner</code></li>
 </ul>
-<pre><code>apt-get install gitlab-runner
-</code></pre>
+<div class="highlight"><pre><span></span><code>apt-get install gitlab-runner
+</code></pre></div>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="" src="../pic/5-3-3.png" /></p>
-<p>!!! Note
-    You may see installation of newer version of gitlab-runner.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may see installation of newer version of gitlab-runner.</p>
+</div>
 <h3 id="step-3-gitlab-repository-setup">Step 3: GitLab repository setup</h3>
 <p>In this step, you will use setup repository for your respective Pod on Gitlab (SaaS) and then push your code (Ansible files) to this repository.  This basically uses Version Control System (VCS) capabilities on GitLab.  In addition, some GitLab settings will be modified to allow access rights to the repository.</p>
 <ul>
@@ -1219,8 +1219,10 @@ apt-get install git
 <p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, You may see a main page without any existing projects - this is shown in below screenshot.  To create a new project click on <strong>Create a project</strong> icon on this main page (shown below).  </p>
 </li>
 </ul>
-<p>!!! Note
-    After signing in to gitlab account you may see list of Projects (such as <code>POD_{ID}</code>).  The reason is that a single GitLab account (lab.ciscolive) is shared among all the attendees/pods.  Hence after logging into GitLab, you may also see projects already created by others in this lab.  If this is the case, click on <strong>New Project</strong> button on the right pane.  And you will see <code>Create new Project</code> page. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After signing in to gitlab account you may see list of Projects (such as <code>POD_{ID}</code>).  The reason is that a single GitLab account (lab.ciscolive) is shared among all the attendees/pods.  Hence after logging into GitLab, you may also see projects already created by others in this lab.  If this is the case, click on <strong>New Project</strong> button on the right pane.  And you will see <code>Create new Project</code> page. </p>
+</div>
 <p><img alt="" src="../pic/5-2-4.png" /></p>
 <ul>
 <li>
@@ -1236,8 +1238,10 @@ apt-get install git
 </ul>
 </li>
 </ul>
-<p>!!! Note
-    You must replace <code>{ID}</code> with your respective pod number.  <strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  <strong>Project name</strong> of <strong><code>POD_1</code></strong> is shown as an example only.</p>
+</div>
 <p>Below screenshot shows execution of above for Pod_1 as a reference only:</p>
 <p><img alt="" src="../pic/5-2-5.png" /></p>
 <ul>
@@ -1247,8 +1251,10 @@ apt-get install git
 <ul>
 <li>On the project page, copy the project url by clicking on <strong>Clone</strong> button, and then click <code>Copy URL</code> icon next to <strong>Clone with HTTPS</strong> as shown below in below screenshot.  This project url will be used in next step. The project url looks like <strong>https://gitlab.com/lab.ciscolive/pod_{ID}.git</strong>.</li>
 </ul>
-<p>!!! Note
-    You must replace <code>{ID}</code> with your respective pod number.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  </p>
+</div>
 <p>The screenshot below uses <strong>POD_1</strong> as example.</p>
 <p><img alt="" src="../pic/5-2-6.png" /></p>
 <p>By default the <strong>main</strong> branch is protected branch.  In order to add and commit files from git command, the branch settings need to be changed to unprotected.  This change of <strong>main</strong> branch to unprotected is performed as per below steps and shown in below screenshot:</p>
@@ -1262,48 +1268,52 @@ apt-get install git
 <ul>
 <li>On the Ansible node (in <strong><em>MTputty</em></strong> SSH session), run the below commands to initialize git in appropriate directory:</li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 git init
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
 <li>On the Ansible node, run following commands to add the remote repository (previously copied from <code>Clone with HTTPS</code> on GitLab) as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
 </ul>
-<pre><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
+<div class="highlight"><pre><span></span><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
 git remote -v
-</code></pre>
-<p>!!! Note
-    You must replace <code>{ID}</code> with your respective pod number.  </p>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  </p>
+</div>
 <p>Below screenshot shows the execution of the above commands for Pod_1 (as an example):</p>
 <p><img alt="" src="../pic/5-3-5b.png" /></p>
 <ul>
 <li>Then to add all the files (Ansible playbooks, roles etc) to the staging area and check the status by using below commands:</li>
 </ul>
-<pre><code>git add .
+<div class="highlight"><pre><span></span><code>git add .
 git status
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of the above commands:</p>
 <p><img alt="" src="../pic/5-3-5c.png" /></p>
 <ul>
 <li>Next, commit the files to local repository by executing below commands:</li>
 </ul>
-<pre><code>git checkout -b main
+<div class="highlight"><pre><span></span><code>git checkout -b main
 git commit -m &quot;initial commit&quot;
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository (SaaS) with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code></li>
 </ul>
-<pre><code>git push -f origin main
-</code></pre>
+<div class="highlight"><pre><span></span><code>git push -f origin main
+</code></pre></div>
 <p>Below screenshot shows output of the above command for pod_1 as an example:</p>
 <p><img alt="" src="../pic/5-3-6.png" /></p>
 <p>Now all your ansible code (playbooks, roles etc files) are pushed to your GitLab repository.  You can check the contents on web browser by going back to URL for your respective pod repository <strong><code>https://gitlab.com/lab.ciscolive/pod_{ID}</code></strong>.  You must replace {ID} with your respective pod number.</p>
 <h3 id="step-4-add-cicd-pipeline-file">Step 4: Add CI/CD pipeline file</h3>
 <p>Now that our repository and all the content is setup properly, we will create a pipeline file to perform specific actions (i.e., run Ansible playbook in our case).  Further, we will also define rules that will trigger (i.e., run) this pipeline based upon certain conditions.</p>
 <p>In this step, you will create CI/CD pipeline file. Gitlab uses a special file named <strong><code>.gitlab-ci.yml</code></strong> for CI/CD configuration.  </p>
-<p>!!! Note
-    The filename starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The filename starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
+</div>
 <p>This file uses YAML syntax and needs to be placed in root directory of the repository.  In this file, you define your intent for the pipeline using a declarative syntax (in YAML) such as:</p>
 <ul>
 <li>The stages you want run in the pipeline</li>
@@ -1320,44 +1330,44 @@ git commit -m &quot;initial commit&quot;
 <p>In the <code>.gitlab-ci.yml</code> file enter the contents shown below:</p>
 </li>
 </ul>
-<pre><code class="language-YAML">stages:
-- test
-- staging
-- production
+<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
 
-verify:
-  stage: test
-  tags:
-    - EVPN
-  script:
-    - ansible-playbook jinja2_fabric.yml --check
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == &quot;push&quot; &amp;&amp; $CI_COMMIT_BRANCH != &quot;main&quot;'
-staging:
-  stage: staging
-  tags:
-    - EVPN
-  script:
-    - ansible-playbook jinja2_fabric.yml -i Stag/hosts 
-    - ansible-playbook nxos_fabric.yml -i Stag/hosts 
-    - ansible-playbook verify_fabric.yml -i Stag/hosts 
-  artifacts:
-    paths:
-      - overlay.txt
-      - underlay.txt
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == &quot;push&quot;  &amp;&amp; $CI_COMMIT_BRANCH != &quot;main&quot;'
-deploy:
-  stage: production
-  tags:
-    - EVPN
-  script:
-    - ansible-playbook jinja2_fabric.yml
-    - ansible-playbook nxos_fabric.yml
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;'
-      when: manual
-</code></pre>
+<span class="nt">verify</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EVPN</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-playbook jinja2_fabric.yml --check</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$CI_PIPELINE_SOURCE</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&quot;push&quot;</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">$CI_COMMIT_BRANCH</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;main&quot;&#39;</span>
+<span class="nt">staging</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EVPN</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-playbook jinja2_fabric.yml -i Stag/hosts</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-playbook nxos_fabric.yml -i Stag/hosts</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-playbook verify_fabric.yml -i Stag/hosts</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overlay.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">underlay.txt</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$CI_PIPELINE_SOURCE</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&quot;push&quot;</span><span class="nv">  </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">$CI_COMMIT_BRANCH</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;main&quot;&#39;</span>
+<span class="nt">deploy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EVPN</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-playbook jinja2_fabric.yml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-playbook nxos_fabric.yml</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$CI_PIPELINE_SOURCE</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&quot;merge_request_event&quot;&#39;</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
+</code></pre></div>
 <p>Below screenshot shows the file after adding the above contents on Atom:</p>
 <p><img alt="" src="../pic/5-3-7.png" /></p>
 <ul>
@@ -1382,10 +1392,10 @@ deploy:
 <ul>
 <li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</li>
 </ul>
-<pre><code>git add .gitlab-ci.yml
+<div class="highlight"><pre><span></span><code>git add .gitlab-ci.yml
 git commit -m &quot;add ci file&quot;
 git push origin main
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the outputs of the commands for Pod_1 (note your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
@@ -1393,8 +1403,10 @@ git push origin main
 <ul>
 <li>Switch to Chrome brower with gitlab project page.  From the navigation menu on the left sidebar, Select <strong>Settings &gt; CI/CD</strong>.  Then on the right pane for the <strong><code>Runners</code></strong>, click on <strong>Expand</strong> setting as shown in below screenshot.</li>
 </ul>
-<p>!!! Note
-    Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Screenshot below uses POD 1 as example, find your assigned POD ID from table in task1.</p>
+</div>
 <p><img alt="" src="../pic/5-5-1.png" /></p>
 <ul>
 <li>After expanding the <code>Runners</code> setting, under <code>Project runners</code> click on <strong>New project runner</strong>.  </li>
@@ -1407,8 +1419,10 @@ git push origin main
 <ul>
 <li>On the next <strong><code>Register runner</code></strong> page, under <strong><code>Step 1</code></strong>, copy the <strong>runner token</strong> as part of the command line (<code>gitlab-runner register ...</code>) .  This token will be used later to register the gitlab runner that runs on Ansible server/node.  </li>
 </ul>
-<p>!!! Note
-    Make sure to copy the runner token in this step.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to copy the runner token in this step.</p>
+</div>
 <ul>
 <li>Then click on <strong>Go to runners page</strong> button.  If <code>Leave site?</code> prompt is displayed, then click <strong><code>Leave</code></strong> to proceed.</li>
 </ul>
@@ -1428,8 +1442,8 @@ git push origin main
 </ul>
 </li>
 </ul>
-<pre><code>gitlab-runner register
-</code></pre>
+<div class="highlight"><pre><span></span><code>gitlab-runner register
+</code></pre></div>
 <p>When prompted provide the runner registration info as shown below:</p>
 <ul>
 <li>
@@ -1450,9 +1464,9 @@ git push origin main
 <ul>
 <li>On the Ansible node (in <strong>MTputty</strong> SSH session), run command the below commands to check status of runner:</li>
 </ul>
-<pre><code>gitlab-runner status
+<div class="highlight"><pre><span></span><code>gitlab-runner status
 gitlab-runner list
-</code></pre>
+</code></pre></div>
 <p>Below screenshots shown the output of above commands</p>
 <p><img alt="" src="../pic/5-5-4.png" /></p>
 <h3 id="step-6-add-new-vnis-in-staging-and-trigger-pipeline">Step 6: Add new VNIs in Staging and trigger pipeline</h3>
@@ -1460,12 +1474,13 @@ gitlab-runner list
 <ul>
 <li>Switch to <strong>"Atom"</strong>.  Under <strong>EVPN-Ansible</strong>, scroll to <strong>roles &gt; jinja2_leaf &gt; vars</strong> and open <strong>"main.yml"</strong> file.  Enter the new VNI details in this file below the existing <strong>L2VNI</strong> list as shown in the below screenshot:</li>
 </ul>
-<pre><code class="language-YAML">  - { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
-  - { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }  
-
-</code></pre>
-<p>!!! Note
-    Do not completely replace existing content in this file.  Above content should be added to the end of existing L2VNI and above the existing L3VNI variables.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w">  </span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not completely replace existing content in this file.  Above content should be added to the end of existing L2VNI and above the existing L3VNI variables.</p>
+</div>
 <p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-1.png" /></p>
 <ul>
@@ -1476,11 +1491,13 @@ gitlab-runner list
 <p>Next, variables for Leaf role will be added.  From <strong>"Atom"</strong>, open <strong>"main.yml"</strong> file under <strong>roles &gt; leaf &gt; vars</strong>. Enter following new VNI informtion under <strong>L2VNI</strong> as shown in below screenshot:</p>
 </li>
 </ul>
-<pre><code class="language-YAML">  - { vlan_id: 200, vni: 50200, ip_add: 172.21.200.1, mask: 24, vlan_name: L2-VNI-200-Tenant1, mcast: 239.0.0.200 }
-  - { vlan_id: 201, vni: 50201, ip_add: 172.21.201.1, mask: 24, vlan_name: L2-VNI-201-Tenant1, mcast: 239.0.0.201 }
-</code></pre>
-<p>!!! Note
-    Do not completely replace existing content in this file.  Above content should be added to the end of existing L2VNI and above the existing L3VNI variables.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50200</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.200.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-200-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.200</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> vlan_id</span><span class="p">:</span><span class="w"> </span><span class="nv">201</span><span class="p p-Indicator">,</span><span class="nt"> vni</span><span class="p">:</span><span class="w"> </span><span class="nv">50201</span><span class="p p-Indicator">,</span><span class="nt"> ip_add</span><span class="p">:</span><span class="w"> </span><span class="nv">172.21.201.1</span><span class="p p-Indicator">,</span><span class="nt"> mask</span><span class="p">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="nt"> vlan_name</span><span class="p">:</span><span class="w"> </span><span class="nv">L2-VNI-201-Tenant1</span><span class="p p-Indicator">,</span><span class="nt"> mcast</span><span class="p">:</span><span class="w"> </span><span class="nv">239.0.0.201</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not completely replace existing content in this file.  Above content should be added to the end of existing L2VNI and above the existing L3VNI variables.</p>
+</div>
 <p>Below screenshot shows the file after addition of above contents on Atom:</p>
 <p><img alt="" src="../pic/5-6-2.png" /></p>
 <ul>
@@ -1491,16 +1508,16 @@ gitlab-runner list
 <p>On the Ansible node (in <strong>MTputty</strong> SSH session), change directory to <strong>EVPN-Ansible</strong> project folder</p>
 </li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
-</code></pre>
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
+</code></pre></div>
 <ul>
 <li>Run the following git commands to create new branch <strong>newvni</strong>, <code>commit</code> the updated variable files to that new branch and <code>push</code> to Gitlab project:</li>
 </ul>
-<pre><code>git branch -m newvni
+<div class="highlight"><pre><span></span><code>git branch -m newvni
 git add .
 git commit -m &quot;newvni&quot;
 git push -f origin newvni
-</code></pre>
+</code></pre></div>
 <p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>C1sco12345</code> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
@@ -1525,59 +1542,59 @@ git push -f origin newvni
 <p>Review the <code>overlay.txt</code> file and you can see new VNIs 50200 and 50201 deployed on staging environment as shown in partial output below:</p>
 </li>
 </ul>
-<pre><code>-   - 'Codes: CP - Control Plane        DP - Data Plane          '
-    - '       UC - Unconfigured         SA - Suppress ARP        '
-    - '       SU - Suppress Unknown Unicast'
-    - ' '
+<div class="highlight"><pre><span></span><code>-   - &#39;Codes: CP - Control Plane        DP - Data Plane          &#39;
+    - &#39;       UC - Unconfigured         SA - Suppress ARP        &#39;
+    - &#39;       SU - Suppress Unknown Unicast&#39;
+    - &#39; &#39;
     - Interface VNI      Multicast-group   State Mode Type [BD/VRF]      Flags
-    - '--------- -------- ----------------- ----- ---- ------------------ -----'
-    - 'nve1      50140    239.0.0.140       Up    CP   L2 [140]                  '
-    - 'nve1      50141    239.0.0.141       Up    CP   L2 [141]                  '
-    - 'nve1      50200    239.0.0.200       Up    CP   L2 [200]                  '
-    - 'nve1      50201    239.0.0.201       Up    CP   L2 [201]                  '
-    - 'nve1      50203    239.0.0.203       Up    CP   L2 [203]                  '
-    - 'nve1      50204    239.0.0.204       Up    CP   L2 [204]                  '
+    - &#39;--------- -------- ----------------- ----- ---- ------------------ -----&#39;
+    - &#39;nve1      50140    239.0.0.140       Up    CP   L2 [140]                  &#39;
+    - &#39;nve1      50141    239.0.0.141       Up    CP   L2 [141]                  &#39;
+    - &#39;nve1      50200    239.0.0.200       Up    CP   L2 [200]                  &#39;
+    - &#39;nve1      50201    239.0.0.201       Up    CP   L2 [201]                  &#39;
+    - &#39;nve1      50203    239.0.0.203       Up    CP   L2 [203]                  &#39;
+    - &#39;nve1      50204    239.0.0.204       Up    CP   L2 [204]                  &#39;
     - nve1      50999    n/a               Up    CP   L3 [Tenant-1]
--   - 'Interface Peer-IP          State LearnType Uptime   Router-Mac       '
-    - '--------- ---------------  ----- --------- -------- -----------------'
+-   - &#39;Interface Peer-IP          State LearnType Uptime   Router-Mac       &#39;
+    - &#39;--------- ---------------  ----- --------- -------- -----------------&#39;
     - nve1      192.168.0.18     Up    CP        1d15h    000c.2997.621c
 -   - IP Route Table for VRF &quot;Tenant-1&quot;
-    - '''*'' denotes best ucast next-hop'
-    - '''**'' denotes best mcast next-hop'
-    - '''[x/y]'' denotes [preference/metric]'
-    - '''%&lt;string&gt;'' in via output denotes VRF &lt;string&gt;'
-    - ''
-    - '172.21.140.0/24, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.140.1, Vlan140, [0/0], 1d15h, direct'
-    - '172.21.140.1/32, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.140.1, Vlan140, [0/0], 1d15h, local'
-    - '172.21.140.10/32, ubest/mbest: 1/0'
-    - '    *via 192.168.0.18%default, [200/0], 1d13h, bgp-65000, internal, tag 65000
-        (evpn) segid: 50999 tunnelid: 0xc0a80012 encap: VXLAN'
-    - ' '
-    - '172.21.141.0/24, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.141.1, Vlan141, [0/0], 1d15h, direct'
-    - '172.21.141.1/32, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.141.1, Vlan141, [0/0], 1d15h, local'
-    - '172.21.200.0/24, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.200.1, Vlan200, [0/0], 1d15h, direct'
-    - '172.21.200.1/32, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.200.1, Vlan200, [0/0], 1d15h, local'
-    - '172.21.201.0/24, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.201.1, Vlan201, [0/0], 1d15h, direct'
-    - '172.21.201.1/32, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.201.1, Vlan201, [0/0], 1d15h, local'
-    - '172.21.203.0/24, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.203.1, Vlan203, [0/0], 1d13h, direct'
-    - '172.21.203.1/32, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.203.1, Vlan203, [0/0], 1d13h, local'
-    - '172.21.204.0/24, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.204.1, Vlan204, [0/0], 1d13h, direct'
-    - '172.21.204.1/32, ubest/mbest: 1/0, attached'
-    - '    *via 172.21.204.1, Vlan204, [0/0], 1d13h, local'
+    - &#39;&#39;&#39;*&#39;&#39; denotes best ucast next-hop&#39;
+    - &#39;&#39;&#39;**&#39;&#39; denotes best mcast next-hop&#39;
+    - &#39;&#39;&#39;[x/y]&#39;&#39; denotes [preference/metric]&#39;
+    - &#39;&#39;&#39;%&lt;string&gt;&#39;&#39; in via output denotes VRF &lt;string&gt;&#39;
+    - &#39;&#39;
+    - &#39;172.21.140.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.140.1, Vlan140, [0/0], 1d15h, direct&#39;
+    - &#39;172.21.140.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.140.1, Vlan140, [0/0], 1d15h, local&#39;
+    - &#39;172.21.140.10/32, ubest/mbest: 1/0&#39;
+    - &#39;    *via 192.168.0.18%default, [200/0], 1d13h, bgp-65000, internal, tag 65000
+        (evpn) segid: 50999 tunnelid: 0xc0a80012 encap: VXLAN&#39;
+    - &#39; &#39;
+    - &#39;172.21.141.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.141.1, Vlan141, [0/0], 1d15h, direct&#39;
+    - &#39;172.21.141.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.141.1, Vlan141, [0/0], 1d15h, local&#39;
+    - &#39;172.21.200.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.200.1, Vlan200, [0/0], 1d15h, direct&#39;
+    - &#39;172.21.200.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.200.1, Vlan200, [0/0], 1d15h, local&#39;
+    - &#39;172.21.201.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.201.1, Vlan201, [0/0], 1d15h, direct&#39;
+    - &#39;172.21.201.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.201.1, Vlan201, [0/0], 1d15h, local&#39;
+    - &#39;172.21.203.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.203.1, Vlan203, [0/0], 1d13h, direct&#39;
+    - &#39;172.21.203.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.203.1, Vlan203, [0/0], 1d13h, local&#39;
+    - &#39;172.21.204.0/24, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.204.1, Vlan204, [0/0], 1d13h, direct&#39;
+    - &#39;172.21.204.1/32, ubest/mbest: 1/0, attached&#39;
+    - &#39;    *via 172.21.204.1, Vlan204, [0/0], 1d13h, local&#39;
 
 [output omitted]
-</code></pre>
+</code></pre></div>
 <h3 id="step-8-merge-code-to-main-branch">Step 8: Merge code to main branch</h3>
 <p>After reviewing the test result from staging environment, you confirmed the new NVIs are deployed properly, you will merge the <strong>newvni</strong> branch to <strong>main</strong> branch and deploy the new VNIs on production environment.</p>
 <p>Typically in real world there will (should!) be separate environments for staging and production.  In this lab, we are using same inventory for staging and production environments for simplicity purposes.  So once the merge is done then the changes can be rolled out to production (by applying ansible playbooks).</p>
@@ -1589,8 +1606,10 @@ git push -f origin newvni
 <li>Under the <code>Source branch</code> section, from the <code>Select source branch</code> drop down menu select <strong>newvni</strong> branch.  </li>
 <li>Further, on the <code>Target branch</code> section, under <code>Select target branch</code> drop down menu make sure that <strong>main</strong> branch is selected as shown in the screenshot below.</li>
 </ul>
-<p>!!! Note
-    Below screenshot uses POD 1 as example, you must use <strong>your</strong> assigned <strong>POD ID</strong> from table in task1.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below screenshot uses POD 1 as example, you must use <strong>your</strong> assigned <strong>POD ID</strong> from table in task1.</p>
+</div>
 <p><img alt="" src="../pic/5-8-2.png" /></p>
 <ul>
 <li>Then click <strong>Compare branches and continue</strong> on this page.</li>
@@ -1607,8 +1626,10 @@ git push -f origin newvni
 <p>Then click the <strong>Create merge request</strong> button as shown in the screenshot below:</p>
 </li>
 </ul>
-<p>!!! Note
-    You must replace <code>{ID}</code> with your respective pod number.  <strong>Project name</strong> of <strong><code>POD_1</code></strong> in below screenshot is shown as an example only.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must replace <code>{ID}</code> with your respective pod number.  <strong>Project name</strong> of <strong><code>POD_1</code></strong> in below screenshot is shown as an example only.</p>
+</div>
 <p><img alt="" src="../pic/5-8-3.png" /></p>
 <p>On the next page (below screenshot), you are displayed with the details related to Merge: </p>
 <ul>
@@ -1630,8 +1651,10 @@ git push -f origin newvni
 <ul>
 <li>Wait for the job (all the Stages) to finish. You can also access the runner console output, to see execution of Ansible playbooks by clicking the pipeline stage named <code>deploy</code> under <strong>Stages</strong> on this page.  </li>
 </ul>
-<p>!!! Note
-    <strong><code>POD_1</code></strong> in below screenshot is shown as an example only.  You must browse through to your own Pod #.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong><code>POD_1</code></strong> in below screenshot is shown as an example only.  You must browse through to your own Pod #.</p>
+</div>
 <p>Below screenshot shows the successful execution of this deploy stage: </p>
 <p><img alt="" src="../pic/5-8-5.png" /></p>
 <h1 id="congratulation-you-have-completed-vxlan-fabric-and-netdevops-automation-lab">Congratulation! You have completed VXLAN Fabric and NetDevOps automation Lab.</h1>

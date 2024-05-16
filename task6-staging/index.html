@@ -677,17 +677,16 @@
 <p>Ansible offers the option to execute playbooks against different inventory using the <strong>-i, --inventory</strong> common option. We will create a separate inventory hosts file for staging enviroment, and subsequently utilize the <strong>-i</strong> command option to execue playbooks in this staging envionment. </p>
 <p>The virtual nodes in CMLS are interconnected in the same manner as the production enviorment but in different management subnet.  </p>
 <ul>
-<li>Create folder name Stag for staging envioment by using below command:  </li>
-</ul>
-<pre><code>cd /root/EVPN-Ansible/ &amp;&amp; mkdir Stag
+<li>Create folder name Stag for staging envioment by using below command:<br />
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible/ &amp;&amp; mkdir Stag
 ls
-</code></pre>
+</code></pre></div></li>
+</ul>
 <p>Below screenshot shows the execution of above commands:  </p>
 <p><img alt="" src="../pic/6-1-1.png" />  </p>
 <ul>
-<li>Create inventory file for staging Spine and Leaf switches in location /Stag.  </li>
-</ul>
-<pre><code>cd /root/EVPN-Ansible/Stag/
+<li>Create inventory file for staging Spine and Leaf switches in location /Stag.<br />
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible/Stag/
 
 cat &lt;&lt; EOF &gt;&gt; hosts
 #define global variables, groups and host variables
@@ -708,69 +707,69 @@ gather_fact=no
 198.18.134.101
 198.18.134.103
 EOF
-
-</code></pre>
+</code></pre></div></li>
+</ul>
 <p>Below screenshot shows the output of above command:  </p>
 <p><img alt="" src="../pic/6-1-2.png" />  </p>
 <ul>
 <li>Create host variable folder named host_vars in folder Stag by using below command.  </li>
 </ul>
-<pre><code>mkdir host_vars &amp;&amp; cd host_vars
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir host_vars &amp;&amp; cd host_vars
+</code></pre></div>
 <p>*Create host variable files for each switch in staging enviorment by using the below cat commands.  </p>
-<p>!!! Note
-    Alternately, you can copy all host variable files from /root/EVPN-Ansible/host_vars/ to /root/EVPN-Ansible/Stag/host_vars/ and rename each file to match the staging environment's host IP, for example, renaming 198.18.4.101.yml to 198.18.134.101.yml.</p>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.101.yml
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternately, you can copy all host variable files from /root/EVPN-Ansible/host_vars/ to /root/EVPN-Ansible/Stag/host_vars/ and rename each file to match the staging environment's host IP, for example, renaming 198.18.4.101.yml to 198.18.134.101.yml.</p>
+</div>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.101.yml
 ---
   hostname: leaf_1
   loopback0: 192.168.0.8
   loopback1: 192.168.0.18
   router_id: 192.168.0.8
 EOF
-
-</code></pre>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.103.yml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.103.yml
 ---
   hostname: leaf_3
   loopback0: 192.168.0.10
   loopback1: 192.168.0.110
   router_id: 192.168.0.10
 EOF
-</code></pre>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.104.yml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.104.yml
 ---
   hostname: leaf_4
   loopback0: 192.168.0.11
   loopback1: 192.168.0.111
   router_id: 192.168.0.11
 EOF
-
-</code></pre>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.201.yml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.201.yml
 ---
   hostname: spine-1
   loopback0: 192.168.0.6
   loopback1: 192.168.0.100
   router_id: 192.168.0.6
 EOF
-</code></pre>
-<pre><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.202.yml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cat &lt;&lt; EOF &gt;&gt; 198.18.134.202.yml
 ---
   hostname: spine-2
   loopback0: 192.168.0.7
   loopback1: 192.168.0.100
   router_id: 192.168.0.7
 EOF
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:  </p>
 <p><img alt="" src="../pic/6-1-3.png" />  </p>
 <h3 id="step-2-verify-cml-connectivity-using-ansible-ad-hoc-command">Step 2: Verify CML connectivity using Ansible ad-hoc command</h3>
 <ul>
 <li>Run the below command to ping all leaf and spine switches in the inventory file  </li>
 </ul>
-<pre><code>cd /root/EVPN-Ansible/
+<div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible/
 ansible all -v -i /root/EVPN-Ansible/Stag/hosts -c local -m command -a &quot;ping {{inventory_hostname}} -c 2&quot;
-</code></pre>
+</code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/6-1-4.png" />  </p>
 <h3 id="step-3-deploy-vxlan-evpn-fabric-on-staging-switches">Step 3: Deploy VXLAN EVPN fabric on staging switches</h3>
@@ -778,17 +777,17 @@ ansible all -v -i /root/EVPN-Ansible/Stag/hosts -c local -m command -a &quot;pin
 <ul>
 <li>Execute below commands to run the Ansible playbook in the EVPN-Ansible directory:</li>
 </ul>
-<pre><code>cd ~/EVPN-Ansible
+<div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 ansible-playbook vlan_provision.yml -i Stag/hosts
-</code></pre>
+</code></pre></div>
 <p>Below screeenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/6-3-1.png" />  </p>
-<pre><code>ansible-playbook jinja2_fabric.yml -i Stag/hosts
-</code></pre>
+<div class="highlight"><pre><span></span><code>ansible-playbook jinja2_fabric.yml -i Stag/hosts
+</code></pre></div>
 <p>Below screeenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/6-3-2.png" />  </p>
-<pre><code>ansible-playbook nxos_fabric.yml -i Stag/hosts
-</code></pre>
+<div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml -i Stag/hosts
+</code></pre></div>
 <p>Below screeenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/6-3-3.png" />  </p>
 <hr />
