@@ -828,7 +828,9 @@
 <p>In the MTPutty client, SSH to Ansible node (198.18.134.150) by double <strong>clicking</strong> the <strong>Ansible</strong> icon on the left pane.</p>
 <p>The passwords are pre-configured however if prompted then use credentials of username <strong>root</strong> and password <strong>C1sco12345</strong> for SSH access</p>
 <p><img alt="" src="../pic/1-5-mtputty-open.png" /></p>
-<p>On this Ansible node various software packages will be installed from public repositories on the Internet.</p>
+<p>On this Ansible node various software packages will be installed from repositories that are hosted on the Internet.  A default route is added, to access those repositories on the internet, by executing the following command on Ansible node:</p>
+<pre><code>sudo route add default gw 198.18.128.1
+</code></pre>
 <h4 id="step-6-verify-python">Step 6: Verify Python</h4>
 <p>Ansible can on any machine that has Python 2 (versions 2.6 or 2.7) or Python 3 (versions 3.5 and higher) installed.  It is an important step as we need minimum 2.7.5 version of python in order to install some features for ansible.</p>
 <p>Hence, once successfully SSH into the ansible node, verify that python version 2.7 is pre-installed by running below command:</p>
