@@ -19,7 +19,7 @@
     
     
       
-        <title>Overview - Cisco Live 2023 LTRDCN-2765</title>
+        <title>Overview - Cisco Live 2024 LTRDCN-2765</title>
       
     
     
@@ -81,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+    <a href=".." title="Cisco Live 2024 LTRDCN-2765" class="md-header__button md-logo" aria-label="Cisco Live 2024 LTRDCN-2765" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Cisco Live 2023 LTRDCN-2765
+            Cisco Live 2024 LTRDCN-2765
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -246,13 +246,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Cisco Live 2023 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2023 LTRDCN-2765" data-md-component="logo">
+    <a href=".." title="Cisco Live 2024 LTRDCN-2765" class="md-nav__button md-logo" aria-label="Cisco Live 2024 LTRDCN-2765" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Cisco Live 2023 LTRDCN-2765
+    Cisco Live 2024 LTRDCN-2765
   </label>
   
     <div class="md-nav__source">
@@ -707,9 +707,10 @@
   <h1>Overview</h1>
 
 <h2 id="vxlan">VXLAN</h2>
-<p>VXLAN stands for Virtual Extensible Local Area Network. VXLAN is a L2 overlay scheme on top of L3 network or we can say it is a L2 in layer 3 tunnel. It runs over the existing networks and provides the means to stretch the L2 network. Only VMs within the same VXLAN segment can communicate with each other. Each VXLAN segment is identified by a 24 bit segment ID called “VXLAN Network Identifier (VNI)”.  This help overcome 4094 VLAN scale limitation and able to extend it to 224 segments.
-VXLAN uses BGP as its control plane for Overlay. It makes it forwarding decisions at VTEPs (Virtual tunnel end points) for layer-2 and layer-3. Forwarding happens based on MAC or IP learnt via control plane (MP-BGP EVPN) . VXLAN uses IGP, PIM and BGP as its underlay in the fabric.
-Below are some of the terminologies that will be used in the lab:</p>
+<p>VXLAN stands for Virtual Extensible Local Area Network. VXLAN is a L2 overlay scheme on top of L3 network or we can say it is a L2 in layer 3 tunnel. It runs over the existing networks and provides the means to stretch the L2 network. Only VMs within the same VXLAN segment can communicate with each other.   </p>
+<p>Each VXLAN segment is identified by a 24 bit segment ID called “VXLAN Network Identifier (VNI)”.  This helps overcome 4094 VLAN scale limitation and able to extend it to 224 segments.  </p>
+<p>VXLAN uses BGP as its control plane for Overlay. It makes it forwarding decisions at VTEPs (Virtual tunnel end points) for layer-2 and layer-3. Forwarding happens based on MAC or IP learnt via control plane (MP-BGP EVPN) . VXLAN uses IGP, PIM and BGP as its underlay in the fabric.  </p>
+<p>Below are some of the terminologies that will be used in the lab:</p>
 <ul>
 <li><strong>VNI / VNID</strong> – VXLAN Network Identifier. This replaces VLAN ID</li>
 <li><strong>VTEP</strong> – VXLAN Tunnel End Point.<ul>
