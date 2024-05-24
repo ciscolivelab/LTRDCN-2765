@@ -853,9 +853,11 @@
 <div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 </code></pre></div>
-<p><strong>Note:</strong> You can ignore the <code>[WARNING]</code> messages for <code>ansible-pylibssh</code> and <code>timeout for nxos_facts</code>.
-<strong>Note:</strong> You can ignore the <code>timeout for nxos_facts</code> message.
-The below screenshot shows the execution of the playbook:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can ignore the <code>[WARNING]</code> messages for <code>ansible-pylibssh</code> and <code>timeout for nxos_facts</code>.</p>
+</div>
+<p>The below screenshot shows the execution of the playbook:</p>
 <p><img alt="" src="../pic/2-5-2b.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -938,9 +940,11 @@ The below screenshot shows the execution of the playbook:</p>
 ansible-playbook vlan_provision.yml
 </code></pre></div>
 <p>Below screeenshot shows the execution of above playbook:</p>
-<p><strong>Note:</strong> You can ignore the <code>[WARNING]</code> messages for <code>ansible-pylibssh</code> and <code>timeout for nxos_facts</code>.
-<strong>Note:</strong> You can ignore the <code>timeout for nxos_facts</code> message.
-<img alt="" src="../pic/2-7-1-new-b.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can ignore the <code>[WARNING]</code> messages for <code>ansible-pylibssh</code> and <code>timeout for nxos_facts</code>.  </p>
+</div>
+<p><img alt="" src="../pic/2-7-1-new-b.png" /></p>
 <ul>
 <li>After we push the configuration, <strong>login</strong> to the <strong>leaf-1</strong> or <strong>leaf-3</strong> switch, and confirm if the server facing port has the access vlan 140 configured with the below command:</li>
 </ul>
