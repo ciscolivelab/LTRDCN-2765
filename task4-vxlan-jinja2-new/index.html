@@ -818,7 +818,7 @@
 <p><img alt="" src="../pic/3-1-1-new.png" /></p>
 <hr />
 <h3 id="step-2-playbook-for-jinja2_spine-host">Step 2: Playbook for "jinja2_spine" host</h3>
-<p>In this step, we will create a new playbook (named: <strong>jinja2_fabric.yml</strong>) for the host named "jinja2_spine".  This playbook will execute tasks by using Ansible role named <code>jinja2_spine</code>.  This role uses Jina2 template and Ansible to provision the VXLAN Fabric and will be configured in subsequent steps of this task.</p>
+<p>In this step, we will create a new playbook (named: <strong>jinja2_fabric.yml</strong>) for the host named "jinja2_spine".  This playbook will execute tasks by using Ansible role named <code>jinja2_spine</code>.  This role uses Jinja2 template and Ansible to provision the VXLAN Fabric and will be configured in subsequent steps of this task.</p>
 <ul>
 <li>
 <p>Switch to <strong>Atom</strong>, then <strong>Right Click</strong> on the folder <code>EVPN-Ansible</code> and <strong>Click</strong> <code>New File</code> to create a new playbook named <code>jinja2_fabric.yml</code> as shown below</p>
@@ -876,6 +876,7 @@ more hosts
 </ul>
 <div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible
 mkdir roles
+ls
 </code></pre></div>
 <p>Below screenshot shows the execution of above commands:</p>
 <p><img alt="" src="../pic/1-10-1.png" /></p>
@@ -925,7 +926,7 @@ touch jinja2_leaf/templates/leaf.j2
 </ul>
 <p><img alt="" src="../pic/3-3-3.png" /></p>
 <ul>
-<li>Once the download is complete, you should see the new folder (such as <code>roles</code>) and all files appear on <strong>Atom</strong> as well.</li>
+<li>Once the download is complete, you should see the new folder (such as <code>roles</code>) and all files appear in <strong>Atom</strong> as well.</li>
 </ul>
 <hr />
 <h3 id="step-5-jina2_spine-role-vars">Step 5: jina2_spine role - vars</h3>
@@ -1082,7 +1083,7 @@ more spine.j2
 </ul>
 <hr />
 <h3 id="step-8-execute-jinja2_fabricyml-playbook-for-spine">Step 8: Execute "Jinja2_fabric.yml" playbook for spine</h3>
-<p>In this section you will run the playbook created earlier in step 2.  The execution of this playbook will generate configuration file for Spine-2 switch from the template.  Further, The playbook will also push the configuration file to Spine-2 switches.</p>
+<p>In this section you will run the playbook created earlier in step 2.  The execution of this playbook will generate configuration file for Spine-2 switch from the template.  Further, the playbook will also push the configuration file to Spine-2 switches.</p>
 <ul>
 <li>Run the ansible playbook by going to folder EVPN-Ansible and executing the below commands:</li>
 </ul>

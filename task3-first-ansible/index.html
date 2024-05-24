@@ -740,7 +740,7 @@
 </ul>
 <hr />
 <h3 id="step-2-create-new-ansible-playbook">Step 2: Create new Ansible Playbook</h3>
-<p><strong>Atom</strong> provides a <em>Remote sync</em> package that allows to read and push contents to a remote server.  In this case, Atom has been preconfigured to integrate with Ansible node.  As per this integration, Atom Secure copy (SCP) any new files or changes to the Ansible node upon saving.  And Atom also downloads the content from Ansible node as per instructions in this lab.  Atom displays the <strong>EVPN-Ansible</strong> folder that has been downloaded from the ansible server.</p>
+<p><strong>Atom</strong> provides a <em>Remote sync</em> package that allows to read and push contents to a remote server.  In this case, Atom has been preconfigured to integrate with Ansible node.  As per this integration, Atom Secure copies (SCP) any new files or changes to the Ansible node upon saving.  And Atom also downloads the content from Ansible node as per instructions in this lab.  Atom displays the <strong>EVPN-Ansible</strong> folder that has been downloaded from the ansible server.</p>
 <ul>
 <li>
 <p>After opening <strong>Atom</strong>, there should be a folder in the left pane named: <strong><code>EVPN-Ansible</code></strong></p>
@@ -775,7 +775,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
-<li>“<strong>hosts:</strong>” defines the scope of this playbook applies to all switches in group <code>‘leaf’</code> and <code>‘jinja2_leaf’</code> (these were added within the <strong><em>"hosts"</em></strong> file created in pervious task)</li>
+<li>“<strong>hosts:</strong>” defines the scope of this playbook applies to all switches in group <code>‘leaf’</code> and <code>‘jinja2_leaf’</code> (these were added within the <strong><em>"hosts"</em></strong> file created in previous task)</li>
 <li>You can review the IP addresses of the two “leaf” switches and one “jinja2_leaf” switch in the “<strong><em>hosts</em></strong>” file (configured in previous steps).  For reference, the IP addresses are:<ul>
 <li>jinja2_leaf: 198.18.4.104</li>
 <li>leaf: 198.18.4.101</li>
@@ -787,7 +787,7 @@
 <hr />
 <h3 id="step-4-vlan-tasks-in-playbook">Step 4: VLAN tasks in playbook</h3>
 <ul>
-<li>In the <strong>Atom</strong>, in the same <code>vlan_provision.yml</code> add below tasks below the previously added content:</li>
+<li>In the <strong>Atom</strong>, in the same <code>vlan_provision.yml</code> add the following tasks below the previously added content:</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -864,7 +864,7 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 <p>If the playbook fails first time, re-run the playbook again. Make sure to save all the changes in the playbook first before executing the playbook in Ansible.</p>
 </div>
 <ul>
-<li>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appears by executing below command again:</li>
+<li>After playbook is run successfully, go back to <strong>MTPuTTy</strong> and login via <strong>SSH</strong> into <code>leaf 3</code> again (or the other switch that you logged in earlier in this step) and <strong>check</strong> if vlan 140 and vlan 141 appeared by executing below command again:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>show vlan brief
 </code></pre></div>
@@ -875,7 +875,7 @@ ansible-playbook vlan_provision.yml --tags &quot;add vlans&quot;
 <p>We have just tested our first playbook with basic configuration (i.e, by adding 2 VLANs).  Now we are going to add more tasks in the same/existing playbook <strong><code>vlan_provision.yml</code></strong> in this step:</p>
 <ul>
 <li>
-<p>Lets add new <em>tasks</em> in the Ansible playbook to assign VLANs to server facing port.  We will configure VLAN towards the server facing ports</p>
+<p>Lets add new <em>tasks</em> in the Ansible playbook to configure VLAN towards the server facing ports</p>
 </li>
 <li>
 <p>Go back to <strong>ATOM</strong> and <strong>add</strong> the following tasks to the <strong>existing playbook</strong></p>
