@@ -1189,9 +1189,12 @@ ansible-playbook jinja2_fabric.yml
 <p>If the file does not appear on the ATOM, then go ahead and execute the steps <a href="https://ciscolivelab.github.io/LTRDCN-2765/missing_file_leaf/">on this page</a> to get it sync.  If the <code>leaf.j2</code> file appears in above folder then you can proceed with below steps further.</p>
 </div>
 <ul>
-<li>On “<strong>Atom</strong>”, edit this <code>leaf.j2</code> file for jinja2 template by <strong>copy</strong> and <strong>paste</strong> all of the below content in it.  !!! Note
-    As per steps in previous tasks, be careful with content since its space sensitive.</li>
+<li>On “<strong>Atom</strong>”, edit this <code>leaf.j2</code> file for jinja2 template by <strong>copy</strong> and <strong>paste</strong> all of the below content in it.  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per steps in previous tasks, be careful with content since its space sensitive.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">feature bgp</span>
 <span class="l l-Scalar l-Scalar-Plain">feature nv overlay</span>
 <span class="l l-Scalar l-Scalar-Plain">feature vn-segment-vlan-based</span>
