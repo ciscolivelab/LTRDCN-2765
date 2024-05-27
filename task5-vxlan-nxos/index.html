@@ -1784,8 +1784,10 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 </ul>
 <div class="highlight"><pre><span></span><code>ansible-playbook nxos_fabric.yml
 </code></pre></div>
-<p>!!! Note:
-    You will notice that the playbook always make some <strong>changes</strong> even when you re-run the platbook. That is because some of the NX-OS modules we used are not idempotent.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will notice that the playbook always make some <strong>changes</strong> even when you re-run the platbook. That is because some of the NX-OS modules we used are not idempotent.  </p>
+</div>
 <hr />
 <h3 id="step-12-verify-end-to-end-ip-connectivity">Step 12: Verify end-to-end IP connectivity</h3>
 <p>Now Let’s verify the VXLAN bridging and VXLAN routing from servers that are pre-configured in following VLANs and IPs</p>
