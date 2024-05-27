@@ -1056,11 +1056,11 @@
 </tr>
 <tr>
 <td align="center">cisco.nxos.nxos_bgp_af</td>
-<td align="center">Manage BGP address-famility config</td>
+<td align="center">Manage BGP address-family config</td>
 </tr>
 <tr>
 <td align="center">cisco.nxos.nxos_bgp_neighbor_af</td>
-<td align="center">Manage BGP neighbor address-famility config</td>
+<td align="center">Manage BGP neighbor address-family config</td>
 </tr>
 </tbody>
 </table>
@@ -1300,7 +1300,7 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 </tr>
 <tr>
 <td>cisco.nxos.nxos_interface_ospf</td>
-<td>Manage configuration OSPF interface instance</td>
+<td>Manage configuration of the OSPF interface instance</td>
 </tr>
 <tr>
 <td>cisco.nxos.nxos_interfaces</td>
@@ -1312,7 +1312,7 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 </tr>
 <tr>
 <td>cisco.nxos.nxos_pim_interface</td>
-<td>Manages PIM interface configuration</td>
+<td>Manage PIM interface configuration</td>
 </tr>
 </tbody>
 </table>
@@ -1494,7 +1494,7 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 </tr>
 <tr>
 <td>cisco.nxos.nxos_overlay_global</td>
-<td>Configuration anycast gateway MAC</td>
+<td>Configures anycast gateway MAC</td>
 </tr>
 <tr>
 <td>cisco.nxos.nxos_vxlan_vtep</td>
@@ -1539,14 +1539,6 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 <li>use <strong>“Atom”</strong> to edit the <strong>main.yml</strong> file. Open up the project folder <strong>“EVPN-Ansible”</strong> and open “<strong>main.yml</strong>” file under <strong>“roles/leaf/tasks/”</strong>.  Add the below content in the file at the end of the file (i.e., in addition to existing content), and then make sure to click <strong>“File”-&gt;“Save”</strong> on Atom, so that the updated file is pushed to Ansible server.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">#task to configure VXLAN fabric</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable VXLAN Feature</span>
-<span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}&quot;</span>
-<span class="w">          </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
-<span class="w">        </span><span class="nt">with_items</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nv overlay</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vn-segment-vlan-based</span>
-<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vxlan</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enable VXLAN Feature</span>
 <span class="w">        </span><span class="nt">cisco.nxos.nxos_feature</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">feature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}&quot;</span>
@@ -1697,11 +1689,11 @@ ansible-playbook nxos_fabric.yml --tags &quot;bgp&quot;
 <tbody>
 <tr>
 <td>cisco.nxos.nxos_bgp_af</td>
-<td>Manage BGP address-famility config</td>
+<td>Manage BGP address-family config</td>
 </tr>
 <tr>
 <td>cisco.nxos.nxos_bgp_neighbor_af</td>
-<td>Manage BGP neighbor address-famility config</td>
+<td>Manage BGP neighbor address-family config</td>
 </tr>
 <tr>
 <td>cisco.nxos.nxos_evpn_vni</td>

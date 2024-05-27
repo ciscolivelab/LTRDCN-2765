@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#task-6-build-staging-enviroment-with-ansible-and-cml" class="md-skip">
+        <a href="#task-6-build-staging-environment-with-ansible-and-cml" class="md-skip">
           Skip to content
         </a>
       
@@ -668,14 +668,14 @@
   
 
 
-<h1 id="task-6-build-staging-enviroment-with-ansible-and-cml">Task 6 - Build Staging Enviroment with Ansible and CML</h1>
-<p>In this task, you will build a staging enviroment mirroring the VXLAN EVPN Fabric. The purpose of staging enviroment is to have final test any configuration changes before deploying them in production.  </p>
-<p>Numerous tools are available for building staging enviroment. In this lab, we will utilize <strong>Cisco Modeling Labs</strong> <a href="https://www.cisco.com/c/en/us/products/cloud-systems-management/modeling-labs/index.html">CML</a> to create a virtual replica through Network Simulation.  </p>
+<h1 id="task-6-build-staging-environment-with-ansible-and-cml">Task 6 - Build Staging Environment with Ansible and CML</h1>
+<p>In this task, you will build a staging environment mirroring the VXLAN EVPN Fabric. The purpose of staging enviroment is to have a final test of any configuration changes before deploying them in production.  </p>
+<p>Numerous tools are available for building staging environment. In this lab, we will utilize <strong>Cisco Modeling Labs</strong> <a href="https://www.cisco.com/c/en/us/products/cloud-systems-management/modeling-labs/index.html">CML</a> to create a virtual replica through Network Simulation.  </p>
 <h3 id="step-1-create-inventory-and-variables-for-staging-envionment">Step 1: Create Inventory and Variables for Staging envionment</h3>
-<p>Ansible offers the option to execute playbooks against different inventory using the <strong>-i, --inventory</strong> common option. We will create a separate inventory hosts file for staging enviroment, and subsequently utilize the <strong>-i</strong> command option to execue playbooks in this staging envionment. </p>
-<p>The virtual nodes in CMLS are interconnected in the same manner as the production enviorment but in different management subnet.  </p>
+<p>Ansible offers the option to execute playbooks against different inventory using the <strong>-i, --inventory</strong> common option. We will create a separate inventory hosts file for staging environment, and subsequently utilize the <strong>-i</strong> command option to execue playbooks in this staging envionment. </p>
+<p>The virtual nodes in CML are interconnected in the same manner as the production enviorment but in different management subnet.  </p>
 <ul>
-<li>Create folder name Stag for staging envioment by using below command:<br />
+<li>Create folder name Stag for staging environment by using below command:<br />
 <div class="highlight"><pre><span></span><code>cd /root/EVPN-Ansible/ &amp;&amp; mkdir Stag
 ls
 </code></pre></div></li>
@@ -780,7 +780,7 @@ ansible all -v -i /root/EVPN-Ansible/Stag/hosts -c local -m command -a &quot;pin
 <div class="highlight"><pre><span></span><code>cd ~/EVPN-Ansible
 ansible-playbook vlan_provision.yml -i Stag/hosts
 </code></pre></div>
-<p>Below screeenshot shows the execution of above playbook:</p>
+<p>Below screenshot shows the execution of above playbook:</p>
 <p><img alt="" src="../pic/6-3-1.png" />  </p>
 <div class="highlight"><pre><span></span><code>ansible-playbook jinja2_fabric.yml -i Stag/hosts
 </code></pre></div>
