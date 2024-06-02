@@ -646,10 +646,10 @@
 <li>GitLab is software development platform that incorporates multiple capabilities including Version Control, code review and CI/CD in single system. </li>
 <li>The cloud hosted GitLab (SaaS) is used in this lab.  VCS and CI/CD capabilities of GitLab will be used in this lab. </li>
 <li>To execute tasks in a private network (i.e. behind Firewall, private infrastructure), GitLab Runner is used.  </li>
-<li>GitLab Runner is an application that run tests &amp; results i.e., jobs in a pipeline and then send the results to GitLab.  GitLab runner will be installed on the same local server as Ansible host in this lab setup.</li>
+<li>GitLab Runner is an application that run tests &amp; results i.e. jobs in a pipeline and then send the results to GitLab.  GitLab runner will be installed on the same local server as Ansible host in this lab setup.</li>
 </ul>
-<p>As a Version Control System (VCS), a Git repository will created on the GitLab (SaaS).  All the code (Ansible playbooks, roles etc.) will be saved on this repository.  The centralized &amp; Cloud hosted (SaaS) VCS provided by GitLab allows to maintain version control, track changes of files, collaboration among many engineers etc.  In this lab, the CI/CD component of GitLab will be integrated with VCS, so that changes made on repository can automatically trigger execution of job via a pipeline file.</p>
-<p>The process for creating a CI/CD pipeline with GitLab &amp; GitLab runner include below procedure:</p>
+<p>As a Version Control System (VCS), a Git repository will created on the GitLab (SaaS).  All the code (Ansible playbooks, roles etc.) will be saved on this repository.  The centralized &amp; Cloud hosted (SaaS) VCS provided by GitLab allows to maintain version control, track changes of files, collaboration among many engineers etc.  In this lab, the CI/CD component of GitLab will be integrated with VCS, so that changes made on repository can automatically trigger execution of a job via a pipeline file.</p>
+<p>The process for creating a CI/CD pipeline with GitLab &amp; GitLab runner includes below procedure:</p>
 <ul>
 <li>Create a project in GitLab.</li>
 <li>Install and register the GitLab Runner for your project.</li>
@@ -732,11 +732,11 @@ ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 </code></pre></div>
 <ul>
 <li>
-<p>Below screenshot shows the partial output of above command and shows ospf, bgp and pim neighbors for all leaf switches:</p>
+<p>Below screenshot shows the partial output of the above command and shows ospf, bgp and pim neighbors for all leaf switches:</p>
 <p><img alt="" src="../pic/5-2-1.png" /></p>
 </li>
 </ul>
-<p>Here is complete log of execution of above playbook/command:</p>
+<p>Here is the complete log of execution of above playbook/command:</p>
 <div class="highlight"><pre><span></span><code>root@ubuntu:~/EVPN-Ansible# ansible-playbook verify_fabric.yml --tags &quot;underlay&quot;
 
 PLAY [leaf, jinja2_leaf] *********************************************************************************************************************************************************************************************
@@ -845,8 +845,12 @@ PLAY RECAP *********************************************************************
 </code></pre></div>
 <p><strong>Next:</strong></p>
 <ul>
-<li>On the <strong>Ansible</strong> node (via <strong>MTPutty</strong>), execute the <strong>verify_fabric.yml</strong> playbook by issuing below command.  As per below, this command uses the <code>--tags</code> in the syntax to execute the respective tasks (as per the tag) in the playbook.  As per the output, <strong>verify</strong> the <strong>overlay</strong> outputs (as shown below).  <em>Note:</em> This command will show the nve tunnel peer, host route in BGP EVPN from all leaf switches:</li>
+<li>On the <strong>Ansible</strong> node (via <strong>MTPutty</strong>), execute the <strong>verify_fabric.yml</strong> playbook by issuing below command.  As per below, this command uses the <code>--tags</code> in the syntax to execute the respective tasks (as per the tag) in the playbook.  As per the output, <strong>verify</strong> the <strong>overlay</strong> outputs (as shown below).  </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command will show the nve tunnel peer, host route in BGP EVPN from all leaf switches:  </p>
+</div>
 <div class="highlight"><pre><span></span><code>ansible-playbook verify_fabric.yml --tags &quot;overlay&quot;
 </code></pre></div>
 <ul>
@@ -1210,12 +1214,16 @@ apt-get install git
 <p>In this step, you will use setup repository for your respective Pod on Gitlab (SaaS) and then push your code (Ansible files) to this repository.  This basically uses Version Control System (VCS) capabilities on GitLab.  In addition, some GitLab settings will be modified to allow access rights to the repository.</p>
 <ul>
 <li>
-<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>C1sco12345</code> as shown below.</p>
+<p>Open chrome browser and enter <strong><a href="https://gitlab.com/users/sign_in">gitlab.com/users/sign_in</a></strong> in the address bar. Sign in with <strong>Username:</strong> <code>lab.ciscolive@gmail.com</code> <strong>Password:</strong> <code>#####</code> as shown below.</p>
 <p><img alt="" src="../pic/5-2-3.png" /></p>
 </li>
-<li>
-<p>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, You may see a main page without any existing projects - this is shown in below screenshot.  To create a new project click on <strong>Create a project</strong> icon on this main page (shown below).  </p>
-</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the brower from remote desktop jumphost for gitlab access.</p>
+</div>
+<ul>
+<li>After signing to <strong><code>lab.ciscolive</code></strong> gitlab account, You may see a main page without any existing projects - this is shown in below screenshot.  To create a new project click on <strong>Create a project</strong> icon on this main page (shown below).  </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1262,7 +1270,7 @@ apt-get install git
 <li>Further, Click on <strong>Unprotect</strong> (in Red color) as shown in below screenshot.  Also, acknolwedge by clicking on <strong>Unprotect branch</strong> on the pop-up message.</li>
 </ul>
 <p><img alt="" src="../pic/5-2-7.png" /></p>
-<p>Now the Git repository is setup properly for colloboration. And it can be used for keeping all the code i.e., Ansible playbooks and roles files.  Since all the code resides on local machine (Ansible node), so let's push this code to this newlly created centralized repository on GitLab.</p>
+<p>Now the Git repository is set up properly for collaboration. And it can be used for keeping all the code i.e., Ansible playbooks and roles files.  Since all the code resides on local machine (Ansible node), let's push this code to this newlly created centralized repository on GitLab.</p>
 <ul>
 <li>On the Ansible node (in <strong><em>MTputty</em></strong> SSH session), run the below commands to initialize git in appropriate directory:</li>
 </ul>
@@ -1272,7 +1280,7 @@ git init
 <p>Below screenshot shows the execution of the initialize commands in correct directory:</p>
 <p><img alt="" src="../pic/5-3-5.png" /></p>
 <ul>
-<li>On the Ansible node, run following commands to add the remote repository (previously copied from <code>Clone with HTTPS</code> on GitLab) as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
+<li>On the Ansible node, run the following commands to add the remote repository (previously copied from <code>Clone with HTTPS</code> on GitLab) as origin for your respective <strong><code>Pod {ID}</code></strong> and verify it's result:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git remote add origin https://gitlab.com/lab.ciscolive/pod_{ID}.git
 git remote -v
@@ -1298,7 +1306,7 @@ git status
 git commit -m &quot;initial commit&quot;
 </code></pre></div>
 <ul>
-<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository (SaaS) with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code></li>
+<li>Now, lets push all files to <strong>main</strong> branch on Gitlab repository (SaaS) with below commands.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code>git push -f origin main
 </code></pre></div>
@@ -1312,7 +1320,7 @@ git commit -m &quot;initial commit&quot;
 <p class="admonition-title">Note</p>
 <p>The filename starts with <strong><code>.</code></strong> and it's not a mistake.  </p>
 </div>
-<p>This file uses YAML syntax and needs to be placed in root directory of the repository.  In this file, you define your intent for the pipeline using a declarative syntax (in YAML) such as:</p>
+<p>This file uses YAML syntax and needs to be placed in root directory of the repository.  In this file, you define your intent for the pipeline using a declarative syntax (in YAML) such as:  </p>
 <ul>
 <li>The stages you want run in the pipeline</li>
 <li>The scripts you want run in each stage</li>
@@ -1388,13 +1396,13 @@ git commit -m &quot;initial commit&quot;
 </ul>
 <p>Now lets push this file to GitLab centralized repository by execution of below steps:</p>
 <ul>
-<li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>C1sco12345</code>for GitLab access:</li>
+<li>Switch to Ansible node (via <strong>MTPuTTY</strong>), add the <code>.gitlab-ci.yml</code> file to staging area, and then commit &amp; push the file to remote repository (on GitLab) as shown below.  When prompted for credentials, enter the <strong>Username:</strong> <code>lab.ciscolive</code> <strong>Password:</strong> <code>#####</code>for GitLab access:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>git add .gitlab-ci.yml
 git commit -m &quot;add ci file&quot;
 git push origin main
 </code></pre></div>
-<p>Below screenshot shows the outputs of the commands for Pod_1 (note your git repository will be based upon your respective Pod_{ID}):</p>
+<p>Below screenshot shows the outputs of the commands for Pod_1 (note that your git repository will be based upon your respective Pod_{ID}):</p>
 <p><img alt="" src="../pic/5-3-8.png" /></p>
 <h3 id="step-5-register-local-gitlab-runner">Step 5: Register local gitlab-runner</h3>
 <p>We are ready to run our pipeline.  However the pipeline is run by a gitlab-runner.  And this runner needs to be registerted to GitLab (SaaS).  In this task, you will create local GitLab runner on Ansible server and then register it to your project on GitLab (SaaS) to run pipeline jobs. You will assign <strong>EVPN</strong> as tag of the runner as part of registration to your project on GitLab.</p>
@@ -1411,7 +1419,7 @@ git push origin main
 </ul>
 <p><img alt="" src="../pic/5-5-1a.png" /></p>
 <ul>
-<li>On the next <code>New project runner</code> page, select <strong>Linux</strong> Operating systems under the <strong><code>Platform</code></strong>.  Further, enter a <strong><code>Tags</code></strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Submit</strong> on this page as shown in below screenshot:</li>
+<li>On the next <code>New project runner</code> page, enter a <strong><code>Tags</code></strong> value of <strong>EVPN</strong>, leave other settings as default, and click <strong>Create runner</strong> on this page as shown in below screenshot:</li>
 </ul>
 <p><img alt="" src="../pic/5-5-1b.png" /></p>
 <ul>
@@ -1422,11 +1430,11 @@ git push origin main
 <p>Make sure to copy the runner token in this step.</p>
 </div>
 <ul>
-<li>Then click on <strong>Go to runners page</strong> button.  If <code>Leave site?</code> prompt is displayed, then click <strong><code>Leave</code></strong> to proceed.</li>
+<li>Then click on <strong>View runners</strong> button.  If <code>Leave site?</code> prompt is displayed, then click <strong><code>Leave</code></strong> to proceed.</li>
 </ul>
 <p><img alt="" src="../pic/5-5-1c.png" /></p>
 <ul>
-<li>As shown in below screenshot, under <strong>```Instance runners````</strong>, click on the toggle switch named <strong>Enable instance runners for this project</strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
+<li>As shown in below screenshot, under <strong><code>Instance runners</code></strong>, click on the toggle switch named <strong>Enable instance runners for this project</strong> to disable the shared runners for this project.  Below screenshot shows the output once sharing has been disabled.</li>
 </ul>
 <p><img alt="" src="../pic/5-5-2.png" /></p>
 <ul>
@@ -1516,7 +1524,7 @@ git add .
 git commit -m &quot;newvni&quot;
 git push -f origin newvni
 </code></pre></div>
-<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>C1sco12345</code> for gitlab access</p>
+<p>When prompted, Use <strong>username:</strong> of <code>lab.ciscolive</code> and <strong>password:</strong> <code>#####</code> for gitlab access</p>
 <p><img alt="" src="../pic/5-6-3.png" /></p>
 <h3 id="step-7-review-pipeline-testing-and-staging-results">Step 7: Review pipeline testing and staging results</h3>
 <p>In this task, you will review the script results from pipeline. The <strong>git push</strong> command in previous task triggered pipeline test and staging stage.</p>
@@ -1636,7 +1644,7 @@ git push -f origin newvni
 <p><img alt="" src="../pic/5-8-3a.png" /></p>
 <p>Wait for the <code>Merged by lab.ciscolive</code> message and for <code>Merge details</code> to appear on this page.</p>
 <p><strong><em>So what is happening?</em></strong></p>
-<p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautios and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
+<p>After validating and testing deployment of VNIs in a branch named <code>newvni</code>, we have merged the new code (to deploy new VNIs) on the <code>main</code> branch.  However, the pipeline has not triggered.  Why?  Since, as per the CI/CD pipeline (filename: <strong>.gitlab-ci.yml</strong>) the <code>rules</code> setting was configured for <strong>manual</strong> trigger for production deployment.  This is just to demonstrate that, as per your environment, you may decide to be extra cautious and not deploy to production without additional review.  Hence the job for deploying production will not be triggered automatically.  Instead, you will manually kickoff the production deployment job on pipeline.  Let's proceed to initiate this manual trigger:</p>
 <ul>
 <li>
 <p>Switch to Chrome brower with GitLab project page (your respective <code>Pod_{ID}</code>), select <strong>Build &gt; Pipelines</strong> from navigation menu on the left sidebar.</p>
